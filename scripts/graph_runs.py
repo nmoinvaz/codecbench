@@ -275,7 +275,7 @@ def render(names, versions, points, title, out_path):
                        + (f" strategy:{strategy}" if strategy else "")
                        + f" - {fmt_speed(speed)}, ratio {ratio:.3f}, {n} files")
                 marker(svg, shape, sx(ratio), sy(speed), SERIES[i], tip)
-                tag = f"{strategy[0]}{level}" if strategy else str(level)
+                tag = f"{strategy[0]}{level}" if strategy else f"L{level}"
                 label_point(sx(ratio), sy(speed), tag)
     # Labels last so markers never cover them
     for x, y, tag in labeled:
