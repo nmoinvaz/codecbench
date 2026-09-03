@@ -151,6 +151,58 @@ if(WITH_SLZ)
 endif()
 
 #============================================================================
+# Chromium zlib, the zlib shipped in Chrome. Built as an external project so
+# its target names stay out of this build.
+#============================================================================
+option(WITH_CHROMIUM_ZLIB "Add Chromium zlib codec benchmarks" ON)
+if(WITH_CHROMIUM_ZLIB)
+    include(ExternalProject)
+
+    if(NOT DEFINED CHROMIUM_ZLIB_REPOSITORY)
+        set(CHROMIUM_ZLIB_REPOSITORY https://chromium.googlesource.com/chromium/src/third_party/zlib)
+    endif()
+    if(NOT DEFINED CHROMIUM_ZLIB_TAG)
+        # Chromium zlib tracks the Chromium tree and tags no releases, so a
+        # recent commit is pinned.
+        set(CHROMIUM_ZLIB_TAG 285e94b8fa95ad3b7d16b80798ec8dce6febb8c8)
+    endif()
+
+    if(WIN32)
+        set(CHROMIUM_ZLIB_NAME zs)
+    else()
+        set(CHROMIUM_ZLIB_NAME z)
+    endif()
+    set(CHROMIUM_ZLIB_LIB_NAME
+        ${CMAKE_STATIC_LIBRARY_PREFIX}${CHROMIUM_ZLIB_NAME}${CMAKE_STATIC_LIBRARY_SUFFIX})
+
+    # ENABLE_SIMD_OPTIMIZATIONS selects the configuration Chrome ships, not
+    # the plain C fallback
+    ExternalProject_Add(chromium_zlib
+        GIT_REPOSITORY ${CHROMIUM_ZLIB_REPOSITORY}
+        GIT_TAG ${CHROMIUM_ZLIB_TAG}
+        CMAKE_ARGS
+            -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
+            -DCMAKE_BUILD_TYPE=Release
+            -DCMAKE_OSX_ARCHITECTURES=${CMAKE_OSX_ARCHITECTURES}
+            -DZLIB_BUILD_TESTING=OFF
+            -DZLIB_BUILD_SHARED=OFF
+            -DZLIB_BUILD_STATIC=ON
+            -DZLIB_INSTALL=OFF
+            -DENABLE_SIMD_OPTIMIZATIONS=ON
+        # Only the static library is wanted, the default build also makes
+        # zlib_bench which needs the disabled shared target
+        BUILD_COMMAND ${CMAKE_COMMAND} --build <BINARY_DIR> --target zlibstatic
+        BUILD_BYPRODUCTS <BINARY_DIR>/${CHROMIUM_ZLIB_LIB_NAME}
+        INSTALL_COMMAND ""
+        )
+
+    ExternalProject_Get_Property(chromium_zlib SOURCE_DIR BINARY_DIR)
+    set(CHROMIUM_ZLIB_LIB ${BINARY_DIR}/${CHROMIUM_ZLIB_LIB_NAME})
+    # zconf.h is generated into the external binary dir, zlib.h stays in source
+    set(CHROMIUM_ZLIB_INCLUDE_DIRS ${BINARY_DIR} ${SOURCE_DIR})
+endif()
+
+#============================================================================
 # Codec benchmark executables, the same sources built once per backend
 #============================================================================
 set(BENCH_CODEC_SRCS
@@ -182,6 +234,19 @@ if(WITH_SLZ)
         set_source_files_properties(${slz_SOURCE_DIR}/src/slz.c ${slz_SOURCE_DIR}/src/slz_common.c PROPERTIES COMPILE_OPTIONS "-w;-std=gnu11")
     endif()
     list(APPEND BENCH_CODEC_TARGETS codecbench_slz)
+endif()
+
+if(WITH_CHROMIUM_ZLIB)
+    # The shim is the only TU compiled against Chromium's headers, they
+    # cannot coexist with zlib-ng.h
+    add_library(chromium_zlib_shim OBJECT codecs/zlib_shim.c)
+    target_include_directories(chromium_zlib_shim PRIVATE ${CHROMIUM_ZLIB_INCLUDE_DIRS})
+    add_dependencies(chromium_zlib_shim chromium_zlib)
+
+    add_executable(codecbench_chromium_zlib ${BENCH_CODEC_SRCS})
+    target_compile_definitions(codecbench_chromium_zlib PRIVATE BENCH_CHROMIUM_ZLIB=1)
+    target_link_libraries(codecbench_chromium_zlib chromium_zlib_shim ${CHROMIUM_ZLIB_LIB})
+    list(APPEND BENCH_CODEC_TARGETS codecbench_chromium_zlib)
 endif()
 
 foreach(codec_target ${BENCH_CODEC_TARGETS})

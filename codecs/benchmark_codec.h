@@ -20,6 +20,8 @@
 #  include "isal.h"
 #elif defined(BENCH_SLZ)
 #  include "slz.h"
+#elif defined(BENCH_CHROMIUM_ZLIB)
+#  include "chromium_zlib.h"
 #else
 /* zlib-ng is both the reference and the default backend. */
 typedef zng_codec_compressor   codec_compressor;
