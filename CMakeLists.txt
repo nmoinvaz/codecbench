@@ -15,6 +15,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+include(FeatureSummary)
 include(FetchContent)
 
 #============================================================================
@@ -377,3 +378,15 @@ foreach(codec_target ${BENCH_CODEC_TARGETS})
         target_link_libraries(${codec_target} shlwapi)
     endif()
 endforeach()
+
+#============================================================================
+# Config summary
+#============================================================================
+add_feature_info(WITH_ISAL WITH_ISAL "Add Intel ISA-L codec benchmarks")
+add_feature_info(WITH_SLZ WITH_SLZ "Add libslz codec benchmarks")
+add_feature_info(WITH_CHROMIUM_ZLIB WITH_CHROMIUM_ZLIB "Add Chromium zlib codec benchmarks")
+add_feature_info(WITH_MADLER_ZLIB WITH_MADLER_ZLIB "Add madler zlib codec benchmarks")
+add_feature_info(WITH_ZLIB_RS WITH_ZLIB_RS "Add zlib-rs codec benchmarks")
+add_feature_info(ZLIBNG_SOURCE_DIR ZLIBNG_SOURCE_DIR "Benchmark a local zlib-ng checkout instead of the pinned release")
+
+feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES)
