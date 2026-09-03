@@ -73,28 +73,31 @@ endif()
 FetchContent_MakeAvailable(zlib_ng)
 
 #============================================================================
-# libdeflate, always built alongside the zlib-ng reference
+# libdeflate
 #============================================================================
-if(NOT DEFINED LIBDEFLATE_REPOSITORY)
-    set(LIBDEFLATE_REPOSITORY https://github.com/ebiggers/libdeflate.git)
-endif()
-if(NOT DEFINED LIBDEFLATE_TAG)
-    set(LIBDEFLATE_TAG v1.26)
-endif()
+option(WITH_LIBDEFLATE "Add libdeflate codec benchmarks" ON)
+if(WITH_LIBDEFLATE)
+    if(NOT DEFINED LIBDEFLATE_REPOSITORY)
+        set(LIBDEFLATE_REPOSITORY https://github.com/ebiggers/libdeflate.git)
+    endif()
+    if(NOT DEFINED LIBDEFLATE_TAG)
+        set(LIBDEFLATE_TAG v1.26)
+    endif()
 
-set(LIBDEFLATE_BUILD_SHARED_LIB OFF)
-set(LIBDEFLATE_BUILD_GZIP OFF)
-set(LIBDEFLATE_BUILD_TESTS OFF)
+    set(LIBDEFLATE_BUILD_SHARED_LIB OFF)
+    set(LIBDEFLATE_BUILD_GZIP OFF)
+    set(LIBDEFLATE_BUILD_TESTS OFF)
 
-FetchContent_Declare(libdeflate
-    GIT_REPOSITORY ${LIBDEFLATE_REPOSITORY}
-    GIT_TAG ${LIBDEFLATE_TAG}
-    EXCLUDE_FROM_ALL)
-FetchContent_MakeAvailable(libdeflate)
+    FetchContent_Declare(libdeflate
+        GIT_REPOSITORY ${LIBDEFLATE_REPOSITORY}
+        GIT_TAG ${LIBDEFLATE_TAG}
+        EXCLUDE_FROM_ALL)
+    FetchContent_MakeAvailable(libdeflate)
 
-# Third-party sources are not held to this project's warning set
-if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang|LCC")
-    target_compile_options(libdeflate_static PRIVATE -w)
+    # Third-party sources are not held to this project's warning set
+    if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang|LCC")
+        target_compile_options(libdeflate_static PRIVATE -w)
+    endif()
 endif()
 
 #============================================================================
@@ -298,11 +301,14 @@ set(BENCH_CODEC_SRCS
 
 add_executable(codecbench_zlibng ${BENCH_CODEC_SRCS})
 
-add_executable(codecbench_libdeflate ${BENCH_CODEC_SRCS})
-target_compile_definitions(codecbench_libdeflate PRIVATE BENCH_LIBDEFLATE=1)
-target_link_libraries(codecbench_libdeflate libdeflate::libdeflate_static)
+set(BENCH_CODEC_TARGETS codecbench_zlibng)
 
-set(BENCH_CODEC_TARGETS codecbench_zlibng codecbench_libdeflate)
+if(WITH_LIBDEFLATE)
+    add_executable(codecbench_libdeflate ${BENCH_CODEC_SRCS})
+    target_compile_definitions(codecbench_libdeflate PRIVATE BENCH_LIBDEFLATE=1)
+    target_link_libraries(codecbench_libdeflate libdeflate::libdeflate_static)
+    list(APPEND BENCH_CODEC_TARGETS codecbench_libdeflate)
+endif()
 
 if(WITH_ISAL)
     add_executable(codecbench_isal ${BENCH_CODEC_SRCS})
@@ -382,6 +388,7 @@ endforeach()
 #============================================================================
 # Config summary
 #============================================================================
+add_feature_info(WITH_LIBDEFLATE WITH_LIBDEFLATE "Add libdeflate codec benchmarks")
 add_feature_info(WITH_ISAL WITH_ISAL "Add Intel ISA-L codec benchmarks")
 add_feature_info(WITH_SLZ WITH_SLZ "Add libslz codec benchmarks")
 add_feature_info(WITH_CHROMIUM_ZLIB WITH_CHROMIUM_ZLIB "Add Chromium zlib codec benchmarks")

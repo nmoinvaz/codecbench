@@ -14,7 +14,7 @@ data through zlib-ng.
 | Executable                 | Backend                     | Option              | Requires        |
 | -------------------------- | --------------------------- | ------------------- | --------------- |
 | `codecbench_zlibng`        | [zlib-ng] (reference)       | always              |                 |
-| `codecbench_libdeflate`    | [libdeflate]                | always              |                 |
+| `codecbench_libdeflate`    | [libdeflate]                | `WITH_LIBDEFLATE`   |                 |
 | `codecbench_isal`          | [ISA-L] (igzip)             | `WITH_ISAL`         | nasm on x86     |
 | `codecbench_slz`           | [libslz] (compress only)    | `WITH_SLZ`          |                 |
 | `codecbench_chromium_zlib` | [Chromium zlib]             | `WITH_CHROMIUM_ZLIB`|                 |
