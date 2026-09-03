@@ -22,6 +22,8 @@
 #  include "slz.h"
 #elif defined(BENCH_CHROMIUM_ZLIB)
 #  include "chromium_zlib.h"
+#elif defined(BENCH_MADLER_ZLIB)
+#  include "madler_zlib.h"
 #else
 /* zlib-ng is both the reference and the default backend. */
 typedef zng_codec_compressor   codec_compressor;

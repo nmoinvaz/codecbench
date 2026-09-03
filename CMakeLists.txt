@@ -203,6 +203,47 @@ if(WITH_CHROMIUM_ZLIB)
 endif()
 
 #============================================================================
+# madler zlib, stock upstream zlib as the baseline. Built as an external
+# project so its target names stay out of this build.
+#============================================================================
+option(WITH_MADLER_ZLIB "Add madler zlib codec benchmarks" ON)
+if(WITH_MADLER_ZLIB)
+    include(ExternalProject)
+
+    if(NOT DEFINED MADLER_ZLIB_REPOSITORY)
+        set(MADLER_ZLIB_REPOSITORY https://github.com/madler/zlib.git)
+    endif()
+    if(NOT DEFINED MADLER_ZLIB_TAG)
+        set(MADLER_ZLIB_TAG v1.3.1)
+    endif()
+
+    if(WIN32)
+        set(MADLER_ZLIB_LIB_NAME zlibstatic${CMAKE_STATIC_LIBRARY_SUFFIX})
+    else()
+        set(MADLER_ZLIB_LIB_NAME ${CMAKE_STATIC_LIBRARY_PREFIX}z${CMAKE_STATIC_LIBRARY_SUFFIX})
+    endif()
+
+    ExternalProject_Add(madler_zlib
+        GIT_REPOSITORY ${MADLER_ZLIB_REPOSITORY}
+        GIT_TAG ${MADLER_ZLIB_TAG}
+        CMAKE_ARGS
+            -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
+            -DCMAKE_BUILD_TYPE=Release
+            -DCMAKE_OSX_ARCHITECTURES=${CMAKE_OSX_ARCHITECTURES}
+            -DZLIB_BUILD_EXAMPLES=OFF
+        # Only the static library is wanted
+        BUILD_COMMAND ${CMAKE_COMMAND} --build <BINARY_DIR> --target zlibstatic
+        BUILD_BYPRODUCTS <BINARY_DIR>/${MADLER_ZLIB_LIB_NAME}
+        INSTALL_COMMAND ""
+        )
+
+    ExternalProject_Get_Property(madler_zlib SOURCE_DIR BINARY_DIR)
+    set(MADLER_ZLIB_LIB ${BINARY_DIR}/${MADLER_ZLIB_LIB_NAME})
+    # zconf.h is generated into the external binary dir, zlib.h stays in source
+    set(MADLER_ZLIB_INCLUDE_DIRS ${BINARY_DIR} ${SOURCE_DIR})
+endif()
+
+#============================================================================
 # Codec benchmark executables, the same sources built once per backend
 #============================================================================
 set(BENCH_CODEC_SRCS
@@ -247,6 +288,19 @@ if(WITH_CHROMIUM_ZLIB)
     target_compile_definitions(codecbench_chromium_zlib PRIVATE BENCH_CHROMIUM_ZLIB=1)
     target_link_libraries(codecbench_chromium_zlib chromium_zlib_shim ${CHROMIUM_ZLIB_LIB})
     list(APPEND BENCH_CODEC_TARGETS codecbench_chromium_zlib)
+endif()
+
+if(WITH_MADLER_ZLIB)
+    # The shim is the only TU compiled against madler zlib's headers, they
+    # cannot coexist with zlib-ng.h
+    add_library(madler_zlib_shim OBJECT codecs/zlib_shim.c)
+    target_include_directories(madler_zlib_shim PRIVATE ${MADLER_ZLIB_INCLUDE_DIRS})
+    add_dependencies(madler_zlib_shim madler_zlib)
+
+    add_executable(codecbench_madler_zlib ${BENCH_CODEC_SRCS})
+    target_compile_definitions(codecbench_madler_zlib PRIVATE BENCH_MADLER_ZLIB=1)
+    target_link_libraries(codecbench_madler_zlib madler_zlib_shim ${MADLER_ZLIB_LIB})
+    list(APPEND BENCH_CODEC_TARGETS codecbench_madler_zlib)
 endif()
 
 foreach(codec_target ${BENCH_CODEC_TARGETS})

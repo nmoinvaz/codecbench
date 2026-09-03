@@ -18,12 +18,14 @@ data through zlib-ng.
 | `codecbench_isal`          | [ISA-L] (igzip)             | `WITH_ISAL`         | nasm on x86     |
 | `codecbench_slz`           | [libslz] (compress only)    | `WITH_SLZ`          |                 |
 | `codecbench_chromium_zlib` | [Chromium zlib]             | `WITH_CHROMIUM_ZLIB`|                 |
+| `codecbench_madler_zlib`   | [madler zlib]               | `WITH_MADLER_ZLIB`  |                 |
 
 [zlib-ng]: https://github.com/zlib-ng/zlib-ng
 [libdeflate]: https://github.com/ebiggers/libdeflate
 [ISA-L]: https://github.com/intel/isa-l
 [libslz]: https://github.com/wtarreau/libslz
 [Chromium zlib]: https://chromium.googlesource.com/chromium/src/third_party/zlib
+[madler zlib]: https://github.com/madler/zlib
 
 All backends are on by default and fetched at pinned versions during the CMake
 configure. Each `<NAME>_REPOSITORY` / `<NAME>_TAG` pair can be overridden.
