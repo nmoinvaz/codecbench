@@ -64,6 +64,17 @@ build/codecbench_libdeflate --benchmark_out=libdeflate.json --benchmark_out_form
 scripts/compare_runs.py zlibng.json libdeflate.json
 ```
 
+## Graphing
+
+`scripts/graph_runs.py` turns two runs into a speed versus ratio SVG, one
+point per level and strategy aggregated across the corpus files common to
+both runs, with an inflate throughput panel and an aggregate table on stdout.
+It needs only the Python standard library.
+
+```sh
+scripts/graph_runs.py zlibng.json libdeflate.json -o zlibng_vs_libdeflate.svg
+```
+
 ## Benchmarking a local zlib-ng
 
 Point the reference backend at a checkout instead of the pinned release to
