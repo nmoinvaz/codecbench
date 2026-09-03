@@ -18,10 +18,10 @@
 struct zng_codec_compressor {
     zng_stream strm;
 
-    bool init(int level) {
+    bool init(int level, int strategy = Z_DEFAULT_STRATEGY) {
         memset(&strm, 0, sizeof(strm));
         return zng_deflateInit2(&strm, level, Z_DEFLATED, -MAX_WBITS, MAX_MEM_LEVEL,
-                                Z_DEFAULT_STRATEGY) == Z_OK;
+                                strategy) == Z_OK;
     }
 
     size_t bound(size_t in_size) {

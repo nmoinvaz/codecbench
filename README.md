@@ -24,7 +24,8 @@ data through zlib-ng.
 All backends are on by default and fetched at pinned versions during the CMake
 configure. Each `<NAME>_REPOSITORY` / `<NAME>_TAG` pair can be overridden.
 Levels follow what each backend supports, libdeflate adds `level:12`, igzip
-spans 0-3.
+spans 0-3. Deflate strategy variants (`/strategy:filtered` etc.) register only
+for zlib-ng, no other backend has an equivalent.
 
 ## Building
 

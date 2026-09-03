@@ -10,7 +10,8 @@
  * default or another backend when its BENCH_* macro is defined.
  * Decompression input is always produced by zlib-ng at level 9, so every
  * backend inflates identical streams. All output is verified against the
- * original file contents.
+ * original file contents. Deflate strategy variants are registered only by
+ * backends that declare CODEC_STRATEGIES, currently just zlib-ng.
  */
 
 #include <stdio.h>
@@ -37,6 +38,7 @@ class codec_deflate : public benchmark::Fixture {
 private:
     corpus_file *cf;
     int level;
+    int strategy;
     uint8_t *outbuff;
     size_t outbuff_size;
     size_t compressed_size;
@@ -44,9 +46,9 @@ private:
     bool comp_init;
 
 public:
-    codec_deflate(const std::string &name, corpus_file *cf, int level)
-        : cf(cf), level(level), outbuff(NULL), outbuff_size(0), compressed_size(0),
-          comp(), comp_init(false) {
+    codec_deflate(const std::string &name, corpus_file *cf, int level, int strategy = Z_DEFAULT_STRATEGY)
+        : cf(cf), level(level), strategy(strategy), outbuff(NULL), outbuff_size(0),
+          compressed_size(0), comp(), comp_init(false) {
         this->SetName(name);
     }
 
@@ -54,7 +56,12 @@ public:
         if (!load_corpus_file(cf))
             return;
 
+#ifdef CODEC_STRATEGIES
+        comp_init = comp.init(level, strategy);
+#else
+        (void)strategy;
         comp_init = comp.init(level);
+#endif
         if (!comp_init)
             return;
 
@@ -236,6 +243,16 @@ static void codec_register_data_types(uint32_t mask) {
 
 static int codec_data_types = benchmark_data_types_hook(codec_register_data_types);
 
+#ifdef CODEC_STRATEGIES
+static const struct {
+    const char *name;
+    int strategy;
+} codec_strategies[] = CODEC_STRATEGIES;
+
+/* Strategy variants use the reduced level ladder of the deflate_bench strategy benchmarks */
+static const int codec_strategy_levels[] = {1, 6, 9};
+#endif
+
 /* Dynamic benchmark registration at static init time */
 static int register_codec_benchmarks(void) {
     corpora_files = discover_corpora();
@@ -255,6 +272,19 @@ static int register_codec_benchmarks(void) {
             benchmark::internal::RegisterBenchmarkInternal(
                 ::benchmark::internal::make_unique<codec_deflate>(name, cf, level));
         }
+
+#ifdef CODEC_STRATEGIES
+        for (size_t s = 0; s < sizeof(codec_strategies) / sizeof(codec_strategies[0]); s++) {
+            for (size_t l = 0; l < sizeof(codec_strategy_levels) / sizeof(codec_strategy_levels[0]); l++) {
+                int level = codec_strategy_levels[l];
+                std::string name = "codec_deflate/" + label + "/level:" + std::to_string(level) +
+                                   "/strategy:" + codec_strategies[s].name;
+                benchmark::internal::RegisterBenchmarkInternal(
+                    ::benchmark::internal::make_unique<codec_deflate>(name, cf, level,
+                                                                      codec_strategies[s].strategy));
+            }
+        }
+#endif
 
         std::string name = "codec_inflate/" + label;
         benchmark::internal::RegisterBenchmarkInternal(
