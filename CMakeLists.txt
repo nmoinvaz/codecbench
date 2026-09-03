@@ -97,6 +97,41 @@ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang|LCC")
 endif()
 
 #============================================================================
+# ISA-L (Intel igzip), needs nasm on x86
+#============================================================================
+option(WITH_ISAL "Add Intel ISA-L codec benchmarks" ON)
+if(WITH_ISAL AND CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64|AMD64|i.86")
+    find_program(NASM_EXECUTABLE nasm)
+    if(NOT NASM_EXECUTABLE)
+        message(WARNING "Skipping ISA-L codec benchmarks, nasm not found")
+        set(WITH_ISAL OFF)
+    endif()
+endif()
+if(WITH_ISAL)
+    find_package(isal QUIET)
+    if(NOT isal_FOUND)
+        if(NOT DEFINED ISAL_REPOSITORY)
+            set(ISAL_REPOSITORY https://github.com/intel/isa-l.git)
+        endif()
+        if(NOT DEFINED ISAL_TAG)
+            # ISA-L's CMake support postdates its v2.31.1 release, so a
+            # post-release commit is pinned until a CMake-capable tag ships.
+            set(ISAL_TAG ebcec1aea3239108a67cc6309aaaeed6211fed89)
+        endif()
+
+        FetchContent_Declare(isal
+            GIT_REPOSITORY ${ISAL_REPOSITORY}
+            GIT_TAG ${ISAL_TAG}
+            EXCLUDE_FROM_ALL)
+        FetchContent_MakeAvailable(isal)
+
+        if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang|LCC")
+            target_compile_options(isal PRIVATE -w)
+        endif()
+    endif()
+endif()
+
+#============================================================================
 # Codec benchmark executables, the same sources built once per backend
 #============================================================================
 set(BENCH_CODEC_SRCS
@@ -112,6 +147,13 @@ target_compile_definitions(codecbench_libdeflate PRIVATE BENCH_LIBDEFLATE=1)
 target_link_libraries(codecbench_libdeflate libdeflate::libdeflate_static)
 
 set(BENCH_CODEC_TARGETS codecbench_zlibng codecbench_libdeflate)
+
+if(WITH_ISAL)
+    add_executable(codecbench_isal ${BENCH_CODEC_SRCS})
+    target_compile_definitions(codecbench_isal PRIVATE BENCH_ISAL=1)
+    target_link_libraries(codecbench_isal isal)
+    list(APPEND BENCH_CODEC_TARGETS codecbench_isal)
+endif()
 
 foreach(codec_target ${BENCH_CODEC_TARGETS})
     target_compile_definitions(${codec_target} PRIVATE
