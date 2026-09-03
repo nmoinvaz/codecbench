@@ -18,6 +18,8 @@
 #  include "libdeflate.h"
 #elif defined(BENCH_ISAL)
 #  include "isal.h"
+#elif defined(BENCH_SLZ)
+#  include "slz.h"
 #else
 /* zlib-ng is both the reference and the default backend. */
 typedef zng_codec_compressor   codec_compressor;

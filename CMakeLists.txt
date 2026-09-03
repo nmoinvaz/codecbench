@@ -132,6 +132,25 @@ if(WITH_ISAL)
 endif()
 
 #============================================================================
+# libslz (Willy Tarreau), compress-only. Ships no CMake, so its sources are
+# compiled into the codec executable directly.
+#============================================================================
+option(WITH_SLZ "Add libslz codec benchmarks" ON)
+if(WITH_SLZ)
+    if(NOT DEFINED SLZ_REPOSITORY)
+        set(SLZ_REPOSITORY https://github.com/wtarreau/libslz.git)
+    endif()
+    if(NOT DEFINED SLZ_TAG)
+        set(SLZ_TAG master)
+    endif()
+    FetchContent_Declare(slz
+        GIT_REPOSITORY ${SLZ_REPOSITORY}
+        GIT_TAG ${SLZ_TAG}
+        EXCLUDE_FROM_ALL)
+    FetchContent_MakeAvailable(slz)
+endif()
+
+#============================================================================
 # Codec benchmark executables, the same sources built once per backend
 #============================================================================
 set(BENCH_CODEC_SRCS
@@ -153,6 +172,16 @@ if(WITH_ISAL)
     target_compile_definitions(codecbench_isal PRIVATE BENCH_ISAL=1)
     target_link_libraries(codecbench_isal isal)
     list(APPEND BENCH_CODEC_TARGETS codecbench_isal)
+endif()
+
+if(WITH_SLZ)
+    add_executable(codecbench_slz ${BENCH_CODEC_SRCS} ${slz_SOURCE_DIR}/src/slz.c ${slz_SOURCE_DIR}/src/slz_common.c)
+    target_compile_definitions(codecbench_slz PRIVATE BENCH_SLZ=1)
+    target_include_directories(codecbench_slz PRIVATE ${slz_SOURCE_DIR}/src)
+    if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang|LCC")
+        set_source_files_properties(${slz_SOURCE_DIR}/src/slz.c ${slz_SOURCE_DIR}/src/slz_common.c PROPERTIES COMPILE_OPTIONS "-w;-std=gnu11")
+    endif()
+    list(APPEND BENCH_CODEC_TARGETS codecbench_slz)
 endif()
 
 foreach(codec_target ${BENCH_CODEC_TARGETS})

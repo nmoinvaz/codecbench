@@ -16,16 +16,19 @@ data through zlib-ng.
 | `codecbench_zlibng`        | [zlib-ng] (reference)       | always              |                 |
 | `codecbench_libdeflate`    | [libdeflate]                | always              |                 |
 | `codecbench_isal`          | [ISA-L] (igzip)             | `WITH_ISAL`         | nasm on x86     |
+| `codecbench_slz`           | [libslz] (compress only)    | `WITH_SLZ`          |                 |
 
 [zlib-ng]: https://github.com/zlib-ng/zlib-ng
 [libdeflate]: https://github.com/ebiggers/libdeflate
 [ISA-L]: https://github.com/intel/isa-l
+[libslz]: https://github.com/wtarreau/libslz
 
 All backends are on by default and fetched at pinned versions during the CMake
 configure. Each `<NAME>_REPOSITORY` / `<NAME>_TAG` pair can be overridden.
 Levels follow what each backend supports, libdeflate adds `level:12`, igzip
-spans 0-3. Deflate strategy variants (`/strategy:filtered` etc.) register only
-for zlib-ng, no other backend has an equivalent.
+spans 0-3, libslz has a single level. Deflate strategy variants
+(`/strategy:filtered` etc.) register only for zlib-ng, no other backend has an
+equivalent.
 
 ## Building
 

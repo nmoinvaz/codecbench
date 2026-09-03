@@ -106,6 +106,7 @@ public:
     }
 };
 
+#ifndef CODEC_NO_INFLATE
 /* Shared decompression benchmark, subclasses point cf at the original data */
 class codec_inflate_base : public benchmark::Fixture {
 private:
@@ -242,6 +243,7 @@ static void codec_register_data_types(uint32_t mask) {
 }
 
 static int codec_data_types = benchmark_data_types_hook(codec_register_data_types);
+#endif /* CODEC_NO_INFLATE */
 
 #ifdef CODEC_STRATEGIES
 static const struct {
@@ -286,9 +288,11 @@ static int register_codec_benchmarks(void) {
         }
 #endif
 
+#ifndef CODEC_NO_INFLATE
         std::string name = "codec_inflate/" + label;
         benchmark::internal::RegisterBenchmarkInternal(
             ::benchmark::internal::make_unique<codec_inflate>(name, cf));
+#endif
     }
 
     return 0;
