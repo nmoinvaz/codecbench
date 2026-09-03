@@ -48,7 +48,8 @@ def load(path):
     name = os.path.basename(executable)
     if name.startswith("codecbench_"):
         name = name[len("codecbench_"):]
-    return name, out
+    version = d.get("context", {}).get("codec_version", "")
+    return name, version, out
 
 
 def geomean(values):
@@ -87,7 +88,7 @@ def aggregate(runs, corpus_filter):
     Aggregates with geometric means over the corpus files common to both runs
     for each benchmark group, so both codecs summarize identical inputs.
     """
-    collected = [collect(b, corpus_filter) for _, b in runs]
+    collected = [collect(b, corpus_filter) for _, _, b in runs]
     points = []
     for (deflate, inflate) in collected:
         points.append({"deflate": {}, "inflate": None})
@@ -190,8 +191,8 @@ def nice_log_ticks(lo, hi):
     return ticks
 
 
-def render(names, points, title, out_path):
-    width, height = 1080, 470
+def render(names, versions, points, title, out_path):
+    width, height = 1080, 486
     svg = Svg(width, height)
 
     svg.text(16, 28, title, size=15, fill=INK, weight="bold")
@@ -297,6 +298,10 @@ def render(names, points, title, out_path):
                 f'<title>{esc(f"{names[i]} inflate - {fmt_speed(speed)}, {n} files")}</title></path>')
         svg.text(bx + bw, y, fmt_speed(speed), size=11, fill=INK, anchor="end")
 
+    # Version footnote
+    note = "  \u00b7  ".join(f"{names[i]} {versions[i]}".strip() for i in range(2))
+    svg.text(16, height - 12, note, size=10)
+
     with open(out_path, "w") as f:
         f.write(svg.finish())
 
@@ -345,14 +350,18 @@ def main():
 
     runs = [load(args.json_a), load(args.json_b)]
     names = [args.name_a or runs[0][0], args.name_b or runs[1][0]]
+    versions = [runs[0][1], runs[1][1]]
     corpus_filter = re.compile(args.filter) if args.filter else None
 
     points = aggregate(runs, corpus_filter)
     title = args.title or f"{names[0]} vs {names[1]}"
     out = args.output or f"{names[0]}_vs_{names[1]}.svg".replace("/", "_")
 
+    for i in range(2):
+        if versions[i]:
+            print(f"{names[i]} {versions[i]}")
     print_table(names, points)
-    render(names, points, title, out)
+    render(names, versions, points, title, out)
     print(f"\nwrote {out}")
 
 

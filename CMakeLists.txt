@@ -18,6 +18,23 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include(FeatureSummary)
 include(FetchContent)
 
+# Resolve a backend's version string, git describe of its checkout when
+# available, the pinned tag otherwise. Baked into each benchmark binary and
+# reported in its JSON context as codec_version.
+function(codec_git_version dir fallback outvar)
+    set(ver "${fallback}")
+    find_package(Git QUIET)
+    if(GIT_FOUND AND EXISTS "${dir}/.git")
+        execute_process(COMMAND ${GIT_EXECUTABLE} -C "${dir}" describe --tags --always --dirty
+            OUTPUT_VARIABLE out OUTPUT_STRIP_TRAILING_WHITESPACE
+            ERROR_QUIET RESULT_VARIABLE res)
+        if(res EQUAL 0 AND out)
+            set(ver "${out}")
+        endif()
+    endif()
+    set(${outvar} "${ver}" PARENT_SCOPE)
+endfunction()
+
 #============================================================================
 # Google Benchmark
 #============================================================================
@@ -71,6 +88,7 @@ else()
         EXCLUDE_FROM_ALL)
 endif()
 FetchContent_MakeAvailable(zlib_ng)
+codec_git_version("${zlib_ng_SOURCE_DIR}" "${ZLIBNG_TAG}" ZLIBNG_VERSION)
 
 #============================================================================
 # libdeflate
@@ -98,6 +116,7 @@ if(WITH_LIBDEFLATE)
     if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang|LCC")
         target_compile_options(libdeflate_static PRIVATE -w)
     endif()
+    codec_git_version("${libdeflate_SOURCE_DIR}" "${LIBDEFLATE_TAG}" LIBDEFLATE_VERSION)
 endif()
 
 #============================================================================
@@ -133,6 +152,7 @@ if(WITH_ISAL)
             target_compile_options(isal PRIVATE -w)
         endif()
     endif()
+    codec_git_version("${isal_SOURCE_DIR}" "${ISAL_TAG}" ISAL_VERSION)
 endif()
 
 #============================================================================
@@ -152,6 +172,7 @@ if(WITH_SLZ)
         GIT_TAG ${SLZ_TAG}
         EXCLUDE_FROM_ALL)
     FetchContent_MakeAvailable(slz)
+    codec_git_version("${slz_SOURCE_DIR}" "${SLZ_TAG}" SLZ_VERSION)
 endif()
 
 #============================================================================
@@ -300,26 +321,30 @@ set(BENCH_CODEC_SRCS
     )
 
 add_executable(codecbench_zlibng ${BENCH_CODEC_SRCS})
+target_compile_definitions(codecbench_zlibng PRIVATE CODEC_VERSION="${ZLIBNG_VERSION}")
 
 set(BENCH_CODEC_TARGETS codecbench_zlibng)
 
 if(WITH_LIBDEFLATE)
     add_executable(codecbench_libdeflate ${BENCH_CODEC_SRCS})
-    target_compile_definitions(codecbench_libdeflate PRIVATE BENCH_LIBDEFLATE=1)
+    target_compile_definitions(codecbench_libdeflate PRIVATE BENCH_LIBDEFLATE=1
+        CODEC_VERSION="${LIBDEFLATE_VERSION}")
     target_link_libraries(codecbench_libdeflate libdeflate::libdeflate_static)
     list(APPEND BENCH_CODEC_TARGETS codecbench_libdeflate)
 endif()
 
 if(WITH_ISAL)
     add_executable(codecbench_isal ${BENCH_CODEC_SRCS})
-    target_compile_definitions(codecbench_isal PRIVATE BENCH_ISAL=1)
+    target_compile_definitions(codecbench_isal PRIVATE BENCH_ISAL=1
+        CODEC_VERSION="${ISAL_VERSION}")
     target_link_libraries(codecbench_isal isal)
     list(APPEND BENCH_CODEC_TARGETS codecbench_isal)
 endif()
 
 if(WITH_SLZ)
     add_executable(codecbench_slz ${BENCH_CODEC_SRCS} ${slz_SOURCE_DIR}/src/slz.c ${slz_SOURCE_DIR}/src/slz_common.c)
-    target_compile_definitions(codecbench_slz PRIVATE BENCH_SLZ=1)
+    target_compile_definitions(codecbench_slz PRIVATE BENCH_SLZ=1
+        CODEC_VERSION="${SLZ_VERSION}")
     target_include_directories(codecbench_slz PRIVATE ${slz_SOURCE_DIR}/src)
     if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang|LCC")
         set_source_files_properties(${slz_SOURCE_DIR}/src/slz.c ${slz_SOURCE_DIR}/src/slz_common.c PROPERTIES COMPILE_OPTIONS "-w;-std=gnu11")
@@ -335,7 +360,9 @@ if(WITH_CHROMIUM_ZLIB)
     add_dependencies(chromium_zlib_shim chromium_zlib)
 
     add_executable(codecbench_chromium_zlib ${BENCH_CODEC_SRCS})
-    target_compile_definitions(codecbench_chromium_zlib PRIVATE BENCH_CHROMIUM_ZLIB=1)
+    string(SUBSTRING "${CHROMIUM_ZLIB_TAG}" 0 12 CHROMIUM_ZLIB_VERSION)
+    target_compile_definitions(codecbench_chromium_zlib PRIVATE BENCH_CHROMIUM_ZLIB=1
+        CODEC_VERSION="${CHROMIUM_ZLIB_VERSION}")
     target_link_libraries(codecbench_chromium_zlib chromium_zlib_shim ${CHROMIUM_ZLIB_LIB})
     list(APPEND BENCH_CODEC_TARGETS codecbench_chromium_zlib)
 endif()
@@ -348,7 +375,8 @@ if(WITH_MADLER_ZLIB)
     add_dependencies(madler_zlib_shim madler_zlib)
 
     add_executable(codecbench_madler_zlib ${BENCH_CODEC_SRCS})
-    target_compile_definitions(codecbench_madler_zlib PRIVATE BENCH_MADLER_ZLIB=1)
+    target_compile_definitions(codecbench_madler_zlib PRIVATE BENCH_MADLER_ZLIB=1
+        CODEC_VERSION="${MADLER_ZLIB_TAG}")
     target_link_libraries(codecbench_madler_zlib madler_zlib_shim ${MADLER_ZLIB_LIB})
     list(APPEND BENCH_CODEC_TARGETS codecbench_madler_zlib)
 endif()
@@ -361,7 +389,8 @@ if(WITH_ZLIB_RS)
     add_dependencies(zlib_rs_shim zlib_rs)
 
     add_executable(codecbench_zlib_rs ${BENCH_CODEC_SRCS})
-    target_compile_definitions(codecbench_zlib_rs PRIVATE BENCH_ZLIB_RS=1)
+    target_compile_definitions(codecbench_zlib_rs PRIVATE BENCH_ZLIB_RS=1
+        CODEC_VERSION="${ZLIB_RS_TAG}")
     target_link_libraries(codecbench_zlib_rs zlib_rs_shim ${ZLIB_RS_LIB})
     if(UNIX AND NOT APPLE)
         # The Rust standard library staticlib needs these on Linux

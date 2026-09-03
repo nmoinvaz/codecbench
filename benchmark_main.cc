@@ -125,6 +125,10 @@ int main(int argc, char** argv) {
         return EXIT_FAILURE;
     benchmark_data_types_register(data_type_mask);
 
+#ifdef CODEC_VERSION
+    ::benchmark::AddCustomContext("codec_version", CODEC_VERSION);
+#endif
+
     ::benchmark::Initialize(&argc, argv, []() {
         ::benchmark::PrintDefaultHelp();
         printf("          [--benchmark_cooldown=<seconds>]\n");
