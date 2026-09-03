@@ -248,6 +248,21 @@ def render(names, versions, points, title, out_path):
         svg.text(kx + 9, py - 22, s, size=11)
         kx += 6.5 * len(s) + 44
 
+    # Strategies whose points barely move across levels get one plain label
+    level_free = {}
+    for i, p in enumerate(points):
+        by_strategy = {}
+        for (level, strategy), (speed, ratio, n) in p["deflate"].items():
+            if strategy and ratio > 0:
+                by_strategy.setdefault(strategy, []).append((speed, ratio))
+        for s, pts in by_strategy.items():
+            hi_s = max(v for v, _ in pts)
+            lo_s = min(v for v, _ in pts)
+            hi_r = max(r for _, r in pts)
+            lo_r = min(r for _, r in pts)
+            level_free[(i, s)] = (len(pts) > 1 and hi_s / lo_s < 1.05
+                                  and hi_r / lo_r < 1.005)
+
     labeled = []
 
     def label_point(x, y, tag):
@@ -275,7 +290,10 @@ def render(names, versions, points, title, out_path):
                        + (f" strategy:{strategy}" if strategy else "")
                        + f" - {fmt_speed(speed)}, ratio {ratio:.3f}, {n} files")
                 marker(svg, shape, sx(ratio), sy(speed), SERIES[i], tip)
-                tag = f"{strategy[0]}{level}" if strategy else f"L{level}"
+                if strategy:
+                    tag = strategy[0] if level_free.get((i, strategy)) else f"{strategy[0]}{level}"
+                else:
+                    tag = f"L{level}"
                 label_point(sx(ratio), sy(speed), tag)
     # Labels last so markers never cover them
     for x, y, tag in labeled:
