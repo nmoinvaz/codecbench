@@ -155,8 +155,8 @@ class Svg:
 
 
 def marker(svg, shape, x, y, color, title):
-    """8px marker with a 2px surface ring; shape encodes the strategy."""
-    r = 4.5
+    """11px marker with a 2px surface ring; shape encodes the strategy."""
+    r = 5.5
     ring = f'stroke="{SURFACE}" stroke-width="2"'
     if shape == "circle":
         body = f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{r}" fill="{color}" {ring}/>'
