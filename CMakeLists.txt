@@ -244,6 +244,49 @@ if(WITH_MADLER_ZLIB)
 endif()
 
 #============================================================================
+# zlib-rs, trifectatech's memory-safe Rust implementation of the zlib API.
+# Its libz-rs-sys-cdylib crate builds the C ABI static library with cargo.
+#============================================================================
+option(WITH_ZLIB_RS "Add zlib-rs codec benchmarks" ON)
+if(WITH_ZLIB_RS)
+    find_program(CARGO_EXECUTABLE cargo)
+    if(NOT CARGO_EXECUTABLE)
+        message(WARNING "Skipping zlib-rs codec benchmarks, cargo not found")
+        set(WITH_ZLIB_RS OFF)
+    endif()
+endif()
+if(WITH_ZLIB_RS)
+    include(ExternalProject)
+
+    if(NOT DEFINED ZLIB_RS_REPOSITORY)
+        set(ZLIB_RS_REPOSITORY https://github.com/trifectatechfoundation/zlib-rs.git)
+    endif()
+    if(NOT DEFINED ZLIB_RS_TAG)
+        set(ZLIB_RS_TAG v0.6.7)
+    endif()
+
+    set(ZLIB_RS_LIB_NAME ${CMAKE_STATIC_LIBRARY_PREFIX}z_rs${CMAKE_STATIC_LIBRARY_SUFFIX})
+
+    # The default crate features select the C allocator and runtime SIMD
+    # feature detection, the configuration of a drop-in libz replacement
+    ExternalProject_Add(zlib_rs
+        GIT_REPOSITORY ${ZLIB_RS_REPOSITORY}
+        GIT_TAG ${ZLIB_RS_TAG}
+        CONFIGURE_COMMAND ""
+        BUILD_COMMAND ${CARGO_EXECUTABLE} build --release
+            --manifest-path <SOURCE_DIR>/libz-rs-sys-cdylib/Cargo.toml
+            --target-dir <BINARY_DIR>
+        BUILD_BYPRODUCTS <BINARY_DIR>/release/${ZLIB_RS_LIB_NAME}
+        INSTALL_COMMAND ""
+        )
+
+    ExternalProject_Get_Property(zlib_rs SOURCE_DIR BINARY_DIR)
+    set(ZLIB_RS_LIB ${BINARY_DIR}/release/${ZLIB_RS_LIB_NAME})
+    # The cdylib crate ships its own zlib.h and zconf.h
+    set(ZLIB_RS_INCLUDE_DIRS ${SOURCE_DIR}/libz-rs-sys-cdylib/include)
+endif()
+
+#============================================================================
 # Codec benchmark executables, the same sources built once per backend
 #============================================================================
 set(BENCH_CODEC_SRCS
@@ -301,6 +344,23 @@ if(WITH_MADLER_ZLIB)
     target_compile_definitions(codecbench_madler_zlib PRIVATE BENCH_MADLER_ZLIB=1)
     target_link_libraries(codecbench_madler_zlib madler_zlib_shim ${MADLER_ZLIB_LIB})
     list(APPEND BENCH_CODEC_TARGETS codecbench_madler_zlib)
+endif()
+
+if(WITH_ZLIB_RS)
+    # The shim is the only TU compiled against zlib-rs's headers, they
+    # cannot coexist with zlib-ng.h
+    add_library(zlib_rs_shim OBJECT codecs/zlib_shim.c)
+    target_include_directories(zlib_rs_shim PRIVATE ${ZLIB_RS_INCLUDE_DIRS})
+    add_dependencies(zlib_rs_shim zlib_rs)
+
+    add_executable(codecbench_zlib_rs ${BENCH_CODEC_SRCS})
+    target_compile_definitions(codecbench_zlib_rs PRIVATE BENCH_ZLIB_RS=1)
+    target_link_libraries(codecbench_zlib_rs zlib_rs_shim ${ZLIB_RS_LIB})
+    if(UNIX AND NOT APPLE)
+        # The Rust standard library staticlib needs these on Linux
+        target_link_libraries(codecbench_zlib_rs pthread dl m)
+    endif()
+    list(APPEND BENCH_CODEC_TARGETS codecbench_zlib_rs)
 endif()
 
 foreach(codec_target ${BENCH_CODEC_TARGETS})
