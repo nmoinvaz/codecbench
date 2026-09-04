@@ -128,6 +128,7 @@ def aggregate(runs, corpus_filter):
                 "n": len(rows),
                 "smin": min(speeds), "smax": max(speeds),
                 "cv": max(r.get("_cv", 0.0) for r in rows),
+                "mem": max(r.get("mem", 0.0) for r in rows),
             }
 
     with_inflate = [set(c[1]) for c in collected if c[1]]
@@ -141,6 +142,7 @@ def aggregate(runs, corpus_filter):
                 "speed": geomean(speeds), "n": len(rows),
                 "smin": min(speeds), "smax": max(speeds),
                 "cv": max(r.get("_cv", 0.0) for r in rows),
+                "mem": max(r.get("mem", 0.0) for r in rows),
             }
 
     with_types = [set(c[2]) for c in collected if c[2]]
@@ -150,6 +152,7 @@ def aggregate(runs, corpus_filter):
             points[i]["inflate_data"][t] = {
                 "speed": inflate_data[t]["bytes_per_second"],
                 "cv": inflate_data[t].get("_cv", 0.0),
+                "mem": inflate_data[t].get("mem", 0.0),
             }
 
     with_ddata = [set(c[3]) for c in collected if c[3]]
@@ -160,6 +163,7 @@ def aggregate(runs, corpus_filter):
                 "speed": deflate_data[k]["bytes_per_second"],
                 "ratio": deflate_data[k].get("ratio", 0.0),
                 "cv": deflate_data[k].get("_cv", 0.0),
+                "mem": deflate_data[k].get("mem", 0.0),
             }
 
     label_sets = [set().union(*(set(v) for v in c[0].values())) for c in collected if c[0]]
@@ -171,6 +175,12 @@ def fmt_speed(bps):
     if bps >= 1e9:
         return f"{bps / 1e9:.2f} GB/s"
     return f"{bps / 1e6:.0f} MB/s"
+
+
+def fmt_mem(b):
+    if b >= 1048576:
+        return f"{b / 1048576:.2f} MiB"
+    return f"{b / 1024:.1f} KiB"
 
 
 def esc(s):
@@ -448,7 +458,8 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                 tip = (f"{names[i]} level:{level}"
                        + (f" strategy:{strategy}" if strategy else "")
                        + f" - {fmt_speed(speed)}, ratio {ratio:.3f}, {v['n']} files"
-                       + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
+                       + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else "")
+                       + (f", mem {fmt_mem(v['mem'])}" if v["mem"] > 0 else ""))
                 marker(svg, shape, x, sy(speed), SERIES[i], tip)
                 if strategy:
                     stag = STRATEGY_TAGS.get(strategy, strategy[:3])
@@ -478,7 +489,8 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         speed = v["speed"]
         w = max(bw * speed / bar_max, 8)
         tip = (f"{names[i]} inflate - {fmt_speed(speed)}, {v['n']} files"
-               + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
+               + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else "")
+               + (f", mem {fmt_mem(v['mem'])}" if v["mem"] > 0 else ""))
         svg.add(f'<path d="M{bx} {y + 8} h{w - 4:.1f} a4 4 0 0 1 4 4 v12 '
                 f'a4 4 0 0 1 -4 4 h{-(w - 4):.1f} z" fill="{SERIES[i]}">'
                 f'<title>{esc(tip)}</title></path>')
@@ -571,13 +583,13 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
 def print_table(names, points):
     n = len(names)
 
-    def speed_cells(speeds):
+    def speed_cells(values, fmt=fmt_speed):
         """First run plain, later runs paired with their delta against it."""
-        cells = [f"{fmt_speed(speeds[0]) if speeds[0] else '-':>14}"]
+        cells = [f"{fmt(values[0]) if values[0] else '-':>14}"]
         for i in range(1, n):
-            s = fmt_speed(speeds[i]) if speeds[i] else "-"
-            if speeds[i] and speeds[0]:
-                d = f"{(speeds[i] - speeds[0]) / speeds[0] * 100.0:+7.1f}%"
+            s = fmt(values[i]) if values[i] else "-"
+            if values[i] and values[0]:
+                d = f"{(values[i] - values[0]) / values[0] * 100.0:+7.1f}%"
             else:
                 d = "-"
             cells.append(f"{s:>14} {d:>8}")
@@ -610,6 +622,18 @@ def print_table(names, points):
     for t in ordered_types(points):
         print(f"{'inflate/' + t:<22} " + speed_cells(
             [p["inflate_data"][t]["speed"] if t in p["inflate_data"] else None for p in points]))
+
+    def peak_mem(entries):
+        return max((e.get("mem", 0.0) for e in entries), default=0.0) or None
+
+    mems_d = [peak_mem(list(p["deflate"].values()) + list(p["deflate_data"].values()))
+              for p in points]
+    if any(mems_d):
+        print(f"{'deflate memory':<22} " + speed_cells(mems_d, fmt_mem))
+    mems_i = [peak_mem(list(p["inflate_data"].values())
+                       + ([p["inflate"]] if p["inflate"] else [])) for p in points]
+    if any(mems_i):
+        print(f"{'inflate memory':<22} " + speed_cells(mems_i, fmt_mem))
 
 
 def main():
