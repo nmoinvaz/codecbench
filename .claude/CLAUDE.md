@@ -34,6 +34,12 @@
 - Run benchmark processes sequentially, otherwise contention causes
   unreliable results.
 - Don't run benchmarks in the background.
+- Keep each benchmark process under 10 minutes, longer commands get forced
+  into the background. Split a full run into groups with
+  `--benchmark_filter` (e.g. `level:1$` per level, `strategy:` for the
+  strategy variants, `^codec_inflate` for inflate) and merge the JSON
+  outputs afterwards with
+  `jq -s '.[0] * {benchmarks: (map(.benchmarks) | add)}' part*.json`.
 - Look for other benchmark processes running on the machine to avoid
   contamination and wait until they are done.
 
