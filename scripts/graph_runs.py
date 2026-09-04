@@ -5,6 +5,8 @@ Plots the codec_deflate benchmarks as a speed versus ratio chart, one point
 per level and strategy aggregated across the corpus files common to both
 runs, and the codec_inflate corpus benchmarks as a throughput panel. Levels
 are connected in order, strategy variants get their own marker shapes.
+Synthetic data-type benchmarks (codec_inflate/data/<type>) common to both
+runs get their own line panel, one line per codec across the types.
 
 Usage:
     python3 scripts/graph_runs.py a.json b.json [-o out.svg]
@@ -18,7 +20,10 @@ import argparse
 import json
 import math
 import os
+import platform
 import re
+import socket
+import subprocess
 import sys
 
 SURFACE = "#fcfcfb"
@@ -28,6 +33,10 @@ GRID = "#e7e6e2"
 SERIES = ["#2a78d6", "#eb6834"]
 
 STRATEGY_ORDER = ["filtered", "huffman", "rle", "fixed"]
+
+# registration order in benchmark_codec.cc
+DATA_TYPE_ORDER = ["text", "short_match", "dna", "random",
+                   "literals", "mixed", "realistic_rgb", "striped_rgb"]
 
 NAME_RE = re.compile(
     r"^codec_(?P<kind>deflate|inflate)/(?P<label>.+?)"
@@ -44,12 +53,13 @@ def load(path):
             out[b["run_name"]] = b
         elif b.get("run_type") == "iteration" and b["run_name"] not in out:
             out[b["run_name"]] = b
-    executable = d.get("context", {}).get("executable", path)
+    context = d.get("context", {})
+    executable = context.get("executable", path)
     name = os.path.basename(executable)
     if name.startswith("codecbench_"):
         name = name[len("codecbench_"):]
-    version = d.get("context", {}).get("codec_version", "")
-    return name, version, out
+    version = context.get("codec_version", "")
+    return name, version, out, context
 
 
 def geomean(values):
@@ -62,15 +72,18 @@ def geomean(values):
 
 
 def collect(benchmarks, corpus_filter):
-    """Split parsed benchmarks into deflate/inflate rows keyed by benchmark name."""
+    """Split parsed benchmarks into deflate/inflate/data-type rows keyed by name."""
     deflate = {}
     inflate = {}
+    inflate_data = {}
     for name, b in benchmarks.items():
         m = NAME_RE.match(name)
         if m is None or "bytes_per_second" not in b:
             continue
         label = m.group("label")
         if label.startswith("data/"):
+            if m.group("kind") == "inflate":
+                inflate_data[label[len("data/"):]] = b
             continue
         if corpus_filter and not corpus_filter.search(label):
             continue
@@ -79,7 +92,7 @@ def collect(benchmarks, corpus_filter):
             deflate.setdefault(key, {})[label] = b
         else:
             inflate[label] = b
-    return deflate, inflate
+    return deflate, inflate, inflate_data
 
 
 def aggregate(runs, corpus_filter):
@@ -88,13 +101,13 @@ def aggregate(runs, corpus_filter):
     Aggregates with geometric means over the corpus files common to both runs
     for each benchmark group, so both codecs summarize identical inputs.
     """
-    collected = [collect(b, corpus_filter) for _, _, b in runs]
+    collected = [collect(b, corpus_filter) for _, _, b, _ in runs]
     points = []
-    for (deflate, inflate) in collected:
-        points.append({"deflate": {}, "inflate": None})
+    for _ in collected:
+        points.append({"deflate": {}, "inflate": None, "inflate_data": {}})
 
     for key in sorted(set(collected[0][0]) | set(collected[1][0])):
-        for i, (deflate, _) in enumerate(collected):
+        for i, (deflate, _, _) in enumerate(collected):
             if key not in deflate:
                 continue
             other = collected[1 - i][0]
@@ -109,12 +122,17 @@ def aggregate(runs, corpus_filter):
             points[i]["deflate"][key] = (speed, ratio, len(rows))
 
     common_inflate = sorted(set(collected[0][1]) & set(collected[1][1]))
-    for i, (_, inflate) in enumerate(collected):
+    for i, (_, inflate, _) in enumerate(collected):
         labels = common_inflate if common_inflate else sorted(inflate)
         rows = [inflate[l] for l in labels if l in inflate]
         if rows:
             speed = geomean([r["bytes_per_second"] for r in rows])
             points[i]["inflate"] = (speed, len(rows))
+
+    common_types = set(collected[0][2]) & set(collected[1][2])
+    for i, (_, _, inflate_data) in enumerate(collected):
+        for t in common_types:
+            points[i]["inflate_data"][t] = inflate_data[t]["bytes_per_second"]
     return points
 
 
@@ -178,6 +196,69 @@ def marker(svg, shape, x, y, color, title):
 STRATEGY_SHAPES = {"": "circle", "filtered": "square", "huffman": "diamond",
                    "rle": "triangle", "fixed": "triangle-down"}
 
+# Point labels need unambiguous short tags, "filtered" and "fixed" share a first letter
+STRATEGY_TAGS = {"filtered": "flt", "huffman": "huf", "rle": "rle", "fixed": "fix"}
+
+
+def better_arrow(svg, x1, y1, x2, y2):
+    """Semi-transparent direction-of-better hint with a label along the shaft."""
+    ln = math.hypot(x2 - x1, y2 - y1)
+    ux, uy = (x2 - x1) / ln, (y2 - y1) / ln
+    head = (f"{x2:.1f},{y2:.1f} "
+            f"{x2 - 9 * ux - 4 * uy:.1f},{y2 - 9 * uy + 4 * ux:.1f} "
+            f"{x2 - 9 * ux + 4 * uy:.1f},{y2 - 9 * uy - 4 * ux:.1f}")
+    mx, my = (x1 + x2) / 2, (y1 + y2) / 2
+    ang = math.degrees(math.atan2(y2 - y1, x2 - x1))
+    svg.add(f'<g opacity="0.35"><line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2 - 6 * ux:.1f}" '
+            f'y2="{y2 - 6 * uy:.1f}" stroke="{INK_SOFT}" stroke-width="2"/>'
+            f'<polygon points="{head}" fill="{INK_SOFT}"/>'
+            f'<text x="{mx:.1f}" y="{my - 7:.1f}" font-size="11" fill="{INK_SOFT}" '
+            f'text-anchor="middle" transform="rotate({ang:.1f} {mx:.1f} {my:.1f})">'
+            f'better</text></g>')
+
+
+def machine_line(contexts):
+    """Machine summary from the run context, CPU/RAM/OS added when run on this host."""
+    host = contexts[0].get("host_name", "")
+    parts = []
+    if host and host == socket.gethostname():
+        if sys.platform == "darwin":
+            try:
+                brand = subprocess.check_output(
+                    ["sysctl", "-n", "machdep.cpu.brand_string"], text=True).strip()
+                mem = int(subprocess.check_output(
+                    ["sysctl", "-n", "hw.memsize"], text=True)) // (1024 ** 3)
+                parts.append(f"{brand}, {mem} GB, macOS {platform.mac_ver()[0]}")
+            except (subprocess.SubprocessError, OSError, ValueError):
+                pass
+        elif sys.platform.startswith("linux"):
+            try:
+                with open("/proc/cpuinfo") as f:
+                    for line in f:
+                        if line.startswith("model name"):
+                            parts.append(line.split(":", 1)[1].strip())
+                            break
+            except OSError:
+                pass
+    ncpus = contexts[0].get("num_cpus")
+    if ncpus:
+        parts.append(f"{ncpus} cpus")
+    if host:
+        parts.append(host)
+    date = contexts[0].get("date", "")
+    if date:
+        parts.append(date.split("T")[0])
+    if any(c.get("host_name", host) != host for c in contexts[1:]):
+        parts.append("hosts differ")
+    return ", ".join(parts)
+
+
+def ordered_types(points):
+    """Data types common to both runs, in registration order, unknown ones last."""
+    types = [t for t in DATA_TYPE_ORDER if t in points[0]["inflate_data"]]
+    types += sorted(set(points[0]["inflate_data"]) - set(DATA_TYPE_ORDER))
+    return types
+
 
 def nice_log_ticks(lo, hi):
     ticks = []
@@ -191,8 +272,10 @@ def nice_log_ticks(lo, hi):
     return ticks
 
 
-def render(names, versions, points, title, out_path):
-    width, height = 1080, 486
+def render(names, versions, machine, points, title, out_path):
+    data_types = ordered_types(points)
+    width = 1080
+    height = 660 if data_types else 486
     svg = Svg(width, height)
 
     svg.text(16, 28, title, size=15, fill=INK, weight="bold")
@@ -238,6 +321,9 @@ def render(names, versions, points, title, out_path):
     svg.line(px, py + ph, px + pw, py + ph, INK_SOFT)
     svg.text(px + pw / 2, py + ph + 40, "compression ratio", size=12, anchor="middle")
     svg.text(px, py - 22, "deflate, corpus geomean", size=12, fill=INK)
+
+    # Direction-of-better hint, up and right is faster and smaller output
+    better_arrow(svg, px + pw - 128, py + 82, px + pw - 40, py + 24)
 
     # Strategy shape key, only when strategy points exist
     strategies = sorted({k[1] for p in points for k in p["deflate"] if k[1]},
@@ -291,7 +377,8 @@ def render(names, versions, points, title, out_path):
                        + f" - {fmt_speed(speed)}, ratio {ratio:.3f}, {n} files")
                 marker(svg, shape, sx(ratio), sy(speed), SERIES[i], tip)
                 if strategy:
-                    tag = strategy[0] if level_free.get((i, strategy)) else f"{strategy[0]}{level}"
+                    stag = STRATEGY_TAGS.get(strategy, strategy[:3])
+                    tag = stag if level_free.get((i, strategy)) else f"{stag}{level}"
                 else:
                     tag = f"L{level}"
                 label_point(sx(ratio), sy(speed), tag)
@@ -315,9 +402,43 @@ def render(names, versions, points, title, out_path):
                 f'a4 4 0 0 1 -4 4 h{-(w - 4):.1f} z" fill="{SERIES[i]}">'
                 f'<title>{esc(f"{names[i]} inflate - {fmt_speed(speed)}, {n} files")}</title></path>')
         svg.text(bx + bw, y, fmt_speed(speed), size=11, fill=INK, anchor="end")
+    better_arrow(svg, bx, by + 134, bx + 64, by + 134)
 
-    # Version footnote
-    note = "  \u00b7  ".join(f"{names[i]} {versions[i]}".strip() for i in range(2))
+    # Data-type inflate panel, one line per codec across the synthetic types
+    if data_types:
+        dpx, dpy, dpw, dph = 78, 488, 942, 120
+        svg.text(dpx, dpy - 18, "inflate, synthetic data types", size=12, fill=INK)
+        vals = [p["inflate_data"][t] for p in points for t in data_types]
+        dmin, dmax = min(vals) / 1.6, max(vals) * 1.6
+
+        def dx(idx):
+            return dpx + (idx + 0.5) / len(data_types) * dpw
+
+        def dy(speed):
+            return dpy + dph - (math.log10(speed) - math.log10(dmin)) / \
+                (math.log10(dmax) - math.log10(dmin)) * dph
+
+        for v in nice_log_ticks(dmin, dmax):
+            y = dy(v)
+            svg.line(dpx, y, dpx + dpw, y, GRID)
+            svg.text(dpx - 8, y + 4, fmt_speed(v), size=11, anchor="end")
+        svg.line(dpx, dpy + dph, dpx + dpw, dpy + dph, INK_SOFT)
+        for j, t in enumerate(data_types):
+            svg.text(dx(j), dpy + dph + 18, t, size=11, anchor="middle")
+        for i, p in enumerate(points):
+            path = " ".join(f"{'M' if j == 0 else 'L'}{dx(j):.1f},{dy(p['inflate_data'][t]):.1f}"
+                            for j, t in enumerate(data_types))
+            svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
+                    f'stroke-width="2" stroke-opacity="0.65"/>')
+            for j, t in enumerate(data_types):
+                speed = p["inflate_data"][t]
+                tip = f"{names[i]} inflate {t} - {fmt_speed(speed)}"
+                marker(svg, "circle", dx(j), dy(speed), SERIES[i], tip)
+        better_arrow(svg, dpx + 26, dpy + 78, dpx + 26, dpy + 20)
+
+    # Version and machine footnote
+    note = "  \u00b7  ".join([f"{names[i]} {versions[i]}".strip() for i in range(2)]
+                        + ([machine] if machine else []))
     svg.text(16, height - 12, note, size=10)
 
     with open(out_path, "w") as f:
@@ -325,7 +446,7 @@ def render(names, versions, points, title, out_path):
 
 
 def print_table(names, points):
-    header = f"{'level/strategy':<18} {names[0]:>14} {names[1]:>14} {'Δ speed':>9}  {'ratio ' + names[0]:>14} {'ratio ' + names[1]:>14}"
+    header = f"{'level/strategy':<22} {names[0]:>14} {names[1]:>14} {'Δ speed':>9}  {'ratio ' + names[0]:>14} {'ratio ' + names[1]:>14}"
     print(header)
     print("-" * len(header))
     keys = sorted(set(points[0]["deflate"]) | set(points[1]["deflate"]))
@@ -342,7 +463,7 @@ def print_table(names, points):
             delta = "-"
         ra = f"{a[1]:.4f}" if a else "-"
         rb = f"{b[1]:.4f}" if b else "-"
-        print(f"{tag:<18} {sa:>14} {sb:>14} {delta:>9}  {ra:>14} {rb:>14}")
+        print(f"{tag:<22} {sa:>14} {sb:>14} {delta:>9}  {ra:>14} {rb:>14}")
     infl = []
     for i in range(2):
         infl.append(fmt_speed(points[i]["inflate"][0]) if points[i]["inflate"] else "-")
@@ -351,7 +472,12 @@ def print_table(names, points):
         delta = f"{(b - a) / a * 100.0:+8.1f}%"
     else:
         delta = "-"
-    print(f"{'inflate':<18} {infl[0]:>14} {infl[1]:>14} {delta:>9}")
+    print(f"{'inflate':<22} {infl[0]:>14} {infl[1]:>14} {delta:>9}")
+    for t in ordered_types(points):
+        a = points[0]["inflate_data"][t]
+        b = points[1]["inflate_data"][t]
+        delta = f"{(b - a) / a * 100.0:+8.1f}%"
+        print(f"{'inflate/' + t:<22} {fmt_speed(a):>14} {fmt_speed(b):>14} {delta:>9}")
 
 
 def main():
@@ -369,6 +495,7 @@ def main():
     runs = [load(args.json_a), load(args.json_b)]
     names = [args.name_a or runs[0][0], args.name_b or runs[1][0]]
     versions = [runs[0][1], runs[1][1]]
+    machine = machine_line([runs[0][3], runs[1][3]])
     corpus_filter = re.compile(args.filter) if args.filter else None
 
     points = aggregate(runs, corpus_filter)
@@ -379,7 +506,7 @@ def main():
         if versions[i]:
             print(f"{names[i]} {versions[i]}")
     print_table(names, points)
-    render(names, versions, points, title, out)
+    render(names, versions, machine, points, title, out)
     print(f"\nwrote {out}")
 
 
