@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Graph two benchmark JSON outputs as a codec comparison SVG.
+"""Graph benchmark JSON outputs as a codec comparison SVG.
 
 Plots the codec_deflate benchmarks as a speed versus ratio chart, one point
-per level and strategy aggregated across the corpus files common to both
+per level and strategy aggregated across the corpus files common to the
 runs, and the codec_inflate corpus benchmarks as a throughput panel. Levels
 are connected in order, strategy variants get their own marker shapes.
-Synthetic data-type benchmarks (codec_inflate/data/<type>) common to both
+Synthetic data-type benchmarks (codec_inflate/data/<type>) common to the
 runs get their own line panel, one line per codec across the types.
 
 Usage:
-    python3 scripts/graph_runs.py a.json b.json [-o out.svg]
-        [--filter regex] [--name-a name] [--name-b name] [--title text]
+    python3 scripts/graph_runs.py a.json b.json [c.json ...] [-o out.svg]
+        [--filter regex] [--names a,b,...] [--title text]
 
 Works with both single-iteration and aggregated (--benchmark_repetitions)
 JSON outputs; for aggregated runs the median row is used for each benchmark.
@@ -30,7 +30,9 @@ SURFACE = "#fcfcfb"
 INK = "#0b0b0b"
 INK_SOFT = "#52514e"
 GRID = "#e7e6e2"
-SERIES = ["#2a78d6", "#eb6834"]
+# Categorical slots in fixed order, assigned by run position, never cycled
+SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100",
+          "#e87ba4", "#008300", "#4a3aa7", "#e34948"]
 
 STRATEGY_ORDER = ["filtered", "huffman", "rle", "fixed"]
 
@@ -98,30 +100,25 @@ def collect(benchmarks, corpus_filter):
 def aggregate(runs, corpus_filter):
     """Per codec: {(level, strategy): (speed, ratio, nfiles)} plus inflate speed.
 
-    Aggregates with geometric means over the corpus files common to both runs
-    for each benchmark group, so both codecs summarize identical inputs.
+    Aggregates with geometric means over the corpus files common to the runs
+    that share each benchmark group, so codecs summarize identical inputs.
     """
     collected = [collect(b, corpus_filter) for _, _, b, _ in runs]
-    points = []
-    for _ in collected:
-        points.append({"deflate": {}, "inflate": None, "inflate_data": {}})
+    points = [{"deflate": {}, "inflate": None, "inflate_data": {}} for _ in collected]
 
-    for key in sorted(set(collected[0][0]) | set(collected[1][0])):
-        for i, (deflate, _, _) in enumerate(collected):
-            if key not in deflate:
-                continue
-            other = collected[1 - i][0]
-            labels = set(deflate[key])
-            if key in other:
-                labels &= set(other[key])
-            rows = [deflate[key][l] for l in sorted(labels)]
+    for key in sorted(set().union(*(set(c[0]) for c in collected))):
+        have = [i for i, c in enumerate(collected) if key in c[0]]
+        labels = set.intersection(*(set(collected[i][0][key]) for i in have))
+        for i in have:
+            rows = [collected[i][0][key][l] for l in sorted(labels)]
             if not rows:
                 continue
             speed = geomean([r["bytes_per_second"] for r in rows])
             ratio = geomean([r.get("ratio", 0.0) for r in rows])
             points[i]["deflate"][key] = (speed, ratio, len(rows))
 
-    common_inflate = sorted(set(collected[0][1]) & set(collected[1][1]))
+    with_inflate = [set(c[1]) for c in collected if c[1]]
+    common_inflate = sorted(set.intersection(*with_inflate)) if with_inflate else []
     for i, (_, inflate, _) in enumerate(collected):
         labels = common_inflate if common_inflate else sorted(inflate)
         rows = [inflate[l] for l in labels if l in inflate]
@@ -129,9 +126,10 @@ def aggregate(runs, corpus_filter):
             speed = geomean([r["bytes_per_second"] for r in rows])
             points[i]["inflate"] = (speed, len(rows))
 
-    common_types = set(collected[0][2]) & set(collected[1][2])
+    with_types = [set(c[2]) for c in collected if c[2]]
+    common_types = set.intersection(*with_types) if with_types else set()
     for i, (_, _, inflate_data) in enumerate(collected):
-        for t in common_types:
+        for t in common_types & set(inflate_data):
             points[i]["inflate_data"][t] = inflate_data[t]["bytes_per_second"]
     return points
 
@@ -254,9 +252,10 @@ def machine_line(contexts):
 
 
 def ordered_types(points):
-    """Data types common to both runs, in registration order, unknown ones last."""
-    types = [t for t in DATA_TYPE_ORDER if t in points[0]["inflate_data"]]
-    types += sorted(set(points[0]["inflate_data"]) - set(DATA_TYPE_ORDER))
+    """Data types on the graph, in registration order, unknown ones last."""
+    seen = set().union(*(set(p["inflate_data"]) for p in points))
+    types = [t for t in DATA_TYPE_ORDER if t in seen]
+    types += sorted(seen - set(DATA_TYPE_ORDER))
     return types
 
 
@@ -282,7 +281,7 @@ def render(names, versions, machine, points, title, out_path):
 
     # Legend, color carries the codec identity
     lx = width - 16
-    for i in reversed(range(2)):
+    for i in reversed(range(len(names))):
         label = names[i]
         svg.text(lx, 28, label, size=12, fill=INK, anchor="end")
         lx -= 7.2 * len(label) + 12
@@ -390,8 +389,9 @@ def render(names, versions, machine, points, title, out_path):
     bx, by, bw = 800, 76, 240
     svg.text(bx, by - 22, "inflate, corpus geomean", size=12, fill=INK)
     bar_max = max((p["inflate"][0] for p in points if p["inflate"]), default=0)
+    row_h = 66 if len(points) <= 2 else 48
     for i, p in enumerate(points):
-        y = by + 20 + i * 66
+        y = by + 20 + i * row_h
         svg.text(bx, y, names[i], size=11)
         if p["inflate"] is None:
             svg.text(bx, y + 22, "no inflate benchmarks", size=11)
@@ -402,13 +402,15 @@ def render(names, versions, machine, points, title, out_path):
                 f'a4 4 0 0 1 -4 4 h{-(w - 4):.1f} z" fill="{SERIES[i]}">'
                 f'<title>{esc(f"{names[i]} inflate - {fmt_speed(speed)}, {n} files")}</title></path>')
         svg.text(bx + bw, y, fmt_speed(speed), size=11, fill=INK, anchor="end")
-    better_arrow(svg, bx, by + 134, bx + 64, by + 134)
+    arrow_y = by + 20 + len(points) * row_h + 2
+    better_arrow(svg, bx, arrow_y, bx + 64, arrow_y)
 
     # Data-type inflate panel, one line per codec across the synthetic types
     if data_types:
         dpx, dpy, dpw, dph = 78, 488, 942, 120
         svg.text(dpx, dpy - 18, "inflate, synthetic data types", size=12, fill=INK)
-        vals = [p["inflate_data"][t] for p in points for t in data_types]
+        vals = [p["inflate_data"][t] for p in points for t in data_types
+                if t in p["inflate_data"]]
         dmin, dmax = min(vals) / 1.6, max(vals) * 1.6
 
         def dx(idx):
@@ -426,6 +428,8 @@ def render(names, versions, machine, points, title, out_path):
         for j, t in enumerate(data_types):
             svg.text(dx(j), dpy + dph + 18, t, size=11, anchor="middle")
         for i, p in enumerate(points):
+            if not p["inflate_data"]:
+                continue
             path = " ".join(f"{'M' if j == 0 else 'L'}{dx(j):.1f},{dy(p['inflate_data'][t]):.1f}"
                             for j, t in enumerate(data_types))
             svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
@@ -437,7 +441,7 @@ def render(names, versions, machine, points, title, out_path):
         better_arrow(svg, dpx + 26, dpy + 78, dpx + 26, dpy + 20)
 
     # Version and machine footnote
-    note = "  \u00b7  ".join([f"{names[i]} {versions[i]}".strip() for i in range(2)]
+    note = "  \u00b7  ".join([f"{names[i]} {versions[i]}".strip() for i in range(len(names))]
                         + ([machine] if machine else []))
     svg.text(16, height - 12, note, size=10)
 
@@ -446,63 +450,67 @@ def render(names, versions, machine, points, title, out_path):
 
 
 def print_table(names, points):
-    header = f"{'level/strategy':<22} {names[0]:>14} {names[1]:>14} {'Δ speed':>9}  {'ratio ' + names[0]:>14} {'ratio ' + names[1]:>14}"
+    n = len(names)
+
+    def speed_cells(speeds):
+        """First run plain, later runs paired with their delta against it."""
+        cells = [f"{fmt_speed(speeds[0]) if speeds[0] else '-':>14}"]
+        for i in range(1, n):
+            s = fmt_speed(speeds[i]) if speeds[i] else "-"
+            if speeds[i] and speeds[0]:
+                d = f"{(speeds[i] - speeds[0]) / speeds[0] * 100.0:+7.1f}%"
+            else:
+                d = "-"
+            cells.append(f"{s:>14} {d:>8}")
+        return " ".join(cells)
+
+    cols = [f"{names[0]:>14}"] + [f"{names[i]:>14} {'Δ':>8}" for i in range(1, n)]
+    ratio_cols = [f"{'ratio ' + names[i]:>14}" for i in range(n)]
+    header = f"{'level/strategy':<22} " + " ".join(cols) + "  " + " ".join(ratio_cols)
     print(header)
     print("-" * len(header))
-    keys = sorted(set(points[0]["deflate"]) | set(points[1]["deflate"]))
-    for key in keys:
+
+    for key in sorted(set().union(*(set(p["deflate"]) for p in points))):
         level, strategy = key
         tag = f"level:{level}" + (f"/{strategy}" if strategy else "")
-        a = points[0]["deflate"].get(key)
-        b = points[1]["deflate"].get(key)
-        sa = fmt_speed(a[0]) if a else "-"
-        sb = fmt_speed(b[0]) if b else "-"
-        if a and b:
-            delta = f"{(b[0] - a[0]) / a[0] * 100.0:+8.1f}%"
-        else:
-            delta = "-"
-        ra = f"{a[1]:.4f}" if a else "-"
-        rb = f"{b[1]:.4f}" if b else "-"
-        print(f"{tag:<22} {sa:>14} {sb:>14} {delta:>9}  {ra:>14} {rb:>14}")
-    infl = []
-    for i in range(2):
-        infl.append(fmt_speed(points[i]["inflate"][0]) if points[i]["inflate"] else "-")
-    if points[0]["inflate"] and points[1]["inflate"]:
-        a, b = points[0]["inflate"][0], points[1]["inflate"][0]
-        delta = f"{(b - a) / a * 100.0:+8.1f}%"
-    else:
-        delta = "-"
-    print(f"{'inflate':<22} {infl[0]:>14} {infl[1]:>14} {delta:>9}")
+        vals = [p["deflate"].get(key) for p in points]
+        ratios = "  " + " ".join(f"{(f'{v[1]:.4f}' if v else '-'):>14}" for v in vals)
+        print(f"{tag:<22} " + speed_cells([v[0] if v else None for v in vals]) + ratios)
+
+    print(f"{'inflate':<22} "
+          + speed_cells([p["inflate"][0] if p["inflate"] else None for p in points]))
     for t in ordered_types(points):
-        a = points[0]["inflate_data"][t]
-        b = points[1]["inflate_data"][t]
-        delta = f"{(b - a) / a * 100.0:+8.1f}%"
-        print(f"{'inflate/' + t:<22} {fmt_speed(a):>14} {fmt_speed(b):>14} {delta:>9}")
+        print(f"{'inflate/' + t:<22} "
+              + speed_cells([p["inflate_data"].get(t) for p in points]))
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("json_a")
-    ap.add_argument("json_b")
+    ap.add_argument("jsons", nargs="+", help="two or more benchmark JSON outputs")
     ap.add_argument("-o", "--output", default=None, help="output SVG path")
     ap.add_argument("--filter", default=None, help="regex applied to corpus labels")
-    ap.add_argument("--name-a", default=None, help="legend name for the first run")
-    ap.add_argument("--name-b", default=None, help="legend name for the second run")
+    ap.add_argument("--names", default=None, help="comma-separated legend names")
     ap.add_argument("--title", default=None, help="chart title")
     args = ap.parse_args()
 
-    runs = [load(args.json_a), load(args.json_b)]
-    names = [args.name_a or runs[0][0], args.name_b or runs[1][0]]
-    versions = [runs[0][1], runs[1][1]]
-    machine = machine_line([runs[0][3], runs[1][3]])
+    if len(args.jsons) < 2:
+        ap.error("need at least two runs to compare")
+    runs = [load(p) for p in args.jsons]
+    names = [r[0] for r in runs]
+    if args.names:
+        for i, given in enumerate(args.names.split(",")[:len(names)]):
+            if given:
+                names[i] = given
+    versions = [r[1] for r in runs]
+    machine = machine_line([r[3] for r in runs])
     corpus_filter = re.compile(args.filter) if args.filter else None
 
     points = aggregate(runs, corpus_filter)
-    title = args.title or f"{names[0]} vs {names[1]}"
-    out = args.output or f"{names[0]}_vs_{names[1]}.svg".replace("/", "_")
+    title = args.title or " vs ".join(names)
+    out = args.output or "_vs_".join(names).replace("/", "_") + ".svg"
 
-    for i in range(2):
+    for i in range(len(runs)):
         if versions[i]:
             print(f"{names[i]} {versions[i]}")
     print_table(names, points)
