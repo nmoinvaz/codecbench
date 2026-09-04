@@ -99,6 +99,10 @@ stdout. It needs only the Python standard library.
 scripts/graph_runs.py zlibng.json libdeflate.json -o zlibng_vs_libdeflate.svg
 ```
 
+All nine backends on silesia.tar:
+
+![All codecs, deflate speed versus ratio on silesia.tar](results/all-codecs.svg)
+
 ## Benchmarking a local zlib-ng
 
 Point the reference backend at a checkout instead of the pinned release to
