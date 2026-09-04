@@ -380,8 +380,72 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         svg.add(f'<circle cx="{lx:.1f}" cy="24" r="5" fill="{SERIES[i]}"/>')
         lx -= 20
 
-    # Deflate panel, speed versus ratio
-    px, py, pw, ph = 60, 76, 620, 320
+    # Inflate panel, throughput bars
+    bx, by, bw = 800, 76, 240
+    svg.text(bx, by - 22, f"inflate, {corpus_desc}", size=12, fill=INK)
+    bar_max = max((p["inflate"]["speed"] for p in points if p["inflate"]), default=0)
+    row_h = 66 if len(points) <= 2 else 48
+    for i, p in enumerate(points):
+        y = by + 20 + i * row_h
+        svg.text(bx, y, names[i], size=11)
+        if p["inflate"] is None:
+            svg.text(bx, y + 22, "no inflate benchmarks", size=11)
+            continue
+        v = p["inflate"]
+        speed = v["speed"]
+        w = max(bw * speed / bar_max, 8)
+        tip = (f"{names[i]} inflate - {fmt_speed(speed)}, {v['n']} files"
+               + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else "")
+               + (f", mem {fmt_mem(v['mem'])}" if v["mem"] > 0 else ""))
+        svg.add(f'<path d="M{bx} {y + 8} h{w - 4:.1f} a4 4 0 0 1 4 4 v12 '
+                f'a4 4 0 0 1 -4 4 h{-(w - 4):.1f} z" fill="{SERIES[i]}">'
+                f'<title>{esc(tip)}</title></path>')
+        if v["n"] > 1 and v["smax"] > v["smin"]:
+            svg.add(f'<line x1="{bx + bw * v["smin"] / bar_max:.1f}" y1="{y + 18}" '
+                    f'x2="{bx + min(bw * v["smax"] / bar_max, bw):.1f}" y2="{y + 18}" '
+                    f'stroke="{INK_SOFT}" stroke-width="1.5" stroke-opacity="0.4"/>')
+        value = fmt_speed(speed)
+        if i > 0 and points[0]["inflate"]:
+            base = points[0]["inflate"]["speed"]
+            value += f" ({(speed - base) / base * 100.0:+.1f}%)"
+        svg.text(bx + bw, y, value, size=11, fill=INK, anchor="end")
+    arrow_y = by + 20 + len(points) * row_h + 2
+    better_arrow(svg, bx, arrow_y, bx + 64, arrow_y)
+    right_bottom = arrow_y + 8
+
+    # Peak stream memory bars, lower is better
+    mems = run_mems(points)
+    if any(dm or im for dm, im in mems):
+        mem_max = max(v for dm, im in mems for v in (dm or 0, im or 0))
+        yrow = arrow_y + 44
+        svg.text(bx, yrow, "peak stream memory", size=12, fill=INK)
+        yrow += 12
+        for di, dirname in enumerate(("deflate", "inflate")):
+            if not any(m[di] for m in mems):
+                continue
+            svg.text(bx, yrow + 9, dirname, size=11)
+            yrow += 14
+            for i, m in enumerate(mems):
+                v = m[di]
+                if not v:
+                    continue
+                w = max((bw - 110) * v / mem_max, 4)
+                svg.add(f'<rect x="{bx}" y="{yrow}" width="{w:.1f}" height="8" rx="3" '
+                        f'fill="{SERIES[i]}"><title>'
+                        f'{esc(f"{names[i]} {dirname} - {fmt_mem(v)} peak per stream")}'
+                        f'</title></rect>')
+                value = fmt_mem(v)
+                if i > 0 and mems[0][di]:
+                    value += f" ({(v - mems[0][di]) / mems[0][di] * 100.0:+.0f}%)"
+                svg.text(bx + bw, yrow + 8, value, size=10, fill=INK, anchor="end")
+                yrow += 14
+            yrow += 8
+        better_arrow(svg, bx + 64, yrow + 2, bx, yrow + 2)
+        right_bottom = yrow + 12
+
+    # Deflate panel, speed versus ratio, stretched to the right column's height
+    px, py, pw = 60, 76, 620
+    ph = max(320, right_bottom - py - 40)
     all_pts = [v for p in points for v in p["deflate"].values()]
     if not all_pts:
         print("No codec_deflate benchmarks in common.", file=sys.stderr)
@@ -494,69 +558,6 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
     for x, y, tag in labeled:
         svg.text(x + 7, y - 7, tag, size=10)
 
-    # Inflate panel, throughput bars
-    bx, by, bw = 800, 76, 240
-    svg.text(bx, by - 22, f"inflate, {corpus_desc}", size=12, fill=INK)
-    bar_max = max((p["inflate"]["speed"] for p in points if p["inflate"]), default=0)
-    row_h = 66 if len(points) <= 2 else 48
-    for i, p in enumerate(points):
-        y = by + 20 + i * row_h
-        svg.text(bx, y, names[i], size=11)
-        if p["inflate"] is None:
-            svg.text(bx, y + 22, "no inflate benchmarks", size=11)
-            continue
-        v = p["inflate"]
-        speed = v["speed"]
-        w = max(bw * speed / bar_max, 8)
-        tip = (f"{names[i]} inflate - {fmt_speed(speed)}, {v['n']} files"
-               + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else "")
-               + (f", mem {fmt_mem(v['mem'])}" if v["mem"] > 0 else ""))
-        svg.add(f'<path d="M{bx} {y + 8} h{w - 4:.1f} a4 4 0 0 1 4 4 v12 '
-                f'a4 4 0 0 1 -4 4 h{-(w - 4):.1f} z" fill="{SERIES[i]}">'
-                f'<title>{esc(tip)}</title></path>')
-        if v["n"] > 1 and v["smax"] > v["smin"]:
-            svg.add(f'<line x1="{bx + bw * v["smin"] / bar_max:.1f}" y1="{y + 18}" '
-                    f'x2="{bx + min(bw * v["smax"] / bar_max, bw):.1f}" y2="{y + 18}" '
-                    f'stroke="{INK_SOFT}" stroke-width="1.5" stroke-opacity="0.4"/>')
-        value = fmt_speed(speed)
-        if i > 0 and points[0]["inflate"]:
-            base = points[0]["inflate"]["speed"]
-            value += f" ({(speed - base) / base * 100.0:+.1f}%)"
-        svg.text(bx + bw, y, value, size=11, fill=INK, anchor="end")
-    arrow_y = by + 20 + len(points) * row_h + 2
-    better_arrow(svg, bx, arrow_y, bx + 64, arrow_y)
-    right_bottom = arrow_y + 8
-
-    # Peak stream memory bars, lower is better
-    mems = run_mems(points)
-    if any(dm or im for dm, im in mems):
-        mem_max = max(v for dm, im in mems for v in (dm or 0, im or 0))
-        yrow = arrow_y + 44
-        svg.text(bx, yrow, "peak stream memory", size=12, fill=INK)
-        yrow += 12
-        for di, dirname in enumerate(("deflate", "inflate")):
-            if not any(m[di] for m in mems):
-                continue
-            svg.text(bx, yrow + 9, dirname, size=11)
-            yrow += 14
-            for i, m in enumerate(mems):
-                v = m[di]
-                if not v:
-                    continue
-                w = max((bw - 110) * v / mem_max, 4)
-                svg.add(f'<rect x="{bx}" y="{yrow}" width="{w:.1f}" height="8" rx="3" '
-                        f'fill="{SERIES[i]}"><title>'
-                        f'{esc(f"{names[i]} {dirname} - {fmt_mem(v)} peak per stream")}'
-                        f'</title></rect>')
-                value = fmt_mem(v)
-                if i > 0 and mems[0][di]:
-                    value += f" ({(v - mems[0][di]) / mems[0][di] * 100.0:+.0f}%)"
-                svg.text(bx + bw, yrow + 8, value, size=10, fill=INK, anchor="end")
-                yrow += 14
-            yrow += 8
-        better_arrow(svg, bx + 64, yrow + 2, bx, yrow + 2)
-        right_bottom = yrow + 12
-
     # Synthetic data-type line panels, inflate plus deflate at one level
     panels = []
     if data_types:
@@ -568,7 +569,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                        [{k[0]: v for k, v in p["deflate_data"].items() if k[1] == dlevel}
                         for p in points]))
 
-    data_top = max(488, right_bottom + 30)
+    data_top = max(488, py + ph + 76, right_bottom + 36)
     for pi, (caption, tipword, series) in enumerate(panels):
         types = order_types(set().union(*(set(s) for s in series)))
         dpx, dpy, dpw, dph = 78, data_top + pi * 234, 942, 180
