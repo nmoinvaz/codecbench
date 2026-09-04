@@ -455,29 +455,28 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         right_bottom = yrow + 12
 
     # Level 0 throughput, stored-block framing for most codecs, kept off the
-    # scatter so its near-1.0 ratios cannot squeeze the axis
+    # scatter so its near-1.0 ratios cannot squeeze the axis. The 400x spread
+    # between codecs makes bar lengths useless, a value list reads honestly.
     l0 = [p["deflate"].get((0, "")) for p in points]
     if any(l0):
-        l0_max = max(v["speed"] for v in l0 if v)
         yrow = right_bottom + 30
         svg.text(bx, yrow, "deflate level:0", size=12, fill=INK)
         yrow += 8
         for i, v in enumerate(l0):
             if not v:
                 continue
-            w = max((bw - 110) * v["speed"] / l0_max, 4)
             tip = (f"{names[i]} level:0 - {fmt_speed(v['speed'])}, ratio {v['ratio']:.3f}"
                    + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
-            svg.add(f'<rect x="{bx}" y="{yrow}" width="{w:.1f}" height="8" rx="3" '
+            svg.add(f'<rect x="{bx}" y="{yrow}" width="10" height="10" rx="2" '
                     f'fill="{SERIES[i]}"><title>{esc(tip)}</title></rect>')
             value = fmt_speed(v["speed"])
+            if v["ratio"] > 1.05:
+                value += f", ratio {v['ratio']:.2f}"
             if i > 0 and l0[0]:
                 value += f" ({(v['speed'] - l0[0]['speed']) / l0[0]['speed'] * 100.0:+.0f}%)"
-            svg.text(bx + bw, yrow + 8, value, size=10, fill=INK, anchor="end")
-            yrow += 14
-        arrow_y = yrow + 8
-        better_arrow(svg, bx, arrow_y, bx + 64, arrow_y)
-        right_bottom = arrow_y + 10
+            svg.text(bx + bw, yrow + 9, value, size=10, fill=INK, anchor="end")
+            yrow += 15
+        right_bottom = yrow + 6
 
     # Deflate panel, speed versus ratio, stretched to the right column's height
     px, py, pw = 78, 76, 682
