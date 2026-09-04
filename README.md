@@ -68,7 +68,9 @@ build/codecbench_zlibng --benchmark_filter="silesia" --benchmark_data_types=all
 ```
 
 `--benchmark_data_types=<type,...|all>` selects the synthetic inputs (text,
-short_match, dna, random, literals, mixed, realistic_rgb, striped_rgb).
+short_match, dna, random, literals, mixed, realistic_rgb, striped_rgb),
+registering deflate variants per level plus an inflate variant for each.
+zlib API backends also report peak per-stream bytes as a `mem` counter.
 `--benchmark_cooldown=<seconds>` sleeps between benchmark families to mitigate
 thermal throttling.
 
@@ -82,10 +84,11 @@ scripts/compare_runs.py zlibng.json libdeflate.json
 
 ## Graphing
 
-`scripts/graph_runs.py` turns two runs into a speed versus ratio SVG, one
-point per level and strategy aggregated across the corpus files common to
-both runs, with an inflate throughput panel and an aggregate table on stdout.
-It needs only the Python standard library.
+`scripts/graph_runs.py` turns two or more runs into a speed versus ratio SVG,
+one point per level and strategy aggregated across the corpus files common to
+the runs, with inflate throughput, data-type line panels, repetition error
+bars, delta annotations, and machine specs. An aggregate table prints to
+stdout. It needs only the Python standard library.
 
 ```sh
 scripts/graph_runs.py zlibng.json libdeflate.json -o zlibng_vs_libdeflate.svg
