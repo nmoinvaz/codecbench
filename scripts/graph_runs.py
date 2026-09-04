@@ -40,6 +40,8 @@ STRATEGY_ORDER = ["filtered", "huffman", "rle", "fixed"]
 DATA_TYPE_ORDER = ["text", "short_match", "dna", "random",
                    "literals", "mixed", "realistic_rgb", "striped_rgb"]
 
+REPO_URL = "https://github.com/nmoinvaz/codecbench"
+
 NAME_RE = re.compile(
     r"^codec_(?P<kind>deflate|inflate)/(?P<label>.+?)"
     r"(?:/level:(?P<level>\d+))?(?:/strategy:(?P<strategy>\w+))?$")
@@ -638,6 +640,12 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
     if warnings:
         svg.text(16, y - 16, "\u26a0", size=10, fill="#c98500")
         svg.text(30, y - 16, " \u00b7 ".join(warnings), size=10)
+
+    # Repository link on the bottom line
+    svg.add(f'<a href="{REPO_URL}"><text x="{width - 16}" y="{height - 12}" '
+            f'font-size="10" fill="{INK_SOFT}" text-anchor="end" '
+            f'text-decoration="underline">{esc(REPO_URL.removeprefix("https://"))}'
+            f'</text></a>')
 
     with open(out_path, "w") as f:
         f.write(svg.finish(height))
