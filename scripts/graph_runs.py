@@ -444,7 +444,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         right_bottom = yrow + 12
 
     # Deflate panel, speed versus ratio, stretched to the right column's height
-    px, py, pw = 60, 76, 620
+    px, py, pw = 60, 76, 700
     ph = max(320, right_bottom - py - 40)
     all_pts = [v for p in points for v in p["deflate"].values()]
     if not all_pts:
