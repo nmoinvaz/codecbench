@@ -317,11 +317,10 @@ static const int codec_strategy_levels[] = {1, 6, 9};
 #endif
 
 #ifdef CODEC_WBITS
-/* windowBits variants sweep the lookback window per level. Level 0 stores and
-   ignores the window so it is skipped. wbits 15 duplicates the plain level
-   run so each series is self-contained. */
+/* windowBits variants sweep the lookback window at the default level. wbits 15
+   duplicates the plain level run so the series is self-contained. */
 static const int codec_wbits[] = CODEC_WBITS;
-static const int codec_wbits_levels[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+static const int codec_wbits_level = 6;
 #endif
 
 /* Dynamic benchmark registration at static init time */
@@ -358,17 +357,14 @@ static int register_codec_benchmarks(void) {
 #endif
 
 #ifdef CODEC_WBITS
-        for (size_t l = 0; l < sizeof(codec_wbits_levels) / sizeof(codec_wbits_levels[0]); l++) {
-            for (size_t w = 0; w < sizeof(codec_wbits) / sizeof(codec_wbits[0]); w++) {
-                int level = codec_wbits_levels[l];
-                std::string name = "codec_deflate/" + label +
-                                   "/level:" + std::to_string(level) +
-                                   "/wbits:" + std::to_string(codec_wbits[w]);
-                benchmark::internal::RegisterBenchmarkInternal(
-                    ::benchmark::internal::make_unique<codec_deflate>(name, cf, level,
-                                                                      Z_DEFAULT_STRATEGY,
-                                                                      codec_wbits[w]));
-            }
+        for (size_t w = 0; w < sizeof(codec_wbits) / sizeof(codec_wbits[0]); w++) {
+            std::string name = "codec_deflate/" + label +
+                               "/level:" + std::to_string(codec_wbits_level) +
+                               "/wbits:" + std::to_string(codec_wbits[w]);
+            benchmark::internal::RegisterBenchmarkInternal(
+                ::benchmark::internal::make_unique<codec_deflate>(name, cf, codec_wbits_level,
+                                                                  Z_DEFAULT_STRATEGY,
+                                                                  codec_wbits[w]));
         }
 #endif
 
