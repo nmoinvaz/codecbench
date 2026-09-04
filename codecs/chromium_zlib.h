@@ -17,6 +17,10 @@
 /* Chromium zlib spans the standard levels 0 to 9. */
 #define CODEC_LEVELS { 1, 3, 6, 9 }
 
+/* Standard zlib API deflate strategies, values match zlib-ng's. */
+#define CODEC_STRATEGIES { {"filtered", Z_FILTERED}, {"huffman", Z_HUFFMAN_ONLY}, \
+                           {"rle", Z_RLE}, {"fixed", Z_FIXED} }
+
 typedef shim_codec_compressor   codec_compressor;
 typedef shim_codec_decompressor codec_decompressor;
 

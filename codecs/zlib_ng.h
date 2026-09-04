@@ -14,14 +14,26 @@
 #include <string.h>
 #include <stdint.h>
 
+#include "mem_count.h"
+
 /* zlib-ng codec, one-shot raw deflate calls on a persistent stream */
 struct zng_codec_compressor {
     zng_stream strm;
+    mem_counter mc;
 
     bool init(int level, int strategy = Z_DEFAULT_STRATEGY) {
         memset(&strm, 0, sizeof(strm));
+        mc.live = mc.peak = 0;
+        strm.zalloc = mem_count_alloc;
+        strm.zfree = mem_count_free;
+        strm.opaque = &mc;
         return zng_deflateInit2(&strm, level, Z_DEFLATED, -MAX_WBITS, MAX_MEM_LEVEL,
                                 strategy) == Z_OK;
+    }
+
+    /* Peak bytes the stream allocated */
+    size_t mem() {
+        return mc.peak;
     }
 
     size_t bound(size_t in_size) {
@@ -50,10 +62,20 @@ struct zng_codec_compressor {
 
 struct zng_codec_decompressor {
     zng_stream strm;
+    mem_counter mc;
 
     bool init() {
         memset(&strm, 0, sizeof(strm));
+        mc.live = mc.peak = 0;
+        strm.zalloc = mem_count_alloc;
+        strm.zfree = mem_count_free;
+        strm.opaque = &mc;
         return zng_inflateInit2(&strm, -MAX_WBITS) == Z_OK;
+    }
+
+    /* Peak bytes the stream allocated */
+    size_t mem() {
+        return mc.peak;
     }
 
     /* Returns decompressed size, 0 on failure */

@@ -31,10 +31,11 @@
 typedef zng_codec_compressor   codec_compressor;
 typedef zng_codec_decompressor codec_decompressor;
 #  define CODEC_LEVELS { 1, 3, 6, 9 }
-/* Deflate strategies are zlib-ng specific, no other backend has an
-   equivalent, so only this backend registers strategy variants. */
+/* Deflate strategies from the zlib API, also declared by the stock zlib
+   backends. libdeflate, isal, and slz have no equivalent. */
 #  define CODEC_STRATEGIES { {"filtered", Z_FILTERED}, {"huffman", Z_HUFFMAN_ONLY}, \
                              {"rle", Z_RLE}, {"fixed", Z_FIXED} }
+#  define CODEC_HAS_MEM 1
 #endif
 
 static const int codec_levels[] = CODEC_LEVELS;

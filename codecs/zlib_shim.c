@@ -13,27 +13,48 @@
 #include <zlib.h>
 
 #include "zlib_shim.h"
+#include "mem_count.h"
 
-void *shim_zlib_deflate_new(int level) {
-    z_stream *strm = (z_stream *)calloc(1, sizeof(z_stream));
-    if (strm == NULL)
+/* Stream plus its allocation counter, the opaque handle type */
+typedef struct {
+    z_stream strm;
+    mem_counter mc;
+} shim_stream;
+
+static shim_stream *shim_stream_new(void) {
+    shim_stream *ss = (shim_stream *)calloc(1, sizeof(shim_stream));
+    if (ss == NULL)
+        return NULL;
+    ss->strm.zalloc = mem_count_alloc;
+    ss->strm.zfree = mem_count_free;
+    ss->strm.opaque = &ss->mc;
+    return ss;
+}
+
+void *shim_zlib_deflate_new(int level, int strategy) {
+    shim_stream *ss = shim_stream_new();
+    if (ss == NULL)
         return NULL;
 
-    if (deflateInit2(strm, level, Z_DEFLATED, -MAX_WBITS, MAX_MEM_LEVEL,
-                     Z_DEFAULT_STRATEGY) != Z_OK) {
-        free(strm);
+    if (deflateInit2(&ss->strm, level, Z_DEFLATED, -MAX_WBITS, MAX_MEM_LEVEL,
+                     strategy) != Z_OK) {
+        free(ss);
         return NULL;
     }
-    return strm;
+    return ss;
 }
 
 size_t shim_zlib_deflate_bound(void *comp, size_t in_size) {
-    return (size_t)deflateBound((z_stream *)comp, (uLong)in_size);
+    return (size_t)deflateBound(&((shim_stream *)comp)->strm, (uLong)in_size);
+}
+
+size_t shim_zlib_deflate_mem(void *comp) {
+    return ((shim_stream *)comp)->mc.peak;
 }
 
 size_t shim_zlib_compress(void *comp, const uint8_t *in, size_t in_size,
                           uint8_t *out, size_t out_size) {
-    z_stream *strm = (z_stream *)comp;
+    z_stream *strm = &((shim_stream *)comp)->strm;
 
     if (deflateReset(strm) != Z_OK)
         return 0;
@@ -49,25 +70,29 @@ size_t shim_zlib_compress(void *comp, const uint8_t *in, size_t in_size,
 }
 
 void shim_zlib_deflate_free(void *comp) {
-    deflateEnd((z_stream *)comp);
+    deflateEnd(&((shim_stream *)comp)->strm);
     free(comp);
 }
 
 void *shim_zlib_inflate_new(void) {
-    z_stream *strm = (z_stream *)calloc(1, sizeof(z_stream));
-    if (strm == NULL)
+    shim_stream *ss = shim_stream_new();
+    if (ss == NULL)
         return NULL;
 
-    if (inflateInit2(strm, -MAX_WBITS) != Z_OK) {
-        free(strm);
+    if (inflateInit2(&ss->strm, -MAX_WBITS) != Z_OK) {
+        free(ss);
         return NULL;
     }
-    return strm;
+    return ss;
+}
+
+size_t shim_zlib_inflate_mem(void *decomp) {
+    return ((shim_stream *)decomp)->mc.peak;
 }
 
 size_t shim_zlib_decompress(void *decomp, const uint8_t *in, size_t in_size,
                             uint8_t *out, size_t out_size) {
-    z_stream *strm = (z_stream *)decomp;
+    z_stream *strm = &((shim_stream *)decomp)->strm;
 
     if (inflateReset(strm) != Z_OK)
         return 0;
@@ -83,6 +108,6 @@ size_t shim_zlib_decompress(void *decomp, const uint8_t *in, size_t in_size,
 }
 
 void shim_zlib_inflate_free(void *decomp) {
-    inflateEnd((z_stream *)decomp);
+    inflateEnd(&((shim_stream *)decomp)->strm);
     free(decomp);
 }

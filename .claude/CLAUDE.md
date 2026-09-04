@@ -10,7 +10,8 @@
   so their JSON outputs compare directly. libdeflate adds `level:12`, igzip
   spans levels 0-3, libslz has a single level and registers no inflate
   benchmarks.
-- Deflate strategy variants (`/strategy:<name>`) register only for zlib-ng.
+- Deflate strategy variants (`/strategy:<name>`) register for zlib-ng and
+  the stock zlib API backends (chromium_zlib, madler_zlib, zlib_rs).
 - Decompression input is always produced by zlib-ng at level 9 and all output
   is verified against the original data, a failed roundtrip shows up as a
   benchmark error.
