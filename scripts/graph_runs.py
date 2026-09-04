@@ -368,20 +368,19 @@ def nice_log_ticks(lo, hi):
 
 def render(names, versions, machine, corpus_desc, warnings, points, title, out_path):
     data_types = ordered_types(points)
-    # Single-level runs would drag every run to their level, they sit out instead
-    level_sets = [{k[1] for k in p["deflate_data"]} for p in points if p["deflate_data"]]
-    multi = [ls for ls in level_sets if len(ls) > 1]
-    dd_levels = set.intersection(*multi) if multi else \
-        (set.intersection(*level_sets) if level_sets else set())
-    dlevel = (6 if 6 in dd_levels else max(dd_levels)) if dd_levels else None
-    dd_note = None
-    if dlevel is not None:
+    # A panel per level that at least two runs share, single-run levels stay
+    # in the table and on the scatter
+    dd_panels = []
+    for lv in sorted({k[1] for p in points for k in p["deflate_data"]}):
+        active = sum(1 for p in points if any(k[1] == lv for k in p["deflate_data"]))
+        if active < 2:
+            continue
         excluded = []
         for i, p in enumerate(points):
-            if p["deflate_data"] and not any(k[1] == dlevel for k in p["deflate_data"]):
-                lv = ",".join(str(l) for l in sorted({k[1] for k in p["deflate_data"]}))
-                excluded.append(f"{names[i]} not shown, only level:{lv}")
-        dd_note = " · ".join(excluded) or None
+            if p["deflate_data"] and not any(k[1] == lv for k in p["deflate_data"]):
+                lvs = ",".join(str(l) for l in sorted({k[1] for k in p["deflate_data"]}))
+                excluded.append(f"{names[i]} not shown, only level:{lvs}")
+        dd_panels.append((lv, " · ".join(excluded) or None))
 
     width = 1080
     svg = Svg(width)
@@ -610,11 +609,11 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
     if data_types:
         panels.append(("inflate, synthetic data types", "inflate",
                        [p["inflate_data"] for p in points], None))
-    if dlevel is not None:
-        panels.append((f"deflate level:{dlevel}, synthetic data types",
-                       f"deflate level:{dlevel}",
-                       [{k[0]: v for k, v in p["deflate_data"].items() if k[1] == dlevel}
-                        for p in points], dd_note))
+    for lv, note in dd_panels:
+        panels.append((f"deflate level:{lv}, synthetic data types",
+                       f"deflate level:{lv}",
+                       [{k[0]: v for k, v in p["deflate_data"].items() if k[1] == lv}
+                        for p in points], note))
 
     data_top = max(488, py + ph + 76, right_bottom + 36)
     for pi, (caption, tipword, series, note) in enumerate(panels):
