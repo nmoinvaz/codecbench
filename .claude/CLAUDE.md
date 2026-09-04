@@ -13,8 +13,8 @@
   registers as `level:5`.
 - Deflate strategy variants (`/strategy:<name>`) register for zlib-ng, the
   stock zlib API backends (chromium_zlib, madler_zlib, zlib_rs), and miniz.
-- windowBits variants (`/level:6/wbits:<9-15>`) register for zlib-ng and the
-  stock zlib API backends only.
+- windowBits variants (`/level:<1-9>/wbits:<9-15>`) register for zlib-ng
+  and the stock zlib API backends only.
 - Decompression input is always produced by zlib-ng at level 9 and all output
   is verified against the original data, a failed roundtrip shows up as a
   benchmark error.

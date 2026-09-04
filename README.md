@@ -41,9 +41,9 @@ libcompression's single fixed quality registers as `level:5`. Deflate
 strategy variants (`/strategy:filtered` etc.) register for zlib-ng, the
 stock zlib API backends (Chromium zlib, madler zlib, zlib-rs), and miniz.
 libdeflate, igzip, libslz, and libcompression have no equivalent.
-windowBits variants (`/level:6/wbits:9` through `15`) sweep the deflate
-lookback window at level 6 for zlib-ng and the stock zlib API backends,
-the rest have no window parameter and miniz accepts only 15.
+windowBits variants (`/wbits:9` through `15`) sweep the deflate lookback
+window at every level 1 through 9 for zlib-ng and the stock zlib API
+backends, the rest have no window parameter and miniz accepts only 15.
 
 ## Building
 

@@ -742,66 +742,68 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         better_arrow(svg, 1038, gtop + 92, 1038, gtop + 30)
         body_bottom = gtop + rows * (fh + gapy) - gapy + 20
 
-    # windowBits line panel, deflate speed across the lookback window sizes
+    # windowBits facets per level, the lookback window on the x axis and one
+    # speed line per codec, each facet spanning its own range like the
+    # data-type facets
     wb_keys = sorted(set().union(*(set(p["wbits"]) for p in points)))
     if wb_keys:
-        wtop = body_bottom + 66
-        wpx, wpw, wph = 78, 942, 170
-        levels = sorted({k[0] for k in wb_keys})
-        caption = "deflate speed by windowBits"
-        if len(levels) == 1:
-            caption += f", level:{levels[0]}"
-        svg.text(wpx, wtop - 18, caption, size=12, fill=INK)
+        wb_levels = sorted({k[0] for k in wb_keys})
         wvals = sorted({k[1] for k in wb_keys})
         wmin, wmax = wvals[0], wvals[-1]
+        wtop = body_bottom + 66
+        svg.text(78, wtop - 18, "deflate speed by windowBits", size=12, fill=INK)
+        wtop += 18
+        cols, fw, fh, gapx, gapy = 2, 459, 170, 24, 48
 
-        def wx(w):
-            return wpx + (w - wmin) / (wmax - wmin) * wpw if wmax > wmin else wpx + wpw / 2
+        def wxp(w):
+            return (w - wmin) / (wmax - wmin) if wmax > wmin else 0.5
 
-        wspeeds = [v["speed"] for p in points for v in p["wbits"].values()]
-        wlo, whi = min(wspeeds) / 1.3, max(wspeeds) * 1.3
+        for j, lv in enumerate(wb_levels):
+            fx = 78 + (j % cols) * (fw + gapx)
+            fy = wtop + (j // cols) * (fh + gapy)
+            svg.text(fx, fy - 5, f"level:{lv}", size=11, fill=INK)
 
-        def wy(s):
-            return wtop + wph - (math.log10(s) - math.log10(wlo)) / \
-                (math.log10(whi) - math.log10(wlo)) * wph
+            fspeeds = [v["speed"] for p in points
+                       for k, v in p["wbits"].items() if k[0] == lv]
+            if not fspeeds:
+                continue
+            lo, hi = min(fspeeds) / 1.3, max(fspeeds) * 1.3
 
-        for v in nice_log_ticks(wlo, whi):
-            yy = wy(v)
-            svg.line(wpx, yy, wpx + wpw, yy, GRID)
-            svg.text(wpx - 8, yy + 4, fmt_speed(v), size=11, anchor="end")
-        svg.line(wpx, wtop + wph, wpx + wpw, wtop + wph, INK_SOFT)
-        for w in wvals:
-            svg.text(wx(w), wtop + wph + 16, str(w), size=11, anchor="middle")
-        svg.text(wpx + wpw / 2, wtop + wph + 34, "windowBits", size=12, anchor="middle")
+            def wyv(s, top=fy, l=lo, h=hi):
+                return top + fh - (math.log10(s) - math.log10(l)) / \
+                    (math.log10(h) - math.log10(l)) * fh
 
-        for lv in levels:
+            for e in range(6, 12):
+                for mult in (1, 2, 5):
+                    v = mult * 10.0 ** e
+                    if lo <= v <= hi:
+                        yy = wyv(v)
+                        svg.line(fx, yy, fx + fw, yy, GRID)
+                        svg.text(fx + fw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
+            svg.line(fx, fy + fh, fx + fw, fy + fh, INK_SOFT)
+            for w in wvals:
+                svg.text(fx + wxp(w) * fw, fy + fh + 12, str(w), size=9, anchor="middle")
             for i, p in enumerate(points):
                 pts = sorted((k[1], v) for k, v in p["wbits"].items() if k[0] == lv)
                 if not pts:
                     continue
-                coords = [(wx(w), wy(v["speed"])) for w, v in pts]
+                coords = [(fx + wxp(w) * fw, wyv(v["speed"])) for w, v in pts]
                 if len(coords) > 1:
                     path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
                                     for q, (x, y) in enumerate(coords))
                     svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
                             f'stroke-width="2" stroke-opacity="0.7"/>')
                 for (w, v), (x, y) in zip(pts, coords):
-                    if v["cv"] > 0:
-                        y1, y2 = wy(v["speed"] * (1 - v["cv"])), wy(v["speed"] * (1 + v["cv"]))
-                        svg.add(f'<line x1="{x:.1f}" y1="{y1:.1f}" x2="{x:.1f}" y2="{y2:.1f}" '
-                                f'stroke="{SERIES[i]}" stroke-opacity="0.7" stroke-width="1.5"/>')
                     tip = (f"{names[i]} level:{lv} wbits:{w} - {fmt_speed(v['speed'])}"
                            + (f", ratio {v['ratio']:.3f}" if v["ratio"] > 0 else "")
                            + f", {v['n']} files"
                            + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
-                    svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4" '
+                    svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" '
                             f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
                             f'<title>{esc(tip)}</title></circle>')
-                lw, lval = pts[-1]
-                svg.text(wx(lw) - 8, wy(lval["speed"]) - 8, fmt_speed(lval["speed"]),
-                         size=9, anchor="end")
-        better_arrow(svg, wpx + wpw + 18, wtop + 92, wpx + wpw + 18, wtop + 30)
-        body_bottom = wtop + wph + 44
+        wb_rows = (len(wb_levels) + cols - 1) // cols
+        better_arrow(svg, 1038, wtop + 92, 1038, wtop + 30)
+        body_bottom = wtop + wb_rows * (fh + gapy) - gapy + 20
 
     # Version and machine footnote, wrapped when the runs make it long
     note_parts = [f"{names[i]} {versions[i]}".strip() for i in range(len(names))]
