@@ -44,6 +44,21 @@ cmake -B build
 cmake --build build -j
 ```
 
+## Test data
+
+The corpora clone provides the per-file corpora. For single-stream runs
+comparable with [deflatebench], put its uncompressed Silesia tars in a
+corpora subdirectory (e.g. `test/data/corpora/tars/`):
+
+* [203MiB full Silesia testcorpus](https://mirror.circlestorm.org/silesia.tar)
+* [44MiB custom cropped Silesia testcorpus](https://mirror.circlestorm.org/silesia-medium.tar)
+* [16MiB custom cropped Silesia testcorpus](https://mirror.circlestorm.org/silesia-small.tar)
+
+The original source of this testcorpus is
+[Silesia](http://sun.aei.polsl.pl/~sdeor/index.php?page=silesia).
+
+[deflatebench]: https://github.com/zlib-ng/deflatebench
+
 ## Running
 
 ```sh
