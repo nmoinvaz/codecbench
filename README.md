@@ -20,6 +20,8 @@ data through zlib-ng.
 | `codecbench_chromium_zlib` | [Chromium zlib]             | `WITH_CHROMIUM_ZLIB`|                 |
 | `codecbench_madler_zlib`   | [madler zlib]               | `WITH_MADLER_ZLIB`  |                 |
 | `codecbench_zlib_rs`       | [zlib-rs]                   | `WITH_ZLIB_RS`      | cargo           |
+| `codecbench_miniz`         | [miniz]                     | `WITH_MINIZ`        |                 |
+| `codecbench_libcompression`| [libcompression]            | `WITH_LIBCOMPRESSION`| macOS          |
 
 [zlib-ng]: https://github.com/zlib-ng/zlib-ng
 [libdeflate]: https://github.com/ebiggers/libdeflate
@@ -28,14 +30,17 @@ data through zlib-ng.
 [Chromium zlib]: https://chromium.googlesource.com/chromium/src/third_party/zlib
 [madler zlib]: https://github.com/madler/zlib
 [zlib-rs]: https://github.com/trifectatechfoundation/zlib-rs
+[miniz]: https://github.com/richgel999/miniz
+[libcompression]: https://developer.apple.com/documentation/compression
 
 All backends are on by default and fetched at pinned versions during the CMake
 configure. Each `<NAME>_REPOSITORY` / `<NAME>_TAG` pair can be overridden.
-Levels follow what each backend supports, libdeflate adds `level:12`, igzip
-spans 0-3, libslz has a single level. Deflate strategy variants
-(`/strategy:filtered` etc.) register for zlib-ng and the stock zlib API
-backends (Chromium zlib, madler zlib, zlib-rs). libdeflate, igzip, and libslz
-have no equivalent.
+Levels follow what each backend supports, libdeflate adds `level:12`, miniz
+adds `level:10`, igzip spans 0-3, libslz has a single level, and
+libcompression's single fixed quality registers as `level:5`. Deflate
+strategy variants (`/strategy:filtered` etc.) register for zlib-ng, the
+stock zlib API backends (Chromium zlib, madler zlib, zlib-rs), and miniz.
+libdeflate, igzip, libslz, and libcompression have no equivalent.
 
 ## Building
 

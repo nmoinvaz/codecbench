@@ -5,13 +5,14 @@
   the `<NAME>_REPOSITORY` / `<NAME>_TAG` variables.
 - Binaries are named `codecbench_<backend>` and land in the build directory
   root. Backends: zlibng (reference), libdeflate, isal, slz, chromium_zlib,
-  madler_zlib, zlib_rs.
+  madler_zlib, zlib_rs, miniz, libcompression (macOS only).
 - All binaries register identical benchmark names over the shared level set,
-  so their JSON outputs compare directly. libdeflate adds `level:12`, igzip
-  spans levels 0-3, libslz has a single level and registers no inflate
-  benchmarks.
-- Deflate strategy variants (`/strategy:<name>`) register for zlib-ng and
-  the stock zlib API backends (chromium_zlib, madler_zlib, zlib_rs).
+  so their JSON outputs compare directly. libdeflate adds `level:12`, miniz
+  adds `level:10`, igzip spans levels 0-3, libslz has a single level and
+  registers no inflate benchmarks, libcompression's single fixed quality
+  registers as `level:5`.
+- Deflate strategy variants (`/strategy:<name>`) register for zlib-ng, the
+  stock zlib API backends (chromium_zlib, madler_zlib, zlib_rs), and miniz.
 - Decompression input is always produced by zlib-ng at level 9 and all output
   is verified against the original data, a failed roundtrip shows up as a
   benchmark error.
