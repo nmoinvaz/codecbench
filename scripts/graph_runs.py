@@ -157,10 +157,10 @@ def aggregate(runs, corpus_filter):
                 "mem": inflate_data[t].get("mem", 0.0),
             }
 
-    with_ddata = [set(c[3]) for c in collected if c[3]]
-    common_dd = set.intersection(*with_ddata) if with_ddata else set()
+    # Synthetic inputs are pinned generators, identical across runs, so every
+    # run keeps its own level set here
     for i, (_, _, _, deflate_data) in enumerate(collected):
-        for k in common_dd & set(deflate_data):
+        for k in deflate_data:
             points[i]["deflate_data"][k] = {
                 "speed": deflate_data[k]["bytes_per_second"],
                 "ratio": deflate_data[k].get("ratio", 0.0),
@@ -361,12 +361,20 @@ def nice_log_ticks(lo, hi):
 
 def render(names, versions, machine, corpus_desc, warnings, points, title, out_path):
     data_types = ordered_types(points)
-    dd_levels = None
-    for p in points:
-        if p["deflate_data"]:
-            levels = {k[1] for k in p["deflate_data"]}
-            dd_levels = levels if dd_levels is None else dd_levels & levels
+    # Single-level runs would drag every run to their level, they sit out instead
+    level_sets = [{k[1] for k in p["deflate_data"]} for p in points if p["deflate_data"]]
+    multi = [ls for ls in level_sets if len(ls) > 1]
+    dd_levels = set.intersection(*multi) if multi else \
+        (set.intersection(*level_sets) if level_sets else set())
     dlevel = (6 if 6 in dd_levels else max(dd_levels)) if dd_levels else None
+    dd_note = None
+    if dlevel is not None:
+        excluded = []
+        for i, p in enumerate(points):
+            if p["deflate_data"] and not any(k[1] == dlevel for k in p["deflate_data"]):
+                lv = ",".join(str(l) for l in sorted({k[1] for k in p["deflate_data"]}))
+                excluded.append(f"{names[i]} not shown, only level:{lv}")
+        dd_note = " · ".join(excluded) or None
 
     width = 1080
     svg = Svg(width)
@@ -564,23 +572,26 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
     panels = []
     if data_types:
         panels.append(("inflate, synthetic data types", "inflate",
-                       [p["inflate_data"] for p in points]))
+                       [p["inflate_data"] for p in points], None))
     if dlevel is not None:
         panels.append((f"deflate level:{dlevel}, synthetic data types",
                        f"deflate level:{dlevel}",
                        [{k[0]: v for k, v in p["deflate_data"].items() if k[1] == dlevel}
-                        for p in points]))
+                        for p in points], dd_note))
 
     data_top = max(488, py + ph + 76, right_bottom + 36)
-    for pi, (caption, tipword, series) in enumerate(panels):
+    for pi, (caption, tipword, series, note) in enumerate(panels):
         types = order_types(set().union(*(set(s) for s in series)))
         dpx, dpy, dpw, dph = 78, data_top + pi * 234, 942, 180
         svg.text(dpx, dpy - 18, f"{caption}, each group scaled to its fastest",
                  size=12, fill=INK)
+        if note:
+            svg.text(dpx + dpw, dpy - 18, note, size=10, anchor="end")
         svg.line(dpx, dpy + dph, dpx + dpw, dpy + dph, INK_SOFT)
 
         group = dpw / len(types)
-        nbars = len(series)
+        active = [i for i, s in enumerate(series) if s]
+        nbars = len(active)
         bar_w = min(14.0, (group - 24) / nbars)
         for j, t in enumerate(types):
             gx = dpx + j * group
@@ -598,7 +609,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                     continue
                 v = s[t]
                 h = max(v["speed"] * scale, 2)
-                x = x0 + i * (bar_w + 2)
+                x = x0 + active.index(i) * (bar_w + 2)
                 ytop = dpy + dph - h
                 tip = (f"{names[i]} {tipword} {t} - {fmt_speed(v['speed'])}"
                        + (f", {(v['speed'] / series[0][t]['speed'] - 1) * 100.0:+.1f}% "
@@ -608,8 +619,8 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                         f'height="{h:.1f}" rx="1.5" fill="{SERIES[i]}">'
                         f'<title>{esc(tip)}</title></rect>')
                 if i == gmax_i:
-                    svg.text(x + bar_w / 2, ytop - 6, fmt_speed(v["speed"]),
-                             size=9, anchor="middle")
+                    lx = min(max(x + bar_w / 2, gx + 26), gx + group - 26)
+                    svg.text(lx, ytop - 6, fmt_speed(v["speed"]), size=9, anchor="middle")
                 if v["cv"] > 0:
                     xc = x + bar_w / 2
                     y1 = dpy + dph - h * (1 + v["cv"])
