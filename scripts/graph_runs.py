@@ -456,27 +456,42 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
 
     # Level 0 throughput, stored-block framing for most codecs, kept off the
     # scatter so its near-1.0 ratios cannot squeeze the axis. The 400x spread
-    # between codecs makes bar lengths useless, a value list reads honestly.
+    # suits a log dot plot, position separates what bar lengths cannot.
     l0 = [p["deflate"].get((0, "")) for p in points]
     if any(l0):
+        vals = [v["speed"] for v in l0 if v]
+        lo, hi = min(vals) / 1.5, max(vals) * 1.5
+        ax0, ax1 = bx + 8, bx + bw - 112
+
+        def lx(s):
+            return ax0 + (math.log10(s) - math.log10(lo)) / \
+                (math.log10(hi) - math.log10(lo)) * (ax1 - ax0)
+
         yrow = right_bottom + 30
         svg.text(bx, yrow, "deflate level:0", size=12, fill=INK)
-        yrow += 8
+        top = yrow + 10
+        bottom = top + sum(1 for v in l0 if v) * 15
+        for tick in (1e7, 1e8, 1e9, 1e10):
+            if lo <= tick <= hi:
+                x = lx(tick)
+                svg.line(x, top, x, bottom, GRID)
+                svg.text(x, bottom + 12, f"{tick / 1e9:g} GB/s" if tick >= 1e9
+                         else f"{tick / 1e9:g}", size=9, anchor="middle")
+        yrow = top
         for i, v in enumerate(l0):
             if not v:
                 continue
             tip = (f"{names[i]} level:0 - {fmt_speed(v['speed'])}, ratio {v['ratio']:.3f}"
                    + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
-            svg.add(f'<rect x="{bx}" y="{yrow}" width="10" height="10" rx="2" '
-                    f'fill="{SERIES[i]}"><title>{esc(tip)}</title></rect>')
+            marker(svg, "circle", lx(v["speed"]), yrow + 6, SERIES[i], tip)
             value = fmt_speed(v["speed"])
             if v["ratio"] > 1.05:
                 value += f", ratio {v['ratio']:.2f}"
             if i > 0 and l0[0]:
                 value += f" ({(v['speed'] - l0[0]['speed']) / l0[0]['speed'] * 100.0:+.0f}%)"
-            svg.text(bx + bw, yrow + 9, value, size=10, fill=INK, anchor="end")
+            svg.text(bx + bw, yrow + 10, value, size=10, fill=INK, anchor="end")
             yrow += 15
-        right_bottom = yrow + 6
+        right_bottom = bottom + 24
 
     # Deflate panel, speed versus ratio, stretched to the right column's height
     px, py, pw = 78, 76, 682
