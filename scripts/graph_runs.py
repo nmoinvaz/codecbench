@@ -30,9 +30,10 @@ SURFACE = "#fcfcfb"
 INK = "#0b0b0b"
 INK_SOFT = "#52514e"
 GRID = "#e7e6e2"
-# Categorical slots in fixed order, assigned by run position, never cycled
+# Categorical slots in fixed order, assigned by run position, never cycled.
+# The neutral ninth slot is for a run of least interest, order inputs so.
 SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100",
-          "#e87ba4", "#008300", "#4a3aa7", "#e34948"]
+          "#e87ba4", "#008300", "#4a3aa7", "#e34948", "#7a7668"]
 
 STRATEGY_ORDER = ["filtered", "huffman", "rle", "fixed"]
 
@@ -454,7 +455,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         right_bottom = yrow + 12
 
     # Deflate panel, speed versus ratio, stretched to the right column's height
-    px, py, pw = 60, 76, 700
+    px, py, pw = 78, 76, 682
     ph = max(320, right_bottom - py - 40)
     all_pts = [v for p in points for v in p["deflate"].values()]
     if not all_pts:
