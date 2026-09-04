@@ -232,6 +232,12 @@ def marker(svg, shape, x, y, color, title):
     elif shape == "triangle":
         pts = f"{x:.1f},{y - r - 1:.1f} {x + r + 1:.1f},{y + r:.1f} {x - r - 1:.1f},{y + r:.1f}"
         body = f'<polygon points="{pts}" fill="{color}" {ring}/>'
+    elif shape == "cross":
+        a, c = 2.2, r + 1
+        pts = " ".join(f"{x + dx:.1f},{y + dy:.1f}" for dx, dy in (
+            (-a, -c), (a, -c), (a, -a), (c, -a), (c, a), (a, a),
+            (a, c), (-a, c), (-a, a), (-c, a), (-c, -a), (-a, -a)))
+        body = f'<polygon points="{pts}" fill="{color}" {ring}/>'
     else:  # triangle-down
         pts = f"{x:.1f},{y + r + 1:.1f} {x + r + 1:.1f},{y - r:.1f} {x - r - 1:.1f},{y - r:.1f}"
         body = f'<polygon points="{pts}" fill="{color}" {ring}/>'
@@ -239,7 +245,7 @@ def marker(svg, shape, x, y, color, title):
 
 
 STRATEGY_SHAPES = {"": "circle", "filtered": "square", "huffman": "diamond",
-                   "rle": "triangle", "fixed": "triangle-down"}
+                   "rle": "triangle", "fixed": "cross"}
 
 # Point labels need unambiguous short tags, "filtered" and "fixed" share a first letter
 STRATEGY_TAGS = {"filtered": "flt", "huffman": "huf", "rle": "rle", "fixed": "fix"}
