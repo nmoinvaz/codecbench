@@ -574,7 +574,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         types = order_types(set().union(*(set(s) for s in series)))
         base = series[0]
         dpx, dpy, dpw, dph = 78, data_top + pi * 234, 942, 180
-        svg.text(dpx, dpy - 18, f"{caption}, % of {names[0]}", size=12, fill=INK)
+        svg.text(dpx, dpy - 18, f"{caption}, vs {names[0]}", size=12, fill=INK)
 
         pcts = [s[t]["speed"] / base[t]["speed"] * 100.0 for s in series for t in types
                 if t in s and t in base and base[t]["speed"] > 0]
@@ -585,13 +585,14 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         def dy(pct, hi=cap, top=dpy):
             return top + dph - min(pct, hi) / hi * dph
 
-        # The 100% reference line carries the comparison, draw it strongest
+        # The reference line is the first run's speed, ticks read as deltas from it
         for v in (0, 50, 100, 150, 200, 250):
             if v > cap:
                 break
             y = dy(v)
             svg.line(dpx, y, dpx + dpw, y, INK_SOFT if v == 100 else GRID)
-            svg.text(dpx - 8, y + 4, f"{v}%", size=11, anchor="end")
+            lbl = "0%" if v == 100 else f"{v - 100:+.0f}%"
+            svg.text(dpx - 8, y + 4, lbl, size=11, anchor="end")
         svg.line(dpx, dpy + dph, dpx + dpw, dpy + dph, INK_SOFT)
 
         group = dpw / len(types)
@@ -611,13 +612,13 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                 x = x0 + i * (bar_w + 2)
                 ytop = dy(pct)
                 tip = (f"{names[i]} {tipword} {t} - {fmt_speed(v['speed'])}, "
-                       f"{pct:.0f}% of {names[0]}"
+                       f"{pct - 100:+.0f}% vs {names[0]}"
                        + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
                 svg.add(f'<rect x="{x:.1f}" y="{ytop:.1f}" width="{bar_w:.1f}" '
                         f'height="{dpy + dph - ytop:.1f}" rx="1.5" fill="{SERIES[i]}">'
                         f'<title>{esc(tip)}</title></rect>')
                 if pct > cap:
-                    svg.text(x + bar_w / 2, dpy - 4, f"{pct:.0f}%", size=9, anchor="middle")
+                    svg.text(x + bar_w / 2, dpy - 4, f"{pct - 100:+.0f}%", size=9, anchor="middle")
                 elif v["cv"] > 0:
                     xc = x + bar_w / 2
                     y1, y2 = dy(pct * (1 - v["cv"])), dy(pct * (1 + v["cv"]))
