@@ -7,6 +7,8 @@ runs, and the codec_inflate corpus benchmarks as a throughput panel. Levels
 are connected in order, strategy variants get their own marker shapes.
 Synthetic data-type benchmarks (codec_inflate/data/<type>) common to the
 runs get their own line panel, one line per codec across the types.
+windowBits variants (level:N/wbits:M) get a speed line panel at the bottom,
+one line per codec across the window sizes.
 
 Usage:
     python3 scripts/graph_runs.py a.json b.json [c.json ...] [-o out.svg]
@@ -45,7 +47,8 @@ REPO_URL = "https://github.com/nmoinvaz/codecbench"
 
 NAME_RE = re.compile(
     r"^codec_(?P<kind>deflate|inflate)/(?P<label>.+?)"
-    r"(?:/level:(?P<level>\d+))?(?:/strategy:(?P<strategy>\w+))?$")
+    r"(?:/level:(?P<level>\d+))?(?:/strategy:(?P<strategy>\w+))?"
+    r"(?:/wbits:(?P<wbits>\d+))?$")
 
 
 def load(path):
@@ -81,11 +84,12 @@ def geomean(values):
 
 
 def collect(benchmarks, corpus_filter):
-    """Split parsed benchmarks into deflate/inflate/data-type rows keyed by name."""
+    """Split parsed benchmarks into deflate/inflate/data-type/wbits rows keyed by name."""
     deflate = {}
     inflate = {}
     inflate_data = {}
     deflate_data = {}
+    wbits = {}
     for name, b in benchmarks.items():
         m = NAME_RE.match(name)
         if m is None or "bytes_per_second" not in b:
@@ -100,11 +104,14 @@ def collect(benchmarks, corpus_filter):
         if corpus_filter and not corpus_filter.search(label):
             continue
         if m.group("kind") == "deflate":
+            if m.group("wbits"):
+                wbits.setdefault((int(m.group("level")), int(m.group("wbits"))), {})[label] = b
+                continue
             key = (int(m.group("level")), m.group("strategy") or "")
             deflate.setdefault(key, {})[label] = b
         else:
             inflate[label] = b
-    return deflate, inflate, inflate_data, deflate_data
+    return deflate, inflate, inflate_data, deflate_data, wbits
 
 
 def aggregate(runs, corpus_filter):
@@ -114,8 +121,8 @@ def aggregate(runs, corpus_filter):
     that share each benchmark group, so codecs summarize identical inputs.
     """
     collected = [collect(b, corpus_filter) for _, _, b, _ in runs]
-    points = [{"deflate": {}, "inflate": None, "inflate_data": {}, "deflate_data": {}}
-              for _ in collected]
+    points = [{"deflate": {}, "inflate": None, "inflate_data": {}, "deflate_data": {},
+               "wbits": {}} for _ in collected]
 
     for key in sorted(set().union(*(set(c[0]) for c in collected))):
         have = [i for i, c in enumerate(collected) if key in c[0]]
@@ -134,9 +141,25 @@ def aggregate(runs, corpus_filter):
                 "mem": max(r.get("mem", 0.0) for r in rows),
             }
 
+    for key in sorted(set().union(*(set(c[4]) for c in collected))):
+        have = [i for i, c in enumerate(collected) if key in c[4]]
+        labels = set.intersection(*(set(collected[i][4][key]) for i in have))
+        for i in have:
+            rows = [collected[i][4][key][l] for l in sorted(labels)]
+            if not rows:
+                continue
+            speeds = [r["bytes_per_second"] for r in rows]
+            points[i]["wbits"][key] = {
+                "speed": geomean(speeds),
+                "ratio": geomean([r.get("ratio", 0.0) for r in rows]),
+                "n": len(rows),
+                "smin": min(speeds), "smax": max(speeds),
+                "cv": max(r.get("_cv", 0.0) for r in rows),
+            }
+
     with_inflate = [set(c[1]) for c in collected if c[1]]
     common_inflate = sorted(set.intersection(*with_inflate)) if with_inflate else []
-    for i, (_, inflate, _, _) in enumerate(collected):
+    for i, (_, inflate, _, _, _) in enumerate(collected):
         labels = common_inflate if common_inflate else sorted(inflate)
         rows = [inflate[l] for l in labels if l in inflate]
         if rows:
@@ -150,7 +173,7 @@ def aggregate(runs, corpus_filter):
 
     with_types = [set(c[2]) for c in collected if c[2]]
     common_types = set.intersection(*with_types) if with_types else set()
-    for i, (_, _, inflate_data, _) in enumerate(collected):
+    for i, (_, _, inflate_data, _, _) in enumerate(collected):
         for t in common_types & set(inflate_data):
             points[i]["inflate_data"][t] = {
                 "speed": inflate_data[t]["bytes_per_second"],
@@ -160,7 +183,7 @@ def aggregate(runs, corpus_filter):
 
     # Synthetic inputs are pinned generators, identical across runs, so every
     # run keeps its own level set here
-    for i, (_, _, _, deflate_data) in enumerate(collected):
+    for i, (_, _, _, deflate_data, _) in enumerate(collected):
         for k in deflate_data:
             points[i]["deflate_data"][k] = {
                 "speed": deflate_data[k]["bytes_per_second"],
@@ -719,6 +742,67 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         better_arrow(svg, 1038, gtop + 92, 1038, gtop + 30)
         body_bottom = gtop + rows * (fh + gapy) - gapy + 20
 
+    # windowBits line panel, deflate speed across the lookback window sizes
+    wb_keys = sorted(set().union(*(set(p["wbits"]) for p in points)))
+    if wb_keys:
+        wtop = body_bottom + 66
+        wpx, wpw, wph = 78, 942, 170
+        levels = sorted({k[0] for k in wb_keys})
+        caption = "deflate speed by windowBits"
+        if len(levels) == 1:
+            caption += f", level:{levels[0]}"
+        svg.text(wpx, wtop - 18, caption, size=12, fill=INK)
+        wvals = sorted({k[1] for k in wb_keys})
+        wmin, wmax = wvals[0], wvals[-1]
+
+        def wx(w):
+            return wpx + (w - wmin) / (wmax - wmin) * wpw if wmax > wmin else wpx + wpw / 2
+
+        wspeeds = [v["speed"] for p in points for v in p["wbits"].values()]
+        wlo, whi = min(wspeeds) / 1.3, max(wspeeds) * 1.3
+
+        def wy(s):
+            return wtop + wph - (math.log10(s) - math.log10(wlo)) / \
+                (math.log10(whi) - math.log10(wlo)) * wph
+
+        for v in nice_log_ticks(wlo, whi):
+            yy = wy(v)
+            svg.line(wpx, yy, wpx + wpw, yy, GRID)
+            svg.text(wpx - 8, yy + 4, fmt_speed(v), size=11, anchor="end")
+        svg.line(wpx, wtop + wph, wpx + wpw, wtop + wph, INK_SOFT)
+        for w in wvals:
+            svg.text(wx(w), wtop + wph + 16, str(w), size=11, anchor="middle")
+        svg.text(wpx + wpw / 2, wtop + wph + 34, "windowBits", size=12, anchor="middle")
+
+        for lv in levels:
+            for i, p in enumerate(points):
+                pts = sorted((k[1], v) for k, v in p["wbits"].items() if k[0] == lv)
+                if not pts:
+                    continue
+                coords = [(wx(w), wy(v["speed"])) for w, v in pts]
+                if len(coords) > 1:
+                    path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
+                                    for q, (x, y) in enumerate(coords))
+                    svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
+                            f'stroke-width="2" stroke-opacity="0.7"/>')
+                for (w, v), (x, y) in zip(pts, coords):
+                    if v["cv"] > 0:
+                        y1, y2 = wy(v["speed"] * (1 - v["cv"])), wy(v["speed"] * (1 + v["cv"]))
+                        svg.add(f'<line x1="{x:.1f}" y1="{y1:.1f}" x2="{x:.1f}" y2="{y2:.1f}" '
+                                f'stroke="{SERIES[i]}" stroke-opacity="0.7" stroke-width="1.5"/>')
+                    tip = (f"{names[i]} level:{lv} wbits:{w} - {fmt_speed(v['speed'])}"
+                           + (f", ratio {v['ratio']:.3f}" if v["ratio"] > 0 else "")
+                           + f", {v['n']} files"
+                           + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
+                    svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4" '
+                            f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
+                            f'<title>{esc(tip)}</title></circle>')
+                lw, lval = pts[-1]
+                svg.text(wx(lw) - 8, wy(lval["speed"]) - 8, fmt_speed(lval["speed"]),
+                         size=9, anchor="end")
+        better_arrow(svg, wpx + wpw + 18, wtop + 92, wpx + wpw + 18, wtop + 30)
+        body_bottom = wtop + wph + 44
+
     # Version and machine footnote, wrapped when the runs make it long
     note_parts = [f"{names[i]} {versions[i]}".strip() for i in range(len(names))]
     note = "  \u00b7  ".join(note_parts + ([machine] if machine else []))
@@ -775,6 +859,11 @@ def print_table(names, points):
         ratios = "  " + " ".join(
             f"{(format(v['ratio'], '.4f') if v else '-'):>14}" for v in vals)
         print(f"{tag:<22} " + speed_cells([v["speed"] if v else None for v in vals]) + ratios)
+
+    for lv, w in sorted(set().union(*(set(p["wbits"]) for p in points))):
+        print(f"{f'level:{lv}/wbits:{w}':<22} " + speed_cells(
+            [p["wbits"][(lv, w)]["speed"] if (lv, w) in p["wbits"] else None
+             for p in points]))
 
     dd_keys = sorted(
         set().union(*(set(p["deflate_data"]) for p in points)),

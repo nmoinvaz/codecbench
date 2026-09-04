@@ -41,6 +41,9 @@ libcompression's single fixed quality registers as `level:5`. Deflate
 strategy variants (`/strategy:filtered` etc.) register for zlib-ng, the
 stock zlib API backends (Chromium zlib, madler zlib, zlib-rs), and miniz.
 libdeflate, igzip, libslz, and libcompression have no equivalent.
+windowBits variants (`/level:6/wbits:9` through `15`) sweep the deflate
+lookback window at level 6 for zlib-ng and the stock zlib API backends,
+the rest have no window parameter and miniz accepts only 15.
 
 ## Building
 
@@ -91,8 +94,8 @@ scripts/compare_runs.py zlibng.json libdeflate.json
 
 `scripts/graph_runs.py` turns two or more runs into a speed versus ratio SVG,
 one point per level and strategy aggregated across the corpus files common to
-the runs, with inflate throughput, data-type line panels, repetition error
-bars, delta annotations, and machine specs. An aggregate table prints to
+the runs, with inflate throughput, data-type line panels, a windowBits speed
+panel, repetition error bars, delta annotations, and machine specs. An aggregate table prints to
 stdout. It needs only the Python standard library.
 
 ```sh

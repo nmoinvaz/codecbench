@@ -39,6 +39,9 @@ typedef zng_codec_decompressor codec_decompressor;
    backends. libdeflate, isal, and slz have no equivalent. */
 #  define CODEC_STRATEGIES { {"filtered", Z_FILTERED}, {"huffman", Z_HUFFMAN_ONLY}, \
                              {"rle", Z_RLE}, {"fixed", Z_FIXED} }
+/* Standard deflate windowBits range. miniz rejects anything but 15,
+   libdeflate, igzip, slz, and libcompression have no window parameter. */
+#  define CODEC_WBITS { 9, 10, 11, 12, 13, 14, 15 }
 #  define CODEC_HAS_MEM 1
 #endif
 

@@ -31,12 +31,12 @@ static shim_stream *shim_stream_new(void) {
     return ss;
 }
 
-void *shim_zlib_deflate_new(int level, int strategy) {
+void *shim_zlib_deflate_new(int level, int strategy, int window_bits) {
     shim_stream *ss = shim_stream_new();
     if (ss == NULL)
         return NULL;
 
-    if (deflateInit2(&ss->strm, level, Z_DEFLATED, -MAX_WBITS, MAX_MEM_LEVEL,
+    if (deflateInit2(&ss->strm, level, Z_DEFLATED, -window_bits, MAX_MEM_LEVEL,
                      strategy) != Z_OK) {
         free(ss);
         return NULL;

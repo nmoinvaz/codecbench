@@ -17,13 +17,16 @@
 /* All shim backends report per-stream peak memory */
 #define CODEC_HAS_MEM 1
 
+/* All shim backends accept the standard deflate windowBits range */
+#define CODEC_WBITS { 9, 10, 11, 12, 13, 14, 15 }
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /* Implemented in zlib_shim.c. Handles are heap-allocated raw
    deflate/inflate streams, NULL on allocation or init failure. */
-void *shim_zlib_deflate_new(int level, int strategy);
+void *shim_zlib_deflate_new(int level, int strategy, int window_bits);
 size_t shim_zlib_deflate_bound(void *comp, size_t in_size);
 size_t shim_zlib_deflate_mem(void *comp);
 size_t shim_zlib_compress(void *comp, const uint8_t *in, size_t in_size,
@@ -42,9 +45,9 @@ void shim_zlib_inflate_free(void *decomp);
 struct shim_codec_compressor {
     void *handle;
 
-    /* strategy 0 is Z_DEFAULT_STRATEGY */
-    bool init(int level, int strategy = 0) {
-        handle = shim_zlib_deflate_new(level, strategy);
+    /* strategy 0 is Z_DEFAULT_STRATEGY, wbits 15 is the full deflate window */
+    bool init(int level, int strategy = 0, int wbits = 15) {
+        handle = shim_zlib_deflate_new(level, strategy, wbits);
         return handle != NULL;
     }
 

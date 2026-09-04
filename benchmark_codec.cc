@@ -11,7 +11,8 @@
  * Decompression input is always produced by zlib-ng at level 9, so every
  * backend inflates identical streams. All output is verified against the
  * original file contents. Deflate strategy variants are registered only by
- * backends that declare CODEC_STRATEGIES.
+ * backends that declare CODEC_STRATEGIES, windowBits variants only by
+ * backends that declare CODEC_WBITS.
  */
 
 #include <stdio.h>
@@ -41,6 +42,7 @@ class codec_deflate : public benchmark::Fixture {
 private:
     int level;
     int strategy;
+    int wbits;
     uint8_t *outbuff;
     size_t outbuff_size;
     size_t compressed_size;
@@ -57,8 +59,9 @@ protected:
     virtual void release_data() {}
 
 public:
-    codec_deflate(const std::string &name, corpus_file *cf, int level, int strategy = Z_DEFAULT_STRATEGY)
-        : level(level), strategy(strategy), outbuff(NULL), outbuff_size(0),
+    codec_deflate(const std::string &name, corpus_file *cf, int level,
+                  int strategy = Z_DEFAULT_STRATEGY, int wbits = MAX_WBITS)
+        : level(level), strategy(strategy), wbits(wbits), outbuff(NULL), outbuff_size(0),
           compressed_size(0), comp(), comp_init(false), cf(cf) {
         this->SetName(name);
     }
@@ -68,10 +71,14 @@ public:
         if (cf->data == NULL)
             return;
 
-#ifdef CODEC_STRATEGIES
+#if defined(CODEC_WBITS)
+        comp_init = comp.init(level, strategy, wbits);
+#elif defined(CODEC_STRATEGIES)
+        (void)wbits;
         comp_init = comp.init(level, strategy);
 #else
         (void)strategy;
+        (void)wbits;
         comp_init = comp.init(level);
 #endif
         if (!comp_init)
@@ -309,6 +316,13 @@ static const struct {
 static const int codec_strategy_levels[] = {1, 6, 9};
 #endif
 
+#ifdef CODEC_WBITS
+/* windowBits variants sweep the lookback window at the default level. wbits 15
+   duplicates the plain level run so the series is self-contained. */
+static const int codec_wbits[] = CODEC_WBITS;
+static const int codec_wbits_level = 6;
+#endif
+
 /* Dynamic benchmark registration at static init time */
 static int register_codec_benchmarks(void) {
     corpora_files = discover_corpora();
@@ -339,6 +353,18 @@ static int register_codec_benchmarks(void) {
                     ::benchmark::internal::make_unique<codec_deflate>(name, cf, level,
                                                                       codec_strategies[s].strategy));
             }
+        }
+#endif
+
+#ifdef CODEC_WBITS
+        for (size_t w = 0; w < sizeof(codec_wbits) / sizeof(codec_wbits[0]); w++) {
+            std::string name = "codec_deflate/" + label +
+                               "/level:" + std::to_string(codec_wbits_level) +
+                               "/wbits:" + std::to_string(codec_wbits[w]);
+            benchmark::internal::RegisterBenchmarkInternal(
+                ::benchmark::internal::make_unique<codec_deflate>(name, cf, codec_wbits_level,
+                                                                  Z_DEFAULT_STRATEGY,
+                                                                  codec_wbits[w]));
         }
 #endif
 

@@ -21,13 +21,13 @@ struct zng_codec_compressor {
     zng_stream strm;
     mem_counter mc;
 
-    bool init(int level, int strategy = Z_DEFAULT_STRATEGY) {
+    bool init(int level, int strategy = Z_DEFAULT_STRATEGY, int wbits = MAX_WBITS) {
         memset(&strm, 0, sizeof(strm));
         mc.live = mc.peak = 0;
         strm.zalloc = mem_count_alloc;
         strm.zfree = mem_count_free;
         strm.opaque = &mc;
-        return zng_deflateInit2(&strm, level, Z_DEFLATED, -MAX_WBITS, MAX_MEM_LEVEL,
+        return zng_deflateInit2(&strm, level, Z_DEFLATED, -wbits, MAX_MEM_LEVEL,
                                 strategy) == Z_OK;
     }
 
