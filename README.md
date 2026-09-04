@@ -35,8 +35,8 @@ data through zlib-ng.
 
 All backends are on by default and fetched at pinned versions during the CMake
 configure. Each `<NAME>_REPOSITORY` / `<NAME>_TAG` pair can be overridden.
-Levels follow what each backend supports, libdeflate adds `level:12`, miniz
-adds `level:10`, igzip spans 0-3, libslz has a single level, and
+Levels span the full 0-9 ladder, libdeflate continues through `level:12`,
+miniz through `level:10`, igzip spans 0-3, libslz has a single level, and
 libcompression's single fixed quality registers as `level:5`. Deflate
 strategy variants (`/strategy:filtered` etc.) register for zlib-ng, the
 stock zlib API backends (Chromium zlib, madler zlib, zlib-rs), and miniz.

@@ -109,7 +109,7 @@ struct miniz_codec_decompressor {
 };
 
 /* miniz spans levels 0 to 10, 10 is MZ_UBER_COMPRESSION */
-#define CODEC_LEVELS { 0, 1, 3, 6, 9, 10 }
+#define CODEC_LEVELS { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
 
 /* Standard zlib API deflate strategies, values match zlib-ng's. */
 #define CODEC_STRATEGIES { {"filtered", MZ_FILTERED}, {"huffman", MZ_HUFFMAN_ONLY}, \

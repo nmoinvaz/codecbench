@@ -15,7 +15,7 @@
 #include "zlib_shim.h"
 
 /* Chromium zlib spans the standard levels 0 to 9. */
-#define CODEC_LEVELS { 0, 1, 3, 6, 9 }
+#define CODEC_LEVELS { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }
 
 /* Standard zlib API deflate strategies, values match zlib-ng's. */
 #define CODEC_STRATEGIES { {"filtered", Z_FILTERED}, {"huffman", Z_HUFFMAN_ONLY}, \

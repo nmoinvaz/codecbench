@@ -34,7 +34,7 @@
 /* zlib-ng is both the reference and the default backend. */
 typedef zng_codec_compressor   codec_compressor;
 typedef zng_codec_decompressor codec_decompressor;
-#  define CODEC_LEVELS { 0, 1, 3, 6, 9 }
+#  define CODEC_LEVELS { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }
 /* Deflate strategies from the zlib API, also declared by the stock zlib
    backends. libdeflate, isal, and slz have no equivalent. */
 #  define CODEC_STRATEGIES { {"filtered", Z_FILTERED}, {"huffman", Z_HUFFMAN_ONLY}, \
