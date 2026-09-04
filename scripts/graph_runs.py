@@ -663,7 +663,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         speeds = [v["speed"] for p in points for v in p["deflate_data"].values()]
         lo, hi = min(speeds) / 1.5, max(speeds) * 1.5
         lvmax = max(k[1] for p in points for k in p["deflate_data"])
-        cols, fw, fh, gapx, gapy = 4, 217, 130, 24, 48
+        cols, fw, fh, gapx, gapy = 2, 459, 170, 24, 48
         for j, t in enumerate(dd_types):
             fx = 78 + (j % cols) * (fw + gapx)
             fy = gtop + (j // cols) * (fh + gapy)
@@ -681,10 +681,10 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                     if j % cols == 0:
                         svg.text(fx - 6, yy + 3, fmt_speed(v), size=8, anchor="end")
             svg.line(fx, fy + fh, fx + fw, fy + fh, INK_SOFT)
-            for lv in (0, 3, 6, 9, 12):
+            for lv in (0, 1, 3, 6, 9, 12):
                 if lv <= lvmax:
                     svg.text(fx + lv / lvmax * fw, fy + fh + 12, str(lv),
-                             size=8, anchor="middle")
+                             size=9, anchor="middle")
             for i, p in enumerate(points):
                 pts = sorted((k[1], v) for k, v in p["deflate_data"].items() if k[0] == t)
                 if not pts:
