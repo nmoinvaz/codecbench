@@ -51,10 +51,14 @@ def load(path):
         d = json.load(f)
     out = {}
     for b in d["benchmarks"]:
-        if b.get("aggregate_name") == "median":
-            out[b["run_name"]] = b
-        elif b.get("run_type") == "iteration" and b["run_name"] not in out:
-            out[b["run_name"]] = b
+        rn = b["run_name"]
+        agg = b.get("aggregate_name")
+        if agg == "median":
+            out[rn] = {**out.get(rn, {}), **b}
+        elif agg == "cv":
+            out[rn] = {**out.get(rn, {}), "_cv": b.get("bytes_per_second", 0.0)}
+        elif agg is None and b.get("run_type") == "iteration" and rn not in out:
+            out[rn] = b
     context = d.get("context", {})
     executable = context.get("executable", path)
     name = os.path.basename(executable)
@@ -98,7 +102,7 @@ def collect(benchmarks, corpus_filter):
 
 
 def aggregate(runs, corpus_filter):
-    """Per codec: {(level, strategy): (speed, ratio, nfiles)} plus inflate speed.
+    """Per codec: deflate/inflate summaries with spread and worst repetition cv.
 
     Aggregates with geometric means over the corpus files common to the runs
     that share each benchmark group, so codecs summarize identical inputs.
@@ -113,9 +117,14 @@ def aggregate(runs, corpus_filter):
             rows = [collected[i][0][key][l] for l in sorted(labels)]
             if not rows:
                 continue
-            speed = geomean([r["bytes_per_second"] for r in rows])
-            ratio = geomean([r.get("ratio", 0.0) for r in rows])
-            points[i]["deflate"][key] = (speed, ratio, len(rows))
+            speeds = [r["bytes_per_second"] for r in rows]
+            points[i]["deflate"][key] = {
+                "speed": geomean(speeds),
+                "ratio": geomean([r.get("ratio", 0.0) for r in rows]),
+                "n": len(rows),
+                "smin": min(speeds), "smax": max(speeds),
+                "cv": max(r.get("_cv", 0.0) for r in rows),
+            }
 
     with_inflate = [set(c[1]) for c in collected if c[1]]
     common_inflate = sorted(set.intersection(*with_inflate)) if with_inflate else []
@@ -123,14 +132,21 @@ def aggregate(runs, corpus_filter):
         labels = common_inflate if common_inflate else sorted(inflate)
         rows = [inflate[l] for l in labels if l in inflate]
         if rows:
-            speed = geomean([r["bytes_per_second"] for r in rows])
-            points[i]["inflate"] = (speed, len(rows))
+            speeds = [r["bytes_per_second"] for r in rows]
+            points[i]["inflate"] = {
+                "speed": geomean(speeds), "n": len(rows),
+                "smin": min(speeds), "smax": max(speeds),
+                "cv": max(r.get("_cv", 0.0) for r in rows),
+            }
 
     with_types = [set(c[2]) for c in collected if c[2]]
     common_types = set.intersection(*with_types) if with_types else set()
     for i, (_, _, inflate_data) in enumerate(collected):
         for t in common_types & set(inflate_data):
-            points[i]["inflate_data"][t] = inflate_data[t]["bytes_per_second"]
+            points[i]["inflate_data"][t] = {
+                "speed": inflate_data[t]["bytes_per_second"],
+                "cv": inflate_data[t].get("_cv", 0.0),
+            }
     return points
 
 
@@ -294,8 +310,8 @@ def render(names, versions, machine, points, title, out_path):
     if not all_pts:
         print("No codec_deflate benchmarks in common.", file=sys.stderr)
         sys.exit(1)
-    speeds = [s for s, _, _ in all_pts]
-    ratios = [r for _, r, _ in all_pts if r > 0]
+    speeds = [v["speed"] for v in all_pts]
+    ratios = [v["ratio"] for v in all_pts if v["ratio"] > 0]
     smin, smax = min(speeds) / 1.6, max(speeds) * 1.6
     rmin, rmax = min(ratios) * 0.96, max(ratios) * 1.04
 
@@ -337,9 +353,9 @@ def render(names, versions, machine, points, title, out_path):
     level_free = {}
     for i, p in enumerate(points):
         by_strategy = {}
-        for (level, strategy), (speed, ratio, n) in p["deflate"].items():
-            if strategy and ratio > 0:
-                by_strategy.setdefault(strategy, []).append((speed, ratio))
+        for (level, strategy), v in p["deflate"].items():
+            if strategy and v["ratio"] > 0:
+                by_strategy.setdefault(strategy, []).append((v["speed"], v["ratio"]))
         for s, pts in by_strategy.items():
             hi_s = max(v for v, _ in pts)
             lo_s = min(v for v, _ in pts)
@@ -360,21 +376,34 @@ def render(names, versions, machine, points, title, out_path):
     # Default-strategy levels first so their labels win over strategy points
     for i, p in enumerate(points):
         level_pts = sorted((k, v) for k, v in p["deflate"].items() if k[1] == "")
-        path = " ".join(f"{'M' if j == 0 else 'L'}{sx(v[1]):.1f},{sy(v[0]):.1f}"
+        path = " ".join(f"{'M' if j == 0 else 'L'}{sx(v['ratio']):.1f},{sy(v['speed']):.1f}"
                         for j, (_, v) in enumerate(level_pts))
         if len(level_pts) > 1:
             svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
                     f'stroke-width="2" stroke-opacity="0.65"/>')
     for pass_strategies in (False, True):
         for i, p in enumerate(points):
-            for (level, strategy), (speed, ratio, n) in sorted(p["deflate"].items()):
+            for (level, strategy), v in sorted(p["deflate"].items()):
+                speed, ratio = v["speed"], v["ratio"]
                 if ratio <= 0 or bool(strategy) != pass_strategies:
                     continue
+                x = sx(ratio)
+                if v["n"] > 1 and v["smax"] > v["smin"]:
+                    svg.add(f'<line x1="{x:.1f}" y1="{sy(v["smin"]):.1f}" x2="{x:.1f}" '
+                            f'y2="{sy(v["smax"]):.1f}" stroke="{SERIES[i]}" '
+                            f'stroke-width="3" stroke-opacity="0.18"/>')
+                if v["cv"] > 0:
+                    y1, y2 = sy(speed * (1 - v["cv"])), sy(speed * (1 + v["cv"]))
+                    svg.add(f'<g stroke="{SERIES[i]}" stroke-opacity="0.7" stroke-width="1.5">'
+                            f'<line x1="{x:.1f}" y1="{y1:.1f}" x2="{x:.1f}" y2="{y2:.1f}"/>'
+                            f'<line x1="{x - 3:.1f}" y1="{y1:.1f}" x2="{x + 3:.1f}" y2="{y1:.1f}"/>'
+                            f'<line x1="{x - 3:.1f}" y1="{y2:.1f}" x2="{x + 3:.1f}" y2="{y2:.1f}"/></g>')
                 shape = STRATEGY_SHAPES.get(strategy, "circle")
                 tip = (f"{names[i]} level:{level}"
                        + (f" strategy:{strategy}" if strategy else "")
-                       + f" - {fmt_speed(speed)}, ratio {ratio:.3f}, {n} files")
-                marker(svg, shape, sx(ratio), sy(speed), SERIES[i], tip)
+                       + f" - {fmt_speed(speed)}, ratio {ratio:.3f}, {v['n']} files"
+                       + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
+                marker(svg, shape, x, sy(speed), SERIES[i], tip)
                 if strategy:
                     stag = STRATEGY_TAGS.get(strategy, strategy[:3])
                     tag = stag if level_free.get((i, strategy)) else f"{stag}{level}"
@@ -382,8 +411,8 @@ def render(names, versions, machine, points, title, out_path):
                     tag = f"L{level}"
                 base = points[0]["deflate"].get((level, strategy))
                 if i > 0 and len(points) == 2 and base:
-                    tag += f" {(speed - base[0]) / base[0] * 100.0:+.0f}%"
-                label_point(sx(ratio), sy(speed), tag)
+                    tag += f" {(speed - base['speed']) / base['speed'] * 100.0:+.0f}%"
+                label_point(x, sy(speed), tag)
     # Labels last so markers never cover them
     for x, y, tag in labeled:
         svg.text(x + 7, y - 7, tag, size=10)
@@ -391,7 +420,7 @@ def render(names, versions, machine, points, title, out_path):
     # Inflate panel, throughput bars
     bx, by, bw = 800, 76, 240
     svg.text(bx, by - 22, "inflate, corpus geomean", size=12, fill=INK)
-    bar_max = max((p["inflate"][0] for p in points if p["inflate"]), default=0)
+    bar_max = max((p["inflate"]["speed"] for p in points if p["inflate"]), default=0)
     row_h = 66 if len(points) <= 2 else 48
     for i, p in enumerate(points):
         y = by + 20 + i * row_h
@@ -399,14 +428,22 @@ def render(names, versions, machine, points, title, out_path):
         if p["inflate"] is None:
             svg.text(bx, y + 22, "no inflate benchmarks", size=11)
             continue
-        speed, n = p["inflate"]
+        v = p["inflate"]
+        speed = v["speed"]
         w = max(bw * speed / bar_max, 8)
+        tip = (f"{names[i]} inflate - {fmt_speed(speed)}, {v['n']} files"
+               + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
         svg.add(f'<path d="M{bx} {y + 8} h{w - 4:.1f} a4 4 0 0 1 4 4 v12 '
                 f'a4 4 0 0 1 -4 4 h{-(w - 4):.1f} z" fill="{SERIES[i]}">'
-                f'<title>{esc(f"{names[i]} inflate - {fmt_speed(speed)}, {n} files")}</title></path>')
+                f'<title>{esc(tip)}</title></path>')
+        if v["n"] > 1 and v["smax"] > v["smin"]:
+            svg.add(f'<line x1="{bx + bw * v["smin"] / bar_max:.1f}" y1="{y + 18}" '
+                    f'x2="{bx + min(bw * v["smax"] / bar_max, bw):.1f}" y2="{y + 18}" '
+                    f'stroke="{INK_SOFT}" stroke-width="1.5" stroke-opacity="0.4"/>')
         value = fmt_speed(speed)
         if i > 0 and points[0]["inflate"]:
-            value += f" ({(speed - points[0]['inflate'][0]) / points[0]['inflate'][0] * 100.0:+.1f}%)"
+            base = points[0]["inflate"]["speed"]
+            value += f" ({(speed - base) / base * 100.0:+.1f}%)"
         svg.text(bx + bw, y, value, size=11, fill=INK, anchor="end")
     arrow_y = by + 20 + len(points) * row_h + 2
     better_arrow(svg, bx, arrow_y, bx + 64, arrow_y)
@@ -415,7 +452,7 @@ def render(names, versions, machine, points, title, out_path):
     if data_types:
         dpx, dpy, dpw, dph = 78, 488, 942, 120
         svg.text(dpx, dpy - 18, "inflate, synthetic data types", size=12, fill=INK)
-        vals = [p["inflate_data"][t] for p in points for t in data_types
+        vals = [p["inflate_data"][t]["speed"] for p in points for t in data_types
                 if t in p["inflate_data"]]
         dmin, dmax = min(vals) / 1.6, max(vals) * 1.6
 
@@ -436,17 +473,27 @@ def render(names, versions, machine, points, title, out_path):
         for i, p in enumerate(points):
             if not p["inflate_data"]:
                 continue
-            path = " ".join(f"{'M' if j == 0 else 'L'}{dx(j):.1f},{dy(p['inflate_data'][t]):.1f}"
-                            for j, t in enumerate(data_types))
+            path = " ".join(
+                f"{'M' if j == 0 else 'L'}{dx(j):.1f},{dy(p['inflate_data'][t]['speed']):.1f}"
+                for j, t in enumerate(data_types))
             svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
                     f'stroke-width="2" stroke-opacity="0.65"/>')
             for j, t in enumerate(data_types):
-                speed = p["inflate_data"][t]
-                tip = f"{names[i]} inflate {t} - {fmt_speed(speed)}"
+                v = p["inflate_data"][t]
+                speed = v["speed"]
+                x = dx(j)
+                if v["cv"] > 0:
+                    y1, y2 = dy(speed * (1 - v["cv"])), dy(speed * (1 + v["cv"]))
+                    svg.add(f'<g stroke="{SERIES[i]}" stroke-opacity="0.7" stroke-width="1.5">'
+                            f'<line x1="{x:.1f}" y1="{y1:.1f}" x2="{x:.1f}" y2="{y2:.1f}"/>'
+                            f'<line x1="{x - 3:.1f}" y1="{y1:.1f}" x2="{x + 3:.1f}" y2="{y1:.1f}"/>'
+                            f'<line x1="{x - 3:.1f}" y1="{y2:.1f}" x2="{x + 3:.1f}" y2="{y2:.1f}"/></g>')
+                tip = (f"{names[i]} inflate {t} - {fmt_speed(speed)}"
+                       + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
                 base = points[0]["inflate_data"].get(t)
                 if i > 0 and base:
-                    tip += f", {(speed - base) / base * 100.0:+.1f}% vs {names[0]}"
-                marker(svg, "circle", dx(j), dy(speed), SERIES[i], tip)
+                    tip += f", {(speed - base['speed']) / base['speed'] * 100.0:+.1f}% vs {names[0]}"
+                marker(svg, "circle", x, dy(speed), SERIES[i], tip)
         better_arrow(svg, dpx + 26, dpy + 78, dpx + 26, dpy + 20)
 
     # Version and machine footnote
@@ -483,14 +530,15 @@ def print_table(names, points):
         level, strategy = key
         tag = f"level:{level}" + (f"/{strategy}" if strategy else "")
         vals = [p["deflate"].get(key) for p in points]
-        ratios = "  " + " ".join(f"{(f'{v[1]:.4f}' if v else '-'):>14}" for v in vals)
-        print(f"{tag:<22} " + speed_cells([v[0] if v else None for v in vals]) + ratios)
+        ratios = "  " + " ".join(
+            f"{(format(v['ratio'], '.4f') if v else '-'):>14}" for v in vals)
+        print(f"{tag:<22} " + speed_cells([v["speed"] if v else None for v in vals]) + ratios)
 
     print(f"{'inflate':<22} "
-          + speed_cells([p["inflate"][0] if p["inflate"] else None for p in points]))
+          + speed_cells([p["inflate"]["speed"] if p["inflate"] else None for p in points]))
     for t in ordered_types(points):
-        print(f"{'inflate/' + t:<22} "
-              + speed_cells([p["inflate_data"].get(t) for p in points]))
+        print(f"{'inflate/' + t:<22} " + speed_cells(
+            [p["inflate_data"][t]["speed"] if t in p["inflate_data"] else None for p in points]))
 
 
 def main():
