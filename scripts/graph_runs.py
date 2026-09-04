@@ -188,14 +188,11 @@ def esc(s):
 
 
 class Svg:
-    def __init__(self, width, height):
+    """Collects body elements; the height is decided at finish time."""
+
+    def __init__(self, width):
         self.w = width
-        self.h = height
-        self.parts = [
-            f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" '
-            f'height="{height}" viewBox="0 0 {width} {height}" '
-            f'font-family="system-ui, sans-serif">',
-            f'<rect width="{width}" height="{height}" fill="{SURFACE}"/>']
+        self.parts = []
 
     def add(self, s):
         self.parts.append(s)
@@ -208,9 +205,13 @@ class Svg:
         self.add(f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" '
                  f'stroke="{stroke}" stroke-width="{width}"/>')
 
-    def finish(self):
-        self.parts.append("</svg>")
-        return "\n".join(self.parts) + "\n"
+    def finish(self, height):
+        header = [
+            f'<svg xmlns="http://www.w3.org/2000/svg" width="{self.w}" '
+            f'height="{height}" viewBox="0 0 {self.w} {height}" '
+            f'font-family="system-ui, sans-serif">',
+            f'<rect width="{self.w}" height="{height}" fill="{SURFACE}"/>']
+        return "\n".join(header + self.parts + ["</svg>"]) + "\n"
 
 
 def marker(svg, shape, x, y, color, title):
@@ -363,9 +364,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
     dlevel = (6 if 6 in dd_levels else max(dd_levels)) if dd_levels else None
 
     width = 1080
-    n_panels = (1 if data_types else 0) + (1 if dlevel is not None else 0)
-    height = 486 + 174 * n_panels + (16 if warnings else 0)
-    svg = Svg(width, height)
+    svg = Svg(width)
 
     svg.text(16, 28, title, size=15, fill=INK, weight="bold")
 
@@ -523,6 +522,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         svg.text(bx + bw, y, value, size=11, fill=INK, anchor="end")
     arrow_y = by + 20 + len(points) * row_h + 2
     better_arrow(svg, bx, arrow_y, bx + 64, arrow_y)
+    right_bottom = arrow_y + 8
 
     # Peak stream memory bars, lower is better
     mems = run_mems(points)
@@ -552,6 +552,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                 yrow += 14
             yrow += 8
         better_arrow(svg, bx + 64, yrow + 2, bx, yrow + 2)
+        right_bottom = yrow + 12
 
     # Synthetic data-type line panels, inflate plus deflate at one level
     panels = []
@@ -564,9 +565,10 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                        [{k[0]: v for k, v in p["deflate_data"].items() if k[1] == dlevel}
                         for p in points]))
 
+    data_top = max(488, right_bottom + 30)
     for pi, (caption, tipword, series) in enumerate(panels):
         types = order_types(set().union(*(set(s) for s in series)))
-        dpx, dpy, dpw, dph = 78, 488 + pi * 174, 942, 120
+        dpx, dpy, dpw, dph = 78, data_top + pi * 234, 942, 180
         svg.text(dpx, dpy - 18, caption, size=12, fill=INK)
         vals = [s[t]["speed"] for s in series for t in types if t in s]
         dmin, dmax = min(vals) / 1.6, max(vals) * 1.6
@@ -613,6 +615,12 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                 marker(svg, "circle", x, dy(speed), SERIES[i], tip)
         better_arrow(svg, dpx + 26, dpy + 78, dpx + 26, dpy + 20)
 
+    if panels:
+        body_bottom = data_top + (len(panels) - 1) * 234 + 198
+    else:
+        body_bottom = max(456, right_bottom)
+    height = body_bottom + 28 + (16 if warnings else 0)
+
     # Warning badge above the footnote, never color alone
     if warnings:
         svg.text(16, height - 28, "\u26a0", size=10, fill="#c98500")
@@ -624,7 +632,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
     svg.text(16, height - 12, note, size=10)
 
     with open(out_path, "w") as f:
-        f.write(svg.finish())
+        f.write(svg.finish(height))
 
 
 def print_table(names, points):
