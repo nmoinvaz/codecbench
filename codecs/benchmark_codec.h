@@ -26,11 +26,15 @@
 #  include "madler_zlib.h"
 #elif defined(BENCH_ZLIB_RS)
 #  include "zlib_rs.h"
+#elif defined(BENCH_MINIZ)
+#  include "miniz_codec.h"
+#elif defined(BENCH_LIBCOMPRESSION)
+#  include "libcompression.h"
 #else
 /* zlib-ng is both the reference and the default backend. */
 typedef zng_codec_compressor   codec_compressor;
 typedef zng_codec_decompressor codec_decompressor;
-#  define CODEC_LEVELS { 1, 3, 6, 9 }
+#  define CODEC_LEVELS { 0, 1, 3, 6, 9 }
 /* Deflate strategies from the zlib API, also declared by the stock zlib
    backends. libdeflate, isal, and slz have no equivalent. */
 #  define CODEC_STRATEGIES { {"filtered", Z_FILTERED}, {"huffman", Z_HUFFMAN_ONLY}, \

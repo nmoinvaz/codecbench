@@ -13,7 +13,7 @@
 #include "zlib_shim.h"
 
 /* madler zlib spans the standard levels 0 to 9. */
-#define CODEC_LEVELS { 1, 3, 6, 9 }
+#define CODEC_LEVELS { 0, 1, 3, 6, 9 }
 
 /* Standard zlib API deflate strategies, values match zlib-ng's. */
 #define CODEC_STRATEGIES { {"filtered", Z_FILTERED}, {"huffman", Z_HUFFMAN_ONLY}, \

@@ -55,7 +55,7 @@ struct ld_codec_decompressor {
 };
 
 /* libdeflate spans levels 1 to 12. */
-#define CODEC_LEVELS { 1, 3, 6, 9, 12 }
+#define CODEC_LEVELS { 0, 1, 3, 6, 9, 12 }
 
 typedef ld_codec_compressor   codec_compressor;
 typedef ld_codec_decompressor codec_decompressor;
