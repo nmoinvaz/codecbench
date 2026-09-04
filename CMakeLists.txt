@@ -176,6 +176,42 @@ if(WITH_SLZ)
 endif()
 
 #============================================================================
+# miniz, the single-file DEFLATE implementation embedded across many projects
+#============================================================================
+option(WITH_MINIZ "Add miniz codec benchmarks" ON)
+if(WITH_MINIZ)
+    if(NOT DEFINED MINIZ_REPOSITORY)
+        set(MINIZ_REPOSITORY https://github.com/richgel999/miniz.git)
+    endif()
+    if(NOT DEFINED MINIZ_TAG)
+        set(MINIZ_TAG 3.0.2)
+    endif()
+    FetchContent_Declare(miniz
+        GIT_REPOSITORY ${MINIZ_REPOSITORY}
+        GIT_TAG ${MINIZ_TAG}
+        EXCLUDE_FROM_ALL)
+    # miniz 3.0.2 declares a cmake_minimum_required older than CMake accepts
+    set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
+    FetchContent_MakeAvailable(miniz)
+    unset(CMAKE_POLICY_VERSION_MINIMUM)
+    codec_git_version("${miniz_SOURCE_DIR}" "${MINIZ_TAG}" MINIZ_VERSION)
+endif()
+
+#============================================================================
+# Apple Compression framework, the deflate implementation shipped with macOS
+#============================================================================
+if(APPLE)
+    option(WITH_LIBCOMPRESSION "Add Apple libcompression codec benchmarks" ON)
+else()
+    set(WITH_LIBCOMPRESSION OFF)
+endif()
+if(WITH_LIBCOMPRESSION)
+    execute_process(COMMAND sw_vers -productVersion
+        OUTPUT_VARIABLE MACOS_VERSION OUTPUT_STRIP_TRAILING_WHITESPACE)
+    set(LIBCOMPRESSION_VERSION "macOS ${MACOS_VERSION}")
+endif()
+
+#============================================================================
 # Chromium zlib, the zlib shipped in Chrome. Built as an external project so
 # its target names stay out of this build.
 #============================================================================
@@ -350,6 +386,23 @@ if(WITH_SLZ)
         set_source_files_properties(${slz_SOURCE_DIR}/src/slz.c ${slz_SOURCE_DIR}/src/slz_common.c PROPERTIES COMPILE_OPTIONS "-w;-std=gnu11")
     endif()
     list(APPEND BENCH_CODEC_TARGETS codecbench_slz)
+endif()
+
+if(WITH_MINIZ)
+    add_executable(codecbench_miniz ${BENCH_CODEC_SRCS})
+    target_compile_definitions(codecbench_miniz PRIVATE BENCH_MINIZ=1
+        MINIZ_NO_ZLIB_COMPATIBLE_NAMES=1
+        CODEC_VERSION="${MINIZ_VERSION}")
+    target_link_libraries(codecbench_miniz miniz)
+    list(APPEND BENCH_CODEC_TARGETS codecbench_miniz)
+endif()
+
+if(WITH_LIBCOMPRESSION)
+    add_executable(codecbench_libcompression ${BENCH_CODEC_SRCS})
+    target_compile_definitions(codecbench_libcompression PRIVATE BENCH_LIBCOMPRESSION=1
+        CODEC_VERSION="${LIBCOMPRESSION_VERSION}")
+    target_link_libraries(codecbench_libcompression compression)
+    list(APPEND BENCH_CODEC_TARGETS codecbench_libcompression)
 endif()
 
 if(WITH_CHROMIUM_ZLIB)
