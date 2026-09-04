@@ -34,6 +34,9 @@ extern "C" {
 
 static std::vector<corpus_file> corpora_files;
 
+/* Synthetic data-type input size */
+#define CODEC_DATA_SIZE (128 * 1024)
+
 class codec_deflate : public benchmark::Fixture {
 private:
     int level;
@@ -127,7 +130,7 @@ private:
 
 public:
     codec_deflate_type(const std::string &name, enum test_data_type type, int level)
-        : codec_deflate(name, NULL, level), type(type), synth{"", NULL, 1024 * 1024} {
+        : codec_deflate(name, NULL, level), type(type), synth{"", NULL, CODEC_DATA_SIZE} {
         cf = &synth;
     }
 
@@ -241,7 +244,7 @@ private:
 
 public:
     codec_inflate_type(const std::string &name, enum test_data_type type)
-        : codec_inflate_base(name), type(type), synth{"", NULL, 1024 * 1024} {
+        : codec_inflate_base(name), type(type), synth{"", NULL, CODEC_DATA_SIZE} {
         cf = &synth;
     }
 
