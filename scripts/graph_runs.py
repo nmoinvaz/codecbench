@@ -454,10 +454,35 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         better_arrow(svg, bx + 64, yrow + 2, bx, yrow + 2)
         right_bottom = yrow + 12
 
+    # Level 0 throughput, stored-block framing for most codecs, kept off the
+    # scatter so its near-1.0 ratios cannot squeeze the axis
+    l0 = [p["deflate"].get((0, "")) for p in points]
+    if any(l0):
+        l0_max = max(v["speed"] for v in l0 if v)
+        yrow = right_bottom + 30
+        svg.text(bx, yrow, "deflate level:0", size=12, fill=INK)
+        yrow += 8
+        for i, v in enumerate(l0):
+            if not v:
+                continue
+            w = max((bw - 110) * v["speed"] / l0_max, 4)
+            tip = (f"{names[i]} level:0 - {fmt_speed(v['speed'])}, ratio {v['ratio']:.3f}"
+                   + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
+            svg.add(f'<rect x="{bx}" y="{yrow}" width="{w:.1f}" height="8" rx="3" '
+                    f'fill="{SERIES[i]}"><title>{esc(tip)}</title></rect>')
+            value = fmt_speed(v["speed"])
+            if i > 0 and l0[0]:
+                value += f" ({(v['speed'] - l0[0]['speed']) / l0[0]['speed'] * 100.0:+.0f}%)"
+            svg.text(bx + bw, yrow + 8, value, size=10, fill=INK, anchor="end")
+            yrow += 14
+        arrow_y = yrow + 8
+        better_arrow(svg, bx, arrow_y, bx + 64, arrow_y)
+        right_bottom = arrow_y + 10
+
     # Deflate panel, speed versus ratio, stretched to the right column's height
     px, py, pw = 78, 76, 682
     ph = max(320, right_bottom - py - 40)
-    all_pts = [v for p in points for v in p["deflate"].values()]
+    all_pts = [v for p in points for k, v in p["deflate"].items() if k != (0, "")]
     if not all_pts:
         print("No codec_deflate benchmarks in common.", file=sys.stderr)
         sys.exit(1)
@@ -526,7 +551,8 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
 
     # Default-strategy levels first so their labels win over strategy points
     for i, p in enumerate(points):
-        level_pts = sorted((k, v) for k, v in p["deflate"].items() if k[1] == "")
+        level_pts = sorted((k, v) for k, v in p["deflate"].items()
+                           if k[1] == "" and k[0] != 0)
         path = " ".join(f"{'M' if j == 0 else 'L'}{sx(v['ratio']):.1f},{sy(v['speed']):.1f}"
                         for j, (_, v) in enumerate(level_pts))
         if len(level_pts) > 1:
@@ -537,6 +563,8 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
             for (level, strategy), v in sorted(p["deflate"].items()):
                 speed, ratio = v["speed"], v["ratio"]
                 if ratio <= 0 or bool(strategy) != pass_strategies:
+                    continue
+                if level == 0 and not strategy:
                     continue
                 x = sx(ratio)
                 if v["n"] > 1 and v["smax"] > v["smin"]:
