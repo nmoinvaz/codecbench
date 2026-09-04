@@ -408,12 +408,12 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         tip = (f"{names[i]} inflate - {fmt_speed(speed)}, {v['n']} files"
                + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else "")
                + (f", mem {fmt_mem(v['mem'])}" if v["mem"] > 0 else ""))
-        svg.add(f'<path d="M{bx} {y + 8} h{w - 4:.1f} a4 4 0 0 1 4 4 v12 '
+        svg.add(f'<path d="M{bx} {y + 8} h{w - 4:.1f} a4 4 0 0 1 4 4 v8 '
                 f'a4 4 0 0 1 -4 4 h{-(w - 4):.1f} z" fill="{SERIES[i]}">'
                 f'<title>{esc(tip)}</title></path>')
         if v["n"] > 1 and v["smax"] > v["smin"]:
-            svg.add(f'<line x1="{bx + bw * v["smin"] / bar_max:.1f}" y1="{y + 18}" '
-                    f'x2="{bx + min(bw * v["smax"] / bar_max, bw):.1f}" y2="{y + 18}" '
+            svg.add(f'<line x1="{bx + bw * v["smin"] / bar_max:.1f}" y1="{y + 16}" '
+                    f'x2="{bx + min(bw * v["smax"] / bar_max, bw):.1f}" y2="{y + 16}" '
                     f'stroke="{INK_SOFT}" stroke-width="1.5" stroke-opacity="0.4"/>')
         value = fmt_speed(speed)
         if i > 0 and points[0]["inflate"]:
