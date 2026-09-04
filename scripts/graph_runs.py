@@ -147,7 +147,10 @@ def aggregate(runs, corpus_filter):
                 "speed": inflate_data[t]["bytes_per_second"],
                 "cv": inflate_data[t].get("_cv", 0.0),
             }
-    return points
+
+    label_sets = [set().union(*(set(v) for v in c[0].values())) for c in collected if c[0]]
+    corpus = sorted(set.intersection(*label_sets)) if label_sets else []
+    return points, corpus
 
 
 def fmt_speed(bps):
@@ -267,6 +270,24 @@ def machine_line(contexts):
     return ", ".join(parts)
 
 
+def run_warnings(names, runs):
+    """Conditions recorded with a run that make its numbers suspect."""
+    warns = []
+    for i, (_, _, benchmarks, ctx) in enumerate(runs):
+        if ctx.get("cpu_scaling_enabled"):
+            warns.append(f"{names[i]}: cpu scaling enabled")
+        load1 = (ctx.get("load_avg") or [0])[0]
+        ncpus = ctx.get("num_cpus") or 1
+        if load1 > ncpus / 2:
+            warns.append(f"{names[i]}: load {load1:.1f} during run")
+        if "debug" in str(ctx.get("library_build_type", "")).lower():
+            warns.append(f"{names[i]}: debug build")
+        noisy = sum(1 for b in benchmarks.values() if b.get("_cv", 0.0) > 0.03)
+        if noisy:
+            warns.append(f"{names[i]}: cv above 3% on {noisy} benchmarks")
+    return warns
+
+
 def ordered_types(points):
     """Data types on the graph, in registration order, unknown ones last."""
     seen = set().union(*(set(p["inflate_data"]) for p in points))
@@ -287,10 +308,10 @@ def nice_log_ticks(lo, hi):
     return ticks
 
 
-def render(names, versions, machine, points, title, out_path):
+def render(names, versions, machine, corpus_desc, warnings, points, title, out_path):
     data_types = ordered_types(points)
     width = 1080
-    height = 660 if data_types else 486
+    height = (660 if data_types else 486) + (16 if warnings else 0)
     svg = Svg(width, height)
 
     svg.text(16, 28, title, size=15, fill=INK, weight="bold")
@@ -335,7 +356,7 @@ def render(names, versions, machine, points, title, out_path):
         r = round(r + rstep, 6)
     svg.line(px, py + ph, px + pw, py + ph, INK_SOFT)
     svg.text(px + pw / 2, py + ph + 40, "compression ratio", size=12, anchor="middle")
-    svg.text(px, py - 22, "deflate, corpus geomean", size=12, fill=INK)
+    svg.text(px, py - 22, f"deflate, {corpus_desc}", size=12, fill=INK)
 
     # Direction-of-better hint, up and right is faster and smaller output
     better_arrow(svg, px + pw - 128, py + 82, px + pw - 40, py + 24)
@@ -419,7 +440,7 @@ def render(names, versions, machine, points, title, out_path):
 
     # Inflate panel, throughput bars
     bx, by, bw = 800, 76, 240
-    svg.text(bx, by - 22, "inflate, corpus geomean", size=12, fill=INK)
+    svg.text(bx, by - 22, f"inflate, {corpus_desc}", size=12, fill=INK)
     bar_max = max((p["inflate"]["speed"] for p in points if p["inflate"]), default=0)
     row_h = 66 if len(points) <= 2 else 48
     for i, p in enumerate(points):
@@ -496,6 +517,11 @@ def render(names, versions, machine, points, title, out_path):
                 marker(svg, "circle", x, dy(speed), SERIES[i], tip)
         better_arrow(svg, dpx + 26, dpy + 78, dpx + 26, dpy + 20)
 
+    # Warning badge above the footnote, never color alone
+    if warnings:
+        svg.text(16, height - 28, "\u26a0", size=10, fill="#c98500")
+        svg.text(30, height - 28, " \u00b7 ".join(warnings), size=10)
+
     # Version and machine footnote
     note = "  \u00b7  ".join([f"{names[i]} {versions[i]}".strip() for i in range(len(names))]
                         + ([machine] if machine else []))
@@ -563,15 +589,24 @@ def main():
     machine = machine_line([r[3] for r in runs])
     corpus_filter = re.compile(args.filter) if args.filter else None
 
-    points = aggregate(runs, corpus_filter)
+    points, corpus = aggregate(runs, corpus_filter)
+    if len(corpus) == 1:
+        corpus_desc = corpus[0]
+    elif corpus:
+        corpus_desc = f"geomean of {len(corpus)} corpus files"
+    else:
+        corpus_desc = "corpus geomean"
+    warnings = run_warnings(names, runs)
     title = args.title or " vs ".join(names)
     out = args.output or "_vs_".join(names).replace("/", "_") + ".svg"
 
     for i in range(len(runs)):
         if versions[i]:
             print(f"{names[i]} {versions[i]}")
+    for w in warnings:
+        print(f"warning: {w}")
     print_table(names, points)
-    render(names, versions, machine, points, title, out)
+    render(names, versions, machine, corpus_desc, warnings, points, title, out)
     print(f"\nwrote {out}")
 
 
