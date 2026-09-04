@@ -11,7 +11,7 @@
  * Decompression input is always produced by zlib-ng at level 9, so every
  * backend inflates identical streams. All output is verified against the
  * original file contents. Deflate strategy variants are registered only by
- * backends that declare CODEC_STRATEGIES, currently just zlib-ng.
+ * backends that declare CODEC_STRATEGIES.
  */
 
 #include <stdio.h>
@@ -36,7 +36,6 @@ static std::vector<corpus_file> corpora_files;
 
 class codec_deflate : public benchmark::Fixture {
 private:
-    corpus_file *cf;
     int level;
     int strategy;
     uint8_t *outbuff;
@@ -45,15 +44,25 @@ private:
     codec_compressor comp;
     bool comp_init;
 
+protected:
+    corpus_file *cf;
+
+    /* Make cf->data available, or leave it NULL on failure */
+    virtual void acquire_data() {
+        load_corpus_file(cf);
+    }
+    virtual void release_data() {}
+
 public:
     codec_deflate(const std::string &name, corpus_file *cf, int level, int strategy = Z_DEFAULT_STRATEGY)
-        : cf(cf), level(level), strategy(strategy), outbuff(NULL), outbuff_size(0),
-          compressed_size(0), comp(), comp_init(false) {
+        : level(level), strategy(strategy), outbuff(NULL), outbuff_size(0),
+          compressed_size(0), comp(), comp_init(false), cf(cf) {
         this->SetName(name);
     }
 
     void SetUp(const benchmark::State &) override {
-        if (!load_corpus_file(cf))
+        acquire_data();
+        if (cf->data == NULL)
             return;
 
 #ifdef CODEC_STRATEGIES
@@ -94,6 +103,9 @@ public:
         state.SetBytesProcessed((int64_t)state.iterations() * (int64_t)cf->size);
         state.counters["compressed"] = benchmark::Counter(double(compressed_size));
         state.counters["ratio"] = benchmark::Counter(double(cf->size) / double(compressed_size));
+#ifdef CODEC_HAS_MEM
+        state.counters["mem"] = benchmark::Counter(double(comp.mem()));
+#endif
     }
 
     void TearDown(const benchmark::State &) override {
@@ -103,6 +115,30 @@ public:
         }
         free(outbuff);
         outbuff = NULL;
+        release_data();
+    }
+};
+
+/* Synthetic data-type compression, isolates encoder paths by input composition */
+class codec_deflate_type : public codec_deflate {
+private:
+    enum test_data_type type;
+    corpus_file synth;
+
+public:
+    codec_deflate_type(const std::string &name, enum test_data_type type, int level)
+        : codec_deflate(name, NULL, level), type(type), synth{"", NULL, 1024 * 1024} {
+        cf = &synth;
+    }
+
+protected:
+    void acquire_data() override {
+        synth.data = gen_test_data(type, synth.size);
+    }
+
+    void release_data() override {
+        free(synth.data);
+        synth.data = NULL;
     }
 };
 
@@ -165,6 +201,9 @@ public:
         state.SetBytesProcessed((int64_t)state.iterations() * (int64_t)cf->size);
         state.counters["compressed"] = benchmark::Counter(double(compressed_size));
         state.counters["ratio"] = benchmark::Counter(double(cf->size) / double(compressed_size));
+#ifdef CODEC_HAS_MEM
+        state.counters["mem"] = benchmark::Counter(double(decomp.mem()));
+#endif
     }
 
     void TearDown(const benchmark::State &) override {
@@ -217,6 +256,8 @@ protected:
     }
 };
 
+#endif /* CODEC_NO_INFLATE */
+
 /* Registered at runtime for the data types selected by --benchmark_data_types */
 static void codec_register_data_types(uint32_t mask) {
     static const struct {
@@ -236,14 +277,24 @@ static void codec_register_data_types(uint32_t mask) {
     for (size_t i = 0; i < sizeof(types) / sizeof(types[0]); i++) {
         if (!(mask & (1u << types[i].type)))
             continue;
+
+        for (size_t l = 0; l < sizeof(codec_levels) / sizeof(codec_levels[0]); l++) {
+            int level = codec_levels[l];
+            std::string name = std::string("codec_deflate/data/") + types[i].name +
+                               "/level:" + std::to_string(level);
+            benchmark::internal::RegisterBenchmarkInternal(
+                ::benchmark::internal::make_unique<codec_deflate_type>(name, types[i].type, level));
+        }
+
+#ifndef CODEC_NO_INFLATE
         std::string name = std::string("codec_inflate/data/") + types[i].name;
         benchmark::internal::RegisterBenchmarkInternal(
             ::benchmark::internal::make_unique<codec_inflate_type>(name, types[i].type));
+#endif
     }
 }
 
 static int codec_data_types = benchmark_data_types_hook(codec_register_data_types);
-#endif /* CODEC_NO_INFLATE */
 
 #ifdef CODEC_STRATEGIES
 static const struct {
