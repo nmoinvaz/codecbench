@@ -691,7 +691,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                     if lo <= v <= hi:
                         yy = fyv(v)
                         svg.line(fx, yy, fx + fw, yy, GRID)
-                        svg.text(fx + 4, yy - 3, fmt_speed(v), size=8)
+                        svg.text(fx + fw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
             svg.line(fx, fy + fh, fx + fw, fy + fh, INK_SOFT)
             for lv in (1, 3, 6, 9, 12):
                 if lvmin <= lv <= lvmax:
