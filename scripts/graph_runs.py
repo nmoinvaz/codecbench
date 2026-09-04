@@ -572,52 +572,58 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
     data_top = max(488, py + ph + 76, right_bottom + 36)
     for pi, (caption, tipword, series) in enumerate(panels):
         types = order_types(set().union(*(set(s) for s in series)))
+        base = series[0]
         dpx, dpy, dpw, dph = 78, data_top + pi * 234, 942, 180
-        svg.text(dpx, dpy - 18, caption, size=12, fill=INK)
-        vals = [s[t]["speed"] for s in series for t in types if t in s]
-        dmin, dmax = min(vals) / 1.6, max(vals) * 1.6
+        svg.text(dpx, dpy - 18, f"{caption}, % of {names[0]}", size=12, fill=INK)
 
-        def dx(idx, count=len(types)):
-            return dpx + (idx + 0.5) / count * dpw
+        pcts = [s[t]["speed"] / base[t]["speed"] * 100.0 for s in series for t in types
+                if t in s and t in base and base[t]["speed"] > 0]
+        if not pcts:
+            continue
+        cap = max(120.0, min(max(pcts) * 1.08, 250.0))
 
-        def dy(speed, lo=dmin, hi=dmax, top=dpy):
-            return top + dph - (math.log10(speed) - math.log10(lo)) / \
-                (math.log10(hi) - math.log10(lo)) * dph
+        def dy(pct, hi=cap, top=dpy):
+            return top + dph - min(pct, hi) / hi * dph
 
-        for v in nice_log_ticks(dmin, dmax):
+        # The 100% reference line carries the comparison, draw it strongest
+        for v in (0, 50, 100, 150, 200, 250):
+            if v > cap:
+                break
             y = dy(v)
-            svg.line(dpx, y, dpx + dpw, y, GRID)
-            svg.text(dpx - 8, y + 4, fmt_speed(v), size=11, anchor="end")
+            svg.line(dpx, y, dpx + dpw, y, INK_SOFT if v == 100 else GRID)
+            svg.text(dpx - 8, y + 4, f"{v}%", size=11, anchor="end")
         svg.line(dpx, dpy + dph, dpx + dpw, dpy + dph, INK_SOFT)
+
+        group = dpw / len(types)
+        nbars = len(series)
+        bar_w = min(14.0, (group - 24) / nbars)
         for j, t in enumerate(types):
-            svg.text(dx(j), dpy + dph + 18, t, size=11, anchor="middle")
-        for i, s in enumerate(series):
-            if not s:
+            gx = dpx + j * group
+            svg.text(gx + group / 2, dpy + dph + 18, t, size=11, anchor="middle")
+            if t not in base or base[t]["speed"] <= 0:
                 continue
-            pts = [(dx(j), dy(s[t]["speed"])) for j, t in enumerate(types) if t in s]
-            path = " ".join(f"{'M' if j == 0 else 'L'}{x:.1f},{y:.1f}"
-                            for j, (x, y) in enumerate(pts))
-            svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
-                    f'stroke-width="2" stroke-opacity="0.65"/>')
-            for j, t in enumerate(types):
+            x0 = gx + (group - nbars * bar_w - (nbars - 1) * 2) / 2
+            for i, s in enumerate(series):
                 if t not in s:
                     continue
                 v = s[t]
-                speed = v["speed"]
-                x = dx(j)
-                if v["cv"] > 0:
-                    y1, y2 = dy(speed * (1 - v["cv"])), dy(speed * (1 + v["cv"]))
-                    svg.add(f'<g stroke="{SERIES[i]}" stroke-opacity="0.7" stroke-width="1.5">'
-                            f'<line x1="{x:.1f}" y1="{y1:.1f}" x2="{x:.1f}" y2="{y2:.1f}"/>'
-                            f'<line x1="{x - 3:.1f}" y1="{y1:.1f}" x2="{x + 3:.1f}" y2="{y1:.1f}"/>'
-                            f'<line x1="{x - 3:.1f}" y1="{y2:.1f}" x2="{x + 3:.1f}" y2="{y2:.1f}"/></g>')
-                tip = (f"{names[i]} {tipword} {t} - {fmt_speed(speed)}"
+                pct = v["speed"] / base[t]["speed"] * 100.0
+                x = x0 + i * (bar_w + 2)
+                ytop = dy(pct)
+                tip = (f"{names[i]} {tipword} {t} - {fmt_speed(v['speed'])}, "
+                       f"{pct:.0f}% of {names[0]}"
                        + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
-                base = series[0].get(t)
-                if i > 0 and base:
-                    tip += f", {(speed - base['speed']) / base['speed'] * 100.0:+.1f}% vs {names[0]}"
-                marker(svg, "circle", x, dy(speed), SERIES[i], tip)
-        better_arrow(svg, dpx + 26, dpy + 78, dpx + 26, dpy + 20)
+                svg.add(f'<rect x="{x:.1f}" y="{ytop:.1f}" width="{bar_w:.1f}" '
+                        f'height="{dpy + dph - ytop:.1f}" rx="1.5" fill="{SERIES[i]}">'
+                        f'<title>{esc(tip)}</title></rect>')
+                if pct > cap:
+                    svg.text(x + bar_w / 2, dpy - 4, f"{pct:.0f}%", size=9, anchor="middle")
+                elif v["cv"] > 0:
+                    xc = x + bar_w / 2
+                    y1, y2 = dy(pct * (1 - v["cv"])), dy(pct * (1 + v["cv"]))
+                    svg.add(f'<line x1="{xc:.1f}" y1="{y1:.1f}" x2="{xc:.1f}" y2="{y2:.1f}" '
+                            f'stroke="{INK_SOFT}" stroke-opacity="0.7" stroke-width="1"/>')
+        better_arrow(svg, dpx + dpw + 18, dpy + 92, dpx + dpw + 18, dpy + 30)
 
     if panels:
         body_bottom = data_top + (len(panels) - 1) * 234 + 198
