@@ -368,19 +368,7 @@ def nice_log_ticks(lo, hi):
 
 def render(names, versions, machine, corpus_desc, warnings, points, title, out_path):
     data_types = ordered_types(points)
-    # A panel per level that at least two runs share, single-run levels stay
-    # in the table and on the scatter
-    dd_panels = []
-    for lv in sorted({k[1] for p in points for k in p["deflate_data"]}):
-        active = sum(1 for p in points if any(k[1] == lv for k in p["deflate_data"]))
-        if active < 2:
-            continue
-        excluded = []
-        for i, p in enumerate(points):
-            if p["deflate_data"] and not any(k[1] == lv for k in p["deflate_data"]):
-                lvs = ",".join(str(l) for l in sorted({k[1] for k in p["deflate_data"]}))
-                excluded.append(f"{names[i]} not shown, only level:{lvs}")
-        dd_panels.append((lv, " · ".join(excluded) or None))
+    dd_types = order_types({k[0] for p in points for k in p["deflate_data"]})
 
     width = 1080
     svg = Svg(width)
@@ -609,11 +597,6 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
     if data_types:
         panels.append(("inflate, synthetic data types", "inflate",
                        [p["inflate_data"] for p in points], None))
-    for lv, note in dd_panels:
-        panels.append((f"deflate level:{lv}, synthetic data types",
-                       f"deflate level:{lv}",
-                       [{k[0]: v for k, v in p["deflate_data"].items() if k[1] == lv}
-                        for p in points], note))
 
     data_top = max(488, py + ph + 76, right_bottom + 36)
     for pi, (caption, tipword, series, note) in enumerate(panels):
@@ -669,6 +652,59 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         body_bottom = data_top + (len(panels) - 1) * 234 + 198
     else:
         body_bottom = max(456, right_bottom)
+
+    # Deflate data types faceted per type, the level ladder on the x axis and
+    # one line per codec, so every level reads as one set of curves
+    if dd_types:
+        gtop = data_top + len(panels) * 234
+        svg.text(78, gtop - 18, "deflate, synthetic data types by level",
+                 size=12, fill=INK)
+        gtop += 18
+        speeds = [v["speed"] for p in points for v in p["deflate_data"].values()]
+        lo, hi = min(speeds) / 1.5, max(speeds) * 1.5
+        lvmax = max(k[1] for p in points for k in p["deflate_data"])
+        cols, fw, fh, gapx, gapy = 4, 217, 130, 24, 48
+        for j, t in enumerate(dd_types):
+            fx = 78 + (j % cols) * (fw + gapx)
+            fy = gtop + (j // cols) * (fh + gapy)
+            svg.text(fx, fy - 5, t, size=11, fill=INK)
+
+            def fyv(s, top=fy):
+                return top + fh - (math.log10(s) - math.log10(lo)) / \
+                    (math.log10(hi) - math.log10(lo)) * fh
+
+            for e in range(6, 12):
+                v = 10.0 ** e
+                if lo <= v <= hi:
+                    yy = fyv(v)
+                    svg.line(fx, yy, fx + fw, yy, GRID)
+                    if j % cols == 0:
+                        svg.text(fx - 6, yy + 3, fmt_speed(v), size=8, anchor="end")
+            svg.line(fx, fy + fh, fx + fw, fy + fh, INK_SOFT)
+            for lv in (0, 3, 6, 9, 12):
+                if lv <= lvmax:
+                    svg.text(fx + lv / lvmax * fw, fy + fh + 12, str(lv),
+                             size=8, anchor="middle")
+            for i, p in enumerate(points):
+                pts = sorted((k[1], v) for k, v in p["deflate_data"].items() if k[0] == t)
+                if not pts:
+                    continue
+                coords = [(fx + lv / lvmax * fw, fyv(v["speed"])) for lv, v in pts]
+                if len(coords) > 1:
+                    path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
+                                    for q, (x, y) in enumerate(coords))
+                    svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
+                            f'stroke-width="1.5" stroke-opacity="0.7"/>')
+                for (lv, v), (x, y) in zip(pts, coords):
+                    tip = (f"{names[i]} deflate level:{lv} {t} - "
+                           f"{fmt_speed(v['speed'])}, ratio {v['ratio']:.3f}"
+                           + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
+                    svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" '
+                            f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
+                            f'<title>{esc(tip)}</title></circle>')
+        rows = (len(dd_types) + cols - 1) // cols
+        better_arrow(svg, 1038, gtop + 92, 1038, gtop + 30)
+        body_bottom = gtop + rows * (fh + gapy) - gapy + 20
 
     # Version and machine footnote, wrapped when the runs make it long
     note_parts = [f"{names[i]} {versions[i]}".strip() for i in range(len(names))]
