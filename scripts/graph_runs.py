@@ -655,46 +655,59 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
 
     # Deflate data types faceted per type, the level ladder on the x axis and
     # one line per codec, so every level reads as one set of curves
-    if dd_types:
+    if dd_types and any(k[1] > 0 for p in points for k in p["deflate_data"]):
         gtop = data_top + len(panels) * 234
         svg.text(78, gtop - 18, "deflate, synthetic data types by level",
                  size=12, fill=INK)
+        svg.text(1020, gtop - 18, "level:0 in the panel above", size=10, anchor="end")
         gtop += 18
-        speeds = [v["speed"] for p in points for v in p["deflate_data"].values()]
-        lo, hi = min(speeds) / 1.5, max(speeds) * 1.5
-        lvmax = max(k[1] for p in points for k in p["deflate_data"])
+        lvs_all = sorted({k[1] for p in points for k in p["deflate_data"] if k[1] > 0})
+        lvmin, lvmax = lvs_all[0], lvs_all[-1]
+
+        def lxp(lv):
+            return (lv - lvmin) / (lvmax - lvmin) if lvmax > lvmin else 0.5
         cols, fw, fh, gapx, gapy = 2, 459, 170, 24, 48
         for j, t in enumerate(dd_types):
             fx = 78 + (j % cols) * (fw + gapx)
             fy = gtop + (j // cols) * (fh + gapy)
             svg.text(fx, fy - 5, t, size=11, fill=INK)
 
-            def fyv(s, top=fy):
-                return top + fh - (math.log10(s) - math.log10(lo)) / \
-                    (math.log10(hi) - math.log10(lo)) * fh
+            # Each facet spans its own range, labeled inside, so within-type
+            # differences use the full height
+            fspeeds = [v["speed"] for p in points
+                       for k, v in p["deflate_data"].items()
+                       if k[0] == t and k[1] > 0]
+            if not fspeeds:
+                continue
+            lo, hi = min(fspeeds) / 1.3, max(fspeeds) * 1.3
+
+            def fyv(s, top=fy, l=lo, h=hi):
+                return top + fh - (math.log10(s) - math.log10(l)) / \
+                    (math.log10(h) - math.log10(l)) * fh
 
             for e in range(6, 12):
-                v = 10.0 ** e
-                if lo <= v <= hi:
-                    yy = fyv(v)
-                    svg.line(fx, yy, fx + fw, yy, GRID)
-                    if j % cols == 0:
-                        svg.text(fx - 6, yy + 3, fmt_speed(v), size=8, anchor="end")
+                for mult in (1, 2, 5):
+                    v = mult * 10.0 ** e
+                    if lo <= v <= hi:
+                        yy = fyv(v)
+                        svg.line(fx, yy, fx + fw, yy, GRID)
+                        svg.text(fx + 4, yy - 3, fmt_speed(v), size=8)
             svg.line(fx, fy + fh, fx + fw, fy + fh, INK_SOFT)
-            for lv in (0, 1, 3, 6, 9, 12):
-                if lv <= lvmax:
-                    svg.text(fx + lv / lvmax * fw, fy + fh + 12, str(lv),
+            for lv in (1, 3, 6, 9, 12):
+                if lvmin <= lv <= lvmax:
+                    svg.text(fx + lxp(lv) * fw, fy + fh + 12, str(lv),
                              size=9, anchor="middle")
             for i, p in enumerate(points):
-                pts = sorted((k[1], v) for k, v in p["deflate_data"].items() if k[0] == t)
+                pts = sorted((k[1], v) for k, v in p["deflate_data"].items()
+                             if k[0] == t and k[1] > 0)
                 if not pts:
                     continue
-                coords = [(fx + lv / lvmax * fw, fyv(v["speed"])) for lv, v in pts]
+                coords = [(fx + lxp(lv) * fw, fyv(v["speed"])) for lv, v in pts]
                 if len(coords) > 1:
                     path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
                                     for q, (x, y) in enumerate(coords))
                     svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
-                            f'stroke-width="1.5" stroke-opacity="0.7"/>')
+                            f'stroke-width="2" stroke-opacity="0.7"/>')
                 for (lv, v), (x, y) in zip(pts, coords):
                     tip = (f"{names[i]} deflate level:{lv} {t} - "
                            f"{fmt_speed(v['speed'])}, ratio {v['ratio']:.3f}"
