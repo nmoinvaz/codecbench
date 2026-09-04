@@ -380,6 +380,9 @@ def render(names, versions, machine, points, title, out_path):
                     tag = stag if level_free.get((i, strategy)) else f"{stag}{level}"
                 else:
                     tag = f"L{level}"
+                base = points[0]["deflate"].get((level, strategy))
+                if i > 0 and len(points) == 2 and base:
+                    tag += f" {(speed - base[0]) / base[0] * 100.0:+.0f}%"
                 label_point(sx(ratio), sy(speed), tag)
     # Labels last so markers never cover them
     for x, y, tag in labeled:
@@ -401,7 +404,10 @@ def render(names, versions, machine, points, title, out_path):
         svg.add(f'<path d="M{bx} {y + 8} h{w - 4:.1f} a4 4 0 0 1 4 4 v12 '
                 f'a4 4 0 0 1 -4 4 h{-(w - 4):.1f} z" fill="{SERIES[i]}">'
                 f'<title>{esc(f"{names[i]} inflate - {fmt_speed(speed)}, {n} files")}</title></path>')
-        svg.text(bx + bw, y, fmt_speed(speed), size=11, fill=INK, anchor="end")
+        value = fmt_speed(speed)
+        if i > 0 and points[0]["inflate"]:
+            value += f" ({(speed - points[0]['inflate'][0]) / points[0]['inflate'][0] * 100.0:+.1f}%)"
+        svg.text(bx + bw, y, value, size=11, fill=INK, anchor="end")
     arrow_y = by + 20 + len(points) * row_h + 2
     better_arrow(svg, bx, arrow_y, bx + 64, arrow_y)
 
@@ -437,6 +443,9 @@ def render(names, versions, machine, points, title, out_path):
             for j, t in enumerate(data_types):
                 speed = p["inflate_data"][t]
                 tip = f"{names[i]} inflate {t} - {fmt_speed(speed)}"
+                base = points[0]["inflate_data"].get(t)
+                if i > 0 and base:
+                    tip += f", {(speed - base) / base * 100.0:+.1f}% vs {names[0]}"
                 marker(svg, "circle", dx(j), dy(speed), SERIES[i], tip)
         better_arrow(svg, dpx + 26, dpy + 78, dpx + 26, dpy + 20)
 
