@@ -572,27 +572,9 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
     data_top = max(488, py + ph + 76, right_bottom + 36)
     for pi, (caption, tipword, series) in enumerate(panels):
         types = order_types(set().union(*(set(s) for s in series)))
-        base = series[0]
         dpx, dpy, dpw, dph = 78, data_top + pi * 234, 942, 180
-        svg.text(dpx, dpy - 18, f"{caption}, vs {names[0]}", size=12, fill=INK)
-
-        pcts = [s[t]["speed"] / base[t]["speed"] * 100.0 for s in series for t in types
-                if t in s and t in base and base[t]["speed"] > 0]
-        if not pcts:
-            continue
-        cap = max(120.0, min(max(pcts) * 1.08, 250.0))
-
-        def dy(pct, hi=cap, top=dpy):
-            return top + dph - min(pct, hi) / hi * dph
-
-        # The reference line is the first run's speed, ticks read as deltas from it
-        for v in (0, 50, 100, 150, 200, 250):
-            if v > cap:
-                break
-            y = dy(v)
-            svg.line(dpx, y, dpx + dpw, y, INK_SOFT if v == 100 else GRID)
-            lbl = "0%" if v == 100 else f"{v - 100:+.0f}%"
-            svg.text(dpx - 8, y + 4, lbl, size=11, anchor="end")
+        svg.text(dpx, dpy - 18, f"{caption}, each group scaled to its fastest",
+                 size=12, fill=INK)
         svg.line(dpx, dpy + dph, dpx + dpw, dpy + dph, INK_SOFT)
 
         group = dpw / len(types)
@@ -600,28 +582,36 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         bar_w = min(14.0, (group - 24) / nbars)
         for j, t in enumerate(types):
             gx = dpx + j * group
+            if j:
+                svg.line(gx, dpy + 8, gx, dpy + dph, GRID)
             svg.text(gx + group / 2, dpy + dph + 18, t, size=11, anchor="middle")
-            if t not in base or base[t]["speed"] <= 0:
+            gvals = [(s[t]["speed"], i) for i, s in enumerate(series) if t in s]
+            if not gvals:
                 continue
+            gmax, gmax_i = max(gvals)
+            scale = (dph - 30) / gmax
             x0 = gx + (group - nbars * bar_w - (nbars - 1) * 2) / 2
             for i, s in enumerate(series):
                 if t not in s:
                     continue
                 v = s[t]
-                pct = v["speed"] / base[t]["speed"] * 100.0
+                h = max(v["speed"] * scale, 2)
                 x = x0 + i * (bar_w + 2)
-                ytop = dy(pct)
-                tip = (f"{names[i]} {tipword} {t} - {fmt_speed(v['speed'])}, "
-                       f"{pct - 100:+.0f}% vs {names[0]}"
+                ytop = dpy + dph - h
+                tip = (f"{names[i]} {tipword} {t} - {fmt_speed(v['speed'])}"
+                       + (f", {(v['speed'] / series[0][t]['speed'] - 1) * 100.0:+.1f}% "
+                          f"vs {names[0]}" if i > 0 and t in series[0] else "")
                        + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
                 svg.add(f'<rect x="{x:.1f}" y="{ytop:.1f}" width="{bar_w:.1f}" '
-                        f'height="{dpy + dph - ytop:.1f}" rx="1.5" fill="{SERIES[i]}">'
+                        f'height="{h:.1f}" rx="1.5" fill="{SERIES[i]}">'
                         f'<title>{esc(tip)}</title></rect>')
-                if pct > cap:
-                    svg.text(x + bar_w / 2, dpy - 4, f"{pct - 100:+.0f}%", size=9, anchor="middle")
-                elif v["cv"] > 0:
+                if i == gmax_i:
+                    svg.text(x + bar_w / 2, ytop - 6, fmt_speed(v["speed"]),
+                             size=9, anchor="middle")
+                if v["cv"] > 0:
                     xc = x + bar_w / 2
-                    y1, y2 = dy(pct * (1 - v["cv"])), dy(pct * (1 + v["cv"]))
+                    y1 = dpy + dph - h * (1 + v["cv"])
+                    y2 = dpy + dph - h * (1 - v["cv"])
                     svg.add(f'<line x1="{xc:.1f}" y1="{y1:.1f}" x2="{xc:.1f}" y2="{y2:.1f}" '
                             f'stroke="{INK_SOFT}" stroke-opacity="0.7" stroke-width="1"/>')
         better_arrow(svg, dpx + dpw + 18, dpy + 92, dpx + dpw + 18, dpy + 30)
