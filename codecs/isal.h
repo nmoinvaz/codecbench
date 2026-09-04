@@ -35,8 +35,10 @@ struct isal_codec_compressor {
     }
 
     size_t bound(size_t in_size) {
-        /* Stored-block worst case leaves headroom for any level. */
-        return in_size + (in_size >> 3) + 512;
+        /* igzip level 0 huffman-codes with its default tables and never emits
+           stored blocks, incompressible input can expand well past the
+           deflate stored-block worst case. */
+        return in_size + (in_size >> 1) + 4096;
     }
 
     /* Returns compressed size, 0 on failure */
