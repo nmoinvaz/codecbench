@@ -300,6 +300,7 @@ def machine_line(contexts):
 def run_warnings(names, runs):
     """Conditions recorded with a run that make its numbers suspect."""
     warns = []
+    noisy = []
     for i, (_, _, benchmarks, ctx) in enumerate(runs):
         if ctx.get("cpu_scaling_enabled"):
             warns.append(f"{names[i]}: cpu scaling enabled")
@@ -309,9 +310,11 @@ def run_warnings(names, runs):
             warns.append(f"{names[i]}: load {load1:.1f} during run")
         if "debug" in str(ctx.get("library_build_type", "")).lower():
             warns.append(f"{names[i]}: debug build")
-        noisy = sum(1 for b in benchmarks.values() if b.get("_cv", 0.0) > 0.03)
-        if noisy:
-            warns.append(f"{names[i]}: cv above 3% on {noisy} benchmarks")
+        n = sum(1 for b in benchmarks.values() if b.get("_cv", 0.0) > 0.03)
+        if n:
+            noisy.append(f"{names[i]} {n}")
+    if noisy:
+        warns.append("benchmarks with cv above 3%: " + ", ".join(noisy))
     return warns
 
 
@@ -619,17 +622,24 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         body_bottom = data_top + (len(panels) - 1) * 234 + 198
     else:
         body_bottom = max(456, right_bottom)
-    height = body_bottom + 28 + (16 if warnings else 0)
+
+    # Version and machine footnote, wrapped when the runs make it long
+    note_parts = [f"{names[i]} {versions[i]}".strip() for i in range(len(names))]
+    note = "  \u00b7  ".join(note_parts + ([machine] if machine else []))
+    two_lines = machine and len(note) > 155
+    height = body_bottom + 28 + (14 if two_lines else 0) + (16 if warnings else 0)
+    y = height - 12
+    if two_lines:
+        svg.text(16, y, machine, size=10)
+        y -= 14
+        svg.text(16, y, "  \u00b7  ".join(note_parts), size=10)
+    else:
+        svg.text(16, y, note, size=10)
 
     # Warning badge above the footnote, never color alone
     if warnings:
-        svg.text(16, height - 28, "\u26a0", size=10, fill="#c98500")
-        svg.text(30, height - 28, " \u00b7 ".join(warnings), size=10)
-
-    # Version and machine footnote
-    note = "  \u00b7  ".join([f"{names[i]} {versions[i]}".strip() for i in range(len(names))]
-                        + ([machine] if machine else []))
-    svg.text(16, height - 12, note, size=10)
+        svg.text(16, y - 16, "\u26a0", size=10, fill="#c98500")
+        svg.text(30, y - 16, " \u00b7 ".join(warnings), size=10)
 
     with open(out_path, "w") as f:
         f.write(svg.finish(height))
