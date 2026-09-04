@@ -82,6 +82,7 @@ def collect(benchmarks, corpus_filter):
     deflate = {}
     inflate = {}
     inflate_data = {}
+    deflate_data = {}
     for name, b in benchmarks.items():
         m = NAME_RE.match(name)
         if m is None or "bytes_per_second" not in b:
@@ -90,6 +91,8 @@ def collect(benchmarks, corpus_filter):
         if label.startswith("data/"):
             if m.group("kind") == "inflate":
                 inflate_data[label[len("data/"):]] = b
+            elif m.group("level"):
+                deflate_data[(label[len("data/"):], int(m.group("level")))] = b
             continue
         if corpus_filter and not corpus_filter.search(label):
             continue
@@ -98,7 +101,7 @@ def collect(benchmarks, corpus_filter):
             deflate.setdefault(key, {})[label] = b
         else:
             inflate[label] = b
-    return deflate, inflate, inflate_data
+    return deflate, inflate, inflate_data, deflate_data
 
 
 def aggregate(runs, corpus_filter):
@@ -108,7 +111,8 @@ def aggregate(runs, corpus_filter):
     that share each benchmark group, so codecs summarize identical inputs.
     """
     collected = [collect(b, corpus_filter) for _, _, b, _ in runs]
-    points = [{"deflate": {}, "inflate": None, "inflate_data": {}} for _ in collected]
+    points = [{"deflate": {}, "inflate": None, "inflate_data": {}, "deflate_data": {}}
+              for _ in collected]
 
     for key in sorted(set().union(*(set(c[0]) for c in collected))):
         have = [i for i, c in enumerate(collected) if key in c[0]]
@@ -128,7 +132,7 @@ def aggregate(runs, corpus_filter):
 
     with_inflate = [set(c[1]) for c in collected if c[1]]
     common_inflate = sorted(set.intersection(*with_inflate)) if with_inflate else []
-    for i, (_, inflate, _) in enumerate(collected):
+    for i, (_, inflate, _, _) in enumerate(collected):
         labels = common_inflate if common_inflate else sorted(inflate)
         rows = [inflate[l] for l in labels if l in inflate]
         if rows:
@@ -141,11 +145,21 @@ def aggregate(runs, corpus_filter):
 
     with_types = [set(c[2]) for c in collected if c[2]]
     common_types = set.intersection(*with_types) if with_types else set()
-    for i, (_, _, inflate_data) in enumerate(collected):
+    for i, (_, _, inflate_data, _) in enumerate(collected):
         for t in common_types & set(inflate_data):
             points[i]["inflate_data"][t] = {
                 "speed": inflate_data[t]["bytes_per_second"],
                 "cv": inflate_data[t].get("_cv", 0.0),
+            }
+
+    with_ddata = [set(c[3]) for c in collected if c[3]]
+    common_dd = set.intersection(*with_ddata) if with_ddata else set()
+    for i, (_, _, _, deflate_data) in enumerate(collected):
+        for k in common_dd & set(deflate_data):
+            points[i]["deflate_data"][k] = {
+                "speed": deflate_data[k]["bytes_per_second"],
+                "ratio": deflate_data[k].get("ratio", 0.0),
+                "cv": deflate_data[k].get("_cv", 0.0),
             }
 
     label_sets = [set().union(*(set(v) for v in c[0].values())) for c in collected if c[0]]
@@ -288,12 +302,15 @@ def run_warnings(names, runs):
     return warns
 
 
-def ordered_types(points):
-    """Data types on the graph, in registration order, unknown ones last."""
-    seen = set().union(*(set(p["inflate_data"]) for p in points))
+def order_types(seen):
+    """Data types in registration order, unknown ones last."""
     types = [t for t in DATA_TYPE_ORDER if t in seen]
-    types += sorted(seen - set(DATA_TYPE_ORDER))
-    return types
+    return types + sorted(set(seen) - set(DATA_TYPE_ORDER))
+
+
+def ordered_types(points):
+    """Inflate data types on the graph, in registration order."""
+    return order_types(set().union(*(set(p["inflate_data"]) for p in points)))
 
 
 def nice_log_ticks(lo, hi):
@@ -310,8 +327,16 @@ def nice_log_ticks(lo, hi):
 
 def render(names, versions, machine, corpus_desc, warnings, points, title, out_path):
     data_types = ordered_types(points)
+    dd_levels = None
+    for p in points:
+        if p["deflate_data"]:
+            levels = {k[1] for k in p["deflate_data"]}
+            dd_levels = levels if dd_levels is None else dd_levels & levels
+    dlevel = (6 if 6 in dd_levels else max(dd_levels)) if dd_levels else None
+
     width = 1080
-    height = (660 if data_types else 486) + (16 if warnings else 0)
+    n_panels = (1 if data_types else 0) + (1 if dlevel is not None else 0)
+    height = 486 + 174 * n_panels + (16 if warnings else 0)
     svg = Svg(width, height)
 
     svg.text(16, 28, title, size=15, fill=INK, weight="bold")
@@ -469,38 +494,50 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
     arrow_y = by + 20 + len(points) * row_h + 2
     better_arrow(svg, bx, arrow_y, bx + 64, arrow_y)
 
-    # Data-type inflate panel, one line per codec across the synthetic types
+    # Synthetic data-type line panels, inflate plus deflate at one level
+    panels = []
     if data_types:
-        dpx, dpy, dpw, dph = 78, 488, 942, 120
-        svg.text(dpx, dpy - 18, "inflate, synthetic data types", size=12, fill=INK)
-        vals = [p["inflate_data"][t]["speed"] for p in points for t in data_types
-                if t in p["inflate_data"]]
+        panels.append(("inflate, synthetic data types", "inflate",
+                       [p["inflate_data"] for p in points]))
+    if dlevel is not None:
+        panels.append((f"deflate level:{dlevel}, synthetic data types",
+                       f"deflate level:{dlevel}",
+                       [{k[0]: v for k, v in p["deflate_data"].items() if k[1] == dlevel}
+                        for p in points]))
+
+    for pi, (caption, tipword, series) in enumerate(panels):
+        types = order_types(set().union(*(set(s) for s in series)))
+        dpx, dpy, dpw, dph = 78, 488 + pi * 174, 942, 120
+        svg.text(dpx, dpy - 18, caption, size=12, fill=INK)
+        vals = [s[t]["speed"] for s in series for t in types if t in s]
         dmin, dmax = min(vals) / 1.6, max(vals) * 1.6
 
-        def dx(idx):
-            return dpx + (idx + 0.5) / len(data_types) * dpw
+        def dx(idx, count=len(types)):
+            return dpx + (idx + 0.5) / count * dpw
 
-        def dy(speed):
-            return dpy + dph - (math.log10(speed) - math.log10(dmin)) / \
-                (math.log10(dmax) - math.log10(dmin)) * dph
+        def dy(speed, lo=dmin, hi=dmax, top=dpy):
+            return top + dph - (math.log10(speed) - math.log10(lo)) / \
+                (math.log10(hi) - math.log10(lo)) * dph
 
         for v in nice_log_ticks(dmin, dmax):
             y = dy(v)
             svg.line(dpx, y, dpx + dpw, y, GRID)
             svg.text(dpx - 8, y + 4, fmt_speed(v), size=11, anchor="end")
         svg.line(dpx, dpy + dph, dpx + dpw, dpy + dph, INK_SOFT)
-        for j, t in enumerate(data_types):
+        for j, t in enumerate(types):
             svg.text(dx(j), dpy + dph + 18, t, size=11, anchor="middle")
-        for i, p in enumerate(points):
-            if not p["inflate_data"]:
+        for i, s in enumerate(series):
+            if not s:
                 continue
-            path = " ".join(
-                f"{'M' if j == 0 else 'L'}{dx(j):.1f},{dy(p['inflate_data'][t]['speed']):.1f}"
-                for j, t in enumerate(data_types))
+            pts = [(dx(j), dy(s[t]["speed"])) for j, t in enumerate(types) if t in s]
+            path = " ".join(f"{'M' if j == 0 else 'L'}{x:.1f},{y:.1f}"
+                            for j, (x, y) in enumerate(pts))
             svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
                     f'stroke-width="2" stroke-opacity="0.65"/>')
-            for j, t in enumerate(data_types):
-                v = p["inflate_data"][t]
+            for j, t in enumerate(types):
+                if t not in s:
+                    continue
+                v = s[t]
                 speed = v["speed"]
                 x = dx(j)
                 if v["cv"] > 0:
@@ -509,9 +546,9 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                             f'<line x1="{x:.1f}" y1="{y1:.1f}" x2="{x:.1f}" y2="{y2:.1f}"/>'
                             f'<line x1="{x - 3:.1f}" y1="{y1:.1f}" x2="{x + 3:.1f}" y2="{y1:.1f}"/>'
                             f'<line x1="{x - 3:.1f}" y1="{y2:.1f}" x2="{x + 3:.1f}" y2="{y2:.1f}"/></g>')
-                tip = (f"{names[i]} inflate {t} - {fmt_speed(speed)}"
+                tip = (f"{names[i]} {tipword} {t} - {fmt_speed(speed)}"
                        + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
-                base = points[0]["inflate_data"].get(t)
+                base = series[0].get(t)
                 if i > 0 and base:
                     tip += f", {(speed - base['speed']) / base['speed'] * 100.0:+.1f}% vs {names[0]}"
                 marker(svg, "circle", x, dy(speed), SERIES[i], tip)
@@ -559,6 +596,14 @@ def print_table(names, points):
         ratios = "  " + " ".join(
             f"{(format(v['ratio'], '.4f') if v else '-'):>14}" for v in vals)
         print(f"{tag:<22} " + speed_cells([v["speed"] if v else None for v in vals]) + ratios)
+
+    dd_keys = sorted(
+        set().union(*(set(p["deflate_data"]) for p in points)),
+        key=lambda k: (DATA_TYPE_ORDER.index(k[0]) if k[0] in DATA_TYPE_ORDER else 9, k[1]))
+    for t, l in dd_keys:
+        print(f"{f'deflate/{t}:{l}':<22} " + speed_cells(
+            [p["deflate_data"][(t, l)]["speed"] if (t, l) in p["deflate_data"] else None
+             for p in points]))
 
     print(f"{'inflate':<22} "
           + speed_cells([p["inflate"]["speed"] if p["inflate"] else None for p in points]))
