@@ -916,7 +916,10 @@ def main():
     else:
         corpus_desc = "corpus geomean"
     warnings = run_warnings(names, runs)
+    # A long "a vs b vs c" chain collides with the legend, collapse it
     title = args.title or " vs ".join(names)
+    if not args.title and len(title) > 48:
+        title = f"{names[0]} vs {len(names) - 1} other codecs"
     out = args.output or "_vs_".join(names).replace("/", "_") + ".svg"
 
     for i in range(len(runs)):
