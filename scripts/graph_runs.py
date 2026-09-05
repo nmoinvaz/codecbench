@@ -32,10 +32,26 @@ SURFACE = "#fcfcfb"
 INK = "#0b0b0b"
 INK_SOFT = "#52514e"
 GRID = "#e7e6e2"
+WARN = "#c98500"
 # Categorical slots in fixed order, assigned by run position, never cycled.
 # The neutral ninth slot is for a run of least interest, order inputs so.
 SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100",
           "#e87ba4", "#008300", "#4a3aa7", "#e34948", "#7a7668"]
+
+# Dark-mode counterparts, the same hues re-stepped for the dark surface.
+# Colors absent here keep their light value in both modes.
+DARK = {
+    SURFACE: "#201f1d",
+    INK: "#e8e6e3",
+    INK_SOFT: "#a8a49d",
+    GRID: "#343230",
+    WARN: "#d69a2d",
+    "#eb6834": "#dd5c26",
+    "#eda100": "#c08800",
+    "#e87ba4": "#d1678f",
+    "#4a3aa7": "#7263cf",
+    "#7a7668": "#948e82",
+}
 
 STRATEGY_ORDER = ["filtered", "huffman", "rle", "fixed"]
 
@@ -232,10 +248,15 @@ class Svg:
                  f'stroke="{stroke}" stroke-width="{width}"/>')
 
     def finish(self, height):
+        # Attribute selectors outrank presentation attributes, so dark mode
+        # swaps every themed color in place without touching the body markup.
+        rules = "".join(f'[fill="{l}"]{{fill:{d}}}[stroke="{l}"]{{stroke:{d}}}'
+                        for l, d in DARK.items())
         header = [
             f'<svg xmlns="http://www.w3.org/2000/svg" width="{self.w}" '
             f'height="{height}" viewBox="0 0 {self.w} {height}" '
             f'font-family="system-ui, sans-serif">',
+            f'<style>@media (prefers-color-scheme: dark){{{rules}}}</style>',
             f'<rect width="{self.w}" height="{height}" fill="{SURFACE}"/>']
         return "\n".join(header + self.parts + ["</svg>"]) + "\n"
 
@@ -818,7 +839,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
 
     # Warning badge above the footnote, never color alone
     if warnings:
-        svg.text(16, y - 16, "\u26a0", size=10, fill="#c98500")
+        svg.text(16, y - 16, "\u26a0", size=10, fill=WARN)
         svg.text(30, y - 16, " \u00b7 ".join(warnings), size=10)
 
     # Repository link on the bottom line
