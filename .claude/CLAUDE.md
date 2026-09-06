@@ -28,7 +28,7 @@
   `git clone https://github.com/zlib-ng/corpora test/data/corpora`.
 - Synthetic inputs are selected with `--benchmark_data_types=<type,...|all>`
   (text, short_match, dna, random, literals, mixed, realistic_rgb,
-  striped_rgb, phased, runs, far_match, records). Each type registers deflate
+  striped_rgb, phased, runs, far_match, records, dist). Each type registers deflate
   per level plus inflate at 128 KiB, and a DRAM-resident
   `codec_inflate/data/<type>/size:8388608` variant, the in-cache and 8 MiB
   runs rank the backends differently. The generators are vendored in `test_data.h` so input

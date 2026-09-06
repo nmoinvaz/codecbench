@@ -155,6 +155,29 @@ protected:
     }
 };
 
+/* Fixed-period compression, matches at exactly one distance */
+class codec_deflate_dist : public codec_deflate {
+private:
+    size_t dist;
+    corpus_file synth;
+
+public:
+    codec_deflate_dist(const std::string &name, size_t dist, int level)
+        : codec_deflate(name, NULL, level), dist(dist), synth{"", NULL, CODEC_DATA_SIZE} {
+        cf = &synth;
+    }
+
+protected:
+    void acquire_data() override {
+        synth.data = gen_dist_data(synth.size, dist);
+    }
+
+    void release_data() override {
+        free(synth.data);
+        synth.data = NULL;
+    }
+};
+
 #ifndef CODEC_NO_INFLATE
 /* Shared decompression benchmark, subclasses point cf at the original data */
 class codec_inflate_base : public benchmark::Fixture {
@@ -261,6 +284,29 @@ public:
 protected:
     void acquire_data() override {
         synth.data = gen_test_data(type, synth.size);
+    }
+
+    void release_data() override {
+        free(synth.data);
+        synth.data = NULL;
+    }
+};
+
+/* Fixed-period decompression, matches at exactly one distance */
+class codec_inflate_dist : public codec_inflate_base {
+private:
+    size_t dist;
+    corpus_file synth;
+
+public:
+    codec_inflate_dist(const std::string &name, size_t dist)
+        : codec_inflate_base(name), dist(dist), synth{"", NULL, CODEC_DATA_SIZE} {
+        cf = &synth;
+    }
+
+protected:
+    void acquire_data() override {
+        synth.data = gen_dist_data(synth.size, dist);
     }
 
     void release_data() override {
@@ -392,6 +438,26 @@ static void codec_register_data_types(uint32_t mask) {
                 name + "/size:" + std::to_string(CODEC_DATA_LARGE_SIZE), types[i].type,
                 CODEC_DATA_LARGE_SIZE));
 #endif
+    }
+
+    /* One benchmark per match distance across the copy dispatch arms, deflate
+       at the first lazy level and inflate on the same periodic stream */
+    if (mask & (1u << TEST_DATA_DIST)) {
+        bool has_level6 = false;
+        for (size_t l = 0; l < sizeof(codec_levels) / sizeof(codec_levels[0]); l++)
+            has_level6 |= codec_levels[l] == 6;
+        for (size_t d = 1; d <= 16; d++) {
+            if (has_level6) {
+                std::string name = "codec_deflate/data/dist:" + std::to_string(d) + "/level:6";
+                benchmark::internal::RegisterBenchmarkInternal(
+                    ::benchmark::internal::make_unique<codec_deflate_dist>(name, d, 6));
+            }
+#ifndef CODEC_NO_INFLATE
+            benchmark::internal::RegisterBenchmarkInternal(
+                ::benchmark::internal::make_unique<codec_inflate_dist>(
+                    "codec_inflate/data/dist:" + std::to_string(d), d));
+#endif
+        }
     }
 }
 

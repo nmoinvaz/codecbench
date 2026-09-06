@@ -447,6 +447,25 @@ static inline uint8_t *gen_records_data(size_t bufsize) {
     return buf;
 }
 
+/* Strictly periodic bytes with period dist. Deflate emits back-to-back
+   maximum-length matches at exactly that distance, so each distance
+   isolates one arm of the inflate copy dispatch and one hash-insertion
+   pattern in deflate. */
+static inline uint8_t *gen_dist_data(size_t bufsize, size_t dist) {
+    uint8_t *buf = (uint8_t *)malloc(bufsize);
+    if (buf == NULL)
+        return NULL;
+    uint32_t rng = 0x51ed270b;
+    size_t i = 0;
+    for (; i < dist && i < bufsize; i++) {
+        rng = rng * 1103515245u + 12345u;
+        buf[i] = (uint8_t)(rng >> 24);
+    }
+    for (; i < bufsize; i++)
+        buf[i] = buf[i - dist];
+    return buf;
+}
+
 /* Each variant targets a distinct shape of deflate stream. */
 enum test_data_type {
     TEST_DATA_TEXT = 0,         /* mixed literals + short/medium matches */
@@ -461,6 +480,7 @@ enum test_data_type {
     TEST_DATA_RUNS,             /* byte runs, dist=1 matches and RLE */
     TEST_DATA_FAR_MATCH,        /* matches at distances spread across the window */
     TEST_DATA_RECORDS,          /* dense short matches at a fixed record stride */
+    TEST_DATA_DIST,             /* periodic input, one benchmark per match distance */
     TEST_DATA_COUNT
 };
 
@@ -478,6 +498,7 @@ static inline const char *test_data_type_name(int data_type) {
         case TEST_DATA_RUNS:           return "runs";
         case TEST_DATA_FAR_MATCH:      return "far_match";
         case TEST_DATA_RECORDS:        return "records";
+        case TEST_DATA_DIST:           return "dist";
     }
     return NULL;
 }
@@ -496,6 +517,7 @@ static inline uint8_t *gen_test_data(enum test_data_type data_type, size_t bufsi
         case TEST_DATA_RUNS:           return gen_runs_data(bufsize);
         case TEST_DATA_FAR_MATCH:      return gen_far_match_data(bufsize);
         case TEST_DATA_RECORDS:        return gen_records_data(bufsize);
+        case TEST_DATA_DIST:           break; /* registered with an explicit distance */
         case TEST_DATA_COUNT:          break;
     }
     return NULL;

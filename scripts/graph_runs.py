@@ -116,6 +116,7 @@ def collect(benchmarks, corpus_filter):
     deflate_data = {}
     wbits = {}
     checksum = {}
+    distp = {}
     for name, b in benchmarks.items():
         if "bytes_per_second" not in b:
             continue
@@ -127,6 +128,9 @@ def collect(benchmarks, corpus_filter):
         if m is None:
             continue
         label = m.group("label")
+        if label.startswith("data/dist:"):
+            distp[(m.group("kind"), int(label[len("data/dist:"):]))] = b
+            continue
         if label.startswith("data/"):
             if m.group("kind") == "inflate":
                 inflate_data[label[len("data/"):]] = b
@@ -143,7 +147,7 @@ def collect(benchmarks, corpus_filter):
             deflate.setdefault(key, {})[label] = b
         else:
             inflate[label] = b
-    return deflate, inflate, inflate_data, deflate_data, wbits, checksum
+    return deflate, inflate, inflate_data, deflate_data, wbits, checksum, distp
 
 
 def aggregate(runs, corpus_filter):
@@ -154,7 +158,7 @@ def aggregate(runs, corpus_filter):
     """
     collected = [collect(b, corpus_filter) for _, _, b, _ in runs]
     points = [{"deflate": {}, "inflate": None, "inflate_data": {}, "deflate_data": {},
-               "wbits": {}, "checksum": {}} for _ in collected]
+               "wbits": {}, "checksum": {}, "dist": {}} for _ in collected]
 
     for key in sorted(set().union(*(set(c[0]) for c in collected))):
         have = [i for i, c in enumerate(collected) if key in c[0]]
@@ -191,7 +195,7 @@ def aggregate(runs, corpus_filter):
 
     with_inflate = [set(c[1]) for c in collected if c[1]]
     common_inflate = sorted(set.intersection(*with_inflate)) if with_inflate else []
-    for i, (_, inflate, _, _, _, _) in enumerate(collected):
+    for i, (_, inflate, _, _, _, _, _) in enumerate(collected):
         labels = common_inflate if common_inflate else sorted(inflate)
         rows = [inflate[l] for l in labels if l in inflate]
         if rows:
@@ -205,7 +209,7 @@ def aggregate(runs, corpus_filter):
 
     with_types = [set(c[2]) for c in collected if c[2]]
     common_types = set.intersection(*with_types) if with_types else set()
-    for i, (_, _, inflate_data, _, _, _) in enumerate(collected):
+    for i, (_, _, inflate_data, _, _, _, _) in enumerate(collected):
         for t in common_types & set(inflate_data):
             points[i]["inflate_data"][t] = {
                 "speed": inflate_data[t]["bytes_per_second"],
@@ -215,7 +219,7 @@ def aggregate(runs, corpus_filter):
 
     # Synthetic inputs are pinned generators, identical across runs, so every
     # run keeps its own level set here
-    for i, (_, _, _, deflate_data, _, _) in enumerate(collected):
+    for i, (_, _, _, deflate_data, _, _, _) in enumerate(collected):
         for k in deflate_data:
             points[i]["deflate_data"][k] = {
                 "speed": deflate_data[k]["bytes_per_second"],
@@ -225,11 +229,19 @@ def aggregate(runs, corpus_filter):
             }
 
     # Checksum inputs are pinned random buffers, identical across runs
-    for i, (_, _, _, _, _, checksum) in enumerate(collected):
+    for i, (_, _, _, _, _, checksum, _) in enumerate(collected):
         for k in checksum:
             points[i]["checksum"][k] = {
                 "speed": checksum[k]["bytes_per_second"],
                 "cv": checksum[k].get("_cv", 0.0),
+            }
+
+    # Periodic dist inputs are pinned generators, identical across runs
+    for i, (_, _, _, _, _, _, distp) in enumerate(collected):
+        for k in distp:
+            points[i]["dist"][k] = {
+                "speed": distp[k]["bytes_per_second"],
+                "cv": distp[k].get("_cv", 0.0),
             }
 
     label_sets = [set().union(*(set(v) for v in c[0].values())) for c in collected if c[0]]
@@ -946,6 +958,69 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                             f'<title>{esc(tip)}</title></circle>')
         better_arrow(svg, 1038, ctop + 92, 1038, ctop + 30)
         body_bottom = ctop + cfh + 56
+
+    # Match-distance facets, one benchmark per distance across the copy
+    # dispatch arms, inflate beside deflate at the lazy level
+    dist_kinds = [k for k in ("inflate", "deflate")
+                  if any(key[0] == k for p in points for key in p["dist"])]
+    if dist_kinds:
+        dtop = body_bottom + 66
+        dfw, dfh, dgapx = 459, 170, 24
+        for j, kind in enumerate(dist_kinds):
+            fx = 78 + j * (dfw + dgapx)
+            caption = "inflate speed by match distance" if kind == "inflate" \
+                else "deflate level:6 speed by match distance"
+            svg.text(fx, dtop - 18, caption, size=12, fill=INK)
+
+            dists = sorted({key[1] for p in points
+                            for key in p["dist"] if key[0] == kind})
+            dmin, dmax = dists[0], dists[-1]
+
+            def dx(d, left=fx):
+                if dmax <= dmin:
+                    return left + dfw / 2
+                return left + (d - dmin) / (dmax - dmin) * dfw
+
+            dspeeds = [v["speed"] for p in points
+                       for key, v in p["dist"].items() if key[0] == kind]
+            dlo, dhi = min(dspeeds) / 1.3, max(dspeeds) * 1.3
+
+            def dy(sv, l=dlo, h=dhi, top=dtop):
+                return top + dfh - (math.log10(sv) - math.log10(l)) / \
+                    (math.log10(h) - math.log10(l)) * dfh
+
+            for v in nice_log_ticks(dlo, dhi):
+                yy = dy(v)
+                svg.line(fx, yy, fx + dfw, yy, GRID)
+                svg.text(fx + dfw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
+            svg.line(fx, dtop + dfh, fx + dfw, dtop + dfh, INK_SOFT)
+            for d in dists:
+                if d == 1 or d % 2 == 0:
+                    svg.text(dx(d), dtop + dfh + 14, str(d), size=9, anchor="middle")
+            svg.text(fx + dfw / 2, dtop + dfh + 30, "match distance", size=11,
+                     anchor="middle")
+
+            for i, p in enumerate(points):
+                pts = sorted((key[1], v) for key, v in p["dist"].items()
+                             if key[0] == kind)
+                if not pts:
+                    continue
+                coords = [(dx(d), dy(v["speed"])) for d, v in pts]
+                if len(coords) > 1:
+                    path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
+                                    for q, (x, y) in enumerate(coords))
+                    svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
+                            f'stroke-width="2" stroke-opacity="0.7"/>')
+                for (d, v), (x, y) in zip(pts, coords):
+                    tip = (f"{names[i]} {kind} dist:{d} - {fmt_speed(v['speed'])}"
+                           + (f", {(v['speed'] / points[0]['dist'][(kind, d)]['speed'] - 1) * 100.0:+.1f}% "
+                              f"vs {names[0]}" if i > 0 and (kind, d) in points[0]["dist"] else "")
+                           + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
+                    svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" '
+                            f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
+                            f'<title>{esc(tip)}</title></circle>')
+        better_arrow(svg, 1038, dtop + 92, 1038, dtop + 30)
+        body_bottom = dtop + dfh + 56
 
     # Version and machine footnote, wrapped when the runs make it long
     note_parts = [f"{names[i]} {versions[i]}".strip() for i in range(len(names))]
