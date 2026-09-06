@@ -994,8 +994,9 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                 svg.line(fx, yy, fx + dfw, yy, GRID)
                 svg.text(fx + dfw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
             svg.line(fx, dtop + dfh, fx + dfw, dtop + dfh, INK_SOFT)
+            dtick = 4 if dists[-1] > 16 else 2
             for d in dists:
-                if d == 1 or d % 2 == 0:
+                if d == 1 or d % dtick == 0:
                     svg.text(dx(d), dtop + dfh + 14, str(d), size=9, anchor="middle")
             svg.text(fx + dfw / 2, dtop + dfh + 30, "match distance", size=11,
                      anchor="middle")
