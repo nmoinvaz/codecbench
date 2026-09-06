@@ -371,6 +371,44 @@ static inline uint8_t *gen_runs_data(size_t bufsize) {
     return buf;
 }
 
+/* Copies of earlier content at distances stepped across the full 32 KiB
+   window, separated by fresh literals so neighboring copies cannot merge.
+   Isolates inflate's far-copy path and its window cache misses the way
+   runs isolates dist=1. */
+static inline uint8_t *gen_far_match_data(size_t bufsize) {
+    uint8_t *buf = (uint8_t *)malloc(bufsize);
+    if (buf == NULL)
+        return NULL;
+    uint32_t rng = 0x9e3779b9;
+    /* Seed one full window of random history for the copies to reach into */
+    size_t i = 0;
+    size_t seed = bufsize < 32768 ? bufsize / 2 : 32768;
+    while (i < seed) {
+        rng = rng * 1103515245u + 12345u;
+        buf[i++] = (uint8_t)(rng >> 24);
+    }
+    unsigned shift = 0;
+    while (i < bufsize) {
+        /* Distance cycles 1, 2, 4, 8, 16, 32 KiB */
+        size_t dist = (size_t)1024 << shift;
+        shift = (shift + 1) % 6;
+        if (dist > i)
+            dist = i;
+        rng = rng * 1103515245u + 12345u;
+        size_t len = 64 + ((rng >> 8) & 0x1ff);
+        while (len-- > 0 && i < bufsize) {
+            buf[i] = buf[i - dist];
+            i++;
+        }
+        size_t gap = 8 + ((rng >> 20) & 31);
+        while (gap-- > 0 && i < bufsize) {
+            rng = rng * 1103515245u + 12345u;
+            buf[i++] = (uint8_t)(rng >> 24);
+        }
+    }
+    return buf;
+}
+
 /* Each variant targets a distinct shape of deflate stream. */
 enum test_data_type {
     TEST_DATA_TEXT = 0,         /* mixed literals + short/medium matches */
@@ -383,6 +421,7 @@ enum test_data_type {
     TEST_DATA_STRIPED_RGB,      /* solid R/G/B stripes, long dist=3 matches */
     TEST_DATA_PHASED,           /* regime changes every 16 KiB, block splitting */
     TEST_DATA_RUNS,             /* byte runs, dist=1 matches and RLE */
+    TEST_DATA_FAR_MATCH,        /* matches at distances spread across the window */
     TEST_DATA_COUNT
 };
 
@@ -398,6 +437,7 @@ static inline const char *test_data_type_name(int data_type) {
         case TEST_DATA_STRIPED_RGB:    return "striped_rgb";
         case TEST_DATA_PHASED:         return "phased";
         case TEST_DATA_RUNS:           return "runs";
+        case TEST_DATA_FAR_MATCH:      return "far_match";
     }
     return NULL;
 }
@@ -414,6 +454,7 @@ static inline uint8_t *gen_test_data(enum test_data_type data_type, size_t bufsi
         case TEST_DATA_STRIPED_RGB:    return gen_striped_rgb_data(bufsize);
         case TEST_DATA_PHASED:         return gen_phased_data(bufsize);
         case TEST_DATA_RUNS:           return gen_runs_data(bufsize);
+        case TEST_DATA_FAR_MATCH:      return gen_far_match_data(bufsize);
         case TEST_DATA_COUNT:          break;
     }
     return NULL;

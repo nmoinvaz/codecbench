@@ -364,6 +364,7 @@ static void codec_register_data_types(uint32_t mask) {
         {"phased",        TEST_DATA_PHASED},
         {"runs",          TEST_DATA_RUNS},
         {"striped_rgb",   TEST_DATA_STRIPED_RGB},
+        {"far_match",     TEST_DATA_FAR_MATCH},
     };
 
     for (size_t i = 0; i < sizeof(types) / sizeof(types[0]); i++) {

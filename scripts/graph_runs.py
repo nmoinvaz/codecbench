@@ -59,8 +59,8 @@ DARK = {
 STRATEGY_ORDER = ["filtered", "huffman", "rle", "fixed"]
 
 # registration order in benchmark_codec.cc
-DATA_TYPE_ORDER = ["text", "short_match", "dna", "random",
-                   "literals", "mixed", "realistic_rgb", "striped_rgb"]
+DATA_TYPE_ORDER = ["text", "short_match", "dna", "random", "literals", "mixed",
+                   "realistic_rgb", "phased", "runs", "striped_rgb", "far_match"]
 
 REPO_URL = "https://github.com/nmoinvaz/codecbench"
 

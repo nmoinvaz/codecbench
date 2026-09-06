@@ -28,7 +28,7 @@
   `git clone https://github.com/zlib-ng/corpora test/data/corpora`.
 - Synthetic inputs are selected with `--benchmark_data_types=<type,...|all>`
   (text, short_match, dna, random, literals, mixed, realistic_rgb,
-  striped_rgb, phased, runs). The generators are vendored in `test_data.h` so input
+  striped_rgb, phased, runs, far_match). The generators are vendored in `test_data.h` so input
   definitions stay pinned to this repository.
 
 ## Benchmarking
