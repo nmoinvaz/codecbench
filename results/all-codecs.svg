@@ -22,29 +22,29 @@
 <circle cx="270.4" cy="24" r="5" fill="#2a78d6"/>
 <text x="800.0" y="54.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">inflate, tars/silesia.tar</text>
 <text x="800.0" y="96.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">zlibng</text>
-<path d="M800 104 h220.4 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-220.4 z" fill="#2a78d6"><title>zlibng inflate - 751 MB/s, 1 files, cv 0.8%, mem 41.1 KiB</title></path>
-<text x="1040.0" y="96.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">751 MB/s</text>
+<path d="M800 104 h222.4 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-222.4 z" fill="#2a78d6"><title>zlibng inflate - 758 MB/s, 1 files, cv 1.1%, mem 41.1 KiB</title></path>
+<text x="1040.0" y="96.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">758 MB/s</text>
 <text x="800.0" y="144.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">zlib_rs</text>
 <path d="M800 152 h164.4 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-164.4 z" fill="#eb6834"><title>zlib_rs inflate - 564 MB/s, 1 files, cv 16.6%, mem 46.4 KiB</title></path>
-<text x="1040.0" y="144.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">564 MB/s (-24.9%)</text>
+<text x="1040.0" y="144.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">564 MB/s (-25.6%)</text>
 <text x="800.0" y="192.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">madler_zlib</text>
 <path d="M800 200 h90.7 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-90.7 z" fill="#1baf7a"><title>madler_zlib inflate - 317 MB/s, 1 files, cv 3.9%, mem 7.0 KiB</title></path>
-<text x="1040.0" y="192.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">317 MB/s (-57.8%)</text>
+<text x="1040.0" y="192.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">317 MB/s (-58.2%)</text>
 <text x="800.0" y="240.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">chromium_zlib</text>
 <path d="M800 248 h152.6 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-152.6 z" fill="#eda100"><title>chromium_zlib inflate - 525 MB/s, 1 files, cv 0.2%, mem 8.9 KiB</title></path>
-<text x="1040.0" y="240.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">525 MB/s (-30.2%)</text>
+<text x="1040.0" y="240.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">525 MB/s (-30.8%)</text>
 <text x="800.0" y="288.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">libdeflate</text>
 <path d="M800 296 h236.0 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-236.0 z" fill="#e87ba4"><title>libdeflate inflate - 804 MB/s, 1 files, cv 0.2%</title></path>
-<text x="1040.0" y="288.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">804 MB/s (+7.0%)</text>
+<text x="1040.0" y="288.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">804 MB/s (+6.0%)</text>
 <text x="800.0" y="336.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">isal</text>
 <path d="M800 344 h105.4 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-105.4 z" fill="#008300"><title>isal inflate - 366 MB/s, 1 files, cv 0.1%</title></path>
-<text x="1040.0" y="336.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">366 MB/s (-51.2%)</text>
+<text x="1040.0" y="336.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">366 MB/s (-51.7%)</text>
 <text x="800.0" y="384.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">miniz</text>
 <path d="M800 392 h95.0 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-95.0 z" fill="#4a3aa7"><title>miniz inflate - 332 MB/s, 1 files, cv 3.9%, mem 40.2 KiB</title></path>
-<text x="1040.0" y="384.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">332 MB/s (-55.9%)</text>
+<text x="1040.0" y="384.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">332 MB/s (-56.3%)</text>
 <text x="800.0" y="432.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">libcompression</text>
 <path d="M800 440 h126.8 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-126.8 z" fill="#e34948"><title>libcompression inflate - 438 MB/s, 1 files, cv 0.1%, mem 128.1 KiB</title></path>
-<text x="1040.0" y="432.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">438 MB/s (-41.7%)</text>
+<text x="1040.0" y="432.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">438 MB/s (-42.2%)</text>
 <text x="800.0" y="480.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">slz</text>
 <text x="800.0" y="502.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">no inflate benchmarks</text>
 <g opacity="0.35"><line x1="800.0" y1="530.0" x2="858.0" y2="530.0" stroke="#52514e" stroke-width="2"/><polygon points="864.0,530.0 855.0,534.0 855.0,526.0" fill="#52514e"/><text x="832.0" y="523.0" font-size="11" fill="#52514e" text-anchor="middle" transform="rotate(0.0 832.0 530.0)">better</text></g>
