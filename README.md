@@ -2,12 +2,10 @@
 
 Whole-buffer deflate benchmarks across implementations.
 
-The same benchmark source builds once per codec backend, so every executable
-registers identical benchmark names over the corpora files and synthetic data
-types. Their JSON outputs compare directly with `scripts/compare_runs.py`.
-Decompression input is always produced by zlib-ng at level 9, so every backend
-inflates identical streams, and all output is verified against the original
-data through zlib-ng.
+One benchmark source builds once per backend, every executable registers the
+same benchmark names, and the JSON outputs compare directly with
+`scripts/compare_runs.py`. Every backend inflates identical zlib-ng level 9
+streams, and all output is verified against the original data.
 
 ## Backends
 
@@ -32,22 +30,6 @@ data through zlib-ng.
 [zlib-rs]: https://github.com/trifectatechfoundation/zlib-rs
 [miniz]: https://github.com/richgel999/miniz
 [libcompression]: https://developer.apple.com/documentation/compression
-
-All backends are on by default and fetched at pinned versions during the CMake
-configure. Each `<NAME>_REPOSITORY` / `<NAME>_TAG` pair can be overridden.
-Levels span the full 0-9 ladder, libdeflate continues through `level:12`,
-miniz through `level:10`, igzip spans 0-3, libslz has a single level, and
-libcompression's single fixed quality registers as `level:5`. Deflate
-strategy variants (`/strategy:filtered` etc.) register for zlib-ng, the
-stock zlib API backends (Chromium zlib, madler zlib, zlib-rs), and miniz.
-libdeflate, igzip, libslz, and libcompression have no equivalent.
-windowBits variants (`/level:6/wbits:9` through `15`) sweep the deflate
-lookback window at level 6 for zlib-ng and the stock zlib API backends,
-the rest have no window parameter and miniz accepts only 15.
-Checksum benchmarks (`codec_crc32/size:N`, `codec_adler32/size:N`) sweep
-whole-buffer checksums over a 64 byte to 2 MiB size ladder for every
-backend that exposes them, all but libcompression, with each result
-verified against zlib-ng.
 
 ## Building
 
@@ -79,9 +61,7 @@ build/codecbench_zlibng --benchmark_list_tests=true
 build/codecbench_zlibng --benchmark_filter="silesia" --benchmark_data_types=all
 ```
 
-`--benchmark_data_types=<type,...|all>` selects the synthetic inputs (text,
-short_match, dna, random, literals, mixed, realistic_rgb, striped_rgb),
-registering deflate variants per level plus an inflate variant for each.
+`--benchmark_data_types=<type,...|all>` selects the synthetic inputs.
 zlib API backends also report peak per-stream bytes as a `mem` counter.
 `--benchmark_cooldown=<seconds>` sleeps between benchmark families to mitigate
 thermal throttling.
@@ -94,23 +74,6 @@ build/codecbench_libdeflate --benchmark_out=libdeflate.json --benchmark_out_form
 scripts/compare_runs.py zlibng.json libdeflate.json
 ```
 
-## Graphing
-
-`scripts/graph_runs.py` turns two or more runs into a speed versus ratio SVG,
-one point per level and strategy aggregated across the corpus files common to
-the runs, with inflate throughput, data-type line panels, a windowBits speed
-panel, crc32 and adler32 speed-by-size facets, repetition error bars, delta
-annotations, and machine specs. An aggregate table prints to
-stdout. It needs only the Python standard library.
-
-```sh
-scripts/graph_runs.py zlibng.json libdeflate.json -o zlibng_vs_libdeflate.svg
-```
-
-All nine backends on silesia.tar:
-
-![All codecs, deflate speed versus ratio on silesia.tar](results/all-codecs.svg)
-
 ## Benchmarking a local zlib-ng
 
 Point the reference backend at a checkout instead of the pinned release to
@@ -120,3 +83,29 @@ measure work in progress:
 cmake -B build -D ZLIBNG_SOURCE_DIR=~/Source/zlib-ng
 cmake --build build -j
 ```
+
+## Graphing
+
+`scripts/graph_runs.py` turns two or more runs into a multi-panel speed versus
+ratio SVG and prints an aggregate table. It needs only the Python standard
+library.
+
+```sh
+scripts/graph_runs.py zlibng.json libdeflate.json -o zlibng_vs_libdeflate.svg
+```
+
+## Results
+
+All nine backends on silesia.tar:
+
+![All codecs, deflate speed versus ratio on silesia.tar](results/all-codecs.svg)
+
+## Similar benchmarks
+
+* [deflatebench] compares zlib-ng builds over single-stream runs.
+* [TurboBench](https://github.com/powturbo/TurboBench) benchmarks many
+  compressors in one binary.
+* [lzbench](https://github.com/inikep/lzbench) is an in-memory benchmark of
+  open-source compressors.
+* [squash-benchmark](https://github.com/quixdb/squash-benchmark) benchmarks
+  the algorithms behind the Squash abstraction layer.
