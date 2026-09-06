@@ -5,8 +5,9 @@ Plots the codec_deflate benchmarks as a speed versus ratio chart, one point
 per level and strategy aggregated across the corpus files common to the
 runs, and the codec_inflate corpus benchmarks as a throughput panel. Levels
 are connected in order, strategy variants get their own marker shapes.
-Synthetic data-type benchmarks (codec_inflate/data/<type>) common to the
-runs get their own line panel, one line per codec across the types.
+Synthetic data-type benchmarks are faceted per type, the deflate level
+ladder as one line per codec with inflate dot columns beside it, whole-buffer
+at 128 KiB and the DRAM-resident size:8388608 variant.
 windowBits variants (level:N/wbits:M) get a speed line panel at the bottom,
 one line per codec across the window sizes. Checksum benchmarks
 (codec_crc32/size:N, codec_adler32/size:N) get side-by-side line facets,
@@ -674,18 +675,6 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
 
     # Synthetic data-type line panels, inflate plus deflate at one level
     panels = []
-    if data_types:
-        base = [{t: v for t, v in p["inflate_data"].items() if "/size:" not in t}
-                for p in points]
-        panels.append(("inflate, synthetic data types", "inflate", base, None))
-        sizes = sorted({int(t.partition("/size:")[2]) for p in points
-                        for t in p["inflate_data"] if "/size:" in t})
-        for size in sizes:
-            suffix = f"/size:{size}"
-            large = [{t[:-len(suffix)]: v for t, v in p["inflate_data"].items()
-                      if t.endswith(suffix)} for p in points]
-            panels.append((f"inflate, synthetic data types at {fmt_bytes(size)}iB",
-                           f"inflate {fmt_bytes(size)}iB", large, None))
 
     data_top = max(488, py + ph + 76, right_bottom + 36)
     for pi, (caption, tipword, series, note) in enumerate(panels):
@@ -742,20 +731,25 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
     else:
         body_bottom = max(456, right_bottom)
 
-    # Deflate data types faceted per type, the level ladder on the x axis and
-    # one line per codec, so every level reads as one set of curves
+    # Synthetic data types faceted per type, the deflate level ladder on the
+    # x axis with one line per codec, and inflate dot columns at the right,
+    # whole-buffer at 128 KiB and DRAM-resident at 8 MiB
     if dd_types and any(k[1] > 0 for p in points for k in p["deflate_data"]):
         gtop = data_top + len(panels) * 234
-        svg.text(78, gtop - 18, "deflate, synthetic data types by level",
+        svg.text(78, gtop - 18, "synthetic data types, deflate by level plus inflate",
                  size=12, fill=INK)
-        svg.text(1020, gtop - 18, "level:0 in the panel above", size=10, anchor="end")
+        svg.text(1020, gtop - 18, "deflate level:0 in the panel above", size=10, anchor="end")
         gtop += 18
         lvs_all = sorted({k[1] for p in points for k in p["deflate_data"] if k[1] > 0})
         lvmin, lvmax = lvs_all[0], lvs_all[-1]
 
-        def lxp(lv):
-            return (lv - lvmin) / (lvmax - lvmin) if lvmax > lvmin else 0.5
         cols, fw, fh, gapx, gapy = 2, 459, 170, 24, 48
+        # Deflate curves span the left of each facet, inflate dots the right
+        lvw = fw - 84
+        inf_cols = [(lvw + 34, ""), (lvw + 68, "/size:8388608")]
+
+        def lxp(lv):
+            return (lv - lvmin) / (lvmax - lvmin) * lvw if lvmax > lvmin else lvw / 2
         for j, t in enumerate(dd_types):
             fx = 78 + (j % cols) * (fw + gapx)
             fy = gtop + (j // cols) * (fh + gapy)
@@ -766,6 +760,8 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
             fspeeds = [v["speed"] for p in points
                        for k, v in p["deflate_data"].items()
                        if k[0] == t and k[1] > 0]
+            fspeeds += [p["inflate_data"][t + sfx]["speed"] for p in points
+                        for _, sfx in inf_cols if t + sfx in p["inflate_data"]]
             if not fspeeds:
                 continue
             lo, hi = min(fspeeds) / 1.3, max(fspeeds) * 1.3
@@ -780,18 +776,33 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                     if lo <= v <= hi:
                         yy = fyv(v)
                         svg.line(fx, yy, fx + fw, yy, GRID)
-                        svg.text(fx + fw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
+                        svg.text(fx + lvw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
             svg.line(fx, fy + fh, fx + fw, fy + fh, INK_SOFT)
+            svg.line(fx + lvw + 14, fy + 8, fx + lvw + 14, fy + fh, GRID)
             for lv in (1, 3, 6, 9, 12):
                 if lvmin <= lv <= lvmax:
-                    svg.text(fx + lxp(lv) * fw, fy + fh + 12, str(lv),
+                    svg.text(fx + lxp(lv), fy + fh + 12, str(lv),
                              size=9, anchor="middle")
+            for cx_off, sfx in inf_cols:
+                svg.text(fx + cx_off, fy + fh + 12, "8M" if sfx else "inf",
+                         size=9, anchor="middle")
+            for i, p in enumerate(points):
+                for cx_off, sfx in inf_cols:
+                    v = p["inflate_data"].get(t + sfx)
+                    if v is None:
+                        continue
+                    tip = (f"{names[i]} inflate {t}{' 8 MiB' if sfx else ''} - "
+                           f"{fmt_speed(v['speed'])}"
+                           + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
+                    svg.add(f'<circle cx="{fx + cx_off:.1f}" cy="{fyv(v["speed"]):.1f}" '
+                            f'r="3.5" fill="{SERIES[i]}" stroke="{SURFACE}" '
+                            f'stroke-width="1.5"><title>{esc(tip)}</title></circle>')
             for i, p in enumerate(points):
                 pts = sorted((k[1], v) for k, v in p["deflate_data"].items()
                              if k[0] == t and k[1] > 0)
                 if not pts:
                     continue
-                coords = [(fx + lxp(lv) * fw, fyv(v["speed"])) for lv, v in pts]
+                coords = [(fx + lxp(lv), fyv(v["speed"])) for lv, v in pts]
                 if len(coords) > 1:
                     path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
                                     for q, (x, y) in enumerate(coords))
