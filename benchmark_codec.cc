@@ -442,12 +442,18 @@ static void codec_register_data_types(uint32_t mask) {
 
     /* One benchmark per match distance across the copy dispatch arms, deflate
        at the first lazy level and inflate on the same periodic stream. Inflate
-       continues to twice the widest chunk to expose partial-overlap copies. */
+       runs every distance through twice the widest chunk, then sparsely to the
+       maximum match length. */
     if (mask & (1u << TEST_DATA_DIST)) {
+        static const size_t inflate_dists[] = {
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+            17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
+            40, 48, 64, 96, 128, 192, 258};
         bool has_level6 = false;
         for (size_t l = 0; l < sizeof(codec_levels) / sizeof(codec_levels[0]); l++)
             has_level6 |= codec_levels[l] == 6;
-        for (size_t d = 1; d <= 32; d++) {
+        for (size_t i = 0; i < sizeof(inflate_dists) / sizeof(inflate_dists[0]); i++) {
+            size_t d = inflate_dists[i];
             if (has_level6 && d <= 16) {
                 std::string name = "codec_deflate/data/dist:" + std::to_string(d) + "/level:6";
                 benchmark::internal::RegisterBenchmarkInternal(

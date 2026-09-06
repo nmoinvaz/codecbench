@@ -976,9 +976,14 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                             for key in p["dist"] if key[0] == kind})
             dmin, dmax = dists[0], dists[-1]
 
+            uselog = dmax > 32
+
             def dx(d, left=fx):
                 if dmax <= dmin:
                     return left + dfw / 2
+                if uselog:
+                    return left + (math.log2(d) - math.log2(dmin)) / \
+                        (math.log2(dmax) - math.log2(dmin)) * dfw
                 return left + (d - dmin) / (dmax - dmin) * dfw
 
             dspeeds = [v["speed"] for p in points
@@ -994,10 +999,13 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                 svg.line(fx, yy, fx + dfw, yy, GRID)
                 svg.text(fx + dfw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
             svg.line(fx, dtop + dfh, fx + dfw, dtop + dfh, INK_SOFT)
-            dtick = 4 if dists[-1] > 16 else 2
-            for d in dists:
-                if d == 1 or d % dtick == 0:
-                    svg.text(dx(d), dtop + dfh + 14, str(d), size=9, anchor="middle")
+            if uselog:
+                ticks = [d for d in dists if (d & (d - 1)) == 0 or d == dists[-1]]
+            else:
+                dtick = 4 if dists[-1] > 16 else 2
+                ticks = [d for d in dists if d == 1 or d % dtick == 0]
+            for d in ticks:
+                svg.text(dx(d), dtop + dfh + 14, str(d), size=9, anchor="middle")
             svg.text(fx + dfw / 2, dtop + dfh + 30, "match distance", size=11,
                      anchor="middle")
 
