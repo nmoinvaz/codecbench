@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="2944" viewBox="0 0 1080 2944" font-family="system-ui, sans-serif">
-<style>@media (prefers-color-scheme: dark){[fill="#fcfcfb"]{fill:#201f1d}[stroke="#fcfcfb"]{stroke:#201f1d}[fill="#0b0b0b"]{fill:#e8e6e3}[stroke="#0b0b0b"]{stroke:#e8e6e3}[fill="#52514e"]{fill:#a8a49d}[stroke="#52514e"]{stroke:#a8a49d}[fill="#e7e6e2"]{fill:#343230}[stroke="#e7e6e2"]{stroke:#343230}[fill="#c98500"]{fill:#d69a2d}[stroke="#c98500"]{stroke:#d69a2d}[fill="#eb6834"]{fill:#dd5c26}[stroke="#eb6834"]{stroke:#dd5c26}[fill="#eda100"]{fill:#c08800}[stroke="#eda100"]{stroke:#c08800}[fill="#e87ba4"]{fill:#d1678f}[stroke="#e87ba4"]{stroke:#d1678f}[fill="#4a3aa7"]{fill:#7263cf}[stroke="#4a3aa7"]{stroke:#7263cf}[fill="#7a7668"]{fill:#948e82}[stroke="#7a7668"]{stroke:#948e82}}</style>
+<style>@media (prefers-color-scheme: dark){[fill="#fcfcfb"]{fill:#201f1d}[stroke="#fcfcfb"]{stroke:#201f1d}[fill="#0b0b0b"]{fill:#e8e6e3}[stroke="#0b0b0b"]{stroke:#e8e6e3}[fill="#52514e"]{fill:#a8a49d}[stroke="#52514e"]{stroke:#a8a49d}[fill="#e7e6e2"]{fill:#343230}[stroke="#e7e6e2"]{stroke:#343230}[fill="#c98500"]{fill:#d69a2d}[stroke="#c98500"]{stroke:#d69a2d}[fill="#eb6834"]{fill:#dd5c26}[stroke="#eb6834"]{stroke:#dd5c26}[fill="#eda100"]{fill:#c08800}[stroke="#eda100"]{stroke:#c08800}[fill="#e87ba4"]{fill:#d1678f}[stroke="#e87ba4"]{stroke:#d1678f}[fill="#4a3aa7"]{fill:#7263cf}[stroke="#4a3aa7"]{stroke:#7263cf}[fill="#a6339a"]{fill:#c257b5}[stroke="#a6339a"]{stroke:#c257b5}[fill="#7a7668"]{fill:#948e82}[stroke="#7a7668"]{stroke:#948e82}}</style>
 <rect width="1080" height="2944" fill="#fcfcfb"/>
 <text x="16.0" y="28.0" font-size="15" fill="#0b0b0b" text-anchor="start" font-weight="bold">zlibng vs 8 other codecs</text>
 <text x="1064.0" y="28.0" font-size="12" fill="#0b0b0b" text-anchor="end" font-weight="normal">slz</text>
-<circle cx="1030.4" cy="24" r="5" fill="#7a7668"/>
+<circle cx="1030.4" cy="24" r="5" fill="#a6339a"/>
 <text x="1010.4" y="28.0" font-size="12" fill="#0b0b0b" text-anchor="end" font-weight="normal">libcompression</text>
 <circle cx="897.6" cy="24" r="5" fill="#e34948"/>
 <text x="877.6" y="28.0" font-size="12" fill="#0b0b0b" text-anchor="end" font-weight="normal">miniz</text>
@@ -22,29 +22,29 @@
 <circle cx="270.4" cy="24" r="5" fill="#2a78d6"/>
 <text x="800.0" y="54.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">inflate, tars/silesia.tar</text>
 <text x="800.0" y="96.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">zlibng</text>
-<path d="M800 104 h219.2 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-219.2 z" fill="#2a78d6"><title>zlibng inflate - 747 MB/s, 1 files, cv 1.2%, mem 41.1 KiB</title></path>
-<text x="1040.0" y="96.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">747 MB/s</text>
+<path d="M800 104 h220.4 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-220.4 z" fill="#2a78d6"><title>zlibng inflate - 751 MB/s, 1 files, cv 0.8%, mem 41.1 KiB</title></path>
+<text x="1040.0" y="96.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">751 MB/s</text>
 <text x="800.0" y="144.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">zlib_rs</text>
 <path d="M800 152 h164.4 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-164.4 z" fill="#eb6834"><title>zlib_rs inflate - 564 MB/s, 1 files, cv 16.6%, mem 46.4 KiB</title></path>
-<text x="1040.0" y="144.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">564 MB/s (-24.5%)</text>
+<text x="1040.0" y="144.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">564 MB/s (-24.9%)</text>
 <text x="800.0" y="192.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">madler_zlib</text>
 <path d="M800 200 h90.7 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-90.7 z" fill="#1baf7a"><title>madler_zlib inflate - 317 MB/s, 1 files, cv 3.9%, mem 7.0 KiB</title></path>
-<text x="1040.0" y="192.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">317 MB/s (-57.6%)</text>
+<text x="1040.0" y="192.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">317 MB/s (-57.8%)</text>
 <text x="800.0" y="240.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">chromium_zlib</text>
 <path d="M800 248 h152.6 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-152.6 z" fill="#eda100"><title>chromium_zlib inflate - 525 MB/s, 1 files, cv 0.2%, mem 8.9 KiB</title></path>
-<text x="1040.0" y="240.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">525 MB/s (-29.8%)</text>
+<text x="1040.0" y="240.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">525 MB/s (-30.2%)</text>
 <text x="800.0" y="288.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">libdeflate</text>
 <path d="M800 296 h236.0 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-236.0 z" fill="#e87ba4"><title>libdeflate inflate - 804 MB/s, 1 files, cv 0.2%</title></path>
-<text x="1040.0" y="288.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">804 MB/s (+7.5%)</text>
+<text x="1040.0" y="288.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">804 MB/s (+7.0%)</text>
 <text x="800.0" y="336.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">isal</text>
 <path d="M800 344 h105.4 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-105.4 z" fill="#008300"><title>isal inflate - 366 MB/s, 1 files, cv 0.1%</title></path>
-<text x="1040.0" y="336.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">366 MB/s (-51.0%)</text>
+<text x="1040.0" y="336.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">366 MB/s (-51.2%)</text>
 <text x="800.0" y="384.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">miniz</text>
 <path d="M800 392 h95.0 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-95.0 z" fill="#4a3aa7"><title>miniz inflate - 332 MB/s, 1 files, cv 3.9%, mem 40.2 KiB</title></path>
-<text x="1040.0" y="384.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">332 MB/s (-55.6%)</text>
+<text x="1040.0" y="384.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">332 MB/s (-55.9%)</text>
 <text x="800.0" y="432.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">libcompression</text>
 <path d="M800 440 h126.8 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-126.8 z" fill="#e34948"><title>libcompression inflate - 438 MB/s, 1 files, cv 0.1%, mem 128.1 KiB</title></path>
-<text x="1040.0" y="432.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">438 MB/s (-41.4%)</text>
+<text x="1040.0" y="432.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">438 MB/s (-41.7%)</text>
 <text x="800.0" y="480.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">slz</text>
 <text x="800.0" y="502.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">no inflate benchmarks</text>
 <g opacity="0.35"><line x1="800.0" y1="530.0" x2="858.0" y2="530.0" stroke="#52514e" stroke-width="2"/><polygon points="864.0,530.0 855.0,534.0 855.0,526.0" fill="#52514e"/><text x="832.0" y="523.0" font-size="11" fill="#52514e" text-anchor="middle" transform="rotate(0.0 832.0 530.0)">better</text></g>
@@ -77,16 +77,16 @@
 <text x="1040.0" y="784.0" font-size="10" fill="#0b0b0b" text-anchor="end" font-weight="normal">128.1 KiB (+212%)</text>
 <g opacity="0.35"><line x1="864.0" y1="800.0" x2="806.0" y2="800.0" stroke="#52514e" stroke-width="2"/><polygon points="800.0,800.0 809.0,796.0 809.0,804.0" fill="#52514e"/><text x="832.0" y="793.0" font-size="11" fill="#52514e" text-anchor="middle" transform="rotate(360.0 832.0 800.0)">better</text></g>
 <text x="800.0" y="840.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">deflate level:0</text>
-<rect x="800" y="848" width="124.6" height="8" rx="3" fill="#2a78d6"><title>zlibng level:0 - 26.93 GB/s, ratio 1.000, cv 10.2%</title></rect>
-<text x="1040.0" y="856.0" font-size="10" fill="#0b0b0b" text-anchor="end" font-weight="normal">26.93 GB/s</text>
-<rect x="800" y="862" width="116.8" height="8" rx="3" fill="#eb6834"><title>zlib_rs level:0 - 25.24 GB/s, ratio 1.000, cv 2.9%</title></rect>
-<text x="1040.0" y="870.0" font-size="10" fill="#0b0b0b" text-anchor="end" font-weight="normal">25.24 GB/s (-6%)</text>
-<rect x="800" y="876" width="128.4" height="8" rx="3" fill="#1baf7a"><title>madler_zlib level:0 - 27.75 GB/s, ratio 1.000, cv 0.4%</title></rect>
-<text x="1040.0" y="884.0" font-size="10" fill="#0b0b0b" text-anchor="end" font-weight="normal">27.75 GB/s (+3%)</text>
-<rect x="800" y="890" width="126.4" height="8" rx="3" fill="#eda100"><title>chromium_zlib level:0 - 27.33 GB/s, ratio 1.000, cv 0.8%</title></rect>
-<text x="1040.0" y="898.0" font-size="10" fill="#0b0b0b" text-anchor="end" font-weight="normal">27.33 GB/s (+1%)</text>
-<rect x="800" y="904" width="130.0" height="8" rx="3" fill="#e87ba4"><title>libdeflate level:0 - 28.10 GB/s, ratio 1.000, cv 1.0%</title></rect>
-<text x="1040.0" y="912.0" font-size="10" fill="#0b0b0b" text-anchor="end" font-weight="normal">28.10 GB/s (+4%)</text>
+<rect x="800" y="848" width="130.0" height="8" rx="3" fill="#2a78d6"><title>zlibng level:0 - 30.65 GB/s, ratio 1.000, cv 0.4%</title></rect>
+<text x="1040.0" y="856.0" font-size="10" fill="#0b0b0b" text-anchor="end" font-weight="normal">30.65 GB/s</text>
+<rect x="800" y="862" width="107.1" height="8" rx="3" fill="#eb6834"><title>zlib_rs level:0 - 25.24 GB/s, ratio 1.000, cv 2.9%</title></rect>
+<text x="1040.0" y="870.0" font-size="10" fill="#0b0b0b" text-anchor="end" font-weight="normal">25.24 GB/s (-18%)</text>
+<rect x="800" y="876" width="117.7" height="8" rx="3" fill="#1baf7a"><title>madler_zlib level:0 - 27.75 GB/s, ratio 1.000, cv 0.4%</title></rect>
+<text x="1040.0" y="884.0" font-size="10" fill="#0b0b0b" text-anchor="end" font-weight="normal">27.75 GB/s (-9%)</text>
+<rect x="800" y="890" width="115.9" height="8" rx="3" fill="#eda100"><title>chromium_zlib level:0 - 27.33 GB/s, ratio 1.000, cv 0.8%</title></rect>
+<text x="1040.0" y="898.0" font-size="10" fill="#0b0b0b" text-anchor="end" font-weight="normal">27.33 GB/s (-11%)</text>
+<rect x="800" y="904" width="119.2" height="8" rx="3" fill="#e87ba4"><title>libdeflate level:0 - 28.10 GB/s, ratio 1.000, cv 1.0%</title></rect>
+<text x="1040.0" y="912.0" font-size="10" fill="#0b0b0b" text-anchor="end" font-weight="normal">28.10 GB/s (-8%)</text>
 <rect x="800" y="918" width="4.0" height="8" rx="3" fill="#008300"><title>isal level:0 - 310 MB/s, ratio 2.388, cv 3.0%</title></rect>
 <text x="1040.0" y="926.0" font-size="10" fill="#0b0b0b" text-anchor="end" font-weight="normal">310 MB/s, ratio 2.39 (-99%)</text>
 <rect x="800" y="932" width="4.0" height="8" rx="3" fill="#4a3aa7"><title>miniz level:0 - 72 MB/s, ratio 1.000, cv 0.7%</title></rect>
@@ -128,31 +128,31 @@
 <text x="512.5" y="54.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">rle</text>
 <g><polygon points="564.8,43.5 569.2,43.5 569.2,47.8 573.5,47.8 573.5,52.2 569.2,52.2 569.2,56.5 564.8,56.5 564.8,52.2 560.5,52.2 560.5,47.8 564.8,47.8" fill="#52514e" stroke="#fcfcfb" stroke-width="2"/><title>fixed</title></g>
 <text x="576.0" y="54.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">fixed</text>
-<path d="M332.1,181.5 L538.5,264.4 L588.5,292.3 L611.8,317.7 L629.4,322.5 L635.0,356.5 L643.8,435.1 L646.8,515.2 L657.3,483.9" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.65"/>
+<path d="M332.1,180.5 L538.5,264.2 L588.5,292.0 L611.8,318.2 L629.4,322.5 L635.0,356.5 L644.7,407.0 L647.1,432.0 L657.3,483.9" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.65"/>
 <path d="M332.1,219.6 L538.5,291.1 L588.5,314.9 L611.8,339.1 L629.4,358.3 L635.0,389.5 L643.8,454.2 L646.8,538.8 L657.3,528.0" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.65"/>
 <path d="M509.0,326.2 L540.6,347.0 L571.3,398.8 L599.8,410.4 L629.5,480.4 L645.9,542.4 L650.9,573.3 L655.3,647.1 L656.0,698.1" fill="none" stroke="#1baf7a" stroke-width="2" stroke-opacity="0.65"/>
 <path d="M530.6,283.2 L554.0,292.9 L573.6,318.5 L602.5,340.9 L631.4,385.9 L640.4,429.1 L643.8,453.5 L646.8,528.0 L647.4,590.9" fill="none" stroke="#eda100" stroke-width="2" stroke-opacity="0.65"/>
 <path d="M565.8,217.8 L602.4,258.4 L616.6,275.7 L627.8,287.0 L649.4,318.9 L660.6,352.2 L667.0,407.6 L673.6,495.5 L674.5,532.3 L709.4,739.2 L711.2,803.7 L711.5,846.6" fill="none" stroke="#e87ba4" stroke-width="2" stroke-opacity="0.65"/>
 <path d="M489.5,213.4 L506.9,226.2 L535.4,302.3" fill="none" stroke="#008300" stroke-width="2" stroke-opacity="0.65"/>
 <path d="M475.9,348.4 L549.9,360.6 L615.3,424.1 L623.7,448.1 L636.2,482.8 L650.4,559.8 L653.5,596.5 L655.2,631.2 L655.6,649.7 L656.2,680.6" fill="none" stroke="#4a3aa7" stroke-width="2" stroke-opacity="0.65"/>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="332.1" y1="182.5" x2="332.1" y2="180.5"/><line x1="329.1" y1="182.5" x2="335.1" y2="182.5"/><line x1="329.1" y1="180.5" x2="335.1" y2="180.5"/></g>
-<g><circle cx="332.1" cy="181.5" r="5.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:1 - 251 MB/s, ratio 2.252, 1 files, cv 0.6%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="538.5" y1="265.7" x2="538.5" y2="263.2"/><line x1="535.5" y1="265.7" x2="541.5" y2="265.7"/><line x1="535.5" y1="263.2" x2="541.5" y2="263.2"/></g>
-<g><circle cx="538.5" cy="264.4" r="5.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:2 - 152 MB/s, ratio 2.809, 1 files, cv 0.8%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="588.5" y1="292.5" x2="588.5" y2="292.1"/><line x1="585.5" y1="292.5" x2="591.5" y2="292.5"/><line x1="585.5" y1="292.1" x2="591.5" y2="292.1"/></g>
-<g><circle cx="588.5" cy="292.3" r="5.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:3 - 128 MB/s, ratio 2.945, 1 files, cv 0.1%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="611.8" y1="317.8" x2="611.8" y2="317.6"/><line x1="608.8" y1="317.8" x2="614.8" y2="317.8"/><line x1="608.8" y1="317.6" x2="614.8" y2="317.6"/></g>
-<g><circle cx="611.8" cy="317.7" r="5.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:4 - 110 MB/s, ratio 3.008, 1 files, cv 0.1%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="629.4" y1="322.8" x2="629.4" y2="322.1"/><line x1="626.4" y1="322.8" x2="632.4" y2="322.8"/><line x1="626.4" y1="322.1" x2="632.4" y2="322.1"/></g>
-<g><circle cx="629.4" cy="322.5" r="5.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:5 - 107 MB/s, ratio 3.055, 1 files, cv 0.2%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="635.0" y1="356.7" x2="635.0" y2="356.3"/><line x1="632.0" y1="356.7" x2="638.0" y2="356.7"/><line x1="632.0" y1="356.3" x2="638.0" y2="356.3"/></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="332.1" y1="181.2" x2="332.1" y2="179.9"/><line x1="329.1" y1="181.2" x2="335.1" y2="181.2"/><line x1="329.1" y1="179.9" x2="335.1" y2="179.9"/></g>
+<g><circle cx="332.1" cy="180.5" r="5.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:1 - 253 MB/s, ratio 2.252, 1 files, cv 0.4%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="538.5" y1="264.5" x2="538.5" y2="263.9"/><line x1="535.5" y1="264.5" x2="541.5" y2="264.5"/><line x1="535.5" y1="263.9" x2="541.5" y2="263.9"/></g>
+<g><circle cx="538.5" cy="264.2" r="5.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:2 - 152 MB/s, ratio 2.809, 1 files, cv 0.2%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="588.5" y1="292.1" x2="588.5" y2="291.9"/><line x1="585.5" y1="292.1" x2="591.5" y2="292.1"/><line x1="585.5" y1="291.9" x2="591.5" y2="291.9"/></g>
+<g><circle cx="588.5" cy="292.0" r="5.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:3 - 128 MB/s, ratio 2.945, 1 files, cv 0.1%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="611.8" y1="318.4" x2="611.8" y2="318.1"/><line x1="608.8" y1="318.4" x2="614.8" y2="318.4"/><line x1="608.8" y1="318.1" x2="614.8" y2="318.1"/></g>
+<g><circle cx="611.8" cy="318.2" r="5.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:4 - 110 MB/s, ratio 3.008, 1 files, cv 0.1%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="629.4" y1="322.6" x2="629.4" y2="322.4"/><line x1="626.4" y1="322.6" x2="632.4" y2="322.6"/><line x1="626.4" y1="322.4" x2="632.4" y2="322.4"/></g>
+<g><circle cx="629.4" cy="322.5" r="5.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:5 - 107 MB/s, ratio 3.055, 1 files, cv 0.1%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="635.0" y1="356.8" x2="635.0" y2="356.3"/><line x1="632.0" y1="356.8" x2="638.0" y2="356.8"/><line x1="632.0" y1="356.3" x2="638.0" y2="356.3"/></g>
 <g><circle cx="635.0" cy="356.5" r="5.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:6 - 87 MB/s, ratio 3.070, 1 files, cv 0.1%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="643.8" y1="435.3" x2="643.8" y2="435.0"/><line x1="640.8" y1="435.3" x2="646.8" y2="435.3"/><line x1="640.8" y1="435.0" x2="646.8" y2="435.0"/></g>
-<g><circle cx="643.8" cy="435.1" r="5.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:7 - 54 MB/s, ratio 3.094, 1 files, cv 0.1%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="646.8" y1="515.5" x2="646.8" y2="514.8"/><line x1="643.8" y1="515.5" x2="649.8" y2="515.5"/><line x1="643.8" y1="514.8" x2="649.8" y2="514.8"/></g>
-<g><circle cx="646.8" cy="515.2" r="5.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:8 - 33 MB/s, ratio 3.102, 1 files, cv 0.2%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="657.3" y1="484.4" x2="657.3" y2="483.3"/><line x1="654.3" y1="484.4" x2="660.3" y2="484.4"/><line x1="654.3" y1="483.3" x2="660.3" y2="483.3"/></g>
-<g><circle cx="657.3" cy="483.9" r="5.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:9 - 40 MB/s, ratio 3.131, 1 files, cv 0.3%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="644.7" y1="407.6" x2="644.7" y2="406.4"/><line x1="641.7" y1="407.6" x2="647.7" y2="407.6"/><line x1="641.7" y1="406.4" x2="647.7" y2="406.4"/></g>
+<g><circle cx="644.7" cy="407.0" r="5.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:7 - 64 MB/s, ratio 3.097, 1 files, cv 0.3%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="647.1" y1="432.1" x2="647.1" y2="431.9"/><line x1="644.1" y1="432.1" x2="650.1" y2="432.1"/><line x1="644.1" y1="431.9" x2="650.1" y2="431.9"/></g>
+<g><circle cx="647.1" cy="432.0" r="5.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:8 - 55 MB/s, ratio 3.103, 1 files, cv 0.1%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="657.3" y1="484.1" x2="657.3" y2="483.7"/><line x1="654.3" y1="484.1" x2="660.3" y2="484.1"/><line x1="654.3" y1="483.7" x2="660.3" y2="483.7"/></g>
+<g><circle cx="657.3" cy="483.9" r="5.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:9 - 40 MB/s, ratio 3.131, 1 files, cv 0.1%, mem 390.1 KiB</title></g>
 <g stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"><line x1="332.1" y1="219.8" x2="332.1" y2="219.4"/><line x1="329.1" y1="219.8" x2="335.1" y2="219.8"/><line x1="329.1" y1="219.4" x2="335.1" y2="219.4"/></g>
 <g><circle cx="332.1" cy="219.6" r="5.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/><title>zlib_rs level:1 - 199 MB/s, ratio 2.252, 1 files, cv 0.1%, mem 483.1 KiB</title></g>
 <g stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"><line x1="538.5" y1="291.5" x2="538.5" y2="290.8"/><line x1="535.5" y1="291.5" x2="541.5" y2="291.5"/><line x1="535.5" y1="290.8" x2="541.5" y2="290.8"/></g>
@@ -259,30 +259,30 @@
 <g><circle cx="656.2" cy="680.6" r="5.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="2"/><title>miniz level:10 - 12 MB/s, ratio 3.128, 1 files, cv 0.7%, mem 311.9 KiB</title></g>
 <g stroke="#e34948" stroke-opacity="0.7" stroke-width="1.5"><line x1="633.0" y1="476.5" x2="633.0" y2="476.0"/><line x1="630.0" y1="476.5" x2="636.0" y2="476.5"/><line x1="630.0" y1="476.0" x2="636.0" y2="476.0"/></g>
 <g><circle cx="633.0" cy="476.3" r="5.5" fill="#e34948" stroke="#fcfcfb" stroke-width="2"/><title>libcompression level:5 - 42 MB/s, ratio 3.065, 1 files, cv 0.1%, mem 264.0 KiB</title></g>
-<g stroke="#7a7668" stroke-opacity="0.7" stroke-width="1.5"><line x1="316.6" y1="156.6" x2="316.6" y2="150.3"/><line x1="313.6" y1="156.6" x2="319.6" y2="156.6"/><line x1="313.6" y1="150.3" x2="319.6" y2="150.3"/></g>
-<g><circle cx="316.6" cy="153.4" r="5.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="2"/><title>slz level:1 - 298 MB/s, ratio 2.210, 1 files, cv 1.9%</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="332.1" y1="182.7" x2="332.1" y2="181.7"/><line x1="329.1" y1="182.7" x2="335.1" y2="182.7"/><line x1="329.1" y1="181.7" x2="335.1" y2="181.7"/></g>
-<g><polygon points="329.9,175.7 334.3,175.7 334.3,180.0 338.6,180.0 338.6,184.4 334.3,184.4 334.3,188.7 329.9,188.7 329.9,184.4 325.6,184.4 325.6,180.0 329.9,180.0" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:1 strategy:fixed - 250 MB/s, ratio 2.252, 1 files, cv 0.3%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="102.1" y1="175.6" x2="102.1" y2="172.9"/><line x1="99.1" y1="175.6" x2="105.1" y2="175.6"/><line x1="99.1" y1="172.9" x2="105.1" y2="172.9"/></g>
-<g><polygon points="102.1,167.8 108.6,174.3 102.1,180.8 95.6,174.3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:1 strategy:huffman - 263 MB/s, ratio 1.630, 1 files, cv 0.8%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="108.7" y1="171.9" x2="108.7" y2="170.7"/><line x1="105.7" y1="171.9" x2="111.7" y2="171.9"/><line x1="105.7" y1="170.7" x2="111.7" y2="170.7"/></g>
-<g><polygon points="108.7,164.8 115.2,176.8 102.2,176.8" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:1 strategy:rle - 267 MB/s, ratio 1.648, 1 files, cv 0.4%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="484.1" y1="356.4" x2="484.1" y2="355.7"/><line x1="481.1" y1="356.4" x2="487.1" y2="356.4"/><line x1="481.1" y1="355.7" x2="487.1" y2="355.7"/></g>
-<g><polygon points="481.9,349.6 486.3,349.6 486.3,353.9 490.6,353.9 490.6,358.3 486.3,358.3 486.3,362.6 481.9,362.6 481.9,358.3 477.6,358.3 477.6,353.9 481.9,353.9" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:6 strategy:fixed - 87 MB/s, ratio 2.662, 1 files, cv 0.2%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="102.1" y1="175.8" x2="102.1" y2="173.4"/><line x1="99.1" y1="175.8" x2="105.1" y2="175.8"/><line x1="99.1" y1="173.4" x2="105.1" y2="173.4"/></g>
-<g><polygon points="102.1,168.1 108.6,174.6 102.1,181.1 95.6,174.6" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:6 strategy:huffman - 262 MB/s, ratio 1.630, 1 files, cv 0.7%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="108.7" y1="171.4" x2="108.7" y2="170.6"/><line x1="105.7" y1="171.4" x2="111.7" y2="171.4"/><line x1="105.7" y1="170.6" x2="111.7" y2="170.6"/></g>
-<g><polygon points="108.7,164.5 115.2,176.5 102.2,176.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:6 strategy:rle - 268 MB/s, ratio 1.648, 1 files, cv 0.3%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="597.7" y1="447.2" x2="597.7" y2="446.1"/><line x1="594.7" y1="447.2" x2="600.7" y2="447.2"/><line x1="594.7" y1="446.1" x2="600.7" y2="446.1"/></g>
-<g><rect x="592.2" y="441.1" width="11.0" height="11.0" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:7 strategy:filtered - 50 MB/s, ratio 2.970, 1 files, cv 0.3%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="601.1" y1="521.9" x2="601.1" y2="521.5"/><line x1="598.1" y1="521.9" x2="604.1" y2="521.9"/><line x1="598.1" y1="521.5" x2="604.1" y2="521.5"/></g>
-<g><rect x="595.6" y="516.2" width="11.0" height="11.0" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:9 strategy:filtered - 32 MB/s, ratio 2.979, 1 files, cv 0.1%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="516.0" y1="483.6" x2="516.0" y2="483.2"/><line x1="513.0" y1="483.6" x2="519.0" y2="483.6"/><line x1="513.0" y1="483.2" x2="519.0" y2="483.2"/></g>
-<g><polygon points="513.8,476.9 518.2,476.9 518.2,481.2 522.5,481.2 522.5,485.6 518.2,485.6 518.2,489.9 513.8,489.9 513.8,485.6 509.5,485.6 509.5,481.2 513.8,481.2" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:9 strategy:fixed - 40 MB/s, ratio 2.749, 1 files, cv 0.1%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="102.1" y1="175.6" x2="102.1" y2="173.4"/><line x1="99.1" y1="175.6" x2="105.1" y2="175.6"/><line x1="99.1" y1="173.4" x2="105.1" y2="173.4"/></g>
-<g><polygon points="102.1,168.0 108.6,174.5 102.1,181.0 95.6,174.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:9 strategy:huffman - 262 MB/s, ratio 1.630, 1 files, cv 0.7%, mem 390.1 KiB</title></g>
-<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="108.7" y1="171.1" x2="108.7" y2="169.9"/><line x1="105.7" y1="171.1" x2="111.7" y2="171.1"/><line x1="105.7" y1="169.9" x2="111.7" y2="169.9"/></g>
-<g><polygon points="108.7,164.0 115.2,176.0 102.2,176.0" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:9 strategy:rle - 269 MB/s, ratio 1.648, 1 files, cv 0.3%, mem 390.1 KiB</title></g>
+<g stroke="#a6339a" stroke-opacity="0.7" stroke-width="1.5"><line x1="316.6" y1="156.6" x2="316.6" y2="150.3"/><line x1="313.6" y1="156.6" x2="319.6" y2="156.6"/><line x1="313.6" y1="150.3" x2="319.6" y2="150.3"/></g>
+<g><circle cx="316.6" cy="153.4" r="5.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="2"/><title>slz level:1 - 298 MB/s, ratio 2.210, 1 files, cv 1.9%</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="332.1" y1="181.6" x2="332.1" y2="179.5"/><line x1="329.1" y1="181.6" x2="335.1" y2="181.6"/><line x1="329.1" y1="179.5" x2="335.1" y2="179.5"/></g>
+<g><polygon points="329.9,174.0 334.3,174.0 334.3,178.3 338.6,178.3 338.6,182.7 334.3,182.7 334.3,187.0 329.9,187.0 329.9,182.7 325.6,182.7 325.6,178.3 329.9,178.3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:1 strategy:fixed - 253 MB/s, ratio 2.252, 1 files, cv 0.7%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="102.1" y1="174.6" x2="102.1" y2="172.7"/><line x1="99.1" y1="174.6" x2="105.1" y2="174.6"/><line x1="99.1" y1="172.7" x2="105.1" y2="172.7"/></g>
+<g><polygon points="102.1,167.1 108.6,173.6 102.1,180.1 95.6,173.6" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:1 strategy:huffman - 264 MB/s, ratio 1.630, 1 files, cv 0.6%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="108.7" y1="171.0" x2="108.7" y2="169.2"/><line x1="105.7" y1="171.0" x2="111.7" y2="171.0"/><line x1="105.7" y1="169.2" x2="111.7" y2="169.2"/></g>
+<g><polygon points="108.7,163.6 115.2,175.6 102.2,175.6" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:1 strategy:rle - 269 MB/s, ratio 1.648, 1 files, cv 0.6%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="484.1" y1="356.9" x2="484.1" y2="356.1"/><line x1="481.1" y1="356.9" x2="487.1" y2="356.9"/><line x1="481.1" y1="356.1" x2="487.1" y2="356.1"/></g>
+<g><polygon points="481.9,350.0 486.3,350.0 486.3,354.3 490.6,354.3 490.6,358.7 486.3,358.7 486.3,363.0 481.9,363.0 481.9,358.7 477.6,358.7 477.6,354.3 481.9,354.3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:6 strategy:fixed - 87 MB/s, ratio 2.662, 1 files, cv 0.2%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="102.1" y1="175.6" x2="102.1" y2="171.3"/><line x1="99.1" y1="175.6" x2="105.1" y2="175.6"/><line x1="99.1" y1="171.3" x2="105.1" y2="171.3"/></g>
+<g><polygon points="102.1,167.0 108.6,173.5 102.1,180.0 95.6,173.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:6 strategy:huffman - 264 MB/s, ratio 1.630, 1 files, cv 1.3%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="108.7" y1="171.0" x2="108.7" y2="169.6"/><line x1="105.7" y1="171.0" x2="111.7" y2="171.0"/><line x1="105.7" y1="169.6" x2="111.7" y2="169.6"/></g>
+<g><polygon points="108.7,163.8 115.2,175.8 102.2,175.8" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:6 strategy:rle - 269 MB/s, ratio 1.648, 1 files, cv 0.4%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="598.3" y1="423.3" x2="598.3" y2="423.1"/><line x1="595.3" y1="423.3" x2="601.3" y2="423.3"/><line x1="595.3" y1="423.1" x2="601.3" y2="423.1"/></g>
+<g><rect x="592.8" y="417.7" width="11.0" height="11.0" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:7 strategy:filtered - 58 MB/s, ratio 2.971, 1 files, cv 0.1%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="601.1" y1="521.1" x2="601.1" y2="521.0"/><line x1="598.1" y1="521.1" x2="604.1" y2="521.1"/><line x1="598.1" y1="521.0" x2="604.1" y2="521.0"/></g>
+<g><rect x="595.6" y="515.6" width="11.0" height="11.0" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:9 strategy:filtered - 32 MB/s, ratio 2.979, 1 files, cv 0.0%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="516.0" y1="483.8" x2="516.0" y2="483.5"/><line x1="513.0" y1="483.8" x2="519.0" y2="483.8"/><line x1="513.0" y1="483.5" x2="519.0" y2="483.5"/></g>
+<g><polygon points="513.8,477.1 518.2,477.1 518.2,481.4 522.5,481.4 522.5,485.8 518.2,485.8 518.2,490.1 513.8,490.1 513.8,485.8 509.5,485.8 509.5,481.4 513.8,481.4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:9 strategy:fixed - 40 MB/s, ratio 2.749, 1 files, cv 0.1%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="102.1" y1="175.6" x2="102.1" y2="172.0"/><line x1="99.1" y1="175.6" x2="105.1" y2="175.6"/><line x1="99.1" y1="172.0" x2="105.1" y2="172.0"/></g>
+<g><polygon points="102.1,167.3 108.6,173.8 102.1,180.3 95.6,173.8" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:9 strategy:huffman - 263 MB/s, ratio 1.630, 1 files, cv 1.1%, mem 390.1 KiB</title></g>
+<g stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"><line x1="108.7" y1="170.3" x2="108.7" y2="169.8"/><line x1="105.7" y1="170.3" x2="111.7" y2="170.3"/><line x1="105.7" y1="169.8" x2="111.7" y2="169.8"/></g>
+<g><polygon points="108.7,163.6 115.2,175.6 102.2,175.6" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/><title>zlibng level:9 strategy:rle - 269 MB/s, ratio 1.648, 1 files, cv 0.2%, mem 390.1 KiB</title></g>
 <g stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"><line x1="332.1" y1="216.3" x2="332.1" y2="214.9"/><line x1="329.1" y1="216.3" x2="335.1" y2="216.3"/><line x1="329.1" y1="214.9" x2="335.1" y2="214.9"/></g>
 <g><polygon points="329.9,209.1 334.3,209.1 334.3,213.4 338.6,213.4 338.6,217.8 334.3,217.8 334.3,222.1 329.9,222.1 329.9,217.8 325.6,217.8 325.6,213.4 329.9,213.4" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/><title>zlib_rs level:1 strategy:fixed - 204 MB/s, ratio 2.252, 1 files, cv 0.4%, mem 483.1 KiB</title></g>
 <g stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"><line x1="102.1" y1="301.4" x2="102.1" y2="300.3"/><line x1="99.1" y1="301.4" x2="105.1" y2="301.4"/><line x1="99.1" y1="300.3" x2="105.1" y2="300.3"/></g>
@@ -371,13 +371,13 @@
 <g><polygon points="102.5,388.3 109.0,394.8 102.5,401.3 96.0,394.8" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="2"/><title>miniz level:9 strategy:huffman - 69 MB/s, ratio 1.631, 1 files, cv 1.9%, mem 311.9 KiB</title></g>
 <g stroke="#4a3aa7" stroke-opacity="0.7" stroke-width="1.5"><line x1="106.5" y1="395.0" x2="106.5" y2="391.3"/><line x1="103.5" y1="395.0" x2="109.5" y2="395.0"/><line x1="103.5" y1="391.3" x2="109.5" y2="391.3"/></g>
 <g><polygon points="106.5,386.7 113.0,398.7 100.0,398.7" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="2"/><title>miniz level:9 strategy:rle - 70 MB/s, ratio 1.642, 1 files, cv 1.1%, mem 311.9 KiB</title></g>
-<text x="339.1" y="174.5" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L1</text>
-<text x="545.5" y="257.4" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L2</text>
-<text x="595.5" y="285.3" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L3</text>
-<text x="618.8" y="310.7" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L4</text>
+<text x="339.1" y="173.5" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L1</text>
+<text x="545.5" y="257.2" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L2</text>
+<text x="595.5" y="285.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L3</text>
+<text x="618.8" y="311.2" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L4</text>
 <text x="642.0" y="349.5" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L6</text>
-<text x="650.8" y="428.1" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L7</text>
-<text x="653.8" y="508.2" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L8</text>
+<text x="651.7" y="400.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L7</text>
+<text x="654.1" y="425.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L8</text>
 <text x="664.3" y="476.9" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L9</text>
 <text x="339.1" y="212.6" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L1</text>
 <text x="545.5" y="284.1" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L2</text>
@@ -400,7 +400,6 @@
 <text x="623.6" y="268.7" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L3</text>
 <text x="656.4" y="311.9" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L5</text>
 <text x="667.6" y="345.2" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L6</text>
-<text x="674.0" y="400.6" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L7</text>
 <text x="681.5" y="525.3" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L9</text>
 <text x="716.4" y="732.2" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L10</text>
 <text x="718.2" y="796.7" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L11</text>
@@ -410,10 +409,9 @@
 <text x="662.2" y="624.2" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L8</text>
 <text x="663.2" y="673.6" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L10</text>
 <text x="323.6" y="146.4" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">L1</text>
-<text x="109.1" y="167.3" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">huf</text>
-<text x="604.7" y="439.6" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">flt7</text>
-<text x="608.1" y="514.7" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">flt9</text>
-<text x="523.0" y="476.4" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">fix9</text>
+<text x="109.1" y="166.6" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">huf</text>
+<text x="608.1" y="514.1" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">flt9</text>
+<text x="523.0" y="476.6" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">fix9</text>
 <text x="109.1" y="293.8" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">huf</text>
 <text x="491.1" y="380.1" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">fix6</text>
 <text x="604.7" y="455.9" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">flt7</text>
@@ -437,194 +435,194 @@
 <text x="78.0" y="982.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">inflate, synthetic data types, each group scaled to its fastest</text>
 <line x1="78.0" y1="1180.0" x2="1020.0" y2="1180.0" stroke="#52514e" stroke-width="1"/>
 <text x="125.1" y="1198.0" font-size="11" fill="#52514e" text-anchor="middle" font-weight="normal">text</text>
-<rect x="83.0" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#2a78d6"><title>zlibng inflate text - 1.36 GB/s, cv 0.1%</title></rect>
+<rect x="83.0" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#2a78d6"><title>zlibng inflate text - 1.36 GB/s, cv 0.6%</title></rect>
 <text x="104.0" y="1024.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">1.36 GB/s</text>
-<line x1="87.4" y1="1029.8" x2="87.4" y2="1030.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<line x1="87.4" y1="1029.1" x2="87.4" y2="1030.9" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <rect x="93.8" y="1100.6" width="8.8" height="79.4" rx="1.5" fill="#eb6834"><title>zlib_rs inflate text - 721 MB/s, -47.1% vs zlibng, cv 1.7%</title></rect>
 <line x1="98.2" y1="1099.3" x2="98.2" y2="1102.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <rect x="104.5" y="1098.1" width="8.8" height="81.9" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate text - 744 MB/s, -45.4% vs zlibng, cv 6.2%</title></rect>
 <line x1="108.9" y1="1093.0" x2="108.9" y2="1103.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <rect x="115.3" y="1085.6" width="8.8" height="94.4" rx="1.5" fill="#eda100"><title>chromium_zlib inflate text - 857 MB/s, -37.1% vs zlibng, cv 0.8%</title></rect>
-<line x1="119.7" y1="1084.9" x2="119.7" y2="1086.4" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<line x1="119.7" y1="1084.8" x2="119.7" y2="1086.4" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <rect x="126.1" y="1038.1" width="8.8" height="141.9" rx="1.5" fill="#e87ba4"><title>libdeflate inflate text - 1.29 GB/s, -5.4% vs zlibng, cv 0.1%</title></rect>
-<line x1="130.5" y1="1038.0" x2="130.5" y2="1038.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<line x1="130.5" y1="1037.9" x2="130.5" y2="1038.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <rect x="136.9" y="1110.3" width="8.8" height="69.7" rx="1.5" fill="#008300"><title>isal inflate text - 633 MB/s, -53.6% vs zlibng, cv 2.0%</title></rect>
-<line x1="141.3" y1="1109.0" x2="141.3" y2="1111.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<line x1="141.3" y1="1108.9" x2="141.3" y2="1111.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <rect x="147.7" y="1119.3" width="8.8" height="60.7" rx="1.5" fill="#4a3aa7"><title>miniz inflate text - 551 MB/s, -59.6% vs zlibng, cv 1.3%</title></rect>
-<line x1="152.0" y1="1118.6" x2="152.0" y2="1120.1" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<line x1="152.0" y1="1118.5" x2="152.0" y2="1120.1" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <rect x="158.4" y="1110.7" width="8.8" height="69.3" rx="1.5" fill="#e34948"><title>libcompression inflate text - 630 MB/s, -53.8% vs zlibng, cv 0.1%</title></rect>
 <line x1="162.8" y1="1110.6" x2="162.8" y2="1110.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <line x1="172.2" y1="1008.0" x2="172.2" y2="1180.0" stroke="#e7e6e2" stroke-width="1"/>
 <text x="219.3" y="1198.0" font-size="11" fill="#52514e" text-anchor="middle" font-weight="normal">short_match</text>
-<rect x="177.2" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#2a78d6"><title>zlibng inflate short_match - 870 MB/s, cv 0.4%</title></rect>
-<text x="198.2" y="1024.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">870 MB/s</text>
-<line x1="181.6" y1="1029.4" x2="181.6" y2="1030.6" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="188.0" y="1087.3" width="8.8" height="92.7" rx="1.5" fill="#eb6834"><title>zlib_rs inflate short_match - 538 MB/s, -38.2% vs zlibng, cv 1.2%</title></rect>
-<line x1="192.4" y1="1086.2" x2="192.4" y2="1088.4" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="198.8" y="1090.0" width="8.8" height="90.0" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate short_match - 522 MB/s, -40.0% vs zlibng, cv 1.6%</title></rect>
-<line x1="203.1" y1="1088.5" x2="203.1" y2="1091.4" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="209.5" y="1082.5" width="8.8" height="97.5" rx="1.5" fill="#eda100"><title>chromium_zlib inflate short_match - 566 MB/s, -35.0% vs zlibng, cv 0.4%</title></rect>
-<line x1="213.9" y1="1082.1" x2="213.9" y2="1082.9" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="220.3" y="1038.0" width="8.8" height="142.0" rx="1.5" fill="#e87ba4"><title>libdeflate inflate short_match - 824 MB/s, -5.3% vs zlibng, cv 0.0%</title></rect>
-<line x1="224.7" y1="1037.9" x2="224.7" y2="1038.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="231.1" y="1120.1" width="8.8" height="59.9" rx="1.5" fill="#008300"><title>isal inflate short_match - 348 MB/s, -60.0% vs zlibng, cv 0.4%</title></rect>
-<line x1="235.5" y1="1119.8" x2="235.5" y2="1120.3" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="241.8" y="1108.2" width="8.8" height="71.8" rx="1.5" fill="#4a3aa7"><title>miniz inflate short_match - 416 MB/s, -52.1% vs zlibng, cv 0.8%</title></rect>
-<line x1="246.2" y1="1107.7" x2="246.2" y2="1108.8" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="252.6" y="1107.3" width="8.8" height="72.7" rx="1.5" fill="#e34948"><title>libcompression inflate short_match - 422 MB/s, -51.5% vs zlibng, cv 0.1%</title></rect>
-<line x1="257.0" y1="1107.2" x2="257.0" y2="1107.4" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="177.2" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#2a78d6"><title>zlibng inflate short_match - 875 MB/s, cv 0.0%</title></rect>
+<text x="198.2" y="1024.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">875 MB/s</text>
+<line x1="181.6" y1="1030.0" x2="181.6" y2="1030.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="188.0" y="1087.8" width="8.8" height="92.2" rx="1.5" fill="#eb6834"><title>zlib_rs inflate short_match - 538 MB/s, -38.5% vs zlibng, cv 1.2%</title></rect>
+<line x1="192.4" y1="1086.8" x2="192.4" y2="1088.9" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="198.8" y="1090.5" width="8.8" height="89.5" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate short_match - 522 MB/s, -40.3% vs zlibng, cv 1.6%</title></rect>
+<line x1="203.1" y1="1089.0" x2="203.1" y2="1091.9" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="209.5" y="1083.0" width="8.8" height="97.0" rx="1.5" fill="#eda100"><title>chromium_zlib inflate short_match - 566 MB/s, -35.3% vs zlibng, cv 0.4%</title></rect>
+<line x1="213.9" y1="1082.6" x2="213.9" y2="1083.4" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="220.3" y="1038.8" width="8.8" height="141.2" rx="1.5" fill="#e87ba4"><title>libdeflate inflate short_match - 824 MB/s, -5.8% vs zlibng, cv 0.0%</title></rect>
+<line x1="224.7" y1="1038.7" x2="224.7" y2="1038.8" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="231.1" y="1120.4" width="8.8" height="59.6" rx="1.5" fill="#008300"><title>isal inflate short_match - 348 MB/s, -60.3% vs zlibng, cv 0.4%</title></rect>
+<line x1="235.5" y1="1120.1" x2="235.5" y2="1120.6" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="241.8" y="1108.6" width="8.8" height="71.4" rx="1.5" fill="#4a3aa7"><title>miniz inflate short_match - 416 MB/s, -52.4% vs zlibng, cv 0.8%</title></rect>
+<line x1="246.2" y1="1108.0" x2="246.2" y2="1109.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="252.6" y="1107.7" width="8.8" height="72.3" rx="1.5" fill="#e34948"><title>libcompression inflate short_match - 422 MB/s, -51.8% vs zlibng, cv 0.1%</title></rect>
+<line x1="257.0" y1="1107.6" x2="257.0" y2="1107.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <line x1="266.4" y1="1008.0" x2="266.4" y2="1180.0" stroke="#e7e6e2" stroke-width="1"/>
 <text x="313.5" y="1198.0" font-size="11" fill="#52514e" text-anchor="middle" font-weight="normal">dna</text>
-<rect x="271.4" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#2a78d6"><title>zlibng inflate dna - 1.09 GB/s, cv 0.4%</title></rect>
-<text x="292.4" y="1024.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">1.09 GB/s</text>
+<rect x="271.4" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#2a78d6"><title>zlibng inflate dna - 1.05 GB/s, cv 0.4%</title></rect>
+<text x="292.4" y="1024.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">1.05 GB/s</text>
 <line x1="275.8" y1="1029.4" x2="275.8" y2="1030.6" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="282.2" y="1094.5" width="8.8" height="85.5" rx="1.5" fill="#eb6834"><title>zlib_rs inflate dna - 623 MB/s, -43.0% vs zlibng, cv 0.2%</title></rect>
-<line x1="286.6" y1="1094.4" x2="286.6" y2="1094.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="292.9" y="1091.3" width="8.8" height="88.7" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate dna - 647 MB/s, -40.9% vs zlibng, cv 1.2%</title></rect>
-<line x1="297.3" y1="1090.3" x2="297.3" y2="1092.4" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="303.7" y="1088.6" width="8.8" height="91.4" rx="1.5" fill="#eda100"><title>chromium_zlib inflate dna - 667 MB/s, -39.1% vs zlibng, cv 0.6%</title></rect>
-<line x1="308.1" y1="1088.0" x2="308.1" y2="1089.1" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="314.5" y="1041.1" width="8.8" height="138.9" rx="1.5" fill="#e87ba4"><title>libdeflate inflate dna - 1.01 GB/s, -7.4% vs zlibng, cv 0.4%</title></rect>
-<line x1="318.9" y1="1040.5" x2="318.9" y2="1041.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="325.3" y="1111.8" width="8.8" height="68.2" rx="1.5" fill="#008300"><title>isal inflate dna - 497 MB/s, -54.6% vs zlibng, cv 1.2%</title></rect>
-<line x1="329.7" y1="1111.0" x2="329.7" y2="1112.6" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="336.0" y="1112.0" width="8.8" height="68.0" rx="1.5" fill="#4a3aa7"><title>miniz inflate dna - 496 MB/s, -54.7% vs zlibng, cv 0.2%</title></rect>
-<line x1="340.4" y1="1111.9" x2="340.4" y2="1112.1" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="346.8" y="1114.1" width="8.8" height="65.9" rx="1.5" fill="#e34948"><title>libcompression inflate dna - 481 MB/s, -56.0% vs zlibng, cv 0.5%</title></rect>
-<line x1="351.2" y1="1113.8" x2="351.2" y2="1114.4" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="282.2" y="1090.9" width="8.8" height="89.1" rx="1.5" fill="#eb6834"><title>zlib_rs inflate dna - 623 MB/s, -40.6% vs zlibng, cv 0.2%</title></rect>
+<line x1="286.6" y1="1090.8" x2="286.6" y2="1091.1" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="292.9" y="1087.6" width="8.8" height="92.4" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate dna - 647 MB/s, -38.4% vs zlibng, cv 1.2%</title></rect>
+<line x1="297.3" y1="1086.5" x2="297.3" y2="1088.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="303.7" y="1084.7" width="8.8" height="95.3" rx="1.5" fill="#eda100"><title>chromium_zlib inflate dna - 667 MB/s, -36.5% vs zlibng, cv 0.6%</title></rect>
+<line x1="308.1" y1="1084.2" x2="308.1" y2="1085.3" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="314.5" y="1035.2" width="8.8" height="144.8" rx="1.5" fill="#e87ba4"><title>libdeflate inflate dna - 1.01 GB/s, -3.5% vs zlibng, cv 0.4%</title></rect>
+<line x1="318.9" y1="1034.6" x2="318.9" y2="1035.9" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="325.3" y="1109.0" width="8.8" height="71.0" rx="1.5" fill="#008300"><title>isal inflate dna - 497 MB/s, -52.6% vs zlibng, cv 1.2%</title></rect>
+<line x1="329.7" y1="1108.1" x2="329.7" y2="1109.8" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="336.0" y="1109.2" width="8.8" height="70.8" rx="1.5" fill="#4a3aa7"><title>miniz inflate dna - 496 MB/s, -52.8% vs zlibng, cv 0.2%</title></rect>
+<line x1="340.4" y1="1109.0" x2="340.4" y2="1109.3" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="346.8" y="1111.3" width="8.8" height="68.7" rx="1.5" fill="#e34948"><title>libcompression inflate dna - 481 MB/s, -54.2% vs zlibng, cv 0.5%</title></rect>
+<line x1="351.2" y1="1111.0" x2="351.2" y2="1111.6" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <line x1="360.6" y1="1008.0" x2="360.6" y2="1180.0" stroke="#e7e6e2" stroke-width="1"/>
 <text x="407.7" y="1198.0" font-size="11" fill="#52514e" text-anchor="middle" font-weight="normal">random</text>
-<rect x="365.6" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#2a78d6"><title>zlibng inflate random - 58.84 GB/s, cv 0.4%</title></rect>
-<text x="386.6" y="1024.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">58.84 GB/s</text>
-<line x1="370.0" y1="1029.4" x2="370.0" y2="1030.6" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="376.4" y="1093.6" width="8.8" height="86.4" rx="1.5" fill="#eb6834"><title>zlib_rs inflate random - 33.89 GB/s, -42.4% vs zlibng, cv 2.5%</title></rect>
-<line x1="380.8" y1="1091.5" x2="380.8" y2="1095.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="387.2" y="1066.2" width="8.8" height="113.8" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate random - 44.64 GB/s, -24.1% vs zlibng, cv 7.1%</title></rect>
-<line x1="391.5" y1="1058.2" x2="391.5" y2="1074.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="397.9" y="1065.9" width="8.8" height="114.1" rx="1.5" fill="#eda100"><title>chromium_zlib inflate random - 44.75 GB/s, -23.9% vs zlibng, cv 2.6%</title></rect>
-<line x1="402.3" y1="1062.9" x2="402.3" y2="1068.9" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="408.7" y="1053.1" width="8.8" height="126.9" rx="1.5" fill="#e87ba4"><title>libdeflate inflate random - 49.77 GB/s, -15.4% vs zlibng, cv 9.9%</title></rect>
-<line x1="413.1" y1="1040.5" x2="413.1" y2="1065.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="419.5" y="1118.8" width="8.8" height="61.2" rx="1.5" fill="#008300"><title>isal inflate random - 24.02 GB/s, -59.2% vs zlibng, cv 2.3%</title></rect>
-<line x1="423.9" y1="1117.4" x2="423.9" y2="1120.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="430.2" y="1175.0" width="8.8" height="5.0" rx="1.5" fill="#4a3aa7"><title>miniz inflate random - 1.94 GB/s, -96.7% vs zlibng, cv 0.1%</title></rect>
-<line x1="434.6" y1="1175.0" x2="434.6" y2="1175.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="441.0" y="1061.6" width="8.8" height="118.4" rx="1.5" fill="#e34948"><title>libcompression inflate random - 46.44 GB/s, -21.1% vs zlibng, cv 13.7%</title></rect>
-<line x1="445.4" y1="1045.4" x2="445.4" y2="1077.8" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="365.6" y="1053.1" width="8.8" height="126.9" rx="1.5" fill="#2a78d6"><title>zlibng inflate random - 42.12 GB/s, cv 10.0%</title></rect>
+<line x1="370.0" y1="1040.4" x2="370.0" y2="1065.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="376.4" y="1077.9" width="8.8" height="102.1" rx="1.5" fill="#eb6834"><title>zlib_rs inflate random - 33.89 GB/s, -19.6% vs zlibng, cv 2.5%</title></rect>
+<line x1="380.8" y1="1075.4" x2="380.8" y2="1080.4" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="387.2" y="1045.5" width="8.8" height="134.5" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate random - 44.64 GB/s, +6.0% vs zlibng, cv 7.1%</title></rect>
+<line x1="391.5" y1="1036.0" x2="391.5" y2="1055.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="397.9" y="1045.1" width="8.8" height="134.9" rx="1.5" fill="#eda100"><title>chromium_zlib inflate random - 44.75 GB/s, +6.2% vs zlibng, cv 2.6%</title></rect>
+<line x1="402.3" y1="1041.6" x2="402.3" y2="1048.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="408.7" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#e87ba4"><title>libdeflate inflate random - 49.77 GB/s, +18.2% vs zlibng, cv 9.9%</title></rect>
+<text x="413.1" y="1024.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">49.77 GB/s</text>
+<line x1="413.1" y1="1015.1" x2="413.1" y2="1044.9" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="419.5" y="1107.6" width="8.8" height="72.4" rx="1.5" fill="#008300"><title>isal inflate random - 24.02 GB/s, -43.0% vs zlibng, cv 2.3%</title></rect>
+<line x1="423.9" y1="1105.9" x2="423.9" y2="1109.3" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="430.2" y="1174.1" width="8.8" height="5.9" rx="1.5" fill="#4a3aa7"><title>miniz inflate random - 1.94 GB/s, -95.4% vs zlibng, cv 0.1%</title></rect>
+<line x1="434.6" y1="1174.1" x2="434.6" y2="1174.1" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="441.0" y="1040.0" width="8.8" height="140.0" rx="1.5" fill="#e34948"><title>libcompression inflate random - 46.44 GB/s, +10.3% vs zlibng, cv 13.7%</title></rect>
+<line x1="445.4" y1="1020.9" x2="445.4" y2="1059.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <line x1="454.8" y1="1008.0" x2="454.8" y2="1180.0" stroke="#e7e6e2" stroke-width="1"/>
 <text x="501.9" y="1198.0" font-size="11" fill="#52514e" text-anchor="middle" font-weight="normal">literals</text>
 <rect x="459.8" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#2a78d6"><title>zlibng inflate literals - 334 MB/s, cv 0.2%</title></rect>
 <text x="480.8" y="1024.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">334 MB/s</text>
-<line x1="464.2" y1="1029.8" x2="464.2" y2="1030.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="470.6" y="1071.6" width="8.8" height="108.4" rx="1.5" fill="#eb6834"><title>zlib_rs inflate literals - 241 MB/s, -27.7% vs zlibng, cv 0.4%</title></rect>
-<line x1="475.0" y1="1071.2" x2="475.0" y2="1072.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="481.4" y="1107.5" width="8.8" height="72.5" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate literals - 161 MB/s, -51.7% vs zlibng, cv 3.4%</title></rect>
-<line x1="485.7" y1="1105.1" x2="485.7" y2="1110.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="492.1" y="1078.0" width="8.8" height="102.0" rx="1.5" fill="#eda100"><title>chromium_zlib inflate literals - 227 MB/s, -32.0% vs zlibng, cv 0.2%</title></rect>
-<line x1="496.5" y1="1077.8" x2="496.5" y2="1078.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="502.9" y="1030.9" width="8.8" height="149.1" rx="1.5" fill="#e87ba4"><title>libdeflate inflate literals - 332 MB/s, -0.6% vs zlibng, cv 0.1%</title></rect>
-<line x1="507.3" y1="1030.8" x2="507.3" y2="1031.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="513.7" y="1097.6" width="8.8" height="82.4" rx="1.5" fill="#008300"><title>isal inflate literals - 183 MB/s, -45.1% vs zlibng, cv 0.7%</title></rect>
-<line x1="518.1" y1="1097.1" x2="518.1" y2="1098.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="524.5" y="1071.4" width="8.8" height="108.6" rx="1.5" fill="#4a3aa7"><title>miniz inflate literals - 242 MB/s, -27.6% vs zlibng, cv 0.5%</title></rect>
-<line x1="528.8" y1="1070.8" x2="528.8" y2="1072.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="535.2" y="1095.6" width="8.8" height="84.4" rx="1.5" fill="#e34948"><title>libcompression inflate literals - 188 MB/s, -43.8% vs zlibng, cv 0.1%</title></rect>
-<line x1="539.6" y1="1095.6" x2="539.6" y2="1095.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<line x1="464.2" y1="1029.7" x2="464.2" y2="1030.3" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="470.6" y="1071.8" width="8.8" height="108.2" rx="1.5" fill="#eb6834"><title>zlib_rs inflate literals - 241 MB/s, -27.8% vs zlibng, cv 0.4%</title></rect>
+<line x1="475.0" y1="1071.4" x2="475.0" y2="1072.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="481.4" y="1107.7" width="8.8" height="72.3" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate literals - 161 MB/s, -51.8% vs zlibng, cv 3.4%</title></rect>
+<line x1="485.7" y1="1105.2" x2="485.7" y2="1110.1" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="492.1" y="1078.2" width="8.8" height="101.8" rx="1.5" fill="#eda100"><title>chromium_zlib inflate literals - 227 MB/s, -32.1% vs zlibng, cv 0.2%</title></rect>
+<line x1="496.5" y1="1078.0" x2="496.5" y2="1078.4" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="502.9" y="1031.2" width="8.8" height="148.8" rx="1.5" fill="#e87ba4"><title>libdeflate inflate literals - 332 MB/s, -0.8% vs zlibng, cv 0.1%</title></rect>
+<line x1="507.3" y1="1031.1" x2="507.3" y2="1031.3" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="513.7" y="1097.8" width="8.8" height="82.2" rx="1.5" fill="#008300"><title>isal inflate literals - 183 MB/s, -45.2% vs zlibng, cv 0.7%</title></rect>
+<line x1="518.1" y1="1097.2" x2="518.1" y2="1098.3" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="524.5" y="1071.6" width="8.8" height="108.4" rx="1.5" fill="#4a3aa7"><title>miniz inflate literals - 242 MB/s, -27.7% vs zlibng, cv 0.5%</title></rect>
+<line x1="528.8" y1="1071.0" x2="528.8" y2="1072.1" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="535.2" y="1095.8" width="8.8" height="84.2" rx="1.5" fill="#e34948"><title>libcompression inflate literals - 188 MB/s, -43.8% vs zlibng, cv 0.1%</title></rect>
+<line x1="539.6" y1="1095.7" x2="539.6" y2="1095.8" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <line x1="549.0" y1="1008.0" x2="549.0" y2="1180.0" stroke="#e7e6e2" stroke-width="1"/>
 <text x="596.1" y="1198.0" font-size="11" fill="#52514e" text-anchor="middle" font-weight="normal">mixed</text>
-<rect x="554.0" y="1035.1" width="8.8" height="144.9" rx="1.5" fill="#2a78d6"><title>zlibng inflate mixed - 811 MB/s, cv 0.4%</title></rect>
-<line x1="558.4" y1="1034.4" x2="558.4" y2="1035.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="564.8" y="1077.1" width="8.8" height="102.9" rx="1.5" fill="#eb6834"><title>zlib_rs inflate mixed - 576 MB/s, -29.0% vs zlibng, cv 1.1%</title></rect>
+<rect x="554.0" y="1034.7" width="8.8" height="145.3" rx="1.5" fill="#2a78d6"><title>zlibng inflate mixed - 813 MB/s, cv 0.1%</title></rect>
+<line x1="558.4" y1="1034.6" x2="558.4" y2="1034.9" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="564.8" y="1077.1" width="8.8" height="102.9" rx="1.5" fill="#eb6834"><title>zlib_rs inflate mixed - 576 MB/s, -29.2% vs zlibng, cv 1.1%</title></rect>
 <line x1="569.2" y1="1076.0" x2="569.2" y2="1078.3" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="575.5" y="1101.4" width="8.8" height="78.6" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate mixed - 440 MB/s, -45.8% vs zlibng, cv 3.0%</title></rect>
+<rect x="575.5" y="1101.4" width="8.8" height="78.6" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate mixed - 440 MB/s, -45.9% vs zlibng, cv 3.0%</title></rect>
 <line x1="579.9" y1="1099.1" x2="579.9" y2="1103.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="586.3" y="1080.8" width="8.8" height="99.2" rx="1.5" fill="#eda100"><title>chromium_zlib inflate mixed - 555 MB/s, -31.5% vs zlibng, cv 0.1%</title></rect>
+<rect x="586.3" y="1080.8" width="8.8" height="99.2" rx="1.5" fill="#eda100"><title>chromium_zlib inflate mixed - 555 MB/s, -31.7% vs zlibng, cv 0.1%</title></rect>
 <line x1="590.7" y1="1080.7" x2="590.7" y2="1080.9" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="597.1" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#e87ba4"><title>libdeflate inflate mixed - 839 MB/s, +3.5% vs zlibng, cv 0.0%</title></rect>
+<rect x="597.1" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#e87ba4"><title>libdeflate inflate mixed - 839 MB/s, +3.3% vs zlibng, cv 0.0%</title></rect>
 <text x="601.5" y="1024.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">839 MB/s</text>
 <line x1="601.5" y1="1030.0" x2="601.5" y2="1030.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="607.9" y="1102.3" width="8.8" height="77.7" rx="1.5" fill="#008300"><title>isal inflate mixed - 435 MB/s, -46.4% vs zlibng, cv 2.7%</title></rect>
+<rect x="607.9" y="1102.3" width="8.8" height="77.7" rx="1.5" fill="#008300"><title>isal inflate mixed - 435 MB/s, -46.5% vs zlibng, cv 2.7%</title></rect>
 <line x1="612.3" y1="1100.2" x2="612.3" y2="1104.4" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="618.6" y="1102.0" width="8.8" height="78.0" rx="1.5" fill="#4a3aa7"><title>miniz inflate mixed - 436 MB/s, -46.2% vs zlibng, cv 0.3%</title></rect>
+<rect x="618.6" y="1102.0" width="8.8" height="78.0" rx="1.5" fill="#4a3aa7"><title>miniz inflate mixed - 436 MB/s, -46.3% vs zlibng, cv 0.3%</title></rect>
 <line x1="623.0" y1="1101.8" x2="623.0" y2="1102.3" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="629.4" y="1104.2" width="8.8" height="75.8" rx="1.5" fill="#e34948"><title>libcompression inflate mixed - 424 MB/s, -47.7% vs zlibng, cv 0.2%</title></rect>
+<rect x="629.4" y="1104.2" width="8.8" height="75.8" rx="1.5" fill="#e34948"><title>libcompression inflate mixed - 424 MB/s, -47.9% vs zlibng, cv 0.2%</title></rect>
 <line x1="633.8" y1="1104.1" x2="633.8" y2="1104.4" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <line x1="643.2" y1="1008.0" x2="643.2" y2="1180.0" stroke="#e7e6e2" stroke-width="1"/>
 <text x="690.3" y="1198.0" font-size="11" fill="#52514e" text-anchor="middle" font-weight="normal">realistic_rgb</text>
-<rect x="648.2" y="1030.5" width="8.8" height="149.5" rx="1.5" fill="#2a78d6"><title>zlibng inflate realistic_rgb - 328 MB/s, cv 0.1%</title></rect>
-<line x1="652.6" y1="1030.4" x2="652.6" y2="1030.6" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="659.0" y="1069.3" width="8.8" height="110.7" rx="1.5" fill="#eb6834"><title>zlib_rs inflate realistic_rgb - 243 MB/s, -25.9% vs zlibng, cv 0.4%</title></rect>
+<rect x="648.2" y="1030.3" width="8.8" height="149.7" rx="1.5" fill="#2a78d6"><title>zlibng inflate realistic_rgb - 329 MB/s, cv 0.2%</title></rect>
+<line x1="652.6" y1="1030.0" x2="652.6" y2="1030.6" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="659.0" y="1069.3" width="8.8" height="110.7" rx="1.5" fill="#eb6834"><title>zlib_rs inflate realistic_rgb - 243 MB/s, -26.1% vs zlibng, cv 0.4%</title></rect>
 <line x1="663.4" y1="1068.8" x2="663.4" y2="1069.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="669.8" y="1088.9" width="8.8" height="91.1" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate realistic_rgb - 200 MB/s, -39.0% vs zlibng, cv 0.3%</title></rect>
+<rect x="669.8" y="1088.9" width="8.8" height="91.1" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate realistic_rgb - 200 MB/s, -39.1% vs zlibng, cv 0.3%</title></rect>
 <line x1="674.1" y1="1088.6" x2="674.1" y2="1089.1" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="680.5" y="1077.5" width="8.8" height="102.5" rx="1.5" fill="#eda100"><title>chromium_zlib inflate realistic_rgb - 225 MB/s, -31.5% vs zlibng, cv 0.0%</title></rect>
+<rect x="680.5" y="1077.5" width="8.8" height="102.5" rx="1.5" fill="#eda100"><title>chromium_zlib inflate realistic_rgb - 225 MB/s, -31.6% vs zlibng, cv 0.0%</title></rect>
 <line x1="684.9" y1="1077.5" x2="684.9" y2="1077.6" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="691.3" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#e87ba4"><title>libdeflate inflate realistic_rgb - 329 MB/s, +0.4% vs zlibng, cv 0.0%</title></rect>
+<rect x="691.3" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#e87ba4"><title>libdeflate inflate realistic_rgb - 329 MB/s, +0.2% vs zlibng, cv 0.0%</title></rect>
 <text x="695.7" y="1024.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">329 MB/s</text>
 <line x1="695.7" y1="1030.0" x2="695.7" y2="1030.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="702.1" y="1092.3" width="8.8" height="87.7" rx="1.5" fill="#008300"><title>isal inflate realistic_rgb - 192 MB/s, -41.3% vs zlibng, cv 0.1%</title></rect>
+<rect x="702.1" y="1092.3" width="8.8" height="87.7" rx="1.5" fill="#008300"><title>isal inflate realistic_rgb - 192 MB/s, -41.5% vs zlibng, cv 0.1%</title></rect>
 <line x1="706.5" y1="1092.2" x2="706.5" y2="1092.4" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="712.9" y="1068.4" width="8.8" height="111.6" rx="1.5" fill="#4a3aa7"><title>miniz inflate realistic_rgb - 245 MB/s, -25.4% vs zlibng, cv 0.1%</title></rect>
+<rect x="712.9" y="1068.4" width="8.8" height="111.6" rx="1.5" fill="#4a3aa7"><title>miniz inflate realistic_rgb - 245 MB/s, -25.5% vs zlibng, cv 0.1%</title></rect>
 <line x1="717.2" y1="1068.3" x2="717.2" y2="1068.6" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="723.6" y="1100.0" width="8.8" height="80.0" rx="1.5" fill="#e34948"><title>libcompression inflate realistic_rgb - 176 MB/s, -46.5% vs zlibng, cv 2.1%</title></rect>
+<rect x="723.6" y="1100.0" width="8.8" height="80.0" rx="1.5" fill="#e34948"><title>libcompression inflate realistic_rgb - 176 MB/s, -46.6% vs zlibng, cv 2.1%</title></rect>
 <line x1="728.0" y1="1098.3" x2="728.0" y2="1101.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <line x1="737.4" y1="1008.0" x2="737.4" y2="1180.0" stroke="#e7e6e2" stroke-width="1"/>
 <text x="784.5" y="1198.0" font-size="11" fill="#52514e" text-anchor="middle" font-weight="normal">striped_rgb</text>
-<rect x="742.4" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#2a78d6"><title>zlibng inflate striped_rgb - 18.73 GB/s, cv 0.2%</title></rect>
-<text x="763.4" y="1024.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">18.73 GB/s</text>
-<line x1="746.8" y1="1029.7" x2="746.8" y2="1030.3" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="742.4" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#2a78d6"><title>zlibng inflate striped_rgb - 18.76 GB/s, cv 0.2%</title></rect>
+<text x="763.4" y="1024.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">18.76 GB/s</text>
+<line x1="746.8" y1="1029.8" x2="746.8" y2="1030.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <rect x="753.2" y="1173.9" width="8.8" height="6.1" rx="1.5" fill="#eb6834"><title>zlib_rs inflate striped_rgb - 768 MB/s, -95.9% vs zlibng, cv 0.0%</title></rect>
 <line x1="757.6" y1="1173.9" x2="757.6" y2="1173.9" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <rect x="763.9" y="1161.8" width="8.8" height="18.2" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate striped_rgb - 2.27 GB/s, -87.9% vs zlibng, cv 9.6%</title></rect>
-<line x1="768.3" y1="1160.0" x2="768.3" y2="1163.5" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="774.7" y="1145.4" width="8.8" height="34.6" rx="1.5" fill="#eda100"><title>chromium_zlib inflate striped_rgb - 4.32 GB/s, -76.9% vs zlibng, cv 0.1%</title></rect>
+<line x1="768.3" y1="1160.1" x2="768.3" y2="1163.6" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="774.7" y="1145.5" width="8.8" height="34.5" rx="1.5" fill="#eda100"><title>chromium_zlib inflate striped_rgb - 4.32 GB/s, -77.0% vs zlibng, cv 0.1%</title></rect>
 <line x1="779.1" y1="1145.4" x2="779.1" y2="1145.5" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="785.5" y="1163.1" width="8.8" height="16.9" rx="1.5" fill="#e87ba4"><title>libdeflate inflate striped_rgb - 2.11 GB/s, -88.7% vs zlibng, cv 0.1%</title></rect>
-<line x1="789.9" y1="1163.1" x2="789.9" y2="1163.1" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="785.5" y="1163.2" width="8.8" height="16.8" rx="1.5" fill="#e87ba4"><title>libdeflate inflate striped_rgb - 2.11 GB/s, -88.8% vs zlibng, cv 0.1%</title></rect>
+<line x1="789.9" y1="1163.1" x2="789.9" y2="1163.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <rect x="796.3" y="1173.9" width="8.8" height="6.1" rx="1.5" fill="#008300"><title>isal inflate striped_rgb - 761 MB/s, -95.9% vs zlibng, cv 0.0%</title></rect>
 <line x1="800.7" y1="1173.9" x2="800.7" y2="1173.9" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <rect x="807.0" y="1169.5" width="8.8" height="10.5" rx="1.5" fill="#4a3aa7"><title>miniz inflate striped_rgb - 1.31 GB/s, -93.0% vs zlibng, cv 0.1%</title></rect>
 <line x1="811.4" y1="1169.5" x2="811.4" y2="1169.5" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <rect x="817.8" y="1173.8" width="8.8" height="6.2" rx="1.5" fill="#e34948"><title>libcompression inflate striped_rgb - 774 MB/s, -95.9% vs zlibng, cv 2.6%</title></rect>
-<line x1="822.2" y1="1173.6" x2="822.2" y2="1174.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<line x1="822.2" y1="1173.7" x2="822.2" y2="1174.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <line x1="831.6" y1="1008.0" x2="831.6" y2="1180.0" stroke="#e7e6e2" stroke-width="1"/>
 <text x="878.7" y="1198.0" font-size="11" fill="#52514e" text-anchor="middle" font-weight="normal">phased</text>
-<rect x="836.6" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#2a78d6"><title>zlibng inflate phased - 514 MB/s, cv 0.5%</title></rect>
-<text x="857.6" y="1024.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">514 MB/s</text>
-<line x1="841.0" y1="1029.3" x2="841.0" y2="1030.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="836.6" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#2a78d6"><title>zlibng inflate phased - 513 MB/s, cv 0.2%</title></rect>
+<text x="857.6" y="1024.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">513 MB/s</text>
+<line x1="841.0" y1="1029.7" x2="841.0" y2="1030.3" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <rect x="847.4" y="1081.0" width="8.8" height="99.0" rx="1.5" fill="#eb6834"><title>zlib_rs inflate phased - 339 MB/s, -34.0% vs zlibng, cv 0.4%</title></rect>
-<line x1="851.8" y1="1080.6" x2="851.8" y2="1081.5" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="858.1" y="1088.8" width="8.8" height="91.2" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate phased - 312 MB/s, -39.2% vs zlibng, cv 0.5%</title></rect>
-<line x1="862.5" y1="1088.4" x2="862.5" y2="1089.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="868.9" y="1080.5" width="8.8" height="99.5" rx="1.5" fill="#eda100"><title>chromium_zlib inflate phased - 341 MB/s, -33.6% vs zlibng, cv 0.4%</title></rect>
-<line x1="873.3" y1="1080.1" x2="873.3" y2="1080.8" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="879.7" y="1031.1" width="8.8" height="148.9" rx="1.5" fill="#e87ba4"><title>libdeflate inflate phased - 510 MB/s, -0.8% vs zlibng, cv 0.1%</title></rect>
-<line x1="884.1" y1="1031.0" x2="884.1" y2="1031.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<line x1="851.8" y1="1080.5" x2="851.8" y2="1081.4" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="858.1" y="1088.7" width="8.8" height="91.3" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate phased - 312 MB/s, -39.2% vs zlibng, cv 0.5%</title></rect>
+<line x1="862.5" y1="1088.3" x2="862.5" y2="1089.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="868.9" y="1080.4" width="8.8" height="99.6" rx="1.5" fill="#eda100"><title>chromium_zlib inflate phased - 341 MB/s, -33.6% vs zlibng, cv 0.4%</title></rect>
+<line x1="873.3" y1="1080.0" x2="873.3" y2="1080.8" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="879.7" y="1031.0" width="8.8" height="149.0" rx="1.5" fill="#e87ba4"><title>libdeflate inflate phased - 510 MB/s, -0.7% vs zlibng, cv 0.1%</title></rect>
+<line x1="884.1" y1="1030.9" x2="884.1" y2="1031.1" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <rect x="890.5" y="1099.9" width="8.8" height="80.1" rx="1.5" fill="#008300"><title>isal inflate phased - 274 MB/s, -46.6% vs zlibng, cv 0.2%</title></rect>
-<line x1="894.9" y1="1099.7" x2="894.9" y2="1100.1" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="901.2" y="1087.9" width="8.8" height="92.1" rx="1.5" fill="#4a3aa7"><title>miniz inflate phased - 315 MB/s, -38.6% vs zlibng, cv 0.1%</title></rect>
-<line x1="905.6" y1="1087.8" x2="905.6" y2="1088.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<line x1="894.9" y1="1099.7" x2="894.9" y2="1100.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="901.2" y="1087.8" width="8.8" height="92.2" rx="1.5" fill="#4a3aa7"><title>miniz inflate phased - 315 MB/s, -38.6% vs zlibng, cv 0.1%</title></rect>
+<line x1="905.6" y1="1087.7" x2="905.6" y2="1087.9" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <rect x="912.0" y="1106.0" width="8.8" height="74.0" rx="1.5" fill="#e34948"><title>libcompression inflate phased - 253 MB/s, -50.7% vs zlibng, cv 0.2%</title></rect>
-<line x1="916.4" y1="1105.9" x2="916.4" y2="1106.2" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<line x1="916.4" y1="1105.9" x2="916.4" y2="1106.1" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <line x1="925.8" y1="1008.0" x2="925.8" y2="1180.0" stroke="#e7e6e2" stroke-width="1"/>
 <text x="972.9" y="1198.0" font-size="11" fill="#52514e" text-anchor="middle" font-weight="normal">runs</text>
-<rect x="930.8" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#2a78d6"><title>zlibng inflate runs - 9.29 GB/s, cv 2.3%</title></rect>
-<text x="951.8" y="1024.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">9.29 GB/s</text>
-<line x1="935.2" y1="1026.6" x2="935.2" y2="1033.4" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="941.6" y="1060.0" width="8.8" height="120.0" rx="1.5" fill="#eb6834"><title>zlib_rs inflate runs - 7.43 GB/s, -20.0% vs zlibng, cv 0.0%</title></rect>
-<line x1="946.0" y1="1059.9" x2="946.0" y2="1060.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="952.4" y="1170.7" width="8.8" height="9.3" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate runs - 574 MB/s, -93.8% vs zlibng, cv 0.1%</title></rect>
-<line x1="956.7" y1="1170.7" x2="956.7" y2="1170.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="963.1" y="1064.3" width="8.8" height="115.7" rx="1.5" fill="#eda100"><title>chromium_zlib inflate runs - 7.17 GB/s, -22.9% vs zlibng, cv 0.0%</title></rect>
-<line x1="967.5" y1="1064.2" x2="967.5" y2="1064.4" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="973.9" y="1036.4" width="8.8" height="143.6" rx="1.5" fill="#e87ba4"><title>libdeflate inflate runs - 8.89 GB/s, -4.3% vs zlibng, cv 0.1%</title></rect>
-<line x1="978.3" y1="1036.3" x2="978.3" y2="1036.5" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="984.7" y="1170.3" width="8.8" height="9.7" rx="1.5" fill="#008300"><title>isal inflate runs - 598 MB/s, -93.6% vs zlibng, cv 0.0%</title></rect>
-<line x1="989.1" y1="1170.3" x2="989.1" y2="1170.4" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="995.5" y="1172.6" width="8.8" height="7.4" rx="1.5" fill="#4a3aa7"><title>miniz inflate runs - 459 MB/s, -95.1% vs zlibng, cv 0.0%</title></rect>
-<line x1="999.8" y1="1172.6" x2="999.8" y2="1172.6" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
-<rect x="1006.2" y="1091.7" width="8.8" height="88.3" rx="1.5" fill="#e34948"><title>libcompression inflate runs - 5.47 GB/s, -41.2% vs zlibng, cv 0.3%</title></rect>
-<line x1="1010.6" y1="1091.4" x2="1010.6" y2="1092.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="930.8" y="1030.0" width="8.8" height="150.0" rx="1.5" fill="#2a78d6"><title>zlibng inflate runs - 9.58 GB/s, cv 0.4%</title></rect>
+<text x="951.8" y="1024.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">9.58 GB/s</text>
+<line x1="935.2" y1="1029.4" x2="935.2" y2="1030.6" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="941.6" y="1063.6" width="8.8" height="116.4" rx="1.5" fill="#eb6834"><title>zlib_rs inflate runs - 7.43 GB/s, -22.4% vs zlibng, cv 0.0%</title></rect>
+<line x1="946.0" y1="1063.5" x2="946.0" y2="1063.6" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="952.4" y="1171.0" width="8.8" height="9.0" rx="1.5" fill="#1baf7a"><title>madler_zlib inflate runs - 574 MB/s, -94.0% vs zlibng, cv 0.1%</title></rect>
+<line x1="956.7" y1="1171.0" x2="956.7" y2="1171.0" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="963.1" y="1067.8" width="8.8" height="112.2" rx="1.5" fill="#eda100"><title>chromium_zlib inflate runs - 7.17 GB/s, -25.2% vs zlibng, cv 0.0%</title></rect>
+<line x1="967.5" y1="1067.7" x2="967.5" y2="1067.8" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="973.9" y="1040.7" width="8.8" height="139.3" rx="1.5" fill="#e87ba4"><title>libdeflate inflate runs - 8.89 GB/s, -7.2% vs zlibng, cv 0.1%</title></rect>
+<line x1="978.3" y1="1040.6" x2="978.3" y2="1040.9" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="984.7" y="1170.6" width="8.8" height="9.4" rx="1.5" fill="#008300"><title>isal inflate runs - 598 MB/s, -93.8% vs zlibng, cv 0.0%</title></rect>
+<line x1="989.1" y1="1170.6" x2="989.1" y2="1170.6" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="995.5" y="1172.8" width="8.8" height="7.2" rx="1.5" fill="#4a3aa7"><title>miniz inflate runs - 459 MB/s, -95.2% vs zlibng, cv 0.0%</title></rect>
+<line x1="999.8" y1="1172.8" x2="999.8" y2="1172.8" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
+<rect x="1006.2" y="1094.4" width="8.8" height="85.6" rx="1.5" fill="#e34948"><title>libcompression inflate runs - 5.47 GB/s, -42.9% vs zlibng, cv 0.3%</title></rect>
+<line x1="1010.6" y1="1094.1" x2="1010.6" y2="1094.7" stroke="#52514e" stroke-opacity="0.7" stroke-width="1"/>
 <g opacity="0.35"><line x1="1038.0" y1="1092.0" x2="1038.0" y2="1036.0" stroke="#52514e" stroke-width="2"/><polygon points="1038.0,1030.0 1042.0,1039.0 1034.0,1039.0" fill="#52514e"/><text x="1038.0" y="1054.0" font-size="11" fill="#52514e" text-anchor="middle" transform="rotate(-90.0 1038.0 1061.0)">better</text></g>
 <text x="78.0" y="1216.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">deflate, synthetic data types by level</text>
 <text x="1020.0" y="1216.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">level:0 in the panel above</text>
@@ -649,11 +647,11 @@
 <text x="286.6" y="1434.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">6</text>
 <text x="411.8" y="1434.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">9</text>
 <text x="537.0" y="1434.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">12</text>
-<path d="M78.0,1271.2 L161.5,1290.1 L286.6,1323.9 L411.8,1331.8" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="78.0" cy="1271.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 text - 417 MB/s, ratio 2.482, cv 0.7%</title></circle>
-<circle cx="161.5" cy="1290.1" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 text - 223 MB/s, ratio 3.539, cv 3.5%</title></circle>
-<circle cx="286.6" cy="1323.9" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 text - 73 MB/s, ratio 3.803, cv 0.8%</title></circle>
-<circle cx="411.8" cy="1331.8" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 text - 56 MB/s, ratio 3.848, cv 0.4%</title></circle>
+<path d="M78.0,1270.7 L161.5,1288.2 L286.6,1323.3 L411.8,1332.2" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="78.0" cy="1270.7" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 text - 424 MB/s, ratio 2.482, cv 1.1%</title></circle>
+<circle cx="161.5" cy="1288.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 text - 238 MB/s, ratio 3.539, cv 3.6%</title></circle>
+<circle cx="286.6" cy="1323.3" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 text - 74 MB/s, ratio 3.803, cv 0.4%</title></circle>
+<circle cx="411.8" cy="1332.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 text - 55 MB/s, ratio 3.848, cv 0.5%</title></circle>
 <path d="M78.0,1284.4 L161.5,1303.5 L286.6,1331.0 L411.8,1341.4" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
 <circle cx="78.0" cy="1284.4" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:1 text - 270 MB/s, ratio 2.482, cv 0.2%</title></circle>
 <circle cx="161.5" cy="1303.5" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:3 text - 143 MB/s, ratio 3.539, cv 0.9%</title></circle>
@@ -686,7 +684,7 @@
 <circle cx="411.8" cy="1366.5" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:9 text - 18 MB/s, ratio 3.870, cv 0.3%</title></circle>
 <circle cx="453.5" cy="1366.5" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:10 text - 18 MB/s, ratio 3.870, cv 0.2%</title></circle>
 <circle cx="244.9" cy="1331.5" r="3.5" fill="#e34948" stroke="#fcfcfb" stroke-width="1.5"><title>libcompression deflate level:5 text - 57 MB/s, ratio 3.716, cv 0.8%</title></circle>
-<circle cx="78.0" cy="1259.9" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 text - 606 MB/s, ratio 2.457, cv 5.3%</title></circle>
+<circle cx="78.0" cy="1259.9" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 text - 606 MB/s, ratio 2.457, cv 5.3%</title></circle>
 <text x="561.0" y="1247.0" font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="normal">short_match</text>
 <line x1="561.0" y1="1403.3" x2="1020.0" y2="1403.3" stroke="#e7e6e2" stroke-width="1"/>
 <text x="1016.0" y="1400.3" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">20 MB/s</text>
@@ -704,11 +702,11 @@
 <text x="769.6" y="1434.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">6</text>
 <text x="894.8" y="1434.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">9</text>
 <text x="1020.0" y="1434.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">12</text>
-<path d="M561.0,1277.0 L644.5,1311.2 L769.6,1325.1 L894.8,1338.6" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="561.0" cy="1277.0" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 short_match - 384 MB/s, ratio 2.340, cv 2.6%</title></circle>
-<circle cx="644.5" cy="1311.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 short_match - 173 MB/s, ratio 2.714, cv 2.9%</title></circle>
-<circle cx="769.6" cy="1325.1" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 short_match - 125 MB/s, ratio 2.758, cv 0.8%</title></circle>
-<circle cx="894.8" cy="1338.6" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 short_match - 91 MB/s, ratio 2.949, cv 1.9%</title></circle>
+<path d="M561.0,1276.0 L644.5,1315.6 L769.6,1324.7 L894.8,1337.5" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="561.0" cy="1276.0" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 short_match - 393 MB/s, ratio 2.340, cv 1.0%</title></circle>
+<circle cx="644.5" cy="1315.6" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 short_match - 156 MB/s, ratio 2.714, cv 0.4%</title></circle>
+<circle cx="769.6" cy="1324.7" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 short_match - 126 MB/s, ratio 2.758, cv 1.1%</title></circle>
+<circle cx="894.8" cy="1337.5" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 short_match - 93 MB/s, ratio 2.949, cv 1.7%</title></circle>
 <path d="M561.0,1296.5 L644.5,1328.5 L769.6,1337.8 L894.8,1348.3" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
 <circle cx="561.0" cy="1296.5" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:1 short_match - 243 MB/s, ratio 2.340, cv 2.4%</title></circle>
 <circle cx="644.5" cy="1328.5" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:3 short_match - 115 MB/s, ratio 2.714, cv 1.8%</title></circle>
@@ -741,7 +739,7 @@
 <circle cx="894.8" cy="1358.4" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:9 short_match - 57 MB/s, ratio 2.947, cv 0.6%</title></circle>
 <circle cx="936.5" cy="1358.2" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:10 short_match - 57 MB/s, ratio 2.947, cv 0.6%</title></circle>
 <circle cx="727.9" cy="1354.7" r="3.5" fill="#e34948" stroke="#fcfcfb" stroke-width="1.5"><title>libcompression deflate level:5 short_match - 62 MB/s, ratio 2.937, cv 3.7%</title></circle>
-<circle cx="561.0" cy="1263.2" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 short_match - 530 MB/s, ratio 2.352, cv 3.9%</title></circle>
+<circle cx="561.0" cy="1263.2" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 short_match - 530 MB/s, ratio 2.352, cv 3.9%</title></circle>
 <text x="78.0" y="1465.0" font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="normal">dna</text>
 <line x1="78.0" y1="1621.0" x2="537.0" y2="1621.0" stroke="#e7e6e2" stroke-width="1"/>
 <text x="533.0" y="1618.0" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">2 MB/s</text>
@@ -763,11 +761,11 @@
 <text x="286.6" y="1652.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">6</text>
 <text x="411.8" y="1652.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">9</text>
 <text x="537.0" y="1652.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">12</text>
-<path d="M78.0,1482.7 L161.5,1496.3 L286.6,1548.7 L411.8,1607.2" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="78.0" cy="1482.7" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 dna - 244 MB/s, ratio 1.747, cv 0.8%</title></circle>
-<circle cx="161.5" cy="1496.3" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 dna - 152 MB/s, ratio 3.276, cv 0.7%</title></circle>
-<circle cx="286.6" cy="1548.7" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 dna - 25 MB/s, ratio 3.384, cv 0.9%</title></circle>
-<circle cx="411.8" cy="1607.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 dna - 3 MB/s, ratio 3.395, cv 0.2%</title></circle>
+<path d="M78.0,1482.6 L161.5,1495.1 L286.6,1548.3 L411.8,1607.2" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="78.0" cy="1482.6" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 dna - 245 MB/s, ratio 1.747, cv 0.9%</title></circle>
+<circle cx="161.5" cy="1495.1" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 dna - 159 MB/s, ratio 3.276, cv 0.7%</title></circle>
+<circle cx="286.6" cy="1548.3" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 dna - 25 MB/s, ratio 3.384, cv 0.8%</title></circle>
+<circle cx="411.8" cy="1607.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 dna - 3 MB/s, ratio 3.395, cv 0.1%</title></circle>
 <path d="M78.0,1492.0 L161.5,1504.0 L286.6,1554.9 L411.8,1613.2" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
 <circle cx="78.0" cy="1492.0" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:1 dna - 177 MB/s, ratio 1.747, cv 0.1%</title></circle>
 <circle cx="161.5" cy="1504.0" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:3 dna - 116 MB/s, ratio 3.276, cv 0.7%</title></circle>
@@ -800,7 +798,7 @@
 <circle cx="411.8" cy="1631.2" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:9 dna - 1 MB/s, ratio 3.395, cv 0.0%</title></circle>
 <circle cx="453.5" cy="1631.2" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:10 dna - 1 MB/s, ratio 3.395, cv 0.3%</title></circle>
 <circle cx="244.9" cy="1568.5" r="3.5" fill="#e34948" stroke="#fcfcfb" stroke-width="1.5"><title>libcompression deflate level:5 dna - 12 MB/s, ratio 3.321, cv 0.0%</title></circle>
-<circle cx="78.0" cy="1477.6" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 dna - 292 MB/s, ratio 1.743, cv 0.2%</title></circle>
+<circle cx="78.0" cy="1477.6" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 dna - 292 MB/s, ratio 1.743, cv 0.2%</title></circle>
 <text x="561.0" y="1465.0" font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="normal">random</text>
 <line x1="561.0" y1="1603.1" x2="1020.0" y2="1603.1" stroke="#e7e6e2" stroke-width="1"/>
 <text x="1016.0" y="1600.1" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">50 MB/s</text>
@@ -816,11 +814,11 @@
 <text x="769.6" y="1652.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">6</text>
 <text x="894.8" y="1652.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">9</text>
 <text x="1020.0" y="1652.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">12</text>
-<path d="M561.0,1555.0 L644.5,1569.5 L769.6,1575.2 L894.8,1596.1" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="561.0" cy="1555.0" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 random - 134 MB/s, ratio 0.948, cv 0.3%</title></circle>
-<circle cx="644.5" cy="1569.5" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 random - 99 MB/s, ratio 1.000, cv 1.3%</title></circle>
-<circle cx="769.6" cy="1575.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 random - 89 MB/s, ratio 1.000, cv 1.0%</title></circle>
-<circle cx="894.8" cy="1596.1" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 random - 58 MB/s, ratio 1.000, cv 0.8%</title></circle>
+<path d="M561.0,1556.8 L644.5,1578.4 L769.6,1575.2 L894.8,1594.6" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="561.0" cy="1556.8" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 random - 129 MB/s, ratio 0.948, cv 0.3%</title></circle>
+<circle cx="644.5" cy="1578.4" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 random - 83 MB/s, ratio 1.000, cv 1.4%</title></circle>
+<circle cx="769.6" cy="1575.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 random - 88 MB/s, ratio 1.000, cv 0.4%</title></circle>
+<circle cx="894.8" cy="1594.6" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 random - 60 MB/s, ratio 1.000, cv 2.2%</title></circle>
 <path d="M561.0,1566.1 L644.5,1590.4 L769.6,1593.2 L894.8,1596.5" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
 <circle cx="561.0" cy="1566.1" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:1 random - 107 MB/s, ratio 0.948, cv 0.4%</title></circle>
 <circle cx="644.5" cy="1590.4" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:3 random - 65 MB/s, ratio 1.000, cv 0.8%</title></circle>
@@ -853,7 +851,7 @@
 <circle cx="894.8" cy="1627.2" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:9 random - 31 MB/s, ratio 1.000, cv 8.0%</title></circle>
 <circle cx="936.5" cy="1622.9" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:10 random - 33 MB/s, ratio 1.000, cv 0.6%</title></circle>
 <circle cx="727.9" cy="1601.4" r="3.5" fill="#e34948" stroke="#fcfcfb" stroke-width="1.5"><title>libcompression deflate level:5 random - 52 MB/s, ratio 1.000, cv 0.7%</title></circle>
-<circle cx="561.0" cy="1482.8" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 random - 585 MB/s, ratio 1.000, cv 0.1%</title></circle>
+<circle cx="561.0" cy="1482.8" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 random - 585 MB/s, ratio 1.000, cv 0.1%</title></circle>
 <text x="78.0" y="1683.0" font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="normal">literals</text>
 <line x1="78.0" y1="1848.7" x2="537.0" y2="1848.7" stroke="#e7e6e2" stroke-width="1"/>
 <text x="533.0" y="1845.7" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">20 MB/s</text>
@@ -871,11 +869,11 @@
 <text x="286.6" y="1870.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">6</text>
 <text x="411.8" y="1870.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">9</text>
 <text x="537.0" y="1870.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">12</text>
-<path d="M78.0,1764.4 L161.5,1786.2 L286.6,1788.6 L411.8,1828.6" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="78.0" cy="1764.4" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 literals - 139 MB/s, ratio 0.975, cv 0.1%</title></circle>
-<circle cx="161.5" cy="1786.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 literals - 84 MB/s, ratio 1.117, cv 2.6%</title></circle>
-<circle cx="286.6" cy="1788.6" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 literals - 80 MB/s, ratio 1.117, cv 1.2%</title></circle>
-<circle cx="411.8" cy="1828.6" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 literals - 32 MB/s, ratio 1.094, cv 0.7%</title></circle>
+<path d="M78.0,1765.6 L161.5,1790.9 L286.6,1788.7 L411.8,1827.3" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="78.0" cy="1765.6" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 literals - 136 MB/s, ratio 0.975, cv 0.3%</title></circle>
+<circle cx="161.5" cy="1790.9" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 literals - 76 MB/s, ratio 1.117, cv 0.8%</title></circle>
+<circle cx="286.6" cy="1788.7" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 literals - 80 MB/s, ratio 1.117, cv 0.6%</title></circle>
+<circle cx="411.8" cy="1827.3" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 literals - 33 MB/s, ratio 1.094, cv 1.4%</title></circle>
 <path d="M78.0,1774.9 L161.5,1805.7 L286.6,1807.9 L411.8,1831.3" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
 <circle cx="78.0" cy="1774.9" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:1 literals - 109 MB/s, ratio 0.975, cv 0.3%</title></circle>
 <circle cx="161.5" cy="1805.7" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:3 literals - 54 MB/s, ratio 1.117, cv 0.4%</title></circle>
@@ -908,7 +906,7 @@
 <circle cx="411.8" cy="1846.1" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:9 literals - 21 MB/s, ratio 1.105, cv 1.3%</title></circle>
 <circle cx="453.5" cy="1845.9" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:10 literals - 21 MB/s, ratio 1.105, cv 0.2%</title></circle>
 <circle cx="244.9" cy="1846.6" r="3.5" fill="#e34948" stroke="#fcfcfb" stroke-width="1.5"><title>libcompression deflate level:5 literals - 21 MB/s, ratio 1.107, cv 0.7%</title></circle>
-<circle cx="78.0" cy="1699.4" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 literals - 623 MB/s, ratio 1.000, cv 0.9%</title></circle>
+<circle cx="78.0" cy="1699.4" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 literals - 623 MB/s, ratio 1.000, cv 0.9%</title></circle>
 <text x="561.0" y="1683.0" font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="normal">mixed</text>
 <line x1="561.0" y1="1838.3" x2="1020.0" y2="1838.3" stroke="#e7e6e2" stroke-width="1"/>
 <text x="1016.0" y="1835.3" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">5 MB/s</text>
@@ -930,11 +928,11 @@
 <text x="769.6" y="1870.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">6</text>
 <text x="894.8" y="1870.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">9</text>
 <text x="1020.0" y="1870.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">12</text>
-<path d="M561.0,1704.3 L644.5,1721.8 L769.6,1755.1 L894.8,1804.7" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="561.0" cy="1704.3" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 mixed - 485 MB/s, ratio 2.116, cv 1.5%</title></circle>
-<circle cx="644.5" cy="1721.8" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 mixed - 267 MB/s, ratio 2.555, cv 4.2%</title></circle>
-<circle cx="769.6" cy="1755.1" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 mixed - 86 MB/s, ratio 2.627, cv 0.8%</title></circle>
-<circle cx="894.8" cy="1804.7" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 mixed - 16 MB/s, ratio 2.618, cv 0.4%</title></circle>
+<path d="M561.0,1707.0 L644.5,1728.6 L769.6,1755.5 L894.8,1804.3" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="561.0" cy="1707.0" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 mixed - 442 MB/s, ratio 2.116, cv 1.3%</title></circle>
+<circle cx="644.5" cy="1728.6" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 mixed - 211 MB/s, ratio 2.555, cv 0.4%</title></circle>
+<circle cx="769.6" cy="1755.5" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 mixed - 84 MB/s, ratio 2.627, cv 1.5%</title></circle>
+<circle cx="894.8" cy="1804.3" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 mixed - 16 MB/s, ratio 2.618, cv 0.3%</title></circle>
 <path d="M561.0,1719.9 L644.5,1741.4 L769.6,1764.3 L894.8,1818.7" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
 <circle cx="561.0" cy="1719.9" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:1 mixed - 284 MB/s, ratio 2.116, cv 0.7%</title></circle>
 <circle cx="644.5" cy="1741.4" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:3 mixed - 137 MB/s, ratio 2.555, cv 2.2%</title></circle>
@@ -967,7 +965,7 @@
 <circle cx="894.8" cy="1818.2" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:9 mixed - 10 MB/s, ratio 2.643, cv 0.1%</title></circle>
 <circle cx="936.5" cy="1825.5" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:10 mixed - 8 MB/s, ratio 2.648, cv 0.1%</title></circle>
 <circle cx="727.9" cy="1777.1" r="3.5" fill="#e34948" stroke="#fcfcfb" stroke-width="1.5"><title>libcompression deflate level:5 mixed - 40 MB/s, ratio 2.617, cv 0.8%</title></circle>
-<circle cx="561.0" cy="1695.7" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 mixed - 651 MB/s, ratio 2.108, cv 2.4%</title></circle>
+<circle cx="561.0" cy="1695.7" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 mixed - 651 MB/s, ratio 2.108, cv 2.4%</title></circle>
 <text x="78.0" y="1901.0" font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="normal">realistic_rgb</text>
 <line x1="78.0" y1="2041.4" x2="537.0" y2="2041.4" stroke="#e7e6e2" stroke-width="1"/>
 <text x="533.0" y="2038.4" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">50 MB/s</text>
@@ -983,11 +981,11 @@
 <text x="286.6" y="2088.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">6</text>
 <text x="411.8" y="2088.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">9</text>
 <text x="537.0" y="2088.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">12</text>
-<path d="M78.0,1991.0 L161.5,2014.2 L286.6,2016.7 L411.8,2037.7" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="78.0" cy="1991.0" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 realistic_rgb - 139 MB/s, ratio 0.976, cv 0.3%</title></circle>
-<circle cx="161.5" cy="2014.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 realistic_rgb - 87 MB/s, ratio 1.093, cv 3.1%</title></circle>
-<circle cx="286.6" cy="2016.7" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 realistic_rgb - 82 MB/s, ratio 1.093, cv 0.8%</title></circle>
-<circle cx="411.8" cy="2037.7" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 realistic_rgb - 54 MB/s, ratio 1.100, cv 1.5%</title></circle>
+<path d="M78.0,1992.0 L161.5,2020.2 L286.6,2017.1 L411.8,2034.3" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="78.0" cy="1992.0" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 realistic_rgb - 136 MB/s, ratio 0.976, cv 0.3%</title></circle>
+<circle cx="161.5" cy="2020.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 realistic_rgb - 77 MB/s, ratio 1.093, cv 0.7%</title></circle>
+<circle cx="286.6" cy="2017.1" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 realistic_rgb - 82 MB/s, ratio 1.093, cv 1.2%</title></circle>
+<circle cx="411.8" cy="2034.3" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 realistic_rgb - 58 MB/s, ratio 1.100, cv 0.5%</title></circle>
 <path d="M78.0,2002.2 L161.5,2036.2 L286.6,2038.2 L411.8,2043.2" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
 <circle cx="78.0" cy="2002.2" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:1 realistic_rgb - 110 MB/s, ratio 0.976, cv 1.5%</title></circle>
 <circle cx="161.5" cy="2036.2" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:3 realistic_rgb - 55 MB/s, ratio 1.093, cv 3.1%</title></circle>
@@ -1020,7 +1018,7 @@
 <circle cx="411.8" cy="2056.6" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:9 realistic_rgb - 37 MB/s, ratio 1.102, cv 0.1%</title></circle>
 <circle cx="453.5" cy="2056.2" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:10 realistic_rgb - 37 MB/s, ratio 1.102, cv 0.9%</title></circle>
 <circle cx="244.9" cy="2048.3" r="3.5" fill="#e34948" stroke="#fcfcfb" stroke-width="1.5"><title>libcompression deflate level:5 realistic_rgb - 44 MB/s, ratio 1.116, cv 1.0%</title></circle>
-<circle cx="78.0" cy="1919.0" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 realistic_rgb - 594 MB/s, ratio 1.004, cv 0.8%</title></circle>
+<circle cx="78.0" cy="1919.0" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 realistic_rgb - 594 MB/s, ratio 1.004, cv 0.8%</title></circle>
 <text x="561.0" y="1901.0" font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="normal">striped_rgb</text>
 <line x1="561.0" y1="2058.4" x2="1020.0" y2="2058.4" stroke="#e7e6e2" stroke-width="1"/>
 <text x="1016.0" y="2055.4" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">50 MB/s</text>
@@ -1044,11 +1042,11 @@
 <text x="769.6" y="2088.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">6</text>
 <text x="894.8" y="2088.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">9</text>
 <text x="1020.0" y="2088.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">12</text>
-<path d="M561.0,1934.4 L644.5,1941.9 L769.6,1943.8 L894.8,1985.6" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="561.0" cy="1934.4" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 striped_rgb - 4.81 GB/s, ratio 102.081, cv 0.2%</title></circle>
-<circle cx="644.5" cy="1941.9" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 striped_rgb - 3.65 GB/s, ratio 219.184, cv 0.3%</title></circle>
-<circle cx="769.6" cy="1943.8" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 striped_rgb - 3.41 GB/s, ratio 219.184, cv 0.0%</title></circle>
-<circle cx="894.8" cy="1985.6" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 striped_rgb - 730 MB/s, ratio 873.813, cv 0.1%</title></circle>
+<path d="M561.0,1934.1 L644.5,1941.9 L769.6,1943.6 L894.8,1985.2" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="561.0" cy="1934.1" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 striped_rgb - 4.86 GB/s, ratio 102.081, cv 0.5%</title></circle>
+<circle cx="644.5" cy="1941.9" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 striped_rgb - 3.65 GB/s, ratio 219.184, cv 0.1%</title></circle>
+<circle cx="769.6" cy="1943.6" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 striped_rgb - 3.43 GB/s, ratio 219.184, cv 0.2%</title></circle>
+<circle cx="894.8" cy="1985.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 striped_rgb - 740 MB/s, ratio 873.813, cv 0.1%</title></circle>
 <path d="M561.0,1942.5 L644.5,1948.0 L769.6,1949.6 L894.8,1987.0" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
 <circle cx="561.0" cy="1942.5" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:1 striped_rgb - 3.57 GB/s, ratio 102.081, cv 0.2%</title></circle>
 <circle cx="644.5" cy="1948.0" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:3 striped_rgb - 2.91 GB/s, ratio 219.184, cv 0.5%</title></circle>
@@ -1081,7 +1079,7 @@
 <circle cx="894.8" cy="1999.1" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:9 striped_rgb - 445 MB/s, ratio 873.813, cv 0.4%</title></circle>
 <circle cx="936.5" cy="1999.5" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:10 striped_rgb - 438 MB/s, ratio 873.813, cv 0.6%</title></circle>
 <circle cx="727.9" cy="2004.8" r="3.5" fill="#e34948" stroke="#fcfcfb" stroke-width="1.5"><title>libcompression deflate level:5 striped_rgb - 361 MB/s, ratio 851.117, cv 0.1%</title></circle>
-<circle cx="561.0" cy="1913.1" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 striped_rgb - 10.53 GB/s, ratio 101.922, cv 0.8%</title></circle>
+<circle cx="561.0" cy="1913.1" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 striped_rgb - 10.53 GB/s, ratio 101.922, cv 0.8%</title></circle>
 <text x="78.0" y="2119.0" font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="normal">phased</text>
 <line x1="78.0" y1="2272.3" x2="537.0" y2="2272.3" stroke="#e7e6e2" stroke-width="1"/>
 <text x="533.0" y="2269.3" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">10 MB/s</text>
@@ -1101,11 +1099,11 @@
 <text x="286.6" y="2306.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">6</text>
 <text x="411.8" y="2306.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">9</text>
 <text x="537.0" y="2306.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">12</text>
-<path d="M78.0,2151.0 L161.5,2174.2 L286.6,2193.2 L411.8,2247.2" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="78.0" cy="2151.0" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 phased - 246 MB/s, ratio 1.271, cv 0.1%</title></circle>
-<circle cx="161.5" cy="2174.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 phased - 133 MB/s, ratio 1.642, cv 2.4%</title></circle>
-<circle cx="286.6" cy="2193.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 phased - 81 MB/s, ratio 1.655, cv 1.2%</title></circle>
-<circle cx="411.8" cy="2247.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 phased - 19 MB/s, ratio 1.601, cv 0.2%</title></circle>
+<path d="M78.0,2150.6 L161.5,2173.9 L286.6,2192.5 L411.8,2246.2" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="78.0" cy="2150.6" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 phased - 249 MB/s, ratio 1.271, cv 0.0%</title></circle>
+<circle cx="161.5" cy="2173.9" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 phased - 135 MB/s, ratio 1.642, cv 1.2%</title></circle>
+<circle cx="286.6" cy="2192.5" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 phased - 82 MB/s, ratio 1.655, cv 0.4%</title></circle>
+<circle cx="411.8" cy="2246.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 phased - 20 MB/s, ratio 1.601, cv 0.7%</title></circle>
 <path d="M78.0,2164.6 L161.5,2190.2 L286.6,2204.6 L411.8,2254.2" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
 <circle cx="78.0" cy="2164.6" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:1 phased - 172 MB/s, ratio 1.271, cv 0.1%</title></circle>
 <circle cx="161.5" cy="2190.2" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:3 phased - 88 MB/s, ratio 1.642, cv 0.8%</title></circle>
@@ -1138,7 +1136,7 @@
 <circle cx="411.8" cy="2272.2" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:9 phased - 10 MB/s, ratio 1.614, cv 0.2%</title></circle>
 <circle cx="453.5" cy="2272.2" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:10 phased - 10 MB/s, ratio 1.614, cv 0.2%</title></circle>
 <circle cx="244.9" cy="2244.4" r="3.5" fill="#e34948" stroke="#fcfcfb" stroke-width="1.5"><title>libcompression deflate level:5 phased - 21 MB/s, ratio 1.651, cv 0.1%</title></circle>
-<circle cx="78.0" cy="2133.9" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 phased - 386 MB/s, ratio 1.259, cv 0.4%</title></circle>
+<circle cx="78.0" cy="2133.9" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 phased - 386 MB/s, ratio 1.259, cv 0.4%</title></circle>
 <text x="561.0" y="2119.0" font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="normal">runs</text>
 <line x1="561.0" y1="2277.3" x2="1020.0" y2="2277.3" stroke="#e7e6e2" stroke-width="1"/>
 <text x="1016.0" y="2274.3" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">5 MB/s</text>
@@ -1166,11 +1164,11 @@
 <text x="769.6" y="2306.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">6</text>
 <text x="894.8" y="2306.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">9</text>
 <text x="1020.0" y="2306.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">12</text>
-<path d="M561.0,2147.7 L644.5,2162.1 L769.6,2193.5 L894.8,2241.8" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="561.0" cy="2147.7" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 runs - 2.59 GB/s, ratio 31.561, cv 0.4%</title></circle>
-<circle cx="644.5" cy="2162.1" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 runs - 1.30 GB/s, ratio 40.342, cv 0.1%</title></circle>
-<circle cx="769.6" cy="2193.5" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 runs - 285 MB/s, ratio 47.593, cv 0.3%</title></circle>
-<circle cx="894.8" cy="2241.8" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 runs - 28 MB/s, ratio 47.250, cv 0.4%</title></circle>
+<path d="M561.0,2147.5 L644.5,2162.1 L769.6,2193.6 L894.8,2242.0" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="561.0" cy="2147.5" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:1 runs - 2.62 GB/s, ratio 31.561, cv 0.6%</title></circle>
+<circle cx="644.5" cy="2162.1" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:3 runs - 1.30 GB/s, ratio 40.342, cv 0.6%</title></circle>
+<circle cx="769.6" cy="2193.6" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:6 runs - 284 MB/s, ratio 47.593, cv 0.2%</title></circle>
+<circle cx="894.8" cy="2242.0" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng deflate level:9 runs - 28 MB/s, ratio 47.250, cv 0.2%</title></circle>
 <path d="M561.0,2152.5 L644.5,2166.4 L769.6,2201.4 L894.8,2244.6" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
 <circle cx="561.0" cy="2152.5" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:1 runs - 2.06 GB/s, ratio 31.561, cv 0.4%</title></circle>
 <circle cx="644.5" cy="2166.4" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs deflate level:3 runs - 1.05 GB/s, ratio 40.342, cv 0.6%</title></circle>
@@ -1203,7 +1201,7 @@
 <circle cx="894.8" cy="2231.9" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:9 runs - 45 MB/s, ratio 44.371, cv 0.2%</title></circle>
 <circle cx="936.5" cy="2232.5" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:10 runs - 43 MB/s, ratio 44.461, cv 0.3%</title></circle>
 <circle cx="727.9" cy="2201.4" r="3.5" fill="#e34948" stroke="#fcfcfb" stroke-width="1.5"><title>libcompression deflate level:5 runs - 195 MB/s, ratio 39.719, cv 0.3%</title></circle>
-<circle cx="561.0" cy="2129.4" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 runs - 6.26 GB/s, ratio 31.508, cv 0.2%</title></circle>
+<circle cx="561.0" cy="2129.4" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz deflate level:1 runs - 6.26 GB/s, ratio 31.508, cv 0.2%</title></circle>
 <g opacity="0.35"><line x1="1038.0" y1="1344.0" x2="1038.0" y2="1288.0" stroke="#52514e" stroke-width="2"/><polygon points="1038.0,1282.0 1042.0,1291.0 1034.0,1291.0" fill="#52514e"/><text x="1038.0" y="1306.0" font-size="11" fill="#52514e" text-anchor="middle" transform="rotate(-90.0 1038.0 1313.0)">better</text></g>
 <text x="78.0" y="2362.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">deflate speed by windowBits, level:6</text>
 <line x1="78.0" y1="2476.7" x2="1020.0" y2="2476.7" stroke="#e7e6e2" stroke-width="1"/>
@@ -1219,64 +1217,64 @@
 <text x="863.0" y="2566.0" font-size="11" fill="#52514e" text-anchor="middle" font-weight="normal">14</text>
 <text x="1020.0" y="2566.0" font-size="11" fill="#52514e" text-anchor="middle" font-weight="normal">15</text>
 <text x="549.0" y="2584.0" font-size="12" fill="#52514e" text-anchor="middle" font-weight="normal">windowBits</text>
-<path d="M78.0,2426.5 L235.0,2409.2 L392.0,2403.0 L549.0,2402.9 L706.0,2407.7 L863.0,2415.9 L1020.0,2428.6" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
-<line x1="78.0" y1="2427.6" x2="78.0" y2="2425.5" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="78.0" cy="2426.5" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 wbits:9 - 89 MB/s, ratio 2.189, 1 files, cv 1.2%</title></circle>
-<line x1="235.0" y1="2410.2" x2="235.0" y2="2408.3" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="235.0" cy="2409.2" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 wbits:10 - 108 MB/s, ratio 2.391, 1 files, cv 1.1%</title></circle>
+<path d="M78.0,2424.6 L235.0,2409.1 L392.0,2403.0 L549.0,2403.0 L706.0,2406.9 L863.0,2415.0 L1020.0,2428.3" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<line x1="78.0" y1="2425.1" x2="78.0" y2="2424.2" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="78.0" cy="2424.6" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 wbits:9 - 91 MB/s, ratio 2.189, 1 files, cv 0.5%</title></circle>
+<line x1="235.0" y1="2409.3" x2="235.0" y2="2409.0" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="235.0" cy="2409.1" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 wbits:10 - 108 MB/s, ratio 2.391, 1 files, cv 0.2%</title></circle>
 <line x1="392.0" y1="2403.0" x2="392.0" y2="2402.9" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="392.0" cy="2403.0" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 wbits:11 - 116 MB/s, ratio 2.527, 1 files, cv 0.1%</title></circle>
-<line x1="549.0" y1="2403.2" x2="549.0" y2="2402.7" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="549.0" cy="2402.9" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 wbits:12 - 116 MB/s, ratio 2.672, 1 files, cv 0.3%</title></circle>
-<line x1="706.0" y1="2408.5" x2="706.0" y2="2407.0" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="706.0" cy="2407.7" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 wbits:13 - 110 MB/s, ratio 2.819, 1 files, cv 0.8%</title></circle>
-<line x1="863.0" y1="2416.8" x2="863.0" y2="2415.0" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="863.0" cy="2415.9" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 wbits:14 - 100 MB/s, ratio 2.955, 1 files, cv 1.0%</title></circle>
-<line x1="1020.0" y1="2429.2" x2="1020.0" y2="2428.1" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="1020.0" cy="2428.6" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 wbits:15 - 87 MB/s, ratio 3.070, 1 files, cv 0.6%</title></circle>
-<text x="1012.0" y="2420.6" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">87 MB/s</text>
-<path d="M78.0,2440.2 L235.0,2428.4 L392.0,2423.5 L549.0,2423.1 L706.0,2426.6 L863.0,2433.8 L1020.0,2445.8" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
-<line x1="78.0" y1="2440.8" x2="78.0" y2="2439.7" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
+<line x1="549.0" y1="2403.3" x2="549.0" y2="2402.8" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="549.0" cy="2403.0" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 wbits:12 - 116 MB/s, ratio 2.672, 1 files, cv 0.3%</title></circle>
+<line x1="706.0" y1="2407.0" x2="706.0" y2="2406.8" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="706.0" cy="2406.9" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 wbits:13 - 111 MB/s, ratio 2.819, 1 files, cv 0.2%</title></circle>
+<line x1="863.0" y1="2415.1" x2="863.0" y2="2415.0" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="863.0" cy="2415.0" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 wbits:14 - 101 MB/s, ratio 2.955, 1 files, cv 0.1%</title></circle>
+<line x1="1020.0" y1="2428.3" x2="1020.0" y2="2428.3" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="1020.0" cy="2428.3" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 wbits:15 - 87 MB/s, ratio 3.070, 1 files, cv 0.0%</title></circle>
+<text x="1012.0" y="2420.3" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">87 MB/s</text>
+<path d="M78.0,2440.2 L235.0,2428.3 L392.0,2423.5 L549.0,2423.1 L706.0,2426.5 L863.0,2433.7 L1020.0,2445.7" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
+<line x1="78.0" y1="2440.7" x2="78.0" y2="2439.7" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="78.0" cy="2440.2" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 wbits:9 - 76 MB/s, ratio 2.189, 1 files, cv 0.6%</title></circle>
 <line x1="235.0" y1="2428.6" x2="235.0" y2="2428.1" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="235.0" cy="2428.4" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 wbits:10 - 87 MB/s, ratio 2.391, 1 files, cv 0.3%</title></circle>
-<line x1="392.0" y1="2423.8" x2="392.0" y2="2423.3" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="235.0" cy="2428.3" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 wbits:10 - 87 MB/s, ratio 2.391, 1 files, cv 0.3%</title></circle>
+<line x1="392.0" y1="2423.7" x2="392.0" y2="2423.3" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="392.0" cy="2423.5" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 wbits:11 - 92 MB/s, ratio 2.527, 1 files, cv 0.2%</title></circle>
 <line x1="549.0" y1="2423.1" x2="549.0" y2="2423.1" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="549.0" cy="2423.1" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 wbits:12 - 92 MB/s, ratio 2.672, 1 files, cv 0.0%</title></circle>
 <line x1="706.0" y1="2426.8" x2="706.0" y2="2426.3" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="706.0" cy="2426.6" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 wbits:13 - 89 MB/s, ratio 2.819, 1 files, cv 0.3%</title></circle>
-<line x1="863.0" y1="2434.1" x2="863.0" y2="2433.5" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="863.0" cy="2433.8" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 wbits:14 - 82 MB/s, ratio 2.955, 1 files, cv 0.3%</title></circle>
+<circle cx="706.0" cy="2426.5" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 wbits:13 - 89 MB/s, ratio 2.819, 1 files, cv 0.3%</title></circle>
+<line x1="863.0" y1="2434.0" x2="863.0" y2="2433.5" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="863.0" cy="2433.7" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 wbits:14 - 82 MB/s, ratio 2.955, 1 files, cv 0.3%</title></circle>
 <line x1="1020.0" y1="2446.2" x2="1020.0" y2="2445.3" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="1020.0" cy="2445.8" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 wbits:15 - 71 MB/s, ratio 3.070, 1 files, cv 0.5%</title></circle>
-<text x="1012.0" y="2437.8" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">71 MB/s</text>
-<path d="M78.0,2475.0 L235.0,2477.1 L392.0,2481.9 L549.0,2489.3 L706.0,2499.8 L863.0,2512.5 L1020.0,2527.1" fill="none" stroke="#1baf7a" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="1020.0" cy="2445.7" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 wbits:15 - 71 MB/s, ratio 3.070, 1 files, cv 0.5%</title></circle>
+<text x="1012.0" y="2437.7" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">71 MB/s</text>
+<path d="M78.0,2474.9 L235.0,2477.1 L392.0,2481.9 L549.0,2489.3 L706.0,2499.8 L863.0,2512.5 L1020.0,2527.0" fill="none" stroke="#1baf7a" stroke-width="2" stroke-opacity="0.7"/>
 <line x1="78.0" y1="2475.1" x2="78.0" y2="2474.8" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="78.0" cy="2475.0" r="4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:6 wbits:9 - 51 MB/s, ratio 2.246, 1 files, cv 0.2%</title></circle>
+<circle cx="78.0" cy="2474.9" r="4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:6 wbits:9 - 51 MB/s, ratio 2.246, 1 files, cv 0.2%</title></circle>
 <line x1="235.0" y1="2477.1" x2="235.0" y2="2477.1" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="235.0" cy="2477.1" r="4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:6 wbits:10 - 50 MB/s, ratio 2.450, 1 files, cv 0.0%</title></circle>
-<line x1="392.0" y1="2481.9" x2="392.0" y2="2481.9" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
+<line x1="392.0" y1="2481.9" x2="392.0" y2="2481.8" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="392.0" cy="2481.9" r="4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:6 wbits:11 - 47 MB/s, ratio 2.583, 1 files, cv 0.0%</title></circle>
 <line x1="549.0" y1="2489.4" x2="549.0" y2="2489.3" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="549.0" cy="2489.3" r="4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:6 wbits:12 - 43 MB/s, ratio 2.729, 1 files, cv 0.1%</title></circle>
 <line x1="706.0" y1="2501.5" x2="706.0" y2="2498.2" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="706.0" cy="2499.8" r="4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:6 wbits:13 - 38 MB/s, ratio 2.867, 1 files, cv 1.9%</title></circle>
-<line x1="863.0" y1="2512.7" x2="863.0" y2="2512.4" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
+<line x1="863.0" y1="2512.6" x2="863.0" y2="2512.4" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="863.0" cy="2512.5" r="4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:6 wbits:14 - 33 MB/s, ratio 2.995, 1 files, cv 0.1%</title></circle>
 <line x1="1020.0" y1="2527.1" x2="1020.0" y2="2527.0" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="1020.0" cy="2527.1" r="4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:6 wbits:15 - 28 MB/s, ratio 3.100, 1 files, cv 0.1%</title></circle>
-<text x="1012.0" y="2519.1" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">28 MB/s</text>
-<path d="M78.0,2442.3 L235.0,2435.2 L392.0,2435.2 L549.0,2438.8 L706.0,2444.9 L863.0,2454.8 L1020.0,2467.1" fill="none" stroke="#eda100" stroke-width="2" stroke-opacity="0.7"/>
-<line x1="78.0" y1="2442.4" x2="78.0" y2="2442.2" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="78.0" cy="2442.3" r="4" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:6 wbits:9 - 74 MB/s, ratio 2.191, 1 files, cv 0.1%</title></circle>
-<line x1="235.0" y1="2435.3" x2="235.0" y2="2435.2" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="1020.0" cy="2527.0" r="4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:6 wbits:15 - 28 MB/s, ratio 3.100, 1 files, cv 0.1%</title></circle>
+<text x="1012.0" y="2519.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">28 MB/s</text>
+<path d="M78.0,2442.2 L235.0,2435.2 L392.0,2435.1 L549.0,2438.7 L706.0,2444.9 L863.0,2454.8 L1020.0,2467.1" fill="none" stroke="#eda100" stroke-width="2" stroke-opacity="0.7"/>
+<line x1="78.0" y1="2442.4" x2="78.0" y2="2442.1" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="78.0" cy="2442.2" r="4" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:6 wbits:9 - 74 MB/s, ratio 2.191, 1 files, cv 0.1%</title></circle>
+<line x1="235.0" y1="2435.3" x2="235.0" y2="2435.1" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="235.0" cy="2435.2" r="4" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:6 wbits:10 - 80 MB/s, ratio 2.395, 1 files, cv 0.1%</title></circle>
-<line x1="392.0" y1="2435.3" x2="392.0" y2="2435.0" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="392.0" cy="2435.2" r="4" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:6 wbits:11 - 80 MB/s, ratio 2.535, 1 files, cv 0.2%</title></circle>
+<line x1="392.0" y1="2435.3" x2="392.0" y2="2434.9" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="392.0" cy="2435.1" r="4" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:6 wbits:11 - 80 MB/s, ratio 2.535, 1 files, cv 0.2%</title></circle>
 <line x1="549.0" y1="2438.8" x2="549.0" y2="2438.7" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="549.0" cy="2438.8" r="4" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:6 wbits:12 - 77 MB/s, ratio 2.684, 1 files, cv 0.1%</title></circle>
-<line x1="706.0" y1="2445.0" x2="706.0" y2="2444.9" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="549.0" cy="2438.7" r="4" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:6 wbits:12 - 77 MB/s, ratio 2.684, 1 files, cv 0.1%</title></circle>
+<line x1="706.0" y1="2445.0" x2="706.0" y2="2444.8" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="706.0" cy="2444.9" r="4" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:6 wbits:13 - 72 MB/s, ratio 2.831, 1 files, cv 0.1%</title></circle>
 <line x1="863.0" y1="2455.0" x2="863.0" y2="2454.6" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="863.0" cy="2454.8" r="4" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:6 wbits:14 - 64 MB/s, ratio 2.970, 1 files, cv 0.3%</title></circle>
@@ -1291,14 +1289,14 @@
 <text x="533.0" y="2783.5" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">1.00 GB/s</text>
 <line x1="78.0" y1="2766.2" x2="537.0" y2="2766.2" stroke="#e7e6e2" stroke-width="1"/>
 <text x="533.0" y="2763.2" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">2.00 GB/s</text>
-<line x1="78.0" y1="2739.2" x2="537.0" y2="2739.2" stroke="#e7e6e2" stroke-width="1"/>
-<text x="533.0" y="2736.2" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">5.00 GB/s</text>
+<line x1="78.0" y1="2739.3" x2="537.0" y2="2739.3" stroke="#e7e6e2" stroke-width="1"/>
+<text x="533.0" y="2736.3" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">5.00 GB/s</text>
 <line x1="78.0" y1="2718.9" x2="537.0" y2="2718.9" stroke="#e7e6e2" stroke-width="1"/>
 <text x="533.0" y="2715.9" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">10.00 GB/s</text>
-<line x1="78.0" y1="2698.5" x2="537.0" y2="2698.5" stroke="#e7e6e2" stroke-width="1"/>
-<text x="533.0" y="2695.5" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">20.00 GB/s</text>
-<line x1="78.0" y1="2671.6" x2="537.0" y2="2671.6" stroke="#e7e6e2" stroke-width="1"/>
-<text x="533.0" y="2668.6" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">50.00 GB/s</text>
+<line x1="78.0" y1="2698.6" x2="537.0" y2="2698.6" stroke="#e7e6e2" stroke-width="1"/>
+<text x="533.0" y="2695.6" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">20.00 GB/s</text>
+<line x1="78.0" y1="2671.7" x2="537.0" y2="2671.7" stroke="#e7e6e2" stroke-width="1"/>
+<text x="533.0" y="2668.7" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">50.00 GB/s</text>
 <line x1="78.0" y1="2830.0" x2="537.0" y2="2830.0" stroke="#52514e" stroke-width="1"/>
 <text x="78.0" y="2844.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">64</text>
 <text x="169.8" y="2844.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">512</text>
@@ -1307,87 +1305,87 @@
 <text x="445.2" y="2844.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">256K</text>
 <text x="537.0" y="2844.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">2M</text>
 <text x="307.5" y="2860.0" font-size="11" fill="#52514e" text-anchor="middle" font-weight="normal">input size</text>
-<path d="M78.0,2719.2 L169.8,2716.5 L261.6,2689.2 L353.4,2672.7 L445.2,2668.5 L537.0,2667.7" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
-<line x1="78.0" y1="2720.0" x2="78.0" y2="2718.4" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="78.0" cy="2719.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng crc32 size:64 - 9.89 GB/s, cv 2.7%</title></circle>
-<line x1="169.8" y1="2716.6" x2="169.8" y2="2716.4" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="169.8" cy="2716.5" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng crc32 size:512 - 10.84 GB/s, cv 0.4%</title></circle>
-<line x1="261.6" y1="2689.3" x2="261.6" y2="2689.2" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="261.6" cy="2689.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng crc32 size:4096 - 27.45 GB/s, cv 0.2%</title></circle>
-<line x1="353.4" y1="2672.7" x2="353.4" y2="2672.6" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="353.4" cy="2672.7" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng crc32 size:32768 - 48.28 GB/s, cv 0.3%</title></circle>
-<line x1="445.2" y1="2668.7" x2="445.2" y2="2668.3" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="445.2" cy="2668.5" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng crc32 size:262144 - 55.61 GB/s, cv 0.8%</title></circle>
+<path d="M78.0,2718.2 L169.8,2716.6 L261.6,2689.1 L353.4,2672.6 L445.2,2668.4 L537.0,2667.7" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<line x1="78.0" y1="2719.1" x2="78.0" y2="2717.4" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="78.0" cy="2718.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng crc32 size:64 - 10.24 GB/s, cv 2.8%</title></circle>
+<line x1="169.8" y1="2716.6" x2="169.8" y2="2716.6" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="169.8" cy="2716.6" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng crc32 size:512 - 10.83 GB/s, cv 0.0%</title></circle>
+<line x1="261.6" y1="2689.2" x2="261.6" y2="2689.1" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="261.6" cy="2689.1" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng crc32 size:4096 - 27.56 GB/s, cv 0.2%</title></circle>
+<line x1="353.4" y1="2672.6" x2="353.4" y2="2672.5" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="353.4" cy="2672.6" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng crc32 size:32768 - 48.47 GB/s, cv 0.1%</title></circle>
+<line x1="445.2" y1="2668.5" x2="445.2" y2="2668.2" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="445.2" cy="2668.4" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng crc32 size:262144 - 55.93 GB/s, cv 0.6%</title></circle>
 <line x1="537.0" y1="2667.7" x2="537.0" y2="2667.7" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="537.0" cy="2667.7" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng crc32 size:2097152 - 57.14 GB/s, cv 0.1%</title></circle>
-<path d="M78.0,2729.7 L169.8,2726.8 L261.6,2733.8 L353.4,2706.7 L445.2,2703.2 L537.0,2702.4" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="537.0" cy="2667.7" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng crc32 size:2097152 - 57.20 GB/s, cv 0.0%</title></circle>
+<path d="M78.0,2729.7 L169.8,2726.8 L261.6,2733.8 L353.4,2706.7 L445.2,2703.3 L537.0,2702.5" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
 <line x1="78.0" y1="2731.0" x2="78.0" y2="2728.5" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="78.0" cy="2729.7" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs crc32 size:64 - 6.92 GB/s, -30.1% vs zlibng, cv 4.3%</title></circle>
+<circle cx="78.0" cy="2729.7" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs crc32 size:64 - 6.92 GB/s, -32.4% vs zlibng, cv 4.3%</title></circle>
 <line x1="169.8" y1="2726.9" x2="169.8" y2="2726.7" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="169.8" cy="2726.8" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs crc32 size:512 - 7.64 GB/s, -29.5% vs zlibng, cv 0.3%</title></circle>
 <line x1="261.6" y1="2734.3" x2="261.6" y2="2733.3" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="261.6" cy="2733.8" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs crc32 size:4096 - 6.02 GB/s, -78.1% vs zlibng, cv 1.6%</title></circle>
-<line x1="353.4" y1="2707.2" x2="353.4" y2="2706.1" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="353.4" cy="2706.7" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs crc32 size:32768 - 15.16 GB/s, -68.6% vs zlibng, cv 1.9%</title></circle>
+<line x1="353.4" y1="2707.3" x2="353.4" y2="2706.1" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="353.4" cy="2706.7" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs crc32 size:32768 - 15.16 GB/s, -68.7% vs zlibng, cv 1.9%</title></circle>
 <line x1="445.2" y1="2703.4" x2="445.2" y2="2703.1" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="445.2" cy="2703.2" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs crc32 size:262144 - 17.04 GB/s, -69.3% vs zlibng, cv 0.4%</title></circle>
-<line x1="537.0" y1="2702.6" x2="537.0" y2="2702.2" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="537.0" cy="2702.4" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs crc32 size:2097152 - 17.52 GB/s, -69.3% vs zlibng, cv 0.6%</title></circle>
-<path d="M78.0,2725.4 L169.8,2726.7 L261.6,2733.5 L353.4,2706.5 L445.2,2703.2 L537.0,2702.5" fill="none" stroke="#1baf7a" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="445.2" cy="2703.3" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs crc32 size:262144 - 17.04 GB/s, -69.5% vs zlibng, cv 0.4%</title></circle>
+<line x1="537.0" y1="2702.6" x2="537.0" y2="2702.3" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="537.0" cy="2702.5" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs crc32 size:2097152 - 17.52 GB/s, -69.4% vs zlibng, cv 0.6%</title></circle>
+<path d="M78.0,2725.4 L169.8,2726.8 L261.6,2733.6 L353.4,2706.6 L445.2,2703.3 L537.0,2702.6" fill="none" stroke="#1baf7a" stroke-width="2" stroke-opacity="0.7"/>
 <line x1="78.0" y1="2725.6" x2="78.0" y2="2725.2" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="78.0" cy="2725.4" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib crc32 size:64 - 8.01 GB/s, -19.1% vs zlibng, cv 0.7%</title></circle>
+<circle cx="78.0" cy="2725.4" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib crc32 size:64 - 8.01 GB/s, -21.8% vs zlibng, cv 0.7%</title></circle>
 <line x1="169.8" y1="2726.8" x2="169.8" y2="2726.7" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="169.8" cy="2726.7" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib crc32 size:512 - 7.65 GB/s, -29.4% vs zlibng, cv 0.1%</title></circle>
-<line x1="261.6" y1="2733.8" x2="261.6" y2="2733.3" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="261.6" cy="2733.5" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib crc32 size:4096 - 6.07 GB/s, -77.9% vs zlibng, cv 0.7%</title></circle>
-<line x1="353.4" y1="2706.5" x2="353.4" y2="2706.5" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="353.4" cy="2706.5" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib crc32 size:32768 - 15.23 GB/s, -68.4% vs zlibng, cv 0.1%</title></circle>
+<circle cx="169.8" cy="2726.8" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib crc32 size:512 - 7.65 GB/s, -29.3% vs zlibng, cv 0.1%</title></circle>
+<line x1="261.6" y1="2733.8" x2="261.6" y2="2733.4" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="261.6" cy="2733.6" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib crc32 size:4096 - 6.07 GB/s, -78.0% vs zlibng, cv 0.7%</title></circle>
+<line x1="353.4" y1="2706.6" x2="353.4" y2="2706.5" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="353.4" cy="2706.6" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib crc32 size:32768 - 15.23 GB/s, -68.6% vs zlibng, cv 0.1%</title></circle>
 <line x1="445.2" y1="2703.4" x2="445.2" y2="2703.1" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="445.2" cy="2703.2" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib crc32 size:262144 - 17.04 GB/s, -69.4% vs zlibng, cv 0.5%</title></circle>
+<circle cx="445.2" cy="2703.3" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib crc32 size:262144 - 17.04 GB/s, -69.5% vs zlibng, cv 0.5%</title></circle>
 <line x1="537.0" y1="2703.0" x2="537.0" y2="2702.1" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="537.0" cy="2702.5" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib crc32 size:2097152 - 17.46 GB/s, -69.4% vs zlibng, cv 1.5%</title></circle>
-<path d="M78.0,2721.3 L169.8,2693.4 L261.6,2697.4 L353.4,2701.0 L445.2,2701.7 L537.0,2701.8" fill="none" stroke="#eda100" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="537.0" cy="2702.6" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib crc32 size:2097152 - 17.46 GB/s, -69.5% vs zlibng, cv 1.5%</title></circle>
+<path d="M78.0,2721.3 L169.8,2693.5 L261.6,2697.4 L353.4,2701.0 L445.2,2701.7 L537.0,2701.9" fill="none" stroke="#eda100" stroke-width="2" stroke-opacity="0.7"/>
 <line x1="78.0" y1="2721.9" x2="78.0" y2="2720.7" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="78.0" cy="2721.3" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib crc32 size:64 - 9.21 GB/s, -6.9% vs zlibng, cv 2.0%</title></circle>
-<line x1="169.8" y1="2693.6" x2="169.8" y2="2693.2" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="169.8" cy="2693.4" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib crc32 size:512 - 23.79 GB/s, +119.5% vs zlibng, cv 0.6%</title></circle>
-<line x1="261.6" y1="2697.4" x2="261.6" y2="2697.4" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="261.6" cy="2697.4" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib crc32 size:4096 - 20.77 GB/s, -24.3% vs zlibng, cv 0.1%</title></circle>
+<circle cx="78.0" cy="2721.3" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib crc32 size:64 - 9.21 GB/s, -10.0% vs zlibng, cv 2.0%</title></circle>
+<line x1="169.8" y1="2693.7" x2="169.8" y2="2693.3" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="169.8" cy="2693.5" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib crc32 size:512 - 23.79 GB/s, +119.6% vs zlibng, cv 0.6%</title></circle>
+<line x1="261.6" y1="2697.5" x2="261.6" y2="2697.4" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="261.6" cy="2697.4" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib crc32 size:4096 - 20.77 GB/s, -24.6% vs zlibng, cv 0.1%</title></circle>
 <line x1="353.4" y1="2701.2" x2="353.4" y2="2700.8" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="353.4" cy="2701.0" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib crc32 size:32768 - 18.39 GB/s, -61.9% vs zlibng, cv 0.8%</title></circle>
-<line x1="445.2" y1="2702.0" x2="445.2" y2="2701.4" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="445.2" cy="2701.7" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib crc32 size:262144 - 17.95 GB/s, -67.7% vs zlibng, cv 0.9%</title></circle>
+<circle cx="353.4" cy="2701.0" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib crc32 size:32768 - 18.39 GB/s, -62.1% vs zlibng, cv 0.8%</title></circle>
+<line x1="445.2" y1="2702.0" x2="445.2" y2="2701.5" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="445.2" cy="2701.7" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib crc32 size:262144 - 17.95 GB/s, -67.9% vs zlibng, cv 0.9%</title></circle>
 <line x1="537.0" y1="2702.2" x2="537.0" y2="2701.5" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="537.0" cy="2701.8" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib crc32 size:2097152 - 17.87 GB/s, -68.7% vs zlibng, cv 1.1%</title></circle>
-<path d="M78.0,2708.1 L169.8,2678.3 L261.6,2680.2 L353.4,2675.1 L445.2,2673.7 L537.0,2673.7" fill="none" stroke="#e87ba4" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="537.0" cy="2701.9" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib crc32 size:2097152 - 17.87 GB/s, -68.8% vs zlibng, cv 1.1%</title></circle>
+<path d="M78.0,2708.1 L169.8,2678.4 L261.6,2680.3 L353.4,2675.1 L445.2,2673.7 L537.0,2673.7" fill="none" stroke="#e87ba4" stroke-width="2" stroke-opacity="0.7"/>
 <line x1="78.0" y1="2708.3" x2="78.0" y2="2707.9" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="78.0" cy="2708.1" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate crc32 size:64 - 14.46 GB/s, +46.1% vs zlibng, cv 0.7%</title></circle>
-<line x1="169.8" y1="2678.4" x2="169.8" y2="2678.2" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="169.8" cy="2678.3" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate crc32 size:512 - 39.79 GB/s, +267.1% vs zlibng, cv 0.3%</title></circle>
+<circle cx="78.0" cy="2708.1" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate crc32 size:64 - 14.46 GB/s, +41.2% vs zlibng, cv 0.7%</title></circle>
+<line x1="169.8" y1="2678.5" x2="169.8" y2="2678.3" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="169.8" cy="2678.4" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate crc32 size:512 - 39.79 GB/s, +267.3% vs zlibng, cv 0.3%</title></circle>
 <line x1="261.6" y1="2680.3" x2="261.6" y2="2680.2" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="261.6" cy="2680.2" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate crc32 size:4096 - 37.29 GB/s, +35.9% vs zlibng, cv 0.1%</title></circle>
+<circle cx="261.6" cy="2680.3" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate crc32 size:4096 - 37.29 GB/s, +35.3% vs zlibng, cv 0.1%</title></circle>
 <line x1="353.4" y1="2675.8" x2="353.4" y2="2674.5" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="353.4" cy="2675.1" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate crc32 size:32768 - 44.40 GB/s, -8.0% vs zlibng, cv 2.2%</title></circle>
-<line x1="445.2" y1="2673.7" x2="445.2" y2="2673.6" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="445.2" cy="2673.7" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate crc32 size:262144 - 46.64 GB/s, -16.1% vs zlibng, cv 0.1%</title></circle>
+<circle cx="353.4" cy="2675.1" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate crc32 size:32768 - 44.40 GB/s, -8.4% vs zlibng, cv 2.2%</title></circle>
+<line x1="445.2" y1="2673.7" x2="445.2" y2="2673.7" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="445.2" cy="2673.7" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate crc32 size:262144 - 46.64 GB/s, -16.6% vs zlibng, cv 0.1%</title></circle>
 <line x1="537.0" y1="2673.8" x2="537.0" y2="2673.5" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="537.0" cy="2673.7" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate crc32 size:2097152 - 46.66 GB/s, -18.3% vs zlibng, cv 0.5%</title></circle>
-<path d="M78.0,2706.5 L169.8,2726.7 L261.6,2704.9 L353.4,2732.4 L445.2,2711.0 L537.0,2707.0" fill="none" stroke="#008300" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="537.0" cy="2673.7" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate crc32 size:2097152 - 46.66 GB/s, -18.4% vs zlibng, cv 0.5%</title></circle>
+<path d="M78.0,2706.5 L169.8,2726.7 L261.6,2704.9 L353.4,2732.5 L445.2,2711.0 L537.0,2707.0" fill="none" stroke="#008300" stroke-width="2" stroke-opacity="0.7"/>
 <line x1="78.0" y1="2706.9" x2="78.0" y2="2706.1" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="78.0" cy="2706.5" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal crc32 size:64 - 15.24 GB/s, +54.1% vs zlibng, cv 1.4%</title></circle>
-<line x1="169.8" y1="2726.7" x2="169.8" y2="2726.6" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="78.0" cy="2706.5" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal crc32 size:64 - 15.24 GB/s, +48.9% vs zlibng, cv 1.4%</title></circle>
+<line x1="169.8" y1="2726.8" x2="169.8" y2="2726.6" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="169.8" cy="2726.7" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal crc32 size:512 - 7.67 GB/s, -29.2% vs zlibng, cv 0.2%</title></circle>
 <line x1="261.6" y1="2705.2" x2="261.6" y2="2704.6" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="261.6" cy="2704.9" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal crc32 size:4096 - 16.10 GB/s, -41.3% vs zlibng, cv 1.0%</title></circle>
-<line x1="353.4" y1="2733.6" x2="353.4" y2="2731.3" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="353.4" cy="2732.4" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal crc32 size:32768 - 6.30 GB/s, -86.9% vs zlibng, cv 4.0%</title></circle>
+<circle cx="261.6" cy="2704.9" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal crc32 size:4096 - 16.10 GB/s, -41.6% vs zlibng, cv 1.0%</title></circle>
+<line x1="353.4" y1="2733.7" x2="353.4" y2="2731.3" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="353.4" cy="2732.5" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal crc32 size:32768 - 6.30 GB/s, -87.0% vs zlibng, cv 4.0%</title></circle>
 <line x1="445.2" y1="2711.6" x2="445.2" y2="2710.5" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="445.2" cy="2711.0" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal crc32 size:262144 - 13.08 GB/s, -76.5% vs zlibng, cv 1.9%</title></circle>
-<line x1="537.0" y1="2707.1" x2="537.0" y2="2706.9" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="445.2" cy="2711.0" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal crc32 size:262144 - 13.08 GB/s, -76.6% vs zlibng, cv 1.9%</title></circle>
+<line x1="537.0" y1="2707.2" x2="537.0" y2="2706.9" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="537.0" cy="2707.0" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal crc32 size:2097152 - 14.99 GB/s, -73.8% vs zlibng, cv 0.5%</title></circle>
 <path d="M78.0,2800.5 L169.8,2820.2 L261.6,2822.0 L353.4,2822.3 L445.2,2822.1 L537.0,2822.3" fill="none" stroke="#4a3aa7" stroke-width="2" stroke-opacity="0.7"/>
 <line x1="78.0" y1="2800.9" x2="78.0" y2="2800.0" stroke="#4a3aa7" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="78.0" cy="2800.5" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz crc32 size:64 - 621 MB/s, -93.7% vs zlibng, cv 1.5%</title></circle>
+<circle cx="78.0" cy="2800.5" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz crc32 size:64 - 621 MB/s, -93.9% vs zlibng, cv 1.5%</title></circle>
 <line x1="169.8" y1="2820.3" x2="169.8" y2="2820.1" stroke="#4a3aa7" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="169.8" cy="2820.2" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz crc32 size:512 - 317 MB/s, -97.1% vs zlibng, cv 0.2%</title></circle>
 <line x1="261.6" y1="2822.1" x2="261.6" y2="2821.9" stroke="#4a3aa7" stroke-opacity="0.7" stroke-width="1.5"/>
@@ -1398,30 +1396,30 @@
 <circle cx="445.2" cy="2822.1" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz crc32 size:262144 - 298 MB/s, -99.5% vs zlibng, cv 3.6%</title></circle>
 <line x1="537.0" y1="2822.5" x2="537.0" y2="2822.1" stroke="#4a3aa7" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="537.0" cy="2822.3" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz crc32 size:2097152 - 296 MB/s, -99.5% vs zlibng, cv 0.6%</title></circle>
-<path d="M78.0,2730.4 L169.8,2751.1 L261.6,2754.2 L353.4,2754.6 L445.2,2754.7 L537.0,2754.4" fill="none" stroke="#7a7668" stroke-width="2" stroke-opacity="0.7"/>
-<line x1="78.0" y1="2730.4" x2="78.0" y2="2730.4" stroke="#7a7668" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="78.0" cy="2730.4" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz crc32 size:64 - 6.75 GB/s, -31.8% vs zlibng, cv 0.1%</title></circle>
-<line x1="169.8" y1="2751.3" x2="169.8" y2="2750.9" stroke="#7a7668" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="169.8" cy="2751.1" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz crc32 size:512 - 3.34 GB/s, -69.2% vs zlibng, cv 0.6%</title></circle>
-<line x1="261.6" y1="2754.4" x2="261.6" y2="2754.1" stroke="#7a7668" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="261.6" cy="2754.2" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz crc32 size:4096 - 3.00 GB/s, -89.1% vs zlibng, cv 0.6%</title></circle>
-<line x1="353.4" y1="2754.8" x2="353.4" y2="2754.4" stroke="#7a7668" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="353.4" cy="2754.6" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz crc32 size:32768 - 2.96 GB/s, -93.9% vs zlibng, cv 0.7%</title></circle>
-<line x1="445.2" y1="2755.0" x2="445.2" y2="2754.3" stroke="#7a7668" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="445.2" cy="2754.7" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz crc32 size:262144 - 2.96 GB/s, -94.7% vs zlibng, cv 1.1%</title></circle>
-<line x1="537.0" y1="2754.7" x2="537.0" y2="2754.1" stroke="#7a7668" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="537.0" cy="2754.4" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz crc32 size:2097152 - 2.99 GB/s, -94.8% vs zlibng, cv 0.9%</title></circle>
+<path d="M78.0,2730.4 L169.8,2751.1 L261.6,2754.2 L353.4,2754.6 L445.2,2754.7 L537.0,2754.4" fill="none" stroke="#a6339a" stroke-width="2" stroke-opacity="0.7"/>
+<line x1="78.0" y1="2730.5" x2="78.0" y2="2730.4" stroke="#a6339a" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="78.0" cy="2730.4" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz crc32 size:64 - 6.75 GB/s, -34.1% vs zlibng, cv 0.1%</title></circle>
+<line x1="169.8" y1="2751.3" x2="169.8" y2="2750.9" stroke="#a6339a" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="169.8" cy="2751.1" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz crc32 size:512 - 3.34 GB/s, -69.2% vs zlibng, cv 0.6%</title></circle>
+<line x1="261.6" y1="2754.4" x2="261.6" y2="2754.1" stroke="#a6339a" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="261.6" cy="2754.2" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz crc32 size:4096 - 3.00 GB/s, -89.1% vs zlibng, cv 0.6%</title></circle>
+<line x1="353.4" y1="2754.8" x2="353.4" y2="2754.4" stroke="#a6339a" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="353.4" cy="2754.6" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz crc32 size:32768 - 2.96 GB/s, -93.9% vs zlibng, cv 0.7%</title></circle>
+<line x1="445.2" y1="2755.0" x2="445.2" y2="2754.4" stroke="#a6339a" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="445.2" cy="2754.7" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz crc32 size:262144 - 2.96 GB/s, -94.7% vs zlibng, cv 1.1%</title></circle>
+<line x1="537.0" y1="2754.7" x2="537.0" y2="2754.1" stroke="#a6339a" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="537.0" cy="2754.4" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz crc32 size:2097152 - 2.99 GB/s, -94.8% vs zlibng, cv 0.9%</title></circle>
 <text x="561.0" y="2642.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">adler32 speed by input size</text>
 <line x1="561.0" y1="2815.9" x2="1020.0" y2="2815.9" stroke="#e7e6e2" stroke-width="1"/>
 <text x="1016.0" y="2812.9" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">2.00 GB/s</text>
-<line x1="561.0" y1="2772.4" x2="1020.0" y2="2772.4" stroke="#e7e6e2" stroke-width="1"/>
-<text x="1016.0" y="2769.4" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">5.00 GB/s</text>
-<line x1="561.0" y1="2739.4" x2="1020.0" y2="2739.4" stroke="#e7e6e2" stroke-width="1"/>
-<text x="1016.0" y="2736.4" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">10.00 GB/s</text>
-<line x1="561.0" y1="2706.5" x2="1020.0" y2="2706.5" stroke="#e7e6e2" stroke-width="1"/>
-<text x="1016.0" y="2703.5" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">20.00 GB/s</text>
-<line x1="561.0" y1="2662.9" x2="1020.0" y2="2662.9" stroke="#e7e6e2" stroke-width="1"/>
-<text x="1016.0" y="2659.9" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">50.00 GB/s</text>
+<line x1="561.0" y1="2772.3" x2="1020.0" y2="2772.3" stroke="#e7e6e2" stroke-width="1"/>
+<text x="1016.0" y="2769.3" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">5.00 GB/s</text>
+<line x1="561.0" y1="2739.3" x2="1020.0" y2="2739.3" stroke="#e7e6e2" stroke-width="1"/>
+<text x="1016.0" y="2736.3" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">10.00 GB/s</text>
+<line x1="561.0" y1="2706.4" x2="1020.0" y2="2706.4" stroke="#e7e6e2" stroke-width="1"/>
+<text x="1016.0" y="2703.4" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">20.00 GB/s</text>
+<line x1="561.0" y1="2662.8" x2="1020.0" y2="2662.8" stroke="#e7e6e2" stroke-width="1"/>
+<text x="1016.0" y="2659.8" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">50.00 GB/s</text>
 <line x1="561.0" y1="2830.0" x2="1020.0" y2="2830.0" stroke="#52514e" stroke-width="1"/>
 <text x="561.0" y="2844.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">64</text>
 <text x="652.8" y="2844.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">512</text>
@@ -1430,35 +1428,35 @@
 <text x="928.2" y="2844.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">256K</text>
 <text x="1020.0" y="2844.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">2M</text>
 <text x="790.5" y="2860.0" font-size="11" fill="#52514e" text-anchor="middle" font-weight="normal">input size</text>
-<path d="M561.0,2761.0 L652.8,2683.2 L744.6,2674.5 L836.4,2672.8 L928.2,2672.5 L1020.0,2672.5" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
-<line x1="561.0" y1="2774.1" x2="561.0" y2="2750.7" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="561.0" cy="2761.0" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng adler32 size:64 - 6.35 GB/s, cv 24.1%</title></circle>
-<line x1="652.8" y1="2683.4" x2="652.8" y2="2683.0" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="652.8" cy="2683.2" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng adler32 size:512 - 32.62 GB/s, cv 0.4%</title></circle>
-<line x1="744.6" y1="2674.6" x2="744.6" y2="2674.4" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="744.6" cy="2674.5" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng adler32 size:4096 - 39.23 GB/s, cv 0.2%</title></circle>
-<line x1="836.4" y1="2672.9" x2="836.4" y2="2672.7" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="836.4" cy="2672.8" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng adler32 size:32768 - 40.63 GB/s, cv 0.1%</title></circle>
-<line x1="928.2" y1="2672.5" x2="928.2" y2="2672.5" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="928.2" cy="2672.5" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng adler32 size:262144 - 40.91 GB/s, cv 0.0%</title></circle>
-<line x1="1020.0" y1="2672.6" x2="1020.0" y2="2672.4" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="1020.0" cy="2672.5" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng adler32 size:2097152 - 40.86 GB/s, cv 0.2%</title></circle>
-<path d="M561.0,2763.5 L652.8,2702.8 L744.6,2696.9 L836.4,2703.4 L928.2,2705.6 L1020.0,2704.4" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
-<line x1="561.0" y1="2765.6" x2="561.0" y2="2761.4" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="561.0" cy="2763.5" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs adler32 size:64 - 6.03 GB/s, -5.1% vs zlibng, cv 4.4%</title></circle>
-<line x1="652.8" y1="2702.9" x2="652.8" y2="2702.7" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="652.8" cy="2702.8" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs adler32 size:512 - 21.61 GB/s, -33.8% vs zlibng, cv 0.2%</title></circle>
-<line x1="744.6" y1="2697.8" x2="744.6" y2="2696.1" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="744.6" cy="2696.9" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs adler32 size:4096 - 24.44 GB/s, -37.7% vs zlibng, cv 1.7%</title></circle>
-<line x1="836.4" y1="2703.7" x2="836.4" y2="2703.2" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="836.4" cy="2703.4" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs adler32 size:32768 - 21.33 GB/s, -47.5% vs zlibng, cv 0.5%</title></circle>
-<line x1="928.2" y1="2706.7" x2="928.2" y2="2704.5" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="928.2" cy="2705.6" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs adler32 size:262144 - 20.38 GB/s, -50.2% vs zlibng, cv 2.3%</title></circle>
-<line x1="1020.0" y1="2705.6" x2="1020.0" y2="2703.3" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="1020.0" cy="2704.4" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs adler32 size:2097152 - 20.89 GB/s, -48.9% vs zlibng, cv 2.4%</title></circle>
+<path d="M561.0,2758.9 L652.8,2683.3 L744.6,2674.5 L836.4,2672.6 L928.2,2672.5 L1020.0,2672.6" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<line x1="561.0" y1="2759.2" x2="561.0" y2="2758.6" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="561.0" cy="2758.9" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng adler32 size:64 - 6.63 GB/s, cv 0.6%</title></circle>
+<line x1="652.8" y1="2683.5" x2="652.8" y2="2683.1" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="652.8" cy="2683.3" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng adler32 size:512 - 32.49 GB/s, cv 0.4%</title></circle>
+<line x1="744.6" y1="2674.5" x2="744.6" y2="2674.4" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="744.6" cy="2674.5" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng adler32 size:4096 - 39.10 GB/s, cv 0.1%</title></circle>
+<line x1="836.4" y1="2672.7" x2="836.4" y2="2672.6" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="836.4" cy="2672.6" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng adler32 size:32768 - 40.64 GB/s, cv 0.1%</title></circle>
+<line x1="928.2" y1="2672.5" x2="928.2" y2="2672.4" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="928.2" cy="2672.5" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng adler32 size:262144 - 40.78 GB/s, cv 0.1%</title></circle>
+<line x1="1020.0" y1="2672.6" x2="1020.0" y2="2672.5" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="1020.0" cy="2672.6" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng adler32 size:2097152 - 40.70 GB/s, cv 0.1%</title></circle>
+<path d="M561.0,2763.4 L652.8,2702.7 L744.6,2696.8 L836.4,2703.3 L928.2,2705.5 L1020.0,2704.3" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
+<line x1="561.0" y1="2765.5" x2="561.0" y2="2761.4" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="561.0" cy="2763.4" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs adler32 size:64 - 6.03 GB/s, -9.1% vs zlibng, cv 4.4%</title></circle>
+<line x1="652.8" y1="2702.8" x2="652.8" y2="2702.6" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="652.8" cy="2702.7" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs adler32 size:512 - 21.61 GB/s, -33.5% vs zlibng, cv 0.2%</title></circle>
+<line x1="744.6" y1="2697.6" x2="744.6" y2="2696.0" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="744.6" cy="2696.8" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs adler32 size:4096 - 24.44 GB/s, -37.5% vs zlibng, cv 1.7%</title></circle>
+<line x1="836.4" y1="2703.5" x2="836.4" y2="2703.1" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="836.4" cy="2703.3" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs adler32 size:32768 - 21.33 GB/s, -47.5% vs zlibng, cv 0.5%</title></circle>
+<line x1="928.2" y1="2706.6" x2="928.2" y2="2704.4" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="928.2" cy="2705.5" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs adler32 size:262144 - 20.38 GB/s, -50.0% vs zlibng, cv 2.3%</title></circle>
+<line x1="1020.0" y1="2705.5" x2="1020.0" y2="2703.2" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="1020.0" cy="2704.3" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs adler32 size:2097152 - 20.89 GB/s, -48.7% vs zlibng, cv 2.4%</title></circle>
 <path d="M561.0,2794.9 L652.8,2810.8 L744.6,2812.9 L836.4,2812.7 L928.2,2813.0 L1020.0,2812.9" fill="none" stroke="#1baf7a" stroke-width="2" stroke-opacity="0.7"/>
-<line x1="561.0" y1="2795.0" x2="561.0" y2="2794.8" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="561.0" cy="2794.9" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib adler32 size:64 - 3.11 GB/s, -51.0% vs zlibng, cv 0.2%</title></circle>
+<line x1="561.0" y1="2795.0" x2="561.0" y2="2794.7" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="561.0" cy="2794.9" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib adler32 size:64 - 3.11 GB/s, -53.1% vs zlibng, cv 0.2%</title></circle>
 <line x1="652.8" y1="2811.6" x2="652.8" y2="2810.0" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="652.8" cy="2810.8" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib adler32 size:512 - 2.23 GB/s, -93.2% vs zlibng, cv 1.7%</title></circle>
 <line x1="744.6" y1="2812.9" x2="744.6" y2="2812.8" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
@@ -1469,75 +1467,75 @@
 <circle cx="928.2" cy="2813.0" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib adler32 size:262144 - 2.13 GB/s, -94.8% vs zlibng, cv 0.9%</title></circle>
 <line x1="1020.0" y1="2813.4" x2="1020.0" y2="2812.4" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="1020.0" cy="2812.9" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib adler32 size:2097152 - 2.13 GB/s, -94.8% vs zlibng, cv 1.0%</title></circle>
-<path d="M561.0,2742.1 L652.8,2695.5 L744.6,2695.8 L836.4,2696.9 L928.2,2696.9 L1020.0,2697.1" fill="none" stroke="#eda100" stroke-width="2" stroke-opacity="0.7"/>
-<line x1="561.0" y1="2742.5" x2="561.0" y2="2741.6" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="561.0" cy="2742.1" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib adler32 size:64 - 9.46 GB/s, +48.9% vs zlibng, cv 1.0%</title></circle>
-<line x1="652.8" y1="2695.5" x2="652.8" y2="2695.4" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="652.8" cy="2695.5" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib adler32 size:512 - 25.22 GB/s, -22.7% vs zlibng, cv 0.1%</title></circle>
-<line x1="744.6" y1="2695.9" x2="744.6" y2="2695.7" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="744.6" cy="2695.8" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib adler32 size:4096 - 25.03 GB/s, -36.2% vs zlibng, cv 0.2%</title></circle>
-<line x1="836.4" y1="2697.0" x2="836.4" y2="2696.8" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="836.4" cy="2696.9" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib adler32 size:32768 - 24.46 GB/s, -39.8% vs zlibng, cv 0.2%</title></circle>
-<line x1="928.2" y1="2697.0" x2="928.2" y2="2696.9" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="928.2" cy="2696.9" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib adler32 size:262144 - 24.44 GB/s, -40.3% vs zlibng, cv 0.1%</title></circle>
-<line x1="1020.0" y1="2697.2" x2="1020.0" y2="2697.0" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="1020.0" cy="2697.1" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib adler32 size:2097152 - 24.37 GB/s, -40.4% vs zlibng, cv 0.2%</title></circle>
-<path d="M561.0,2734.8 L652.8,2684.0 L744.6,2675.9 L836.4,2675.1 L928.2,2675.0 L1020.0,2675.1" fill="none" stroke="#e87ba4" stroke-width="2" stroke-opacity="0.7"/>
-<line x1="561.0" y1="2736.2" x2="561.0" y2="2733.5" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="561.0" cy="2734.8" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate adler32 size:64 - 11.01 GB/s, +73.4% vs zlibng, cv 2.9%</title></circle>
-<line x1="652.8" y1="2684.4" x2="652.8" y2="2683.7" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="652.8" cy="2684.0" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate adler32 size:512 - 32.07 GB/s, -1.7% vs zlibng, cv 0.7%</title></circle>
-<line x1="744.6" y1="2676.1" x2="744.6" y2="2675.8" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="744.6" cy="2675.9" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate adler32 size:4096 - 38.02 GB/s, -3.1% vs zlibng, cv 0.3%</title></circle>
-<line x1="836.4" y1="2675.4" x2="836.4" y2="2674.8" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="836.4" cy="2675.1" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate adler32 size:32768 - 38.68 GB/s, -4.8% vs zlibng, cv 0.6%</title></circle>
-<line x1="928.2" y1="2675.1" x2="928.2" y2="2674.9" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="928.2" cy="2675.0" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate adler32 size:262144 - 38.80 GB/s, -5.1% vs zlibng, cv 0.2%</title></circle>
-<line x1="1020.0" y1="2675.5" x2="1020.0" y2="2674.7" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="1020.0" cy="2675.1" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate adler32 size:2097152 - 38.72 GB/s, -5.2% vs zlibng, cv 0.8%</title></circle>
-<path d="M561.0,2746.8 L652.8,2697.4 L744.6,2694.9 L836.4,2703.7 L928.2,2704.9 L1020.0,2705.2" fill="none" stroke="#008300" stroke-width="2" stroke-opacity="0.7"/>
-<line x1="561.0" y1="2747.0" x2="561.0" y2="2746.6" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="561.0" cy="2746.8" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal adler32 size:64 - 8.57 GB/s, +34.9% vs zlibng, cv 0.4%</title></circle>
-<line x1="652.8" y1="2697.7" x2="652.8" y2="2697.0" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="652.8" cy="2697.4" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal adler32 size:512 - 24.22 GB/s, -25.8% vs zlibng, cv 0.7%</title></circle>
-<line x1="744.6" y1="2695.0" x2="744.6" y2="2694.8" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="744.6" cy="2694.9" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal adler32 size:4096 - 25.50 GB/s, -35.0% vs zlibng, cv 0.2%</title></circle>
-<line x1="836.4" y1="2703.9" x2="836.4" y2="2703.5" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="836.4" cy="2703.7" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal adler32 size:32768 - 21.20 GB/s, -47.8% vs zlibng, cv 0.4%</title></circle>
-<line x1="928.2" y1="2705.2" x2="928.2" y2="2704.6" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="928.2" cy="2704.9" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal adler32 size:262144 - 20.67 GB/s, -49.5% vs zlibng, cv 0.6%</title></circle>
-<line x1="1020.0" y1="2705.4" x2="1020.0" y2="2705.0" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="1020.0" cy="2705.2" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal adler32 size:2097152 - 20.53 GB/s, -49.8% vs zlibng, cv 0.5%</title></circle>
-<path d="M561.0,2794.8 L652.8,2810.7 L744.6,2812.9 L836.4,2813.6 L928.2,2813.6 L1020.0,2813.6" fill="none" stroke="#4a3aa7" stroke-width="2" stroke-opacity="0.7"/>
-<line x1="561.0" y1="2795.0" x2="561.0" y2="2794.7" stroke="#4a3aa7" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="561.0" cy="2794.8" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz adler32 size:64 - 3.12 GB/s, -50.9% vs zlibng, cv 0.4%</title></circle>
+<path d="M561.0,2742.0 L652.8,2695.3 L744.6,2695.7 L836.4,2696.8 L928.2,2696.8 L1020.0,2697.0" fill="none" stroke="#eda100" stroke-width="2" stroke-opacity="0.7"/>
+<line x1="561.0" y1="2742.5" x2="561.0" y2="2741.5" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="561.0" cy="2742.0" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib adler32 size:64 - 9.46 GB/s, +42.7% vs zlibng, cv 1.0%</title></circle>
+<line x1="652.8" y1="2695.4" x2="652.8" y2="2695.3" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="652.8" cy="2695.3" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib adler32 size:512 - 25.22 GB/s, -22.4% vs zlibng, cv 0.1%</title></circle>
+<line x1="744.6" y1="2695.8" x2="744.6" y2="2695.6" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="744.6" cy="2695.7" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib adler32 size:4096 - 25.03 GB/s, -36.0% vs zlibng, cv 0.2%</title></circle>
+<line x1="836.4" y1="2696.9" x2="836.4" y2="2696.7" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="836.4" cy="2696.8" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib adler32 size:32768 - 24.46 GB/s, -39.8% vs zlibng, cv 0.2%</title></circle>
+<line x1="928.2" y1="2696.9" x2="928.2" y2="2696.8" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="928.2" cy="2696.8" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib adler32 size:262144 - 24.44 GB/s, -40.1% vs zlibng, cv 0.1%</title></circle>
+<line x1="1020.0" y1="2697.0" x2="1020.0" y2="2696.9" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="1020.0" cy="2697.0" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib adler32 size:2097152 - 24.37 GB/s, -40.1% vs zlibng, cv 0.2%</title></circle>
+<path d="M561.0,2734.8 L652.8,2683.9 L744.6,2675.8 L836.4,2675.0 L928.2,2674.8 L1020.0,2674.9" fill="none" stroke="#e87ba4" stroke-width="2" stroke-opacity="0.7"/>
+<line x1="561.0" y1="2736.2" x2="561.0" y2="2733.4" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="561.0" cy="2734.8" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate adler32 size:64 - 11.01 GB/s, +66.1% vs zlibng, cv 2.9%</title></circle>
+<line x1="652.8" y1="2684.3" x2="652.8" y2="2683.5" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="652.8" cy="2683.9" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate adler32 size:512 - 32.07 GB/s, -1.3% vs zlibng, cv 0.7%</title></circle>
+<line x1="744.6" y1="2676.0" x2="744.6" y2="2675.7" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="744.6" cy="2675.8" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate adler32 size:4096 - 38.02 GB/s, -2.8% vs zlibng, cv 0.3%</title></circle>
+<line x1="836.4" y1="2675.3" x2="836.4" y2="2674.7" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="836.4" cy="2675.0" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate adler32 size:32768 - 38.68 GB/s, -4.8% vs zlibng, cv 0.6%</title></circle>
+<line x1="928.2" y1="2674.9" x2="928.2" y2="2674.7" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="928.2" cy="2674.8" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate adler32 size:262144 - 38.80 GB/s, -4.8% vs zlibng, cv 0.2%</title></circle>
+<line x1="1020.0" y1="2675.3" x2="1020.0" y2="2674.6" stroke="#e87ba4" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="1020.0" cy="2674.9" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate adler32 size:2097152 - 38.72 GB/s, -4.9% vs zlibng, cv 0.8%</title></circle>
+<path d="M561.0,2746.7 L652.8,2697.3 L744.6,2694.8 L836.4,2703.6 L928.2,2704.8 L1020.0,2705.1" fill="none" stroke="#008300" stroke-width="2" stroke-opacity="0.7"/>
+<line x1="561.0" y1="2746.9" x2="561.0" y2="2746.5" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="561.0" cy="2746.7" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal adler32 size:64 - 8.57 GB/s, +29.2% vs zlibng, cv 0.4%</title></circle>
+<line x1="652.8" y1="2697.6" x2="652.8" y2="2696.9" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="652.8" cy="2697.3" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal adler32 size:512 - 24.22 GB/s, -25.5% vs zlibng, cv 0.7%</title></circle>
+<line x1="744.6" y1="2694.9" x2="744.6" y2="2694.7" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="744.6" cy="2694.8" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal adler32 size:4096 - 25.50 GB/s, -34.8% vs zlibng, cv 0.2%</title></circle>
+<line x1="836.4" y1="2703.8" x2="836.4" y2="2703.4" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="836.4" cy="2703.6" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal adler32 size:32768 - 21.20 GB/s, -47.8% vs zlibng, cv 0.4%</title></circle>
+<line x1="928.2" y1="2705.1" x2="928.2" y2="2704.5" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="928.2" cy="2704.8" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal adler32 size:262144 - 20.67 GB/s, -49.3% vs zlibng, cv 0.6%</title></circle>
+<line x1="1020.0" y1="2705.3" x2="1020.0" y2="2704.9" stroke="#008300" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="1020.0" cy="2705.1" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal adler32 size:2097152 - 20.53 GB/s, -49.5% vs zlibng, cv 0.5%</title></circle>
+<path d="M561.0,2794.8 L652.8,2810.7 L744.6,2812.8 L836.4,2813.6 L928.2,2813.6 L1020.0,2813.6" fill="none" stroke="#4a3aa7" stroke-width="2" stroke-opacity="0.7"/>
+<line x1="561.0" y1="2795.0" x2="561.0" y2="2794.6" stroke="#4a3aa7" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="561.0" cy="2794.8" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz adler32 size:64 - 3.12 GB/s, -53.0% vs zlibng, cv 0.4%</title></circle>
 <line x1="652.8" y1="2810.9" x2="652.8" y2="2810.4" stroke="#4a3aa7" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="652.8" cy="2810.7" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz adler32 size:512 - 2.23 GB/s, -93.2% vs zlibng, cv 0.5%</title></circle>
-<line x1="744.6" y1="2813.2" x2="744.6" y2="2812.6" stroke="#4a3aa7" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="744.6" cy="2812.9" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz adler32 size:4096 - 2.13 GB/s, -94.6% vs zlibng, cv 0.6%</title></circle>
+<circle cx="652.8" cy="2810.7" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz adler32 size:512 - 2.23 GB/s, -93.1% vs zlibng, cv 0.5%</title></circle>
+<line x1="744.6" y1="2813.2" x2="744.6" y2="2812.5" stroke="#4a3aa7" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="744.6" cy="2812.8" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz adler32 size:4096 - 2.13 GB/s, -94.5% vs zlibng, cv 0.6%</title></circle>
 <line x1="836.4" y1="2813.7" x2="836.4" y2="2813.4" stroke="#4a3aa7" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="836.4" cy="2813.6" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz adler32 size:32768 - 2.10 GB/s, -94.8% vs zlibng, cv 0.3%</title></circle>
 <line x1="928.2" y1="2813.8" x2="928.2" y2="2813.3" stroke="#4a3aa7" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="928.2" cy="2813.6" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz adler32 size:262144 - 2.10 GB/s, -94.9% vs zlibng, cv 0.5%</title></circle>
-<line x1="1020.0" y1="2813.9" x2="1020.0" y2="2813.4" stroke="#4a3aa7" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="1020.0" cy="2813.6" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz adler32 size:2097152 - 2.10 GB/s, -94.9% vs zlibng, cv 0.6%</title></circle>
-<path d="M561.0,2817.5 L652.8,2815.3 L744.6,2813.8 L836.4,2813.6 L928.2,2814.5 L1020.0,2814.5" fill="none" stroke="#7a7668" stroke-width="2" stroke-opacity="0.7"/>
-<line x1="561.0" y1="2817.9" x2="561.0" y2="2817.2" stroke="#7a7668" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="561.0" cy="2817.5" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz adler32 size:64 - 1.93 GB/s, -69.6% vs zlibng, cv 0.7%</title></circle>
-<line x1="652.8" y1="2815.4" x2="652.8" y2="2815.2" stroke="#7a7668" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="652.8" cy="2815.3" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz adler32 size:512 - 2.03 GB/s, -93.8% vs zlibng, cv 0.2%</title></circle>
-<line x1="744.6" y1="2814.1" x2="744.6" y2="2813.4" stroke="#7a7668" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="744.6" cy="2813.8" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz adler32 size:4096 - 2.09 GB/s, -94.7% vs zlibng, cv 0.7%</title></circle>
-<line x1="836.4" y1="2813.7" x2="836.4" y2="2813.5" stroke="#7a7668" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="836.4" cy="2813.6" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz adler32 size:32768 - 2.10 GB/s, -94.8% vs zlibng, cv 0.1%</title></circle>
-<line x1="928.2" y1="2816.0" x2="928.2" y2="2813.0" stroke="#7a7668" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="928.2" cy="2814.5" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz adler32 size:262144 - 2.06 GB/s, -95.0% vs zlibng, cv 3.2%</title></circle>
-<line x1="1020.0" y1="2814.7" x2="1020.0" y2="2814.4" stroke="#7a7668" stroke-opacity="0.7" stroke-width="1.5"/>
-<circle cx="1020.0" cy="2814.5" r="3.5" fill="#7a7668" stroke="#fcfcfb" stroke-width="1.5"><title>slz adler32 size:2097152 - 2.06 GB/s, -95.0% vs zlibng, cv 0.3%</title></circle>
+<line x1="1020.0" y1="2813.9" x2="1020.0" y2="2813.3" stroke="#4a3aa7" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="1020.0" cy="2813.6" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz adler32 size:2097152 - 2.10 GB/s, -94.8% vs zlibng, cv 0.6%</title></circle>
+<path d="M561.0,2817.5 L652.8,2815.3 L744.6,2813.8 L836.4,2813.6 L928.2,2814.4 L1020.0,2814.5" fill="none" stroke="#a6339a" stroke-width="2" stroke-opacity="0.7"/>
+<line x1="561.0" y1="2817.9" x2="561.0" y2="2817.2" stroke="#a6339a" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="561.0" cy="2817.5" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz adler32 size:64 - 1.93 GB/s, -70.8% vs zlibng, cv 0.7%</title></circle>
+<line x1="652.8" y1="2815.4" x2="652.8" y2="2815.2" stroke="#a6339a" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="652.8" cy="2815.3" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz adler32 size:512 - 2.03 GB/s, -93.8% vs zlibng, cv 0.2%</title></circle>
+<line x1="744.6" y1="2814.1" x2="744.6" y2="2813.4" stroke="#a6339a" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="744.6" cy="2813.8" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz adler32 size:4096 - 2.09 GB/s, -94.7% vs zlibng, cv 0.7%</title></circle>
+<line x1="836.4" y1="2813.6" x2="836.4" y2="2813.5" stroke="#a6339a" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="836.4" cy="2813.6" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz adler32 size:32768 - 2.10 GB/s, -94.8% vs zlibng, cv 0.1%</title></circle>
+<line x1="928.2" y1="2816.0" x2="928.2" y2="2813.0" stroke="#a6339a" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="928.2" cy="2814.4" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz adler32 size:262144 - 2.06 GB/s, -94.9% vs zlibng, cv 3.2%</title></circle>
+<line x1="1020.0" y1="2814.7" x2="1020.0" y2="2814.4" stroke="#a6339a" stroke-opacity="0.7" stroke-width="1.5"/>
+<circle cx="1020.0" cy="2814.5" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz adler32 size:2097152 - 2.06 GB/s, -94.9% vs zlibng, cv 0.3%</title></circle>
 <g opacity="0.35"><line x1="1038.0" y1="2752.0" x2="1038.0" y2="2696.0" stroke="#52514e" stroke-width="2"/><polygon points="1038.0,2690.0 1042.0,2699.0 1034.0,2699.0" fill="#52514e"/><text x="1038.0" y="2714.0" font-size="11" fill="#52514e" text-anchor="middle" transform="rotate(-90.0 1038.0 2721.0)">better</text></g>
-<text x="16.0" y="2932.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">Apple M5, 32 GB, macOS 26.6.2, 10 cpus, Nathans-MacBook-Air-M5-2.local, 2026-09-03</text>
-<text x="16.0" y="2918.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">zlibng 2.3.1-563-g1239e888  ·  zlib_rs v0.6.7  ·  madler_zlib v1.3.1  ·  chromium_zlib 285e94b8fa95  ·  libdeflate v1.26  ·  isal v2.32.1-26-gebcec1a  ·  miniz 3.0.2  ·  libcompression macOS 26.6.2  ·  slz v1.3.0-33-gf052863</text>
+<text x="16.0" y="2932.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">Apple M5, 32 GB, macOS 26.6.2, 10 cpus, Nathans-MacBook-Air-M5-2.local, 2026-09-05</text>
+<text x="16.0" y="2918.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">zlibng 2.3.1-567-ga77d0847  ·  zlib_rs v0.6.7  ·  madler_zlib v1.3.1  ·  chromium_zlib 285e94b8fa95  ·  libdeflate v1.26  ·  isal v2.32.1-26-gebcec1a  ·  miniz 3.0.2  ·  libcompression macOS 26.6.2  ·  slz v1.3.0-33-gf052863</text>
 <text x="16.0" y="2902.0" font-size="10" fill="#c98500" text-anchor="start" font-weight="normal">⚠</text>
-<text x="30.0" y="2902.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">benchmarks with cv above 3%: zlibng 13, zlib_rs 15, madler_zlib 19, chromium_zlib 12, libdeflate 11, isal 5, miniz 3, libcompression 2, slz 3</text>
+<text x="30.0" y="2902.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">benchmarks with cv above 3%: zlibng 10, zlib_rs 15, madler_zlib 19, chromium_zlib 12, libdeflate 11, isal 5, miniz 3, libcompression 2, slz 3</text>
 <a href="https://github.com/nmoinvaz/codecbench"><text x="1064" y="2932" font-size="10" fill="#52514e" text-anchor="end" text-decoration="underline">github.com/nmoinvaz/codecbench</text></a>
 </svg>
