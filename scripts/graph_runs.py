@@ -36,9 +36,9 @@ INK_SOFT = "#52514e"
 GRID = "#e7e6e2"
 WARN = "#c98500"
 # Categorical slots in fixed order, assigned by run position, never cycled.
-# The neutral ninth slot is for a run of least interest, order inputs so.
+# The neutral last slot is for a run of least interest, order inputs so.
 SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100",
-          "#e87ba4", "#008300", "#4a3aa7", "#e34948", "#7a7668"]
+          "#e87ba4", "#008300", "#4a3aa7", "#e34948", "#a6339a", "#7a7668"]
 
 # Dark-mode counterparts, the same hues re-stepped for the dark surface.
 # Colors absent here keep their light value in both modes.
@@ -52,6 +52,7 @@ DARK = {
     "#eda100": "#c08800",
     "#e87ba4": "#d1678f",
     "#4a3aa7": "#7263cf",
+    "#a6339a": "#c257b5",
     "#7a7668": "#948e82",
 }
 
