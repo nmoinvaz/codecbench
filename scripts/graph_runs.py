@@ -744,9 +744,11 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         lvmin, lvmax = lvs_all[0], lvs_all[-1]
 
         cols, fw, fh, gapx, gapy = 2, 459, 170, 24, 48
-        # Deflate curves span the left of each facet, inflate dots the right
-        lvw = fw - 84
-        inf_cols = [(lvw + 34, ""), (lvw + 68, "/size:8388608")]
+        # Deflate curves span the left of each facet, inflate dots the right,
+        # every codec at its own fixed horizontal slot within each column
+        lvw = fw - 132
+        inf_cols = [(lvw + 40, ""), (lvw + 100, "/size:8388608")]
+        dot_pitch = min(5.0, 48.0 / max(len(points), 1))
 
         def lxp(lv):
             return (lv - lvmin) / (lvmax - lvmin) * lvw if lvmax > lvmin else lvw / 2
@@ -778,7 +780,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                         svg.line(fx, yy, fx + fw, yy, GRID)
                         svg.text(fx + lvw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
             svg.line(fx, fy + fh, fx + fw, fy + fh, INK_SOFT)
-            svg.line(fx + lvw + 14, fy + 8, fx + lvw + 14, fy + fh, GRID)
+            svg.line(fx + lvw + 12, fy + 8, fx + lvw + 12, fy + fh, GRID)
             for lv in (1, 3, 6, 9, 12):
                 if lvmin <= lv <= lvmax:
                     svg.text(fx + lxp(lv), fy + fh + 12, str(lv),
@@ -794,7 +796,8 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                     tip = (f"{names[i]} inflate {t}{' 8 MiB' if sfx else ''} - "
                            f"{fmt_speed(v['speed'])}"
                            + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
-                    svg.add(f'<circle cx="{fx + cx_off:.1f}" cy="{fyv(v["speed"]):.1f}" '
+                    cx = fx + cx_off + (i - (len(points) - 1) / 2) * dot_pitch
+                    svg.add(f'<circle cx="{cx:.1f}" cy="{fyv(v["speed"]):.1f}" '
                             f'r="3.5" fill="{SERIES[i]}" stroke="{SURFACE}" '
                             f'stroke-width="1.5"><title>{esc(tip)}</title></circle>')
             for i, p in enumerate(points):
