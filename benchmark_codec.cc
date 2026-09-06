@@ -429,6 +429,16 @@ static int register_codec_benchmarks(void) {
         for (size_t s = 0; s < sizeof(codec_strategies) / sizeof(codec_strategies[0]); s++) {
             for (size_t l = 0; l < sizeof(codec_strategy_levels) / sizeof(codec_strategy_levels[0]); l++) {
                 int level = codec_strategy_levels[l];
+                /* Filtered only changes match selection in the deflate_slow
+                   levels, so it skips level 1 and swaps level 6 for the first
+                   slow level. zlib-ng runs deflate_medium through level 6 and
+                   ignores the strategy there entirely. */
+                if (codec_strategies[s].strategy == Z_FILTERED) {
+                    if (level == 1)
+                        continue;
+                    if (level == 6)
+                        level = 7;
+                }
                 std::string name = "codec_deflate/" + label + "/level:" + std::to_string(level) +
                                    "/strategy:" + codec_strategies[s].name;
                 benchmark::internal::RegisterBenchmarkInternal(
