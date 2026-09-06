@@ -37,8 +37,9 @@ extern "C" {
 
 static std::vector<corpus_file> corpora_files;
 
-/* Synthetic data-type input size */
+/* Synthetic data-type input sizes, in-cache and DRAM-resident */
 #define CODEC_DATA_SIZE (128 * 1024)
+#define CODEC_DATA_LARGE_SIZE (8 * 1024 * 1024)
 
 class codec_deflate : public benchmark::Fixture {
 private:
@@ -252,8 +253,8 @@ private:
     corpus_file synth;
 
 public:
-    codec_inflate_type(const std::string &name, enum test_data_type type)
-        : codec_inflate_base(name), type(type), synth{"", NULL, CODEC_DATA_SIZE} {
+    codec_inflate_type(const std::string &name, enum test_data_type type, size_t size)
+        : codec_inflate_base(name), type(type), synth{"", NULL, size} {
         cf = &synth;
     }
 
@@ -383,7 +384,13 @@ static void codec_register_data_types(uint32_t mask) {
 #ifndef CODEC_NO_INFLATE
         std::string name = std::string("codec_inflate/data/") + types[i].name;
         benchmark::internal::RegisterBenchmarkInternal(
-            ::benchmark::internal::make_unique<codec_inflate_type>(name, types[i].type));
+            ::benchmark::internal::make_unique<codec_inflate_type>(name, types[i].type,
+                                                                   CODEC_DATA_SIZE));
+        /* DRAM-resident variant, in-cache inflate ranks the backends differently */
+        benchmark::internal::RegisterBenchmarkInternal(
+            ::benchmark::internal::make_unique<codec_inflate_type>(
+                name + "/size:" + std::to_string(CODEC_DATA_LARGE_SIZE), types[i].type,
+                CODEC_DATA_LARGE_SIZE));
 #endif
     }
 }

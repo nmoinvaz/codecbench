@@ -419,9 +419,14 @@ def run_mems(points):
 
 
 def order_types(seen):
-    """Data types in registration order, unknown ones last."""
-    types = [t for t in DATA_TYPE_ORDER if t in seen]
-    return types + sorted(set(seen) - set(DATA_TYPE_ORDER))
+    """Data types in registration order, size variants after every base type,
+    unknown ones last."""
+    def key(t):
+        base, _, size = t.partition("/size:")
+        known = base in DATA_TYPE_ORDER
+        return (int(size or 0), not known,
+                DATA_TYPE_ORDER.index(base) if known else 0, base)
+    return sorted(seen, key=key)
 
 
 def ordered_types(points):
@@ -670,8 +675,17 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
     # Synthetic data-type line panels, inflate plus deflate at one level
     panels = []
     if data_types:
-        panels.append(("inflate, synthetic data types", "inflate",
-                       [p["inflate_data"] for p in points], None))
+        base = [{t: v for t, v in p["inflate_data"].items() if "/size:" not in t}
+                for p in points]
+        panels.append(("inflate, synthetic data types", "inflate", base, None))
+        sizes = sorted({int(t.partition("/size:")[2]) for p in points
+                        for t in p["inflate_data"] if "/size:" in t})
+        for size in sizes:
+            suffix = f"/size:{size}"
+            large = [{t[:-len(suffix)]: v for t, v in p["inflate_data"].items()
+                      if t.endswith(suffix)} for p in points]
+            panels.append((f"inflate, synthetic data types at {fmt_bytes(size)}iB",
+                           f"inflate {fmt_bytes(size)}iB", large, None))
 
     data_top = max(488, py + ph + 76, right_bottom + 36)
     for pi, (caption, tipword, series, note) in enumerate(panels):
