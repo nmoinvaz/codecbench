@@ -409,6 +409,44 @@ static inline uint8_t *gen_far_match_data(size_t bufsize) {
     return buf;
 }
 
+/* Fixed-stride records whose structure repeats from earlier records while
+   four 4-byte value fields per record hold fresh random bytes. Deflate
+   emits ~12-byte matches broken up by high-entropy literal runs, the
+   database-content stream shape of silesia osdb, where roughly three
+   quarters of the symbols are literals. */
+static inline uint8_t *gen_records_data(size_t bufsize) {
+    uint8_t *buf = (uint8_t *)malloc(bufsize);
+    if (buf == NULL)
+        return NULL;
+    const size_t stride = 64;
+    uint32_t rng = 0x6b43a9b5;
+    size_t i = 0;
+    while (i < stride && i < bufsize) {
+        rng = rng * 1103515245u + 12345u;
+        buf[i++] = (uint8_t)(rng >> 24);
+    }
+    while (i < bufsize) {
+        size_t n = stride < bufsize - i ? stride : bufsize - i;
+        /* Copy the structure of a random one of the last 32 records */
+        rng = rng * 1103515245u + 12345u;
+        size_t back = stride * (1 + ((rng >> 16) & 31));
+        if (back > i)
+            back = stride;
+        memcpy(buf + i, buf + i - back, n);
+        /* Four 4-byte fields of fresh random values per record */
+        for (int f = 0; f < 4; f++) {
+            rng = rng * 1103515245u + 12345u;
+            size_t off = (rng >> 16) % (n > 4 ? n - 4 : 1);
+            for (int b = 0; b < 4 && off + b < n; b++) {
+                rng = rng * 1103515245u + 12345u;
+                buf[i + off + b] = (uint8_t)(rng >> 24);
+            }
+        }
+        i += n;
+    }
+    return buf;
+}
+
 /* Each variant targets a distinct shape of deflate stream. */
 enum test_data_type {
     TEST_DATA_TEXT = 0,         /* mixed literals + short/medium matches */
@@ -422,6 +460,7 @@ enum test_data_type {
     TEST_DATA_PHASED,           /* regime changes every 16 KiB, block splitting */
     TEST_DATA_RUNS,             /* byte runs, dist=1 matches and RLE */
     TEST_DATA_FAR_MATCH,        /* matches at distances spread across the window */
+    TEST_DATA_RECORDS,          /* dense short matches at a fixed record stride */
     TEST_DATA_COUNT
 };
 
@@ -438,6 +477,7 @@ static inline const char *test_data_type_name(int data_type) {
         case TEST_DATA_PHASED:         return "phased";
         case TEST_DATA_RUNS:           return "runs";
         case TEST_DATA_FAR_MATCH:      return "far_match";
+        case TEST_DATA_RECORDS:        return "records";
     }
     return NULL;
 }
@@ -455,6 +495,7 @@ static inline uint8_t *gen_test_data(enum test_data_type data_type, size_t bufsi
         case TEST_DATA_PHASED:         return gen_phased_data(bufsize);
         case TEST_DATA_RUNS:           return gen_runs_data(bufsize);
         case TEST_DATA_FAR_MATCH:      return gen_far_match_data(bufsize);
+        case TEST_DATA_RECORDS:        return gen_records_data(bufsize);
         case TEST_DATA_COUNT:          break;
     }
     return NULL;

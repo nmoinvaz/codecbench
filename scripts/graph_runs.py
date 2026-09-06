@@ -60,7 +60,8 @@ STRATEGY_ORDER = ["filtered", "huffman", "rle", "fixed"]
 
 # registration order in benchmark_codec.cc
 DATA_TYPE_ORDER = ["text", "short_match", "dna", "random", "literals", "mixed",
-                   "realistic_rgb", "phased", "runs", "striped_rgb", "far_match"]
+                   "realistic_rgb", "phased", "runs", "striped_rgb", "far_match",
+                   "records"]
 
 REPO_URL = "https://github.com/nmoinvaz/codecbench"
 
