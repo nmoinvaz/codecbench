@@ -33,6 +33,9 @@ size_t shim_zlib_compress(void *comp, const uint8_t *in, size_t in_size,
                           uint8_t *out, size_t out_size);
 void shim_zlib_deflate_free(void *comp);
 
+uint32_t shim_zlib_crc32(uint32_t crc, const uint8_t *buf, size_t len);
+uint32_t shim_zlib_adler32(uint32_t adler, const uint8_t *buf, size_t len);
+
 void *shim_zlib_inflate_new(void);
 size_t shim_zlib_inflate_mem(void *decomp);
 size_t shim_zlib_decompress(void *decomp, const uint8_t *in, size_t in_size,
@@ -40,6 +43,16 @@ size_t shim_zlib_decompress(void *decomp, const uint8_t *in, size_t in_size,
 void shim_zlib_inflate_free(void *decomp);
 
 #ifdef __cplusplus
+}
+
+/* All shim backends expose the zlib checksum entry points */
+#define CODEC_HAS_CRC32 1
+static inline uint32_t codec_crc32(uint32_t crc, const uint8_t *buf, size_t len) {
+    return shim_zlib_crc32(crc, buf, len);
+}
+#define CODEC_HAS_ADLER32 1
+static inline uint32_t codec_adler32(uint32_t adler, const uint8_t *buf, size_t len) {
+    return shim_zlib_adler32(adler, buf, len);
 }
 
 struct shim_codec_compressor {

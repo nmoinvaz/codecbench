@@ -117,6 +117,15 @@ struct miniz_codec_decompressor {
 
 #define CODEC_HAS_MEM 1
 
+#define CODEC_HAS_CRC32 1
+static inline uint32_t codec_crc32(uint32_t crc, const uint8_t *buf, size_t len) {
+    return (uint32_t)mz_crc32(crc, buf, len);
+}
+#define CODEC_HAS_ADLER32 1
+static inline uint32_t codec_adler32(uint32_t adler, const uint8_t *buf, size_t len) {
+    return (uint32_t)mz_adler32(adler, buf, len);
+}
+
 typedef miniz_codec_compressor   codec_compressor;
 typedef miniz_codec_decompressor codec_decompressor;
 

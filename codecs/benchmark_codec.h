@@ -43,6 +43,15 @@ typedef zng_codec_decompressor codec_decompressor;
    libdeflate, igzip, slz, and libcompression have no window parameter. */
 #  define CODEC_WBITS { 9, 10, 11, 12, 13, 14, 15 }
 #  define CODEC_HAS_MEM 1
+
+#  define CODEC_HAS_CRC32 1
+static inline uint32_t codec_crc32(uint32_t crc, const uint8_t *buf, size_t len) {
+    return zng_crc32_z(crc, buf, len);
+}
+#  define CODEC_HAS_ADLER32 1
+static inline uint32_t codec_adler32(uint32_t adler, const uint8_t *buf, size_t len) {
+    return zng_adler32_z(adler, buf, len);
+}
 #endif
 
 static const int codec_levels[] = CODEC_LEVELS;

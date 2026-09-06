@@ -15,6 +15,9 @@
   stock zlib API backends (chromium_zlib, madler_zlib, zlib_rs), and miniz.
 - windowBits variants (`/level:6/wbits:<9-15>`) register for zlib-ng and the
   stock zlib API backends only.
+- Checksum benchmarks (`codec_crc32/size:<n>`, `codec_adler32/size:<n>`)
+  register a 64 byte to 2 MiB size ladder for every backend except
+  libcompression, results verified against zlib-ng.
 - Decompression input is always produced by zlib-ng at level 9 and all output
   is verified against the original data, a failed roundtrip shows up as a
   benchmark error.

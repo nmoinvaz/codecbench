@@ -74,6 +74,14 @@ void shim_zlib_deflate_free(void *comp) {
     free(comp);
 }
 
+uint32_t shim_zlib_crc32(uint32_t crc, const uint8_t *buf, size_t len) {
+    return (uint32_t)crc32((uLong)crc, buf, (uInt)len);
+}
+
+uint32_t shim_zlib_adler32(uint32_t adler, const uint8_t *buf, size_t len) {
+    return (uint32_t)adler32((uLong)adler, buf, (uInt)len);
+}
+
 void *shim_zlib_inflate_new(void) {
     shim_stream *ss = shim_stream_new();
     if (ss == NULL)

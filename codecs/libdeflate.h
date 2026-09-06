@@ -57,6 +57,15 @@ struct ld_codec_decompressor {
 /* libdeflate spans levels 1 to 12. */
 #define CODEC_LEVELS { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }
 
+#define CODEC_HAS_CRC32 1
+static inline uint32_t codec_crc32(uint32_t crc, const uint8_t *buf, size_t len) {
+    return libdeflate_crc32(crc, buf, len);
+}
+#define CODEC_HAS_ADLER32 1
+static inline uint32_t codec_adler32(uint32_t adler, const uint8_t *buf, size_t len) {
+    return libdeflate_adler32(adler, buf, len);
+}
+
 typedef ld_codec_compressor   codec_compressor;
 typedef ld_codec_decompressor codec_decompressor;
 

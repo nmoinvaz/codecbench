@@ -12,7 +12,9 @@
  * backend inflates identical streams. All output is verified against the
  * original file contents. Deflate strategy variants are registered only by
  * backends that declare CODEC_STRATEGIES, windowBits variants only by
- * backends that declare CODEC_WBITS.
+ * backends that declare CODEC_WBITS. Backends that declare CODEC_HAS_CRC32
+ * or CODEC_HAS_ADLER32 register checksum benchmarks over a size ladder,
+ * their results verified against zlib-ng.
  */
 
 #include <stdio.h>
@@ -267,6 +269,84 @@ protected:
 };
 
 #endif /* CODEC_NO_INFLATE */
+
+#if defined(CODEC_HAS_CRC32) || defined(CODEC_HAS_ADLER32)
+/* Whole-buffer checksum over random data, one benchmark per input size.
+   The result is checked against zlib-ng once per run, so an incompatible
+   or wrong checksum shows up as a benchmark error. */
+class codec_checksum : public benchmark::Fixture {
+private:
+    uint32_t (*fn)(uint32_t, const uint8_t *, size_t);
+    uint32_t (*ref)(uint32_t, const uint8_t *, size_t);
+    uint32_t seed;
+    size_t size;
+    uint8_t *data;
+
+public:
+    codec_checksum(const std::string &name, uint32_t (*fn)(uint32_t, const uint8_t *, size_t),
+                   uint32_t (*ref)(uint32_t, const uint8_t *, size_t), uint32_t seed, size_t size)
+        : fn(fn), ref(ref), seed(seed), size(size), data(NULL) {
+        this->SetName(name);
+    }
+
+    void SetUp(const benchmark::State &) override {
+        data = gen_test_data(TEST_DATA_RANDOM, size);
+    }
+
+    void BenchmarkCase(benchmark::State &state) override {
+        if (data == NULL) {
+            state.SkipWithError("setup failed");
+            return;
+        }
+        if (fn(seed, data, size) != ref(seed, data, size)) {
+            state.SkipWithError("checksum does not match zlib-ng");
+            return;
+        }
+
+        for (auto _ : state) {
+            uint32_t sum = fn(seed, data, size);
+            benchmark::DoNotOptimize(sum);
+        }
+
+        state.SetBytesProcessed((int64_t)state.iterations() * (int64_t)size);
+    }
+
+    void TearDown(const benchmark::State &) override {
+        free(data);
+        data = NULL;
+    }
+};
+
+static uint32_t ref_crc32(uint32_t crc, const uint8_t *buf, size_t len) {
+    return zng_crc32_z(crc, buf, len);
+}
+
+static uint32_t ref_adler32(uint32_t adler, const uint8_t *buf, size_t len) {
+    return zng_adler32_z(adler, buf, len);
+}
+
+/* Small-buffer call overhead through streaming throughput, a factor 8 apart */
+static const size_t codec_checksum_sizes[] = {64, 512, 4096, 32768, 262144, 2097152};
+
+static int register_checksum_benchmarks(void) {
+    for (size_t i = 0; i < sizeof(codec_checksum_sizes) / sizeof(codec_checksum_sizes[0]); i++) {
+        size_t size = codec_checksum_sizes[i];
+#ifdef CODEC_HAS_CRC32
+        benchmark::internal::RegisterBenchmarkInternal(
+            ::benchmark::internal::make_unique<codec_checksum>(
+                "codec_crc32/size:" + std::to_string(size), codec_crc32, ref_crc32, 0, size));
+#endif
+#ifdef CODEC_HAS_ADLER32
+        benchmark::internal::RegisterBenchmarkInternal(
+            ::benchmark::internal::make_unique<codec_checksum>(
+                "codec_adler32/size:" + std::to_string(size), codec_adler32, ref_adler32, 1, size));
+#endif
+    }
+    return 0;
+}
+
+static int checksum_init = register_checksum_benchmarks();
+#endif /* CODEC_HAS_CRC32 || CODEC_HAS_ADLER32 */
 
 /* Registered at runtime for the data types selected by --benchmark_data_types */
 static void codec_register_data_types(uint32_t mask) {

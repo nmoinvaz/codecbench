@@ -38,6 +38,16 @@ struct slz_codec_compressor {
 #define CODEC_LEVELS { 1 }
 #define CODEC_NO_INFLATE 1
 
+/* slz keeps its running CRC un-inverted, so seeds and results match zlib */
+#define CODEC_HAS_CRC32 1
+static inline uint32_t codec_crc32(uint32_t crc, const uint8_t *buf, size_t len) {
+    return slz_crc32_by4(crc, buf, (int)len);
+}
+#define CODEC_HAS_ADLER32 1
+static inline uint32_t codec_adler32(uint32_t adler, const uint8_t *buf, size_t len) {
+    return slz_adler32_block(adler, buf, (long)len);
+}
+
 typedef slz_codec_compressor codec_compressor;
 
 #endif

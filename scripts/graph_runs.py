@@ -8,7 +8,9 @@ are connected in order, strategy variants get their own marker shapes.
 Synthetic data-type benchmarks (codec_inflate/data/<type>) common to the
 runs get their own line panel, one line per codec across the types.
 windowBits variants (level:N/wbits:M) get a speed line panel at the bottom,
-one line per codec across the window sizes.
+one line per codec across the window sizes. Checksum benchmarks
+(codec_crc32/size:N, codec_adler32/size:N) get side-by-side line facets,
+throughput across the input sizes, one line per codec.
 
 Usage:
     python3 scripts/graph_runs.py a.json b.json [c.json ...] [-o out.svg]
@@ -66,6 +68,10 @@ NAME_RE = re.compile(
     r"(?:/level:(?P<level>\d+))?(?:/strategy:(?P<strategy>\w+))?"
     r"(?:/wbits:(?P<wbits>\d+))?$")
 
+CHECKSUM_RE = re.compile(r"^codec_(?P<kind>crc32|adler32)/size:(?P<size>\d+)$")
+
+CHECKSUM_ORDER = ["crc32", "adler32"]
+
 
 def load(path):
     """Load benchmarks keyed by run_name. Prefer median aggregates if present."""
@@ -100,15 +106,22 @@ def geomean(values):
 
 
 def collect(benchmarks, corpus_filter):
-    """Split parsed benchmarks into deflate/inflate/data-type/wbits rows keyed by name."""
+    """Split parsed benchmarks into deflate/inflate/data-type/wbits/checksum rows keyed by name."""
     deflate = {}
     inflate = {}
     inflate_data = {}
     deflate_data = {}
     wbits = {}
+    checksum = {}
     for name, b in benchmarks.items():
+        if "bytes_per_second" not in b:
+            continue
+        c = CHECKSUM_RE.match(name)
+        if c is not None:
+            checksum[(c.group("kind"), int(c.group("size")))] = b
+            continue
         m = NAME_RE.match(name)
-        if m is None or "bytes_per_second" not in b:
+        if m is None:
             continue
         label = m.group("label")
         if label.startswith("data/"):
@@ -127,7 +140,7 @@ def collect(benchmarks, corpus_filter):
             deflate.setdefault(key, {})[label] = b
         else:
             inflate[label] = b
-    return deflate, inflate, inflate_data, deflate_data, wbits
+    return deflate, inflate, inflate_data, deflate_data, wbits, checksum
 
 
 def aggregate(runs, corpus_filter):
@@ -138,7 +151,7 @@ def aggregate(runs, corpus_filter):
     """
     collected = [collect(b, corpus_filter) for _, _, b, _ in runs]
     points = [{"deflate": {}, "inflate": None, "inflate_data": {}, "deflate_data": {},
-               "wbits": {}} for _ in collected]
+               "wbits": {}, "checksum": {}} for _ in collected]
 
     for key in sorted(set().union(*(set(c[0]) for c in collected))):
         have = [i for i, c in enumerate(collected) if key in c[0]]
@@ -175,7 +188,7 @@ def aggregate(runs, corpus_filter):
 
     with_inflate = [set(c[1]) for c in collected if c[1]]
     common_inflate = sorted(set.intersection(*with_inflate)) if with_inflate else []
-    for i, (_, inflate, _, _, _) in enumerate(collected):
+    for i, (_, inflate, _, _, _, _) in enumerate(collected):
         labels = common_inflate if common_inflate else sorted(inflate)
         rows = [inflate[l] for l in labels if l in inflate]
         if rows:
@@ -189,7 +202,7 @@ def aggregate(runs, corpus_filter):
 
     with_types = [set(c[2]) for c in collected if c[2]]
     common_types = set.intersection(*with_types) if with_types else set()
-    for i, (_, _, inflate_data, _, _) in enumerate(collected):
+    for i, (_, _, inflate_data, _, _, _) in enumerate(collected):
         for t in common_types & set(inflate_data):
             points[i]["inflate_data"][t] = {
                 "speed": inflate_data[t]["bytes_per_second"],
@@ -199,13 +212,21 @@ def aggregate(runs, corpus_filter):
 
     # Synthetic inputs are pinned generators, identical across runs, so every
     # run keeps its own level set here
-    for i, (_, _, _, deflate_data, _) in enumerate(collected):
+    for i, (_, _, _, deflate_data, _, _) in enumerate(collected):
         for k in deflate_data:
             points[i]["deflate_data"][k] = {
                 "speed": deflate_data[k]["bytes_per_second"],
                 "ratio": deflate_data[k].get("ratio", 0.0),
                 "cv": deflate_data[k].get("_cv", 0.0),
                 "mem": deflate_data[k].get("mem", 0.0),
+            }
+
+    # Checksum inputs are pinned random buffers, identical across runs
+    for i, (_, _, _, _, _, checksum) in enumerate(collected):
+        for k in checksum:
+            points[i]["checksum"][k] = {
+                "speed": checksum[k]["bytes_per_second"],
+                "cv": checksum[k].get("_cv", 0.0),
             }
 
     label_sets = [set().union(*(set(v) for v in c[0].values())) for c in collected if c[0]]
@@ -217,6 +238,14 @@ def fmt_speed(bps):
     if bps >= 1e9:
         return f"{bps / 1e9:.2f} GB/s"
     return f"{bps / 1e6:.0f} MB/s"
+
+
+def fmt_bytes(n):
+    if n >= 1048576:
+        return f"{n // 1048576}M"
+    if n >= 1024:
+        return f"{n // 1024}K"
+    return str(n)
 
 
 def fmt_mem(b):
@@ -824,6 +853,70 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         better_arrow(svg, wpx + wpw + 18, wtop + 92, wpx + wpw + 18, wtop + 30)
         body_bottom = wtop + wph + 44
 
+    # Checksum facets, throughput across input sizes, crc32 beside adler32
+    ck_kinds = [k for k in CHECKSUM_ORDER
+                if any(key[0] == k for p in points for key in p["checksum"])]
+    if ck_kinds:
+        ctop = body_bottom + 66
+        cfw, cfh, cgapx = 459, 170, 24
+        for j, kind in enumerate(ck_kinds):
+            fx = 78 + j * (cfw + cgapx)
+            svg.text(fx, ctop - 18, f"{kind} speed by input size", size=12, fill=INK)
+
+            sizes = sorted({key[1] for p in points
+                            for key in p["checksum"] if key[0] == kind})
+            czmin, czmax = math.log2(sizes[0]), math.log2(sizes[-1])
+
+            def cx(size, left=fx):
+                if czmax <= czmin:
+                    return left + cfw / 2
+                return left + (math.log2(size) - czmin) / (czmax - czmin) * cfw
+
+            cspeeds = [v["speed"] for p in points
+                       for key, v in p["checksum"].items() if key[0] == kind]
+            clo, chi = min(cspeeds) / 1.3, max(cspeeds) * 1.3
+
+            def cy(s, l=clo, h=chi):
+                return ctop + cfh - (math.log10(s) - math.log10(l)) / \
+                    (math.log10(h) - math.log10(l)) * cfh
+
+            for v in nice_log_ticks(clo, chi):
+                yy = cy(v)
+                svg.line(fx, yy, fx + cfw, yy, GRID)
+                svg.text(fx + cfw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
+            svg.line(fx, ctop + cfh, fx + cfw, ctop + cfh, INK_SOFT)
+            for size in sizes:
+                svg.text(cx(size), ctop + cfh + 14, fmt_bytes(size),
+                         size=9, anchor="middle")
+            svg.text(fx + cfw / 2, ctop + cfh + 30, "input size", size=11,
+                     anchor="middle")
+
+            for i, p in enumerate(points):
+                pts = sorted((key[1], v) for key, v in p["checksum"].items()
+                             if key[0] == kind)
+                if not pts:
+                    continue
+                coords = [(cx(size), cy(v["speed"])) for size, v in pts]
+                if len(coords) > 1:
+                    path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
+                                    for q, (x, y) in enumerate(coords))
+                    svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
+                            f'stroke-width="2" stroke-opacity="0.7"/>')
+                for (size, v), (x, y) in zip(pts, coords):
+                    if v["cv"] > 0:
+                        y1, y2 = cy(v["speed"] * (1 - v["cv"])), cy(v["speed"] * (1 + v["cv"]))
+                        svg.add(f'<line x1="{x:.1f}" y1="{y1:.1f}" x2="{x:.1f}" y2="{y2:.1f}" '
+                                f'stroke="{SERIES[i]}" stroke-opacity="0.7" stroke-width="1.5"/>')
+                    tip = (f"{names[i]} {kind} size:{size} - {fmt_speed(v['speed'])}"
+                           + (f", {(v['speed'] / points[0]['checksum'][(kind, size)]['speed'] - 1) * 100.0:+.1f}% "
+                              f"vs {names[0]}" if i > 0 and (kind, size) in points[0]["checksum"] else "")
+                           + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
+                    svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" '
+                            f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
+                            f'<title>{esc(tip)}</title></circle>')
+        better_arrow(svg, 1038, ctop + 92, 1038, ctop + 30)
+        body_bottom = ctop + cfh + 56
+
     # Version and machine footnote, wrapped when the runs make it long
     note_parts = [f"{names[i]} {versions[i]}".strip() for i in range(len(names))]
     note = "  \u00b7  ".join(note_parts + ([machine] if machine else []))
@@ -892,6 +985,14 @@ def print_table(names, points):
     for t, l in dd_keys:
         print(f"{f'deflate/{t}:{l}':<22} " + speed_cells(
             [p["deflate_data"][(t, l)]["speed"] if (t, l) in p["deflate_data"] else None
+             for p in points]))
+
+    ck_keys = sorted(
+        set().union(*(set(p["checksum"]) for p in points)),
+        key=lambda k: (CHECKSUM_ORDER.index(k[0]) if k[0] in CHECKSUM_ORDER else 9, k[1]))
+    for kind, size in ck_keys:
+        print(f"{f'{kind}/size:{size}':<22} " + speed_cells(
+            [p["checksum"][(kind, size)]["speed"] if (kind, size) in p["checksum"] else None
              for p in points]))
 
     print(f"{'inflate':<22} "

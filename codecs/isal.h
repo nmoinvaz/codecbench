@@ -12,6 +12,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <isa-l/igzip_lib.h>
+#include <isa-l/crc.h>
 
 struct isal_codec_compressor {
     struct isal_zstream strm;
@@ -89,6 +90,16 @@ struct isal_codec_decompressor {
 
 /* igzip spans levels 0 to 3. */
 #define CODEC_LEVELS { 0, 1, 2, 3 }
+
+/* crc32_gzip_refl is the reflected CRC-32 the gzip trailer uses */
+#define CODEC_HAS_CRC32 1
+static inline uint32_t codec_crc32(uint32_t crc, const uint8_t *buf, size_t len) {
+    return crc32_gzip_refl(crc, buf, len);
+}
+#define CODEC_HAS_ADLER32 1
+static inline uint32_t codec_adler32(uint32_t adler, const uint8_t *buf, size_t len) {
+    return isal_adler32(adler, buf, len);
+}
 
 typedef isal_codec_compressor   codec_compressor;
 typedef isal_codec_decompressor codec_decompressor;
