@@ -361,6 +361,8 @@ static void codec_register_data_types(uint32_t mask) {
         {"literals",      TEST_DATA_LITERALS},
         {"mixed",         TEST_DATA_MIXED},
         {"realistic_rgb", TEST_DATA_REALISTIC_RGB},
+        {"phased",        TEST_DATA_PHASED},
+        {"runs",          TEST_DATA_RUNS},
         {"striped_rgb",   TEST_DATA_STRIPED_RGB},
     };
 

@@ -319,6 +319,58 @@ static inline uint8_t *gen_striped_rgb_data(size_t bufsize) {
     return buf;
 }
 
+/* Concatenated regimes that change character every 16 KiB: small-alphabet
+   words, biased high-entropy literals, dist=3 pixel-like bytes, and a
+   four-symbol alphabet. One Huffman tree fits none of them well, so this
+   exercises content-aware block splitting. */
+static inline uint8_t *gen_phased_data(size_t bufsize) {
+    static const char letters[] = "etaoinshrdlucmfwypvbgk";
+    uint8_t *buf = (uint8_t *)malloc(bufsize);
+    if (buf == NULL)
+        return NULL;
+    uint32_t rng = 0x9e3779b9;
+    for (size_t i = 0; i < bufsize; i++) {
+        int phase = (int)((i / 16384) & 3);
+        rng = rng * 1103515245u + 12345u;
+        switch (phase) {
+        case 0:
+            buf[i] = ((i % 6) == 5) ? ' ' : (uint8_t)letters[(rng >> 16) % (sizeof(letters) - 1)];
+            break;
+        case 1:
+            buf[i] = (uint8_t)(((rng >> 16) & 0x7f) + ((rng >> 23) & 0x3f));
+            break;
+        case 2:
+            buf[i] = (uint8_t)((i % 3) * 100 + ((rng >> 28) & 3));
+            break;
+        default:
+            buf[i] = (uint8_t)"ACGT"[(rng >> 24) & 3];
+            break;
+        }
+    }
+    return buf;
+}
+
+/* Runs of a single byte with varying lengths and occasional one-byte breaks.
+   Compresses into dist=1 matches, exercising the RLE strategy and the
+   overlapping-copy inflate path. */
+static inline uint8_t *gen_runs_data(size_t bufsize) {
+    uint8_t *buf = (uint8_t *)malloc(bufsize);
+    if (buf == NULL)
+        return NULL;
+    uint32_t rng = 0x2545f491;
+    size_t i = 0;
+    while (i < bufsize) {
+        rng = rng * 1103515245u + 12345u;
+        uint8_t byte = (uint8_t)(rng >> 24);
+        size_t run = 4 + ((rng >> 8) & 0xff);
+        if (((rng >> 16) & 15) == 0)
+            run = 1;
+        while (run-- > 0 && i < bufsize)
+            buf[i++] = byte;
+    }
+    return buf;
+}
+
 /* Each variant targets a distinct shape of deflate stream. */
 enum test_data_type {
     TEST_DATA_TEXT = 0,         /* mixed literals + short/medium matches */
@@ -329,6 +381,8 @@ enum test_data_type {
     TEST_DATA_MIXED,            /* binary-like literal runs + medium matches */
     TEST_DATA_REALISTIC_RGB,    /* RGB photo, short matches at dist=3 */
     TEST_DATA_STRIPED_RGB,      /* solid R/G/B stripes, long dist=3 matches */
+    TEST_DATA_PHASED,           /* regime changes every 16 KiB, block splitting */
+    TEST_DATA_RUNS,             /* byte runs, dist=1 matches and RLE */
     TEST_DATA_COUNT
 };
 
@@ -342,6 +396,8 @@ static inline const char *test_data_type_name(int data_type) {
         case TEST_DATA_MIXED:          return "mixed";
         case TEST_DATA_REALISTIC_RGB:  return "realistic_rgb";
         case TEST_DATA_STRIPED_RGB:    return "striped_rgb";
+        case TEST_DATA_PHASED:         return "phased";
+        case TEST_DATA_RUNS:           return "runs";
     }
     return NULL;
 }
@@ -356,6 +412,8 @@ static inline uint8_t *gen_test_data(enum test_data_type data_type, size_t bufsi
         case TEST_DATA_MIXED:          return gen_mixed_data(bufsize);
         case TEST_DATA_REALISTIC_RGB:  return gen_realistic_rgb_data(bufsize);
         case TEST_DATA_STRIPED_RGB:    return gen_striped_rgb_data(bufsize);
+        case TEST_DATA_PHASED:         return gen_phased_data(bufsize);
+        case TEST_DATA_RUNS:           return gen_runs_data(bufsize);
         case TEST_DATA_COUNT:          break;
     }
     return NULL;
