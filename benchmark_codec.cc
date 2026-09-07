@@ -34,6 +34,7 @@ extern "C" {
 #include "benchmark_corpora.h"
 #include "codecs/benchmark_codec.h"
 #include "benchmark_data_types.h"
+#include "deflate_stats.h"
 
 static std::vector<corpus_file> corpora_files;
 
@@ -119,6 +120,15 @@ public:
 #ifdef CODEC_HAS_MEM
         state.counters["mem"] = benchmark::Counter(double(comp.mem()));
 #endif
+
+        /* Stream anatomy, counted after timing on the final buffer. A stream
+           the walker cannot parse (a non-raw wrapper) just omits the counters. */
+        struct deflate_stats ds;
+        if (deflate_stream_stats(outbuff, compressed_size, &ds) == 0) {
+            state.counters["lit_syms"] = benchmark::Counter(double(ds.lit_syms));
+            state.counters["match_syms"] = benchmark::Counter(double(ds.match_syms));
+            state.counters["match_bytes"] = benchmark::Counter(double(ds.match_bytes));
+        }
     }
 
     void TearDown(const benchmark::State &) override {
