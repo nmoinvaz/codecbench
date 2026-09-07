@@ -1729,7 +1729,6 @@
 <circle cx="460.5" cy="2703.0" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 wbits:14 - 101 MB/s, ratio 2.955, 1 files, cv 0.1%</title></circle>
 <line x1="537.0" y1="2716.3" x2="537.0" y2="2716.3" stroke="#2a78d6" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="537.0" cy="2716.3" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 wbits:15 - 87 MB/s, ratio 3.070, 1 files, cv 0.0%</title></circle>
-<text x="529.0" y="2708.3" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">87 MB/s</text>
 <path d="M78.0,2728.2 L154.5,2716.3 L231.0,2711.5 L307.5,2711.1 L384.0,2714.5 L460.5,2721.7 L537.0,2733.7" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
 <line x1="78.0" y1="2728.7" x2="78.0" y2="2727.7" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="78.0" cy="2728.2" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 wbits:9 - 76 MB/s, ratio 2.189, 1 files, cv 0.6%</title></circle>
@@ -1745,7 +1744,6 @@
 <circle cx="460.5" cy="2721.7" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 wbits:14 - 82 MB/s, ratio 2.955, 1 files, cv 0.3%</title></circle>
 <line x1="537.0" y1="2734.2" x2="537.0" y2="2733.3" stroke="#eb6834" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="537.0" cy="2733.7" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 wbits:15 - 71 MB/s, ratio 3.070, 1 files, cv 0.5%</title></circle>
-<text x="529.0" y="2725.7" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">71 MB/s</text>
 <path d="M78.0,2762.9 L154.5,2765.1 L231.0,2769.9 L307.5,2777.3 L384.0,2787.8 L460.5,2800.5 L537.0,2815.0" fill="none" stroke="#1baf7a" stroke-width="2" stroke-opacity="0.7"/>
 <line x1="78.0" y1="2763.1" x2="78.0" y2="2762.8" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="78.0" cy="2762.9" r="4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:6 wbits:9 - 51 MB/s, ratio 2.246, 1 files, cv 0.2%</title></circle>
@@ -1761,7 +1759,6 @@
 <circle cx="460.5" cy="2800.5" r="4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:6 wbits:14 - 33 MB/s, ratio 2.995, 1 files, cv 0.1%</title></circle>
 <line x1="537.0" y1="2815.1" x2="537.0" y2="2815.0" stroke="#1baf7a" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="537.0" cy="2815.0" r="4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:6 wbits:15 - 28 MB/s, ratio 3.100, 1 files, cv 0.1%</title></circle>
-<text x="529.0" y="2807.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">28 MB/s</text>
 <path d="M78.0,2730.2 L154.5,2723.2 L231.0,2723.1 L307.5,2726.7 L384.0,2732.9 L460.5,2742.8 L537.0,2755.1" fill="none" stroke="#eda100" stroke-width="2" stroke-opacity="0.7"/>
 <line x1="78.0" y1="2730.4" x2="78.0" y2="2730.1" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="78.0" cy="2730.2" r="4" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:6 wbits:9 - 74 MB/s, ratio 2.191, 1 files, cv 0.1%</title></circle>
@@ -1777,7 +1774,6 @@
 <circle cx="460.5" cy="2742.8" r="4" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:6 wbits:14 - 64 MB/s, ratio 2.970, 1 files, cv 0.3%</title></circle>
 <line x1="537.0" y1="2755.2" x2="537.0" y2="2755.0" stroke="#eda100" stroke-opacity="0.7" stroke-width="1.5"/>
 <circle cx="537.0" cy="2755.1" r="4" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:6 wbits:15 - 56 MB/s, ratio 3.085, 1 files, cv 0.1%</title></circle>
-<text x="529.0" y="2747.1" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">56 MB/s</text>
 <g opacity="0.35"><line x1="555.0" y1="2760.0" x2="555.0" y2="2704.0" stroke="#52514e" stroke-width="2"/><polygon points="555.0,2698.0 559.0,2707.0 551.0,2707.0" fill="#52514e"/><text x="555.0" y="2722.0" font-size="11" fill="#52514e" text-anchor="middle" transform="rotate(-90.0 555.0 2729.0)">better</text></g>
 <text x="561.0" y="2650.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">inflate speed by output window</text>
 <line x1="561.0" y1="2746.1" x2="1020.0" y2="2746.1" stroke="#e7e6e2" stroke-width="1"/>

@@ -1001,9 +1001,10 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                     svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4" '
                             f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
                             f'<title>{esc(tip)}</title></circle>')
-                lw, lval = pts[-1]
-                svg.text(wx(lw) - 8, wy(lval["speed"]) - 8, fmt_speed(lval["speed"]),
-                         size=9, anchor="end")
+                if wpw > 600:
+                    lw, lval = pts[-1]
+                    svg.text(wx(lw) - 8, wy(lval["speed"]) - 8, fmt_speed(lval["speed"]),
+                             size=9, anchor="end")
         better_arrow(svg, wpx + wpw + 18, wtop + 92, wpx + wpw + 18, wtop + 30)
         body_bottom = wtop + wph + 44
 
