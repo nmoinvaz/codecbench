@@ -206,7 +206,7 @@ def render(corpus, stats, out_path):
                     f'</circle>')
     better_arrow(svg, left + 120, top + len(stats) * row_h + 26,
                  left + 20, top + len(stats) * row_h + 26)
-    top += len(stats) * row_h + 46
+    top += len(stats) * row_h + 64
 
     # Stacked coverage by nearest-match distance
     svg.text(left, top - 10, "greedy parse bytes by match distance", size=12, fill=INK)

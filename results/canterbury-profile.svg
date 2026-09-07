@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1510" viewBox="0 0 1080 1510" font-family="system-ui, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1528" viewBox="0 0 1080 1528" font-family="system-ui, sans-serif">
 <style>@media (prefers-color-scheme: dark){[fill="#fcfcfb"]{fill:#201f1d}[stroke="#fcfcfb"]{stroke:#201f1d}[fill="#0b0b0b"]{fill:#e8e6e3}[stroke="#0b0b0b"]{stroke:#e8e6e3}[fill="#52514e"]{fill:#a8a49d}[stroke="#52514e"]{stroke:#a8a49d}[fill="#e7e6e2"]{fill:#343230}[stroke="#e7e6e2"]{stroke:#343230}[fill="#c98500"]{fill:#d69a2d}[stroke="#c98500"]{stroke:#d69a2d}[fill="#eb6834"]{fill:#dd5c26}[stroke="#eb6834"]{stroke:#dd5c26}[fill="#eda100"]{fill:#c08800}[stroke="#eda100"]{stroke:#c08800}[fill="#e87ba4"]{fill:#d1678f}[stroke="#e87ba4"]{stroke:#d1678f}[fill="#4a3aa7"]{fill:#7263cf}[stroke="#4a3aa7"]{stroke:#7263cf}[fill="#a6339a"]{fill:#c257b5}[stroke="#a6339a"]{stroke:#c257b5}[fill="#7a7668"]{fill:#948e82}[stroke="#7a7668"]{stroke:#948e82}}</style>
-<rect width="1080" height="1510" fill="#fcfcfb"/>
+<rect width="1080" height="1528" fill="#fcfcfb"/>
 <text x="16.0" y="28.0" font-size="15" fill="#0b0b0b" text-anchor="start" font-weight="bold">canterbury corpus profile</text>
 <text x="16.0" y="46.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">11 files, 2M total, greedy 4-byte parse over sampled 32K-history windows</text>
 <text x="150.0" y="82.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">byte value distribution, log intensity</text>
@@ -117,306 +117,306 @@
 <circle cx="539.9" cy="617.0" r="4.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>xargs.1 deflate level 1 - 3.51 bits/byte</title></circle>
 <circle cx="515.5" cy="617.0" r="4.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>xargs.1 deflate level 6 - 3.29 bits/byte</title></circle>
 <g opacity="0.35"><line x1="270.0" y1="654.0" x2="176.0" y2="654.0" stroke="#52514e" stroke-width="2"/><polygon points="170.0,654.0 179.0,650.0 179.0,658.0" fill="#52514e"/><text x="220.0" y="647.0" font-size="11" fill="#52514e" text-anchor="middle" transform="rotate(360.0 220.0 654.0)">better</text></g>
-<text x="150.0" y="664.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">greedy parse bytes by match distance</text>
-<text x="1040.0" y="664.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">4K-32K</text>
-<circle cx="1000.8" cy="660" r="4" fill="#eda100"/>
-<text x="986.8" y="664.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">257-4K</text>
-<circle cx="947.6" cy="660" r="4" fill="#1baf7a"/>
-<text x="933.6" y="664.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">17-256</text>
-<circle cx="894.4" cy="660" r="4" fill="#eb6834"/>
-<text x="880.4" y="664.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">dist 1-16</text>
-<circle cx="825.6" cy="660" r="4" fill="#2a78d6"/>
-<text x="811.6" y="664.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">literals</text>
-<circle cx="762.0" cy="660" r="4" fill="#7a7668"/>
-<text x="142.0" y="689.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">alice29.txt</text>
-<text x="142.0" y="711.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">asyoulik.txt</text>
-<text x="142.0" y="733.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">cp.html</text>
-<text x="142.0" y="755.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">fields.c</text>
-<text x="142.0" y="777.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">grammar.lsp</text>
-<text x="142.0" y="799.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">kennedy.xls</text>
-<text x="142.0" y="821.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">lcet10.txt</text>
-<text x="142.0" y="843.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">plrabn12.txt</text>
-<text x="142.0" y="865.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">ptt5</text>
-<text x="142.0" y="887.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">sum</text>
-<text x="142.0" y="909.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">xargs.1</text>
-<rect x="150.0" y="677" width="86.7" height="16" fill="#7a7668"><title>alice29.txt literals - 9.7%</title></rect>
-<text x="193.4" y="689.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">10%</text>
-<rect x="236.7" y="677" width="6.6" height="16" fill="#2a78d6"><title>alice29.txt dist 1-16 - 0.7%</title></rect>
-<rect x="243.3" y="677" width="83.8" height="16" fill="#eb6834"><title>alice29.txt 17-256 - 9.4%</title></rect>
-<text x="285.2" y="689.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
-<rect x="327.1" y="677" width="312.3" height="16" fill="#1baf7a"><title>alice29.txt 257-4K - 35.1%</title></rect>
-<text x="483.3" y="689.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">35%</text>
-<rect x="639.4" y="677" width="400.6" height="16" fill="#eda100"><title>alice29.txt 4K-32K - 45.0%</title></rect>
-<text x="839.7" y="689.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">45%</text>
-<rect x="150.0" y="699" width="97.0" height="16" fill="#7a7668"><title>asyoulik.txt literals - 10.9%</title></rect>
-<text x="198.5" y="711.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">11%</text>
-<rect x="247.0" y="699" width="4.8" height="16" fill="#2a78d6"><title>asyoulik.txt dist 1-16 - 0.5%</title></rect>
-<rect x="251.8" y="699" width="89.4" height="16" fill="#eb6834"><title>asyoulik.txt 17-256 - 10.0%</title></rect>
-<text x="296.5" y="711.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">10%</text>
-<rect x="341.2" y="699" width="267.5" height="16" fill="#1baf7a"><title>asyoulik.txt 257-4K - 30.1%</title></rect>
-<text x="475.0" y="711.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">30%</text>
-<rect x="608.7" y="699" width="431.3" height="16" fill="#eda100"><title>asyoulik.txt 4K-32K - 48.5%</title></rect>
-<text x="824.4" y="711.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">48%</text>
-<rect x="150.0" y="721" width="196.7" height="16" fill="#7a7668"><title>cp.html literals - 22.1%</title></rect>
-<text x="248.4" y="733.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">22%</text>
-<rect x="346.7" y="721" width="14.1" height="16" fill="#2a78d6"><title>cp.html dist 1-16 - 1.6%</title></rect>
-<rect x="360.8" y="721" width="157.9" height="16" fill="#eb6834"><title>cp.html 17-256 - 17.7%</title></rect>
-<text x="439.8" y="733.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">18%</text>
-<rect x="518.8" y="721" width="325.0" height="16" fill="#1baf7a"><title>cp.html 257-4K - 36.5%</title></rect>
-<text x="681.2" y="733.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">37%</text>
-<rect x="843.7" y="721" width="196.3" height="16" fill="#eda100"><title>cp.html 4K-32K - 22.1%</title></rect>
-<text x="941.9" y="733.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">22%</text>
-<rect x="150.0" y="743" width="132.4" height="16" fill="#7a7668"><title>fields.c literals - 14.9%</title></rect>
-<text x="216.2" y="755.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">15%</text>
-<rect x="282.4" y="743" width="17.6" height="16" fill="#2a78d6"><title>fields.c dist 1-16 - 2.0%</title></rect>
-<rect x="300.0" y="743" width="301.2" height="16" fill="#eb6834"><title>fields.c 17-256 - 33.8%</title></rect>
-<text x="450.6" y="755.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">34%</text>
-<rect x="601.2" y="743" width="388.0" height="16" fill="#1baf7a"><title>fields.c 257-4K - 43.6%</title></rect>
-<text x="795.2" y="755.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">44%</text>
-<rect x="989.2" y="743" width="50.8" height="16" fill="#eda100"><title>fields.c 4K-32K - 5.7%</title></rect>
-<text x="1014.6" y="755.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">6%</text>
-<rect x="150.0" y="765" width="216.7" height="16" fill="#7a7668"><title>grammar.lsp literals - 24.3%</title></rect>
-<text x="258.3" y="777.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
-<rect x="366.7" y="765" width="38.0" height="16" fill="#2a78d6"><title>grammar.lsp dist 1-16 - 4.3%</title></rect>
-<text x="385.7" y="777.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">4%</text>
-<rect x="404.7" y="765" width="396.3" height="16" fill="#eb6834"><title>grammar.lsp 17-256 - 44.5%</title></rect>
-<text x="602.9" y="777.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">45%</text>
-<rect x="801.1" y="765" width="238.9" height="16" fill="#1baf7a"><title>grammar.lsp 257-4K - 26.8%</title></rect>
-<text x="920.5" y="777.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">27%</text>
-<rect x="150.0" y="787" width="58.4" height="16" fill="#7a7668"><title>kennedy.xls literals - 6.6%</title></rect>
-<text x="179.2" y="799.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">7%</text>
-<rect x="208.4" y="787" width="24.2" height="16" fill="#2a78d6"><title>kennedy.xls dist 1-16 - 2.7%</title></rect>
-<rect x="232.6" y="787" width="42.6" height="16" fill="#eb6834"><title>kennedy.xls 17-256 - 4.8%</title></rect>
-<text x="253.9" y="799.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
-<rect x="275.2" y="787" width="647.1" height="16" fill="#1baf7a"><title>kennedy.xls 257-4K - 72.7%</title></rect>
-<text x="598.8" y="799.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">73%</text>
-<rect x="922.3" y="787" width="117.7" height="16" fill="#eda100"><title>kennedy.xls 4K-32K - 13.2%</title></rect>
-<text x="981.2" y="799.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">13%</text>
-<rect x="150.0" y="809" width="95.5" height="16" fill="#7a7668"><title>lcet10.txt literals - 10.7%</title></rect>
-<text x="197.8" y="821.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">11%</text>
-<rect x="245.5" y="809" width="5.1" height="16" fill="#2a78d6"><title>lcet10.txt dist 1-16 - 0.6%</title></rect>
-<rect x="250.6" y="809" width="81.1" height="16" fill="#eb6834"><title>lcet10.txt 17-256 - 9.1%</title></rect>
-<text x="291.2" y="821.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
-<rect x="331.8" y="809" width="311.8" height="16" fill="#1baf7a"><title>lcet10.txt 257-4K - 35.0%</title></rect>
-<text x="487.7" y="821.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">35%</text>
-<rect x="643.6" y="809" width="396.4" height="16" fill="#eda100"><title>lcet10.txt 4K-32K - 44.5%</title></rect>
-<text x="841.8" y="821.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">45%</text>
-<rect x="150.0" y="831" width="107.4" height="16" fill="#7a7668"><title>plrabn12.txt literals - 12.1%</title></rect>
-<text x="203.7" y="843.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">12%</text>
-<rect x="257.4" y="831" width="3.3" height="16" fill="#2a78d6"><title>plrabn12.txt dist 1-16 - 0.4%</title></rect>
-<rect x="260.8" y="831" width="48.9" height="16" fill="#eb6834"><title>plrabn12.txt 17-256 - 5.5%</title></rect>
-<text x="285.2" y="843.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
-<rect x="309.6" y="831" width="267.6" height="16" fill="#1baf7a"><title>plrabn12.txt 257-4K - 30.1%</title></rect>
-<text x="443.4" y="843.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">30%</text>
-<rect x="577.2" y="831" width="462.8" height="16" fill="#eda100"><title>plrabn12.txt 4K-32K - 52.0%</title></rect>
-<text x="808.6" y="843.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">52%</text>
-<rect x="150.0" y="853" width="63.8" height="16" fill="#7a7668"><title>ptt5 literals - 7.2%</title></rect>
-<text x="181.9" y="865.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">7%</text>
-<rect x="213.8" y="853" width="307.0" height="16" fill="#2a78d6"><title>ptt5 dist 1-16 - 34.5%</title></rect>
-<text x="367.3" y="865.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">34%</text>
-<rect x="520.8" y="853" width="160.9" height="16" fill="#eb6834"><title>ptt5 17-256 - 18.1%</title></rect>
-<text x="601.2" y="865.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">18%</text>
-<rect x="681.7" y="853" width="277.7" height="16" fill="#1baf7a"><title>ptt5 257-4K - 31.2%</title></rect>
-<text x="820.5" y="865.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">31%</text>
-<rect x="959.3" y="853" width="80.7" height="16" fill="#eda100"><title>ptt5 4K-32K - 9.1%</title></rect>
-<text x="999.7" y="865.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
-<rect x="150.0" y="875" width="197.9" height="16" fill="#7a7668"><title>sum literals - 22.2%</title></rect>
-<text x="248.9" y="887.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">22%</text>
-<rect x="347.9" y="875" width="78.4" height="16" fill="#2a78d6"><title>sum dist 1-16 - 8.8%</title></rect>
-<text x="387.1" y="887.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
-<rect x="426.3" y="875" width="156.5" height="16" fill="#eb6834"><title>sum 17-256 - 17.6%</title></rect>
-<text x="504.5" y="887.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">18%</text>
-<rect x="582.8" y="875" width="225.6" height="16" fill="#1baf7a"><title>sum 257-4K - 25.3%</title></rect>
-<text x="695.6" y="887.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">25%</text>
-<rect x="808.3" y="875" width="231.7" height="16" fill="#eda100"><title>sum 4K-32K - 26.0%</title></rect>
-<text x="924.2" y="887.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">26%</text>
-<rect x="150.0" y="897" width="276.7" height="16" fill="#7a7668"><title>xargs.1 literals - 31.1%</title></rect>
-<text x="288.4" y="909.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">31%</text>
-<rect x="426.7" y="897" width="23.6" height="16" fill="#2a78d6"><title>xargs.1 dist 1-16 - 2.7%</title></rect>
-<rect x="450.3" y="897" width="209.3" height="16" fill="#eb6834"><title>xargs.1 17-256 - 23.5%</title></rect>
-<text x="555.0" y="909.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
-<rect x="659.6" y="897" width="380.4" height="16" fill="#1baf7a"><title>xargs.1 257-4K - 42.7%</title></rect>
-<text x="849.8" y="909.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">43%</text>
-<text x="150.0" y="936.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">matched bytes by match length</text>
-<text x="1040.0" y="936.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">258+</text>
-<circle cx="1011.2" cy="932" r="4" fill="#e87ba4"/>
-<text x="997.2" y="936.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">64-257</text>
-<circle cx="958.0" cy="932" r="4" fill="#eda100"/>
-<text x="944.0" y="936.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">16-63</text>
-<circle cx="910.0" cy="932" r="4" fill="#1baf7a"/>
-<text x="896.0" y="936.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">8-15</text>
-<circle cx="867.2" cy="932" r="4" fill="#eb6834"/>
-<text x="853.2" y="936.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">len 4-7</text>
-<circle cx="808.8" cy="932" r="4" fill="#2a78d6"/>
-<text x="142.0" y="961.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">alice29.txt</text>
-<text x="142.0" y="983.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">asyoulik.txt</text>
-<text x="142.0" y="1005.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">cp.html</text>
-<text x="142.0" y="1027.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">fields.c</text>
-<text x="142.0" y="1049.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">grammar.lsp</text>
-<text x="142.0" y="1071.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">kennedy.xls</text>
-<text x="142.0" y="1093.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">lcet10.txt</text>
-<text x="142.0" y="1115.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">plrabn12.txt</text>
-<text x="142.0" y="1137.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">ptt5</text>
-<text x="142.0" y="1159.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">sum</text>
-<text x="142.0" y="1181.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">xargs.1</text>
-<rect x="150.0" y="949" width="676.9" height="16" fill="#2a78d6"><title>alice29.txt len 4-7 - 76.1% of matched bytes</title></rect>
-<text x="488.4" y="961.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">76%</text>
-<rect x="826.9" y="949" width="174.1" height="16" fill="#eb6834"><title>alice29.txt 8-15 - 19.6% of matched bytes</title></rect>
-<text x="914.0" y="961.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">20%</text>
-<rect x="1001.0" y="949" width="38.2" height="16" fill="#1baf7a"><title>alice29.txt 16-63 - 4.3% of matched bytes</title></rect>
-<text x="1020.1" y="961.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">4%</text>
-<rect x="1039.2" y="949" width="0.8" height="16" fill="#eda100"><title>alice29.txt 64-257 - 0.1% of matched bytes</title></rect>
-<rect x="150.0" y="971" width="713.6" height="16" fill="#2a78d6"><title>asyoulik.txt len 4-7 - 80.2% of matched bytes</title></rect>
-<text x="506.8" y="983.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">80%</text>
-<rect x="863.6" y="971" width="146.8" height="16" fill="#eb6834"><title>asyoulik.txt 8-15 - 16.5% of matched bytes</title></rect>
-<text x="937.0" y="983.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">16%</text>
-<rect x="1010.4" y="971" width="27.1" height="16" fill="#1baf7a"><title>asyoulik.txt 16-63 - 3.0% of matched bytes</title></rect>
-<rect x="1037.5" y="971" width="2.5" height="16" fill="#eda100"><title>asyoulik.txt 64-257 - 0.3% of matched bytes</title></rect>
-<rect x="150.0" y="993" width="307.1" height="16" fill="#2a78d6"><title>cp.html len 4-7 - 34.5% of matched bytes</title></rect>
-<text x="303.5" y="1005.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">35%</text>
-<rect x="457.1" y="993" width="204.1" height="16" fill="#eb6834"><title>cp.html 8-15 - 22.9% of matched bytes</title></rect>
-<text x="559.1" y="1005.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">23%</text>
-<rect x="661.2" y="993" width="346.9" height="16" fill="#1baf7a"><title>cp.html 16-63 - 39.0% of matched bytes</title></rect>
-<text x="834.6" y="1005.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">39%</text>
-<rect x="1008.1" y="993" width="31.9" height="16" fill="#eda100"><title>cp.html 64-257 - 3.6% of matched bytes</title></rect>
-<rect x="150.0" y="1015" width="396.6" height="16" fill="#2a78d6"><title>fields.c len 4-7 - 44.6% of matched bytes</title></rect>
-<text x="348.3" y="1027.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">45%</text>
-<rect x="546.6" y="1015" width="244.5" height="16" fill="#eb6834"><title>fields.c 8-15 - 27.5% of matched bytes</title></rect>
-<text x="668.9" y="1027.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">27%</text>
-<rect x="791.1" y="1015" width="210.2" height="16" fill="#1baf7a"><title>fields.c 16-63 - 23.6% of matched bytes</title></rect>
-<text x="896.2" y="1027.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
-<rect x="1001.3" y="1015" width="38.7" height="16" fill="#eda100"><title>fields.c 64-257 - 4.4% of matched bytes</title></rect>
-<text x="1020.6" y="1027.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">4%</text>
-<rect x="150.0" y="1037" width="355.7" height="16" fill="#2a78d6"><title>grammar.lsp len 4-7 - 40.0% of matched bytes</title></rect>
-<text x="327.8" y="1049.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">40%</text>
-<rect x="505.7" y="1037" width="295.6" height="16" fill="#eb6834"><title>grammar.lsp 8-15 - 33.2% of matched bytes</title></rect>
-<text x="653.5" y="1049.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">33%</text>
-<rect x="801.3" y="1037" width="238.7" height="16" fill="#1baf7a"><title>grammar.lsp 16-63 - 26.8% of matched bytes</title></rect>
-<text x="920.6" y="1049.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">27%</text>
-<rect x="150.0" y="1059" width="154.6" height="16" fill="#2a78d6"><title>kennedy.xls len 4-7 - 17.4% of matched bytes</title></rect>
-<text x="227.3" y="1071.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">17%</text>
-<rect x="304.6" y="1059" width="735.4" height="16" fill="#eb6834"><title>kennedy.xls 8-15 - 82.6% of matched bytes</title></rect>
-<text x="672.3" y="1071.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">83%</text>
-<rect x="1040.0" y="1059" width="0.8" height="16" fill="#1baf7a"><title>kennedy.xls 16-63 - 0.0% of matched bytes</title></rect>
-<rect x="150.0" y="1081" width="591.8" height="16" fill="#2a78d6"><title>lcet10.txt len 4-7 - 66.5% of matched bytes</title></rect>
-<text x="445.9" y="1093.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">66%</text>
-<rect x="741.8" y="1081" width="225.1" height="16" fill="#eb6834"><title>lcet10.txt 8-15 - 25.3% of matched bytes</title></rect>
-<text x="854.4" y="1093.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">25%</text>
-<rect x="966.9" y="1081" width="48.5" height="16" fill="#1baf7a"><title>lcet10.txt 16-63 - 5.4% of matched bytes</title></rect>
-<text x="991.2" y="1093.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
-<rect x="1015.4" y="1081" width="24.6" height="16" fill="#eda100"><title>lcet10.txt 64-257 - 2.8% of matched bytes</title></rect>
-<rect x="150.0" y="1103" width="805.2" height="16" fill="#2a78d6"><title>plrabn12.txt len 4-7 - 90.5% of matched bytes</title></rect>
-<text x="552.6" y="1115.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">90%</text>
-<rect x="955.2" y="1103" width="78.3" height="16" fill="#eb6834"><title>plrabn12.txt 8-15 - 8.8% of matched bytes</title></rect>
-<text x="994.3" y="1115.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
-<rect x="1033.4" y="1103" width="5.6" height="16" fill="#1baf7a"><title>plrabn12.txt 16-63 - 0.6% of matched bytes</title></rect>
-<rect x="1039.1" y="1103" width="0.9" height="16" fill="#eda100"><title>plrabn12.txt 64-257 - 0.1% of matched bytes</title></rect>
-<rect x="150.0" y="1125" width="76.9" height="16" fill="#2a78d6"><title>ptt5 len 4-7 - 8.6% of matched bytes</title></rect>
-<text x="188.5" y="1137.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
-<rect x="226.9" y="1125" width="55.8" height="16" fill="#eb6834"><title>ptt5 8-15 - 6.3% of matched bytes</title></rect>
-<text x="254.8" y="1137.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">6%</text>
-<rect x="282.7" y="1125" width="211.6" height="16" fill="#1baf7a"><title>ptt5 16-63 - 23.8% of matched bytes</title></rect>
-<text x="388.5" y="1137.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
-<rect x="494.4" y="1125" width="367.6" height="16" fill="#eda100"><title>ptt5 64-257 - 41.3% of matched bytes</title></rect>
-<text x="678.1" y="1137.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">41%</text>
-<rect x="861.9" y="1125" width="178.1" height="16" fill="#e87ba4"><title>ptt5 258+ - 20.0% of matched bytes</title></rect>
-<text x="951.0" y="1137.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">20%</text>
-<rect x="150.0" y="1147" width="382.1" height="16" fill="#2a78d6"><title>sum len 4-7 - 42.9% of matched bytes</title></rect>
-<text x="341.1" y="1159.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">43%</text>
-<rect x="532.1" y="1147" width="217.6" height="16" fill="#eb6834"><title>sum 8-15 - 24.4% of matched bytes</title></rect>
-<text x="640.9" y="1159.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
-<rect x="749.7" y="1147" width="85.8" height="16" fill="#1baf7a"><title>sum 16-63 - 9.6% of matched bytes</title></rect>
-<text x="792.6" y="1159.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">10%</text>
-<rect x="835.5" y="1147" width="48.5" height="16" fill="#eda100"><title>sum 64-257 - 5.5% of matched bytes</title></rect>
-<text x="859.8" y="1159.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
-<rect x="884.0" y="1147" width="156.0" height="16" fill="#e87ba4"><title>sum 258+ - 17.5% of matched bytes</title></rect>
-<text x="962.0" y="1159.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">18%</text>
-<rect x="150.0" y="1169" width="516.0" height="16" fill="#2a78d6"><title>xargs.1 len 4-7 - 58.0% of matched bytes</title></rect>
-<text x="408.0" y="1181.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">58%</text>
-<rect x="666.0" y="1169" width="251.4" height="16" fill="#eb6834"><title>xargs.1 8-15 - 28.2% of matched bytes</title></rect>
-<text x="791.7" y="1181.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">28%</text>
-<rect x="917.4" y="1169" width="122.6" height="16" fill="#1baf7a"><title>xargs.1 16-63 - 13.8% of matched bytes</title></rect>
-<text x="978.7" y="1181.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">14%</text>
-<text x="150.0" y="1208.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">file size, printable share, most common byte</text>
-<text x="142.0" y="1247.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">alice29.txt</text>
-<text x="142.0" y="1269.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">asyoulik.txt</text>
-<text x="142.0" y="1291.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">cp.html</text>
-<text x="142.0" y="1313.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">fields.c</text>
-<text x="142.0" y="1335.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">grammar.lsp</text>
-<text x="142.0" y="1357.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">kennedy.xls</text>
-<text x="142.0" y="1379.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">lcet10.txt</text>
-<text x="142.0" y="1401.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">plrabn12.txt</text>
-<text x="142.0" y="1423.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">ptt5</text>
-<text x="142.0" y="1445.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">sum</text>
-<text x="142.0" y="1467.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">xargs.1</text>
-<text x="420.0" y="1226.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">size</text>
-<text x="730.0" y="1226.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">printable</text>
-<text x="1040.0" y="1226.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">top byte</text>
-<rect x="150.0" y="1237" width="31.4" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1247.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">145K</text>
-<rect x="460.0" y="1237" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1247.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="1237" width="42.4" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1247.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">19.5%</text>
-<rect x="150.0" y="1259" width="26.5" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1269.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">122K</text>
-<rect x="460.0" y="1259" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1269.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="1259" width="33.7" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1269.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">15.5%</text>
-<rect x="150.0" y="1281" width="5.2" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1291.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">24K</text>
-<rect x="460.0" y="1281" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1291.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="1281" width="13.3" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1291.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">6.1%</text>
-<rect x="150.0" y="1303" width="2.4" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1313.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">10K</text>
-<rect x="460.0" y="1303" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1313.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="1303" width="43.3" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1313.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">19.8%</text>
-<rect x="150.0" y="1325" width="1.0" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1335.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">3K</text>
-<rect x="460.0" y="1325" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1335.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="1325" width="47.0" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1335.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">21.6%</text>
-<rect x="150.0" y="1347" width="218.0" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1357.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">1005K</text>
-<rect x="460.0" y="1347" width="32.2" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1357.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">15%</text>
-<rect x="770.0" y="1347" width="96.6" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1357.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">44.3%</text>
-<rect x="150.0" y="1369" width="88.8" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1379.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">409K</text>
-<rect x="460.0" y="1369" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1379.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="1369" width="35.0" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1379.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">16.0%</text>
-<rect x="150.0" y="1391" width="99.7" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1401.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">460K</text>
-<rect x="460.0" y="1391" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1401.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="1391" width="37.8" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1401.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">17.3%</text>
-<rect x="150.0" y="1413" width="108.6" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1423.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">501K</text>
-<rect x="460.0" y="1413" width="3.8" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1423.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">2%</text>
-<rect x="770.0" y="1413" width="189.9" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1423.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">87.1%</text>
-<rect x="150.0" y="1435" width="8.1" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1445.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">37K</text>
-<rect x="460.0" y="1435" width="110.5" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1445.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">51%</text>
-<rect x="770.0" y="1435" width="69.9" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1445.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">32.1%</text>
-<rect x="150.0" y="1457" width="1.0" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1467.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">4K</text>
-<rect x="460.0" y="1457" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1467.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="1457" width="28.4" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1467.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">13.0%</text>
-<text x="16.0" y="1494.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">profile_corpus.py, entropy and deflate rates on whole files, parse statistics on sampled windows</text>
+<text x="150.0" y="682.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">greedy parse bytes by match distance</text>
+<text x="1040.0" y="682.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">4K-32K</text>
+<circle cx="1000.8" cy="678" r="4" fill="#eda100"/>
+<text x="986.8" y="682.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">257-4K</text>
+<circle cx="947.6" cy="678" r="4" fill="#1baf7a"/>
+<text x="933.6" y="682.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">17-256</text>
+<circle cx="894.4" cy="678" r="4" fill="#eb6834"/>
+<text x="880.4" y="682.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">dist 1-16</text>
+<circle cx="825.6" cy="678" r="4" fill="#2a78d6"/>
+<text x="811.6" y="682.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">literals</text>
+<circle cx="762.0" cy="678" r="4" fill="#7a7668"/>
+<text x="142.0" y="707.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">alice29.txt</text>
+<text x="142.0" y="729.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">asyoulik.txt</text>
+<text x="142.0" y="751.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">cp.html</text>
+<text x="142.0" y="773.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">fields.c</text>
+<text x="142.0" y="795.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">grammar.lsp</text>
+<text x="142.0" y="817.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">kennedy.xls</text>
+<text x="142.0" y="839.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">lcet10.txt</text>
+<text x="142.0" y="861.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">plrabn12.txt</text>
+<text x="142.0" y="883.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">ptt5</text>
+<text x="142.0" y="905.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">sum</text>
+<text x="142.0" y="927.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">xargs.1</text>
+<rect x="150.0" y="695" width="86.7" height="16" fill="#7a7668"><title>alice29.txt literals - 9.7%</title></rect>
+<text x="193.4" y="707.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">10%</text>
+<rect x="236.7" y="695" width="6.6" height="16" fill="#2a78d6"><title>alice29.txt dist 1-16 - 0.7%</title></rect>
+<rect x="243.3" y="695" width="83.8" height="16" fill="#eb6834"><title>alice29.txt 17-256 - 9.4%</title></rect>
+<text x="285.2" y="707.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
+<rect x="327.1" y="695" width="312.3" height="16" fill="#1baf7a"><title>alice29.txt 257-4K - 35.1%</title></rect>
+<text x="483.3" y="707.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">35%</text>
+<rect x="639.4" y="695" width="400.6" height="16" fill="#eda100"><title>alice29.txt 4K-32K - 45.0%</title></rect>
+<text x="839.7" y="707.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">45%</text>
+<rect x="150.0" y="717" width="97.0" height="16" fill="#7a7668"><title>asyoulik.txt literals - 10.9%</title></rect>
+<text x="198.5" y="729.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">11%</text>
+<rect x="247.0" y="717" width="4.8" height="16" fill="#2a78d6"><title>asyoulik.txt dist 1-16 - 0.5%</title></rect>
+<rect x="251.8" y="717" width="89.4" height="16" fill="#eb6834"><title>asyoulik.txt 17-256 - 10.0%</title></rect>
+<text x="296.5" y="729.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">10%</text>
+<rect x="341.2" y="717" width="267.5" height="16" fill="#1baf7a"><title>asyoulik.txt 257-4K - 30.1%</title></rect>
+<text x="475.0" y="729.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">30%</text>
+<rect x="608.7" y="717" width="431.3" height="16" fill="#eda100"><title>asyoulik.txt 4K-32K - 48.5%</title></rect>
+<text x="824.4" y="729.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">48%</text>
+<rect x="150.0" y="739" width="196.7" height="16" fill="#7a7668"><title>cp.html literals - 22.1%</title></rect>
+<text x="248.4" y="751.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">22%</text>
+<rect x="346.7" y="739" width="14.1" height="16" fill="#2a78d6"><title>cp.html dist 1-16 - 1.6%</title></rect>
+<rect x="360.8" y="739" width="157.9" height="16" fill="#eb6834"><title>cp.html 17-256 - 17.7%</title></rect>
+<text x="439.8" y="751.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">18%</text>
+<rect x="518.8" y="739" width="325.0" height="16" fill="#1baf7a"><title>cp.html 257-4K - 36.5%</title></rect>
+<text x="681.2" y="751.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">37%</text>
+<rect x="843.7" y="739" width="196.3" height="16" fill="#eda100"><title>cp.html 4K-32K - 22.1%</title></rect>
+<text x="941.9" y="751.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">22%</text>
+<rect x="150.0" y="761" width="132.4" height="16" fill="#7a7668"><title>fields.c literals - 14.9%</title></rect>
+<text x="216.2" y="773.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">15%</text>
+<rect x="282.4" y="761" width="17.6" height="16" fill="#2a78d6"><title>fields.c dist 1-16 - 2.0%</title></rect>
+<rect x="300.0" y="761" width="301.2" height="16" fill="#eb6834"><title>fields.c 17-256 - 33.8%</title></rect>
+<text x="450.6" y="773.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">34%</text>
+<rect x="601.2" y="761" width="388.0" height="16" fill="#1baf7a"><title>fields.c 257-4K - 43.6%</title></rect>
+<text x="795.2" y="773.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">44%</text>
+<rect x="989.2" y="761" width="50.8" height="16" fill="#eda100"><title>fields.c 4K-32K - 5.7%</title></rect>
+<text x="1014.6" y="773.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">6%</text>
+<rect x="150.0" y="783" width="216.7" height="16" fill="#7a7668"><title>grammar.lsp literals - 24.3%</title></rect>
+<text x="258.3" y="795.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
+<rect x="366.7" y="783" width="38.0" height="16" fill="#2a78d6"><title>grammar.lsp dist 1-16 - 4.3%</title></rect>
+<text x="385.7" y="795.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">4%</text>
+<rect x="404.7" y="783" width="396.3" height="16" fill="#eb6834"><title>grammar.lsp 17-256 - 44.5%</title></rect>
+<text x="602.9" y="795.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">45%</text>
+<rect x="801.1" y="783" width="238.9" height="16" fill="#1baf7a"><title>grammar.lsp 257-4K - 26.8%</title></rect>
+<text x="920.5" y="795.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">27%</text>
+<rect x="150.0" y="805" width="58.4" height="16" fill="#7a7668"><title>kennedy.xls literals - 6.6%</title></rect>
+<text x="179.2" y="817.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">7%</text>
+<rect x="208.4" y="805" width="24.2" height="16" fill="#2a78d6"><title>kennedy.xls dist 1-16 - 2.7%</title></rect>
+<rect x="232.6" y="805" width="42.6" height="16" fill="#eb6834"><title>kennedy.xls 17-256 - 4.8%</title></rect>
+<text x="253.9" y="817.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
+<rect x="275.2" y="805" width="647.1" height="16" fill="#1baf7a"><title>kennedy.xls 257-4K - 72.7%</title></rect>
+<text x="598.8" y="817.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">73%</text>
+<rect x="922.3" y="805" width="117.7" height="16" fill="#eda100"><title>kennedy.xls 4K-32K - 13.2%</title></rect>
+<text x="981.2" y="817.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">13%</text>
+<rect x="150.0" y="827" width="95.5" height="16" fill="#7a7668"><title>lcet10.txt literals - 10.7%</title></rect>
+<text x="197.8" y="839.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">11%</text>
+<rect x="245.5" y="827" width="5.1" height="16" fill="#2a78d6"><title>lcet10.txt dist 1-16 - 0.6%</title></rect>
+<rect x="250.6" y="827" width="81.1" height="16" fill="#eb6834"><title>lcet10.txt 17-256 - 9.1%</title></rect>
+<text x="291.2" y="839.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
+<rect x="331.8" y="827" width="311.8" height="16" fill="#1baf7a"><title>lcet10.txt 257-4K - 35.0%</title></rect>
+<text x="487.7" y="839.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">35%</text>
+<rect x="643.6" y="827" width="396.4" height="16" fill="#eda100"><title>lcet10.txt 4K-32K - 44.5%</title></rect>
+<text x="841.8" y="839.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">45%</text>
+<rect x="150.0" y="849" width="107.4" height="16" fill="#7a7668"><title>plrabn12.txt literals - 12.1%</title></rect>
+<text x="203.7" y="861.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">12%</text>
+<rect x="257.4" y="849" width="3.3" height="16" fill="#2a78d6"><title>plrabn12.txt dist 1-16 - 0.4%</title></rect>
+<rect x="260.8" y="849" width="48.9" height="16" fill="#eb6834"><title>plrabn12.txt 17-256 - 5.5%</title></rect>
+<text x="285.2" y="861.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
+<rect x="309.6" y="849" width="267.6" height="16" fill="#1baf7a"><title>plrabn12.txt 257-4K - 30.1%</title></rect>
+<text x="443.4" y="861.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">30%</text>
+<rect x="577.2" y="849" width="462.8" height="16" fill="#eda100"><title>plrabn12.txt 4K-32K - 52.0%</title></rect>
+<text x="808.6" y="861.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">52%</text>
+<rect x="150.0" y="871" width="63.8" height="16" fill="#7a7668"><title>ptt5 literals - 7.2%</title></rect>
+<text x="181.9" y="883.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">7%</text>
+<rect x="213.8" y="871" width="307.0" height="16" fill="#2a78d6"><title>ptt5 dist 1-16 - 34.5%</title></rect>
+<text x="367.3" y="883.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">34%</text>
+<rect x="520.8" y="871" width="160.9" height="16" fill="#eb6834"><title>ptt5 17-256 - 18.1%</title></rect>
+<text x="601.2" y="883.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">18%</text>
+<rect x="681.7" y="871" width="277.7" height="16" fill="#1baf7a"><title>ptt5 257-4K - 31.2%</title></rect>
+<text x="820.5" y="883.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">31%</text>
+<rect x="959.3" y="871" width="80.7" height="16" fill="#eda100"><title>ptt5 4K-32K - 9.1%</title></rect>
+<text x="999.7" y="883.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
+<rect x="150.0" y="893" width="197.9" height="16" fill="#7a7668"><title>sum literals - 22.2%</title></rect>
+<text x="248.9" y="905.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">22%</text>
+<rect x="347.9" y="893" width="78.4" height="16" fill="#2a78d6"><title>sum dist 1-16 - 8.8%</title></rect>
+<text x="387.1" y="905.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
+<rect x="426.3" y="893" width="156.5" height="16" fill="#eb6834"><title>sum 17-256 - 17.6%</title></rect>
+<text x="504.5" y="905.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">18%</text>
+<rect x="582.8" y="893" width="225.6" height="16" fill="#1baf7a"><title>sum 257-4K - 25.3%</title></rect>
+<text x="695.6" y="905.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">25%</text>
+<rect x="808.3" y="893" width="231.7" height="16" fill="#eda100"><title>sum 4K-32K - 26.0%</title></rect>
+<text x="924.2" y="905.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">26%</text>
+<rect x="150.0" y="915" width="276.7" height="16" fill="#7a7668"><title>xargs.1 literals - 31.1%</title></rect>
+<text x="288.4" y="927.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">31%</text>
+<rect x="426.7" y="915" width="23.6" height="16" fill="#2a78d6"><title>xargs.1 dist 1-16 - 2.7%</title></rect>
+<rect x="450.3" y="915" width="209.3" height="16" fill="#eb6834"><title>xargs.1 17-256 - 23.5%</title></rect>
+<text x="555.0" y="927.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
+<rect x="659.6" y="915" width="380.4" height="16" fill="#1baf7a"><title>xargs.1 257-4K - 42.7%</title></rect>
+<text x="849.8" y="927.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">43%</text>
+<text x="150.0" y="954.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">matched bytes by match length</text>
+<text x="1040.0" y="954.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">258+</text>
+<circle cx="1011.2" cy="950" r="4" fill="#e87ba4"/>
+<text x="997.2" y="954.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">64-257</text>
+<circle cx="958.0" cy="950" r="4" fill="#eda100"/>
+<text x="944.0" y="954.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">16-63</text>
+<circle cx="910.0" cy="950" r="4" fill="#1baf7a"/>
+<text x="896.0" y="954.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">8-15</text>
+<circle cx="867.2" cy="950" r="4" fill="#eb6834"/>
+<text x="853.2" y="954.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">len 4-7</text>
+<circle cx="808.8" cy="950" r="4" fill="#2a78d6"/>
+<text x="142.0" y="979.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">alice29.txt</text>
+<text x="142.0" y="1001.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">asyoulik.txt</text>
+<text x="142.0" y="1023.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">cp.html</text>
+<text x="142.0" y="1045.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">fields.c</text>
+<text x="142.0" y="1067.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">grammar.lsp</text>
+<text x="142.0" y="1089.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">kennedy.xls</text>
+<text x="142.0" y="1111.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">lcet10.txt</text>
+<text x="142.0" y="1133.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">plrabn12.txt</text>
+<text x="142.0" y="1155.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">ptt5</text>
+<text x="142.0" y="1177.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">sum</text>
+<text x="142.0" y="1199.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">xargs.1</text>
+<rect x="150.0" y="967" width="676.9" height="16" fill="#2a78d6"><title>alice29.txt len 4-7 - 76.1% of matched bytes</title></rect>
+<text x="488.4" y="979.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">76%</text>
+<rect x="826.9" y="967" width="174.1" height="16" fill="#eb6834"><title>alice29.txt 8-15 - 19.6% of matched bytes</title></rect>
+<text x="914.0" y="979.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">20%</text>
+<rect x="1001.0" y="967" width="38.2" height="16" fill="#1baf7a"><title>alice29.txt 16-63 - 4.3% of matched bytes</title></rect>
+<text x="1020.1" y="979.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">4%</text>
+<rect x="1039.2" y="967" width="0.8" height="16" fill="#eda100"><title>alice29.txt 64-257 - 0.1% of matched bytes</title></rect>
+<rect x="150.0" y="989" width="713.6" height="16" fill="#2a78d6"><title>asyoulik.txt len 4-7 - 80.2% of matched bytes</title></rect>
+<text x="506.8" y="1001.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">80%</text>
+<rect x="863.6" y="989" width="146.8" height="16" fill="#eb6834"><title>asyoulik.txt 8-15 - 16.5% of matched bytes</title></rect>
+<text x="937.0" y="1001.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">16%</text>
+<rect x="1010.4" y="989" width="27.1" height="16" fill="#1baf7a"><title>asyoulik.txt 16-63 - 3.0% of matched bytes</title></rect>
+<rect x="1037.5" y="989" width="2.5" height="16" fill="#eda100"><title>asyoulik.txt 64-257 - 0.3% of matched bytes</title></rect>
+<rect x="150.0" y="1011" width="307.1" height="16" fill="#2a78d6"><title>cp.html len 4-7 - 34.5% of matched bytes</title></rect>
+<text x="303.5" y="1023.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">35%</text>
+<rect x="457.1" y="1011" width="204.1" height="16" fill="#eb6834"><title>cp.html 8-15 - 22.9% of matched bytes</title></rect>
+<text x="559.1" y="1023.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">23%</text>
+<rect x="661.2" y="1011" width="346.9" height="16" fill="#1baf7a"><title>cp.html 16-63 - 39.0% of matched bytes</title></rect>
+<text x="834.6" y="1023.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">39%</text>
+<rect x="1008.1" y="1011" width="31.9" height="16" fill="#eda100"><title>cp.html 64-257 - 3.6% of matched bytes</title></rect>
+<rect x="150.0" y="1033" width="396.6" height="16" fill="#2a78d6"><title>fields.c len 4-7 - 44.6% of matched bytes</title></rect>
+<text x="348.3" y="1045.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">45%</text>
+<rect x="546.6" y="1033" width="244.5" height="16" fill="#eb6834"><title>fields.c 8-15 - 27.5% of matched bytes</title></rect>
+<text x="668.9" y="1045.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">27%</text>
+<rect x="791.1" y="1033" width="210.2" height="16" fill="#1baf7a"><title>fields.c 16-63 - 23.6% of matched bytes</title></rect>
+<text x="896.2" y="1045.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
+<rect x="1001.3" y="1033" width="38.7" height="16" fill="#eda100"><title>fields.c 64-257 - 4.4% of matched bytes</title></rect>
+<text x="1020.6" y="1045.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">4%</text>
+<rect x="150.0" y="1055" width="355.7" height="16" fill="#2a78d6"><title>grammar.lsp len 4-7 - 40.0% of matched bytes</title></rect>
+<text x="327.8" y="1067.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">40%</text>
+<rect x="505.7" y="1055" width="295.6" height="16" fill="#eb6834"><title>grammar.lsp 8-15 - 33.2% of matched bytes</title></rect>
+<text x="653.5" y="1067.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">33%</text>
+<rect x="801.3" y="1055" width="238.7" height="16" fill="#1baf7a"><title>grammar.lsp 16-63 - 26.8% of matched bytes</title></rect>
+<text x="920.6" y="1067.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">27%</text>
+<rect x="150.0" y="1077" width="154.6" height="16" fill="#2a78d6"><title>kennedy.xls len 4-7 - 17.4% of matched bytes</title></rect>
+<text x="227.3" y="1089.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">17%</text>
+<rect x="304.6" y="1077" width="735.4" height="16" fill="#eb6834"><title>kennedy.xls 8-15 - 82.6% of matched bytes</title></rect>
+<text x="672.3" y="1089.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">83%</text>
+<rect x="1040.0" y="1077" width="0.8" height="16" fill="#1baf7a"><title>kennedy.xls 16-63 - 0.0% of matched bytes</title></rect>
+<rect x="150.0" y="1099" width="591.8" height="16" fill="#2a78d6"><title>lcet10.txt len 4-7 - 66.5% of matched bytes</title></rect>
+<text x="445.9" y="1111.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">66%</text>
+<rect x="741.8" y="1099" width="225.1" height="16" fill="#eb6834"><title>lcet10.txt 8-15 - 25.3% of matched bytes</title></rect>
+<text x="854.4" y="1111.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">25%</text>
+<rect x="966.9" y="1099" width="48.5" height="16" fill="#1baf7a"><title>lcet10.txt 16-63 - 5.4% of matched bytes</title></rect>
+<text x="991.2" y="1111.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
+<rect x="1015.4" y="1099" width="24.6" height="16" fill="#eda100"><title>lcet10.txt 64-257 - 2.8% of matched bytes</title></rect>
+<rect x="150.0" y="1121" width="805.2" height="16" fill="#2a78d6"><title>plrabn12.txt len 4-7 - 90.5% of matched bytes</title></rect>
+<text x="552.6" y="1133.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">90%</text>
+<rect x="955.2" y="1121" width="78.3" height="16" fill="#eb6834"><title>plrabn12.txt 8-15 - 8.8% of matched bytes</title></rect>
+<text x="994.3" y="1133.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
+<rect x="1033.4" y="1121" width="5.6" height="16" fill="#1baf7a"><title>plrabn12.txt 16-63 - 0.6% of matched bytes</title></rect>
+<rect x="1039.1" y="1121" width="0.9" height="16" fill="#eda100"><title>plrabn12.txt 64-257 - 0.1% of matched bytes</title></rect>
+<rect x="150.0" y="1143" width="76.9" height="16" fill="#2a78d6"><title>ptt5 len 4-7 - 8.6% of matched bytes</title></rect>
+<text x="188.5" y="1155.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
+<rect x="226.9" y="1143" width="55.8" height="16" fill="#eb6834"><title>ptt5 8-15 - 6.3% of matched bytes</title></rect>
+<text x="254.8" y="1155.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">6%</text>
+<rect x="282.7" y="1143" width="211.6" height="16" fill="#1baf7a"><title>ptt5 16-63 - 23.8% of matched bytes</title></rect>
+<text x="388.5" y="1155.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
+<rect x="494.4" y="1143" width="367.6" height="16" fill="#eda100"><title>ptt5 64-257 - 41.3% of matched bytes</title></rect>
+<text x="678.1" y="1155.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">41%</text>
+<rect x="861.9" y="1143" width="178.1" height="16" fill="#e87ba4"><title>ptt5 258+ - 20.0% of matched bytes</title></rect>
+<text x="951.0" y="1155.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">20%</text>
+<rect x="150.0" y="1165" width="382.1" height="16" fill="#2a78d6"><title>sum len 4-7 - 42.9% of matched bytes</title></rect>
+<text x="341.1" y="1177.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">43%</text>
+<rect x="532.1" y="1165" width="217.6" height="16" fill="#eb6834"><title>sum 8-15 - 24.4% of matched bytes</title></rect>
+<text x="640.9" y="1177.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
+<rect x="749.7" y="1165" width="85.8" height="16" fill="#1baf7a"><title>sum 16-63 - 9.6% of matched bytes</title></rect>
+<text x="792.6" y="1177.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">10%</text>
+<rect x="835.5" y="1165" width="48.5" height="16" fill="#eda100"><title>sum 64-257 - 5.5% of matched bytes</title></rect>
+<text x="859.8" y="1177.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
+<rect x="884.0" y="1165" width="156.0" height="16" fill="#e87ba4"><title>sum 258+ - 17.5% of matched bytes</title></rect>
+<text x="962.0" y="1177.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">18%</text>
+<rect x="150.0" y="1187" width="516.0" height="16" fill="#2a78d6"><title>xargs.1 len 4-7 - 58.0% of matched bytes</title></rect>
+<text x="408.0" y="1199.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">58%</text>
+<rect x="666.0" y="1187" width="251.4" height="16" fill="#eb6834"><title>xargs.1 8-15 - 28.2% of matched bytes</title></rect>
+<text x="791.7" y="1199.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">28%</text>
+<rect x="917.4" y="1187" width="122.6" height="16" fill="#1baf7a"><title>xargs.1 16-63 - 13.8% of matched bytes</title></rect>
+<text x="978.7" y="1199.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">14%</text>
+<text x="150.0" y="1226.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">file size, printable share, most common byte</text>
+<text x="142.0" y="1265.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">alice29.txt</text>
+<text x="142.0" y="1287.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">asyoulik.txt</text>
+<text x="142.0" y="1309.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">cp.html</text>
+<text x="142.0" y="1331.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">fields.c</text>
+<text x="142.0" y="1353.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">grammar.lsp</text>
+<text x="142.0" y="1375.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">kennedy.xls</text>
+<text x="142.0" y="1397.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">lcet10.txt</text>
+<text x="142.0" y="1419.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">plrabn12.txt</text>
+<text x="142.0" y="1441.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">ptt5</text>
+<text x="142.0" y="1463.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">sum</text>
+<text x="142.0" y="1485.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">xargs.1</text>
+<text x="420.0" y="1244.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">size</text>
+<text x="730.0" y="1244.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">printable</text>
+<text x="1040.0" y="1244.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">top byte</text>
+<rect x="150.0" y="1255" width="31.4" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="1265.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">145K</text>
+<rect x="460.0" y="1255" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="1265.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="1255" width="42.4" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="1265.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">19.5%</text>
+<rect x="150.0" y="1277" width="26.5" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="1287.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">122K</text>
+<rect x="460.0" y="1277" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="1287.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="1277" width="33.7" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="1287.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">15.5%</text>
+<rect x="150.0" y="1299" width="5.2" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="1309.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">24K</text>
+<rect x="460.0" y="1299" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="1309.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="1299" width="13.3" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="1309.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">6.1%</text>
+<rect x="150.0" y="1321" width="2.4" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="1331.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">10K</text>
+<rect x="460.0" y="1321" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="1331.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="1321" width="43.3" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="1331.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">19.8%</text>
+<rect x="150.0" y="1343" width="1.0" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="1353.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">3K</text>
+<rect x="460.0" y="1343" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="1353.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="1343" width="47.0" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="1353.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">21.6%</text>
+<rect x="150.0" y="1365" width="218.0" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="1375.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">1005K</text>
+<rect x="460.0" y="1365" width="32.2" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="1375.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">15%</text>
+<rect x="770.0" y="1365" width="96.6" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="1375.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">44.3%</text>
+<rect x="150.0" y="1387" width="88.8" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="1397.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">409K</text>
+<rect x="460.0" y="1387" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="1397.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="1387" width="35.0" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="1397.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">16.0%</text>
+<rect x="150.0" y="1409" width="99.7" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="1419.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">460K</text>
+<rect x="460.0" y="1409" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="1419.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="1409" width="37.8" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="1419.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">17.3%</text>
+<rect x="150.0" y="1431" width="108.6" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="1441.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">501K</text>
+<rect x="460.0" y="1431" width="3.8" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="1441.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">2%</text>
+<rect x="770.0" y="1431" width="189.9" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="1441.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">87.1%</text>
+<rect x="150.0" y="1453" width="8.1" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="1463.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">37K</text>
+<rect x="460.0" y="1453" width="110.5" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="1463.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">51%</text>
+<rect x="770.0" y="1453" width="69.9" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="1463.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">32.1%</text>
+<rect x="150.0" y="1475" width="1.0" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="1485.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">4K</text>
+<rect x="460.0" y="1475" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="1485.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="1475" width="28.4" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="1485.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">13.0%</text>
+<text x="16.0" y="1512.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">profile_corpus.py, entropy and deflate rates on whole files, parse statistics on sampled windows</text>
 </svg>

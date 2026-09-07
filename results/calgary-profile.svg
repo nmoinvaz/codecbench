@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="2280" viewBox="0 0 1080 2280" font-family="system-ui, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="2298" viewBox="0 0 1080 2298" font-family="system-ui, sans-serif">
 <style>@media (prefers-color-scheme: dark){[fill="#fcfcfb"]{fill:#201f1d}[stroke="#fcfcfb"]{stroke:#201f1d}[fill="#0b0b0b"]{fill:#e8e6e3}[stroke="#0b0b0b"]{stroke:#e8e6e3}[fill="#52514e"]{fill:#a8a49d}[stroke="#52514e"]{stroke:#a8a49d}[fill="#e7e6e2"]{fill:#343230}[stroke="#e7e6e2"]{stroke:#343230}[fill="#c98500"]{fill:#d69a2d}[stroke="#c98500"]{stroke:#d69a2d}[fill="#eb6834"]{fill:#dd5c26}[stroke="#eb6834"]{stroke:#dd5c26}[fill="#eda100"]{fill:#c08800}[stroke="#eda100"]{stroke:#c08800}[fill="#e87ba4"]{fill:#d1678f}[stroke="#e87ba4"]{stroke:#d1678f}[fill="#4a3aa7"]{fill:#7263cf}[stroke="#4a3aa7"]{stroke:#7263cf}[fill="#a6339a"]{fill:#c257b5}[stroke="#a6339a"]{stroke:#c257b5}[fill="#7a7668"]{fill:#948e82}[stroke="#7a7668"]{stroke:#948e82}}</style>
-<rect width="1080" height="2280" fill="#fcfcfb"/>
+<rect width="1080" height="2298" fill="#fcfcfb"/>
 <text x="16.0" y="28.0" font-size="15" fill="#0b0b0b" text-anchor="start" font-weight="bold">calgary corpus profile</text>
 <text x="16.0" y="46.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">18 files, 3M total, greedy 4-byte parse over sampled 32K-history windows</text>
 <text x="150.0" y="82.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">byte value distribution, log intensity</text>
@@ -173,492 +173,492 @@
 <circle cx="377.5" cy="925.0" r="4.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>trans deflate level 1 - 2.04 bits/byte</title></circle>
 <circle cx="330.9" cy="925.0" r="4.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>trans deflate level 6 - 1.63 bits/byte</title></circle>
 <g opacity="0.35"><line x1="270.0" y1="962.0" x2="176.0" y2="962.0" stroke="#52514e" stroke-width="2"/><polygon points="170.0,962.0 179.0,958.0 179.0,966.0" fill="#52514e"/><text x="220.0" y="955.0" font-size="11" fill="#52514e" text-anchor="middle" transform="rotate(360.0 220.0 962.0)">better</text></g>
-<text x="150.0" y="972.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">greedy parse bytes by match distance</text>
-<text x="1040.0" y="972.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">4K-32K</text>
-<circle cx="1000.8" cy="968" r="4" fill="#eda100"/>
-<text x="986.8" y="972.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">257-4K</text>
-<circle cx="947.6" cy="968" r="4" fill="#1baf7a"/>
-<text x="933.6" y="972.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">17-256</text>
-<circle cx="894.4" cy="968" r="4" fill="#eb6834"/>
-<text x="880.4" y="972.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">dist 1-16</text>
-<circle cx="825.6" cy="968" r="4" fill="#2a78d6"/>
-<text x="811.6" y="972.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">literals</text>
-<circle cx="762.0" cy="968" r="4" fill="#7a7668"/>
-<text x="142.0" y="997.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">bib</text>
-<text x="142.0" y="1019.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">book1</text>
-<text x="142.0" y="1041.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">book2</text>
-<text x="142.0" y="1063.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">geo</text>
-<text x="142.0" y="1085.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">news</text>
-<text x="142.0" y="1107.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">obj1</text>
-<text x="142.0" y="1129.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">obj2</text>
-<text x="142.0" y="1151.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper1</text>
-<text x="142.0" y="1173.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper2</text>
-<text x="142.0" y="1195.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper3</text>
-<text x="142.0" y="1217.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper4</text>
-<text x="142.0" y="1239.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper5</text>
-<text x="142.0" y="1261.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper6</text>
-<text x="142.0" y="1283.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">pic</text>
-<text x="142.0" y="1305.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progc</text>
-<text x="142.0" y="1327.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progl</text>
-<text x="142.0" y="1349.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progp</text>
-<text x="142.0" y="1371.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">trans</text>
-<rect x="150.0" y="985" width="104.6" height="16" fill="#7a7668"><title>bib literals - 11.8%</title></rect>
-<text x="202.3" y="997.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">12%</text>
-<rect x="254.6" y="985" width="2.0" height="16" fill="#2a78d6"><title>bib dist 1-16 - 0.2%</title></rect>
-<rect x="256.6" y="985" width="76.0" height="16" fill="#eb6834"><title>bib 17-256 - 8.5%</title></rect>
-<text x="294.6" y="997.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
-<rect x="332.6" y="985" width="265.9" height="16" fill="#1baf7a"><title>bib 257-4K - 29.9%</title></rect>
-<text x="465.5" y="997.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">30%</text>
-<rect x="598.5" y="985" width="441.5" height="16" fill="#eda100"><title>bib 4K-32K - 49.6%</title></rect>
-<text x="819.2" y="997.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">50%</text>
-<rect x="150.0" y="1007" width="121.4" height="16" fill="#7a7668"><title>book1 literals - 13.6%</title></rect>
-<text x="210.7" y="1019.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">14%</text>
-<rect x="271.4" y="1007" width="2.2" height="16" fill="#2a78d6"><title>book1 dist 1-16 - 0.3%</title></rect>
-<rect x="273.7" y="1007" width="54.6" height="16" fill="#eb6834"><title>book1 17-256 - 6.1%</title></rect>
-<text x="301.0" y="1019.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">6%</text>
-<rect x="328.3" y="1007" width="271.9" height="16" fill="#1baf7a"><title>book1 257-4K - 30.6%</title></rect>
-<text x="464.2" y="1019.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">31%</text>
-<rect x="600.2" y="1007" width="439.8" height="16" fill="#eda100"><title>book1 4K-32K - 49.4%</title></rect>
-<text x="820.1" y="1019.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">49%</text>
-<rect x="150.0" y="1029" width="102.2" height="16" fill="#7a7668"><title>book2 literals - 11.5%</title></rect>
-<text x="201.1" y="1041.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">11%</text>
-<rect x="252.2" y="1029" width="7.0" height="16" fill="#2a78d6"><title>book2 dist 1-16 - 0.8%</title></rect>
-<rect x="259.2" y="1029" width="106.0" height="16" fill="#eb6834"><title>book2 17-256 - 11.9%</title></rect>
-<text x="312.2" y="1041.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">12%</text>
-<rect x="365.2" y="1029" width="302.5" height="16" fill="#1baf7a"><title>book2 257-4K - 34.0%</title></rect>
-<text x="516.5" y="1041.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">34%</text>
-<rect x="667.7" y="1029" width="372.3" height="16" fill="#eda100"><title>book2 4K-32K - 41.8%</title></rect>
-<text x="853.9" y="1041.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">42%</text>
-<rect x="150.0" y="1051" width="584.2" height="16" fill="#7a7668"><title>geo literals - 65.6%</title></rect>
-<text x="442.1" y="1063.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">66%</text>
-<rect x="734.2" y="1051" width="6.5" height="16" fill="#2a78d6"><title>geo dist 1-16 - 0.7%</title></rect>
-<rect x="740.7" y="1051" width="6.1" height="16" fill="#eb6834"><title>geo 17-256 - 0.7%</title></rect>
-<rect x="746.9" y="1051" width="44.4" height="16" fill="#1baf7a"><title>geo 257-4K - 5.0%</title></rect>
-<text x="769.1" y="1063.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
-<rect x="791.3" y="1051" width="248.7" height="16" fill="#eda100"><title>geo 4K-32K - 27.9%</title></rect>
-<text x="915.6" y="1063.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">28%</text>
-<rect x="150.0" y="1073" width="175.8" height="16" fill="#7a7668"><title>news literals - 19.7%</title></rect>
-<text x="237.9" y="1085.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">20%</text>
-<rect x="325.8" y="1073" width="18.4" height="16" fill="#2a78d6"><title>news dist 1-16 - 2.1%</title></rect>
-<rect x="344.2" y="1073" width="115.6" height="16" fill="#eb6834"><title>news 17-256 - 13.0%</title></rect>
-<text x="402.0" y="1085.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">13%</text>
-<rect x="459.8" y="1073" width="249.4" height="16" fill="#1baf7a"><title>news 257-4K - 28.0%</title></rect>
-<text x="584.5" y="1085.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">28%</text>
-<rect x="709.2" y="1073" width="330.8" height="16" fill="#eda100"><title>news 4K-32K - 37.2%</title></rect>
-<text x="874.6" y="1085.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">37%</text>
-<rect x="150.0" y="1095" width="357.5" height="16" fill="#7a7668"><title>obj1 literals - 40.2%</title></rect>
-<text x="328.8" y="1107.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">40%</text>
-<rect x="507.5" y="1095" width="125.2" height="16" fill="#2a78d6"><title>obj1 dist 1-16 - 14.1%</title></rect>
-<text x="570.2" y="1107.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">14%</text>
-<rect x="632.8" y="1095" width="212.4" height="16" fill="#eb6834"><title>obj1 17-256 - 23.9%</title></rect>
-<text x="739.0" y="1107.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
-<rect x="845.1" y="1095" width="161.0" height="16" fill="#1baf7a"><title>obj1 257-4K - 18.1%</title></rect>
-<text x="925.6" y="1107.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">18%</text>
-<rect x="1006.1" y="1095" width="33.9" height="16" fill="#eda100"><title>obj1 4K-32K - 3.8%</title></rect>
-<rect x="150.0" y="1117" width="155.5" height="16" fill="#7a7668"><title>obj2 literals - 17.5%</title></rect>
-<text x="227.8" y="1129.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">17%</text>
-<rect x="305.5" y="1117" width="18.6" height="16" fill="#2a78d6"><title>obj2 dist 1-16 - 2.1%</title></rect>
-<rect x="324.1" y="1117" width="233.7" height="16" fill="#eb6834"><title>obj2 17-256 - 26.3%</title></rect>
-<text x="440.9" y="1129.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">26%</text>
-<rect x="557.8" y="1117" width="315.2" height="16" fill="#1baf7a"><title>obj2 257-4K - 35.4%</title></rect>
-<text x="715.4" y="1129.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">35%</text>
-<rect x="873.0" y="1117" width="167.0" height="16" fill="#eda100"><title>obj2 4K-32K - 18.8%</title></rect>
-<text x="956.5" y="1129.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">19%</text>
-<rect x="150.0" y="1139" width="134.8" height="16" fill="#7a7668"><title>paper1 literals - 15.1%</title></rect>
-<text x="217.4" y="1151.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">15%</text>
-<rect x="284.8" y="1139" width="8.2" height="16" fill="#2a78d6"><title>paper1 dist 1-16 - 0.9%</title></rect>
-<rect x="293.0" y="1139" width="121.8" height="16" fill="#eb6834"><title>paper1 17-256 - 13.7%</title></rect>
-<text x="353.9" y="1151.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">14%</text>
-<rect x="414.8" y="1139" width="345.3" height="16" fill="#1baf7a"><title>paper1 257-4K - 38.8%</title></rect>
-<text x="587.5" y="1151.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">39%</text>
-<rect x="760.1" y="1139" width="279.9" height="16" fill="#eda100"><title>paper1 4K-32K - 31.4%</title></rect>
-<text x="900.1" y="1151.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">31%</text>
-<rect x="150.0" y="1161" width="71.6" height="16" fill="#7a7668"><title>paper2 literals - 8.0%</title></rect>
-<text x="185.8" y="1173.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">8%</text>
-<rect x="221.6" y="1161" width="3.3" height="16" fill="#2a78d6"><title>paper2 dist 1-16 - 0.4%</title></rect>
-<rect x="224.9" y="1161" width="91.3" height="16" fill="#eb6834"><title>paper2 17-256 - 10.3%</title></rect>
-<text x="270.5" y="1173.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">10%</text>
-<rect x="316.2" y="1161" width="301.4" height="16" fill="#1baf7a"><title>paper2 257-4K - 33.9%</title></rect>
-<text x="466.9" y="1173.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">34%</text>
-<rect x="617.6" y="1161" width="422.4" height="16" fill="#eda100"><title>paper2 4K-32K - 47.5%</title></rect>
-<text x="828.8" y="1173.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">47%</text>
-<rect x="150.0" y="1183" width="148.1" height="16" fill="#7a7668"><title>paper3 literals - 16.6%</title></rect>
-<text x="224.1" y="1195.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">17%</text>
-<rect x="298.1" y="1183" width="2.8" height="16" fill="#2a78d6"><title>paper3 dist 1-16 - 0.3%</title></rect>
-<rect x="301.0" y="1183" width="93.9" height="16" fill="#eb6834"><title>paper3 17-256 - 10.6%</title></rect>
-<text x="347.9" y="1195.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">11%</text>
-<rect x="394.9" y="1183" width="324.7" height="16" fill="#1baf7a"><title>paper3 257-4K - 36.5%</title></rect>
-<text x="557.3" y="1195.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">36%</text>
-<rect x="719.6" y="1183" width="320.4" height="16" fill="#eda100"><title>paper3 4K-32K - 36.0%</title></rect>
-<text x="879.8" y="1195.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">36%</text>
-<rect x="150.0" y="1205" width="237.5" height="16" fill="#7a7668"><title>paper4 literals - 26.7%</title></rect>
-<text x="268.8" y="1217.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">27%</text>
-<rect x="387.5" y="1205" width="4.0" height="16" fill="#2a78d6"><title>paper4 dist 1-16 - 0.4%</title></rect>
-<rect x="391.5" y="1205" width="146.5" height="16" fill="#eb6834"><title>paper4 17-256 - 16.5%</title></rect>
-<text x="464.7" y="1217.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">16%</text>
-<rect x="538.0" y="1205" width="390.2" height="16" fill="#1baf7a"><title>paper4 257-4K - 43.8%</title></rect>
-<text x="733.1" y="1217.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">44%</text>
-<rect x="928.2" y="1205" width="111.8" height="16" fill="#eda100"><title>paper4 4K-32K - 12.6%</title></rect>
-<text x="984.1" y="1217.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">13%</text>
-<rect x="150.0" y="1227" width="245.6" height="16" fill="#7a7668"><title>paper5 literals - 27.6%</title></rect>
-<text x="272.8" y="1239.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">28%</text>
-<rect x="395.6" y="1227" width="8.7" height="16" fill="#2a78d6"><title>paper5 dist 1-16 - 1.0%</title></rect>
-<rect x="404.3" y="1227" width="190.4" height="16" fill="#eb6834"><title>paper5 17-256 - 21.4%</title></rect>
-<text x="499.6" y="1239.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">21%</text>
-<rect x="594.8" y="1227" width="363.4" height="16" fill="#1baf7a"><title>paper5 257-4K - 40.8%</title></rect>
-<text x="776.5" y="1239.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">41%</text>
-<rect x="958.1" y="1227" width="81.9" height="16" fill="#eda100"><title>paper5 4K-32K - 9.2%</title></rect>
-<text x="999.1" y="1239.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
-<rect x="150.0" y="1249" width="146.0" height="16" fill="#7a7668"><title>paper6 literals - 16.4%</title></rect>
-<text x="223.0" y="1261.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">16%</text>
-<rect x="296.0" y="1249" width="12.7" height="16" fill="#2a78d6"><title>paper6 dist 1-16 - 1.4%</title></rect>
-<rect x="308.7" y="1249" width="153.4" height="16" fill="#eb6834"><title>paper6 17-256 - 17.2%</title></rect>
-<text x="385.4" y="1261.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">17%</text>
-<rect x="462.1" y="1249" width="327.5" height="16" fill="#1baf7a"><title>paper6 257-4K - 36.8%</title></rect>
-<text x="625.9" y="1261.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">37%</text>
-<rect x="789.6" y="1249" width="250.4" height="16" fill="#eda100"><title>paper6 4K-32K - 28.1%</title></rect>
-<text x="914.8" y="1261.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">28%</text>
-<rect x="150.0" y="1271" width="63.8" height="16" fill="#7a7668"><title>pic literals - 7.2%</title></rect>
-<text x="181.9" y="1283.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">7%</text>
-<rect x="213.8" y="1271" width="307.0" height="16" fill="#2a78d6"><title>pic dist 1-16 - 34.5%</title></rect>
-<text x="367.3" y="1283.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">34%</text>
-<rect x="520.8" y="1271" width="160.9" height="16" fill="#eb6834"><title>pic 17-256 - 18.1%</title></rect>
-<text x="601.2" y="1283.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">18%</text>
-<rect x="681.7" y="1271" width="277.7" height="16" fill="#1baf7a"><title>pic 257-4K - 31.2%</title></rect>
-<text x="820.5" y="1283.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">31%</text>
-<rect x="959.3" y="1271" width="80.7" height="16" fill="#eda100"><title>pic 4K-32K - 9.1%</title></rect>
-<text x="999.7" y="1283.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
-<rect x="150.0" y="1293" width="146.4" height="16" fill="#7a7668"><title>progc literals - 16.4%</title></rect>
-<text x="223.2" y="1305.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">16%</text>
-<rect x="296.4" y="1293" width="15.8" height="16" fill="#2a78d6"><title>progc dist 1-16 - 1.8%</title></rect>
-<rect x="312.1" y="1293" width="212.8" height="16" fill="#eb6834"><title>progc 17-256 - 23.9%</title></rect>
-<text x="418.5" y="1305.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
-<rect x="524.9" y="1293" width="307.6" height="16" fill="#1baf7a"><title>progc 257-4K - 34.6%</title></rect>
-<text x="678.7" y="1305.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">35%</text>
-<rect x="832.5" y="1293" width="207.5" height="16" fill="#eda100"><title>progc 4K-32K - 23.3%</title></rect>
-<text x="936.3" y="1305.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">23%</text>
-<rect x="150.0" y="1315" width="47.9" height="16" fill="#7a7668"><title>progl literals - 5.4%</title></rect>
-<text x="173.9" y="1327.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
-<rect x="197.9" y="1315" width="20.5" height="16" fill="#2a78d6"><title>progl dist 1-16 - 2.3%</title></rect>
-<rect x="218.4" y="1315" width="192.3" height="16" fill="#eb6834"><title>progl 17-256 - 21.6%</title></rect>
-<text x="314.6" y="1327.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">22%</text>
-<rect x="410.7" y="1315" width="404.0" height="16" fill="#1baf7a"><title>progl 257-4K - 45.4%</title></rect>
-<text x="612.7" y="1327.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">45%</text>
-<rect x="814.7" y="1315" width="225.3" height="16" fill="#eda100"><title>progl 4K-32K - 25.3%</title></rect>
-<text x="927.4" y="1327.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">25%</text>
-<rect x="150.0" y="1337" width="91.8" height="16" fill="#7a7668"><title>progp literals - 10.3%</title></rect>
-<text x="195.9" y="1349.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">10%</text>
-<rect x="241.8" y="1337" width="25.6" height="16" fill="#2a78d6"><title>progp dist 1-16 - 2.9%</title></rect>
-<rect x="267.4" y="1337" width="210.0" height="16" fill="#eb6834"><title>progp 17-256 - 23.6%</title></rect>
-<text x="372.4" y="1349.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
-<rect x="477.4" y="1337" width="396.3" height="16" fill="#1baf7a"><title>progp 257-4K - 44.5%</title></rect>
-<text x="675.6" y="1349.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">45%</text>
-<rect x="873.7" y="1337" width="166.3" height="16" fill="#eda100"><title>progp 4K-32K - 18.7%</title></rect>
-<text x="956.9" y="1349.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">19%</text>
-<rect x="150.0" y="1359" width="63.8" height="16" fill="#7a7668"><title>trans literals - 7.2%</title></rect>
-<text x="181.9" y="1371.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">7%</text>
-<rect x="213.8" y="1359" width="20.1" height="16" fill="#2a78d6"><title>trans dist 1-16 - 2.3%</title></rect>
-<rect x="233.9" y="1359" width="169.0" height="16" fill="#eb6834"><title>trans 17-256 - 19.0%</title></rect>
-<text x="318.4" y="1371.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">19%</text>
-<rect x="402.8" y="1359" width="291.0" height="16" fill="#1baf7a"><title>trans 257-4K - 32.7%</title></rect>
-<text x="548.4" y="1371.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">33%</text>
-<rect x="693.9" y="1359" width="346.1" height="16" fill="#eda100"><title>trans 4K-32K - 38.9%</title></rect>
-<text x="866.9" y="1371.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">39%</text>
-<text x="150.0" y="1398.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">matched bytes by match length</text>
-<text x="1040.0" y="1398.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">258+</text>
-<circle cx="1011.2" cy="1394" r="4" fill="#e87ba4"/>
-<text x="997.2" y="1398.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">64-257</text>
-<circle cx="958.0" cy="1394" r="4" fill="#eda100"/>
-<text x="944.0" y="1398.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">16-63</text>
-<circle cx="910.0" cy="1394" r="4" fill="#1baf7a"/>
-<text x="896.0" y="1398.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">8-15</text>
-<circle cx="867.2" cy="1394" r="4" fill="#eb6834"/>
-<text x="853.2" y="1398.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">len 4-7</text>
-<circle cx="808.8" cy="1394" r="4" fill="#2a78d6"/>
-<text x="142.0" y="1423.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">bib</text>
-<text x="142.0" y="1445.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">book1</text>
-<text x="142.0" y="1467.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">book2</text>
-<text x="142.0" y="1489.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">geo</text>
-<text x="142.0" y="1511.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">news</text>
-<text x="142.0" y="1533.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">obj1</text>
-<text x="142.0" y="1555.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">obj2</text>
-<text x="142.0" y="1577.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper1</text>
-<text x="142.0" y="1599.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper2</text>
-<text x="142.0" y="1621.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper3</text>
-<text x="142.0" y="1643.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper4</text>
-<text x="142.0" y="1665.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper5</text>
-<text x="142.0" y="1687.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper6</text>
-<text x="142.0" y="1709.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">pic</text>
-<text x="142.0" y="1731.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progc</text>
-<text x="142.0" y="1753.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progl</text>
-<text x="142.0" y="1775.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progp</text>
-<text x="142.0" y="1797.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">trans</text>
-<rect x="150.0" y="1411" width="456.6" height="16" fill="#2a78d6"><title>bib len 4-7 - 51.3% of matched bytes</title></rect>
-<text x="378.3" y="1423.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">51%</text>
-<rect x="606.6" y="1411" width="249.9" height="16" fill="#eb6834"><title>bib 8-15 - 28.1% of matched bytes</title></rect>
-<text x="731.6" y="1423.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">28%</text>
-<rect x="856.5" y="1411" width="166.3" height="16" fill="#1baf7a"><title>bib 16-63 - 18.7% of matched bytes</title></rect>
-<text x="939.7" y="1423.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">19%</text>
-<rect x="1022.8" y="1411" width="17.2" height="16" fill="#eda100"><title>bib 64-257 - 1.9% of matched bytes</title></rect>
-<rect x="150.0" y="1433" width="770.0" height="16" fill="#2a78d6"><title>book1 len 4-7 - 86.5% of matched bytes</title></rect>
-<text x="535.0" y="1445.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">87%</text>
-<rect x="920.0" y="1433" width="114.9" height="16" fill="#eb6834"><title>book1 8-15 - 12.9% of matched bytes</title></rect>
-<text x="977.4" y="1445.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">13%</text>
-<rect x="1034.8" y="1433" width="5.0" height="16" fill="#1baf7a"><title>book1 16-63 - 0.6% of matched bytes</title></rect>
-<rect x="1039.9" y="1433" width="0.8" height="16" fill="#eda100"><title>book1 64-257 - 0.0% of matched bytes</title></rect>
-<rect x="150.0" y="1455" width="574.6" height="16" fill="#2a78d6"><title>book2 len 4-7 - 64.6% of matched bytes</title></rect>
-<text x="437.3" y="1467.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">65%</text>
-<rect x="724.6" y="1455" width="239.7" height="16" fill="#eb6834"><title>book2 8-15 - 26.9% of matched bytes</title></rect>
-<text x="844.4" y="1467.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">27%</text>
-<rect x="964.2" y="1455" width="67.3" height="16" fill="#1baf7a"><title>book2 16-63 - 7.6% of matched bytes</title></rect>
-<text x="997.9" y="1467.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">8%</text>
-<rect x="1031.5" y="1455" width="8.5" height="16" fill="#eda100"><title>book2 64-257 - 1.0% of matched bytes</title></rect>
-<rect x="150.0" y="1477" width="794.2" height="16" fill="#2a78d6"><title>geo len 4-7 - 89.2% of matched bytes</title></rect>
-<text x="547.1" y="1489.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">89%</text>
-<rect x="944.2" y="1477" width="19.7" height="16" fill="#eb6834"><title>geo 8-15 - 2.2% of matched bytes</title></rect>
-<rect x="963.9" y="1477" width="76.1" height="16" fill="#1baf7a"><title>geo 16-63 - 8.5% of matched bytes</title></rect>
-<text x="1002.0" y="1489.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
-<rect x="150.0" y="1499" width="505.3" height="16" fill="#2a78d6"><title>news len 4-7 - 56.8% of matched bytes</title></rect>
-<text x="402.6" y="1511.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">57%</text>
-<rect x="655.3" y="1499" width="202.2" height="16" fill="#eb6834"><title>news 8-15 - 22.7% of matched bytes</title></rect>
-<text x="756.4" y="1511.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">23%</text>
-<rect x="857.5" y="1499" width="142.7" height="16" fill="#1baf7a"><title>news 16-63 - 16.0% of matched bytes</title></rect>
-<text x="928.8" y="1511.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">16%</text>
-<rect x="1000.1" y="1499" width="29.6" height="16" fill="#eda100"><title>news 64-257 - 3.3% of matched bytes</title></rect>
-<rect x="1029.7" y="1499" width="10.3" height="16" fill="#e87ba4"><title>news 258+ - 1.2% of matched bytes</title></rect>
-<rect x="150.0" y="1521" width="335.9" height="16" fill="#2a78d6"><title>obj1 len 4-7 - 37.7% of matched bytes</title></rect>
-<text x="317.9" y="1533.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">38%</text>
-<rect x="485.9" y="1521" width="167.6" height="16" fill="#eb6834"><title>obj1 8-15 - 18.8% of matched bytes</title></rect>
-<text x="569.7" y="1533.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">19%</text>
-<rect x="653.5" y="1521" width="177.9" height="16" fill="#1baf7a"><title>obj1 16-63 - 20.0% of matched bytes</title></rect>
-<text x="742.4" y="1533.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">20%</text>
-<rect x="831.4" y="1521" width="88.1" height="16" fill="#eda100"><title>obj1 64-257 - 9.9% of matched bytes</title></rect>
-<text x="875.4" y="1533.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">10%</text>
-<rect x="919.5" y="1521" width="120.5" height="16" fill="#e87ba4"><title>obj1 258+ - 13.5% of matched bytes</title></rect>
-<text x="979.7" y="1533.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">14%</text>
-<rect x="150.0" y="1543" width="360.6" height="16" fill="#2a78d6"><title>obj2 len 4-7 - 40.5% of matched bytes</title></rect>
-<text x="330.3" y="1555.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">41%</text>
-<rect x="510.6" y="1543" width="232.8" height="16" fill="#eb6834"><title>obj2 8-15 - 26.2% of matched bytes</title></rect>
-<text x="627.1" y="1555.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">26%</text>
-<rect x="743.5" y="1543" width="225.5" height="16" fill="#1baf7a"><title>obj2 16-63 - 25.3% of matched bytes</title></rect>
-<text x="856.2" y="1555.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">25%</text>
-<rect x="969.0" y="1543" width="59.3" height="16" fill="#eda100"><title>obj2 64-257 - 6.7% of matched bytes</title></rect>
-<text x="998.6" y="1555.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">7%</text>
-<rect x="1028.3" y="1543" width="11.7" height="16" fill="#e87ba4"><title>obj2 258+ - 1.3% of matched bytes</title></rect>
-<rect x="150.0" y="1565" width="544.6" height="16" fill="#2a78d6"><title>paper1 len 4-7 - 61.2% of matched bytes</title></rect>
-<text x="422.3" y="1577.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">61%</text>
-<rect x="694.6" y="1565" width="227.1" height="16" fill="#eb6834"><title>paper1 8-15 - 25.5% of matched bytes</title></rect>
-<text x="808.2" y="1577.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">26%</text>
-<rect x="921.7" y="1565" width="109.5" height="16" fill="#1baf7a"><title>paper1 16-63 - 12.3% of matched bytes</title></rect>
-<text x="976.4" y="1577.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">12%</text>
-<rect x="1031.2" y="1565" width="8.8" height="16" fill="#eda100"><title>paper1 64-257 - 1.0% of matched bytes</title></rect>
-<rect x="150.0" y="1587" width="631.5" height="16" fill="#2a78d6"><title>paper2 len 4-7 - 71.0% of matched bytes</title></rect>
-<text x="465.8" y="1599.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">71%</text>
-<rect x="781.5" y="1587" width="204.6" height="16" fill="#eb6834"><title>paper2 8-15 - 23.0% of matched bytes</title></rect>
-<text x="883.8" y="1599.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">23%</text>
-<rect x="986.1" y="1587" width="47.3" height="16" fill="#1baf7a"><title>paper2 16-63 - 5.3% of matched bytes</title></rect>
-<text x="1009.8" y="1599.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
-<rect x="1033.5" y="1587" width="6.5" height="16" fill="#eda100"><title>paper2 64-257 - 0.7% of matched bytes</title></rect>
-<rect x="150.0" y="1609" width="648.5" height="16" fill="#2a78d6"><title>paper3 len 4-7 - 72.9% of matched bytes</title></rect>
-<text x="474.3" y="1621.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">73%</text>
-<rect x="798.5" y="1609" width="209.6" height="16" fill="#eb6834"><title>paper3 8-15 - 23.6% of matched bytes</title></rect>
-<text x="903.3" y="1621.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
-<rect x="1008.2" y="1609" width="31.8" height="16" fill="#1baf7a"><title>paper3 16-63 - 3.6% of matched bytes</title></rect>
-<rect x="150.0" y="1631" width="607.2" height="16" fill="#2a78d6"><title>paper4 len 4-7 - 68.2% of matched bytes</title></rect>
-<text x="453.6" y="1643.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">68%</text>
-<rect x="757.2" y="1631" width="234.6" height="16" fill="#eb6834"><title>paper4 8-15 - 26.4% of matched bytes</title></rect>
-<text x="874.5" y="1643.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">26%</text>
-<rect x="991.8" y="1631" width="48.2" height="16" fill="#1baf7a"><title>paper4 16-63 - 5.4% of matched bytes</title></rect>
-<text x="1015.9" y="1643.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
-<rect x="150.0" y="1653" width="564.0" height="16" fill="#2a78d6"><title>paper5 len 4-7 - 63.4% of matched bytes</title></rect>
-<text x="432.0" y="1665.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">63%</text>
-<rect x="714.0" y="1653" width="259.5" height="16" fill="#eb6834"><title>paper5 8-15 - 29.2% of matched bytes</title></rect>
-<text x="843.8" y="1665.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">29%</text>
-<rect x="973.5" y="1653" width="66.5" height="16" fill="#1baf7a"><title>paper5 16-63 - 7.5% of matched bytes</title></rect>
-<text x="1006.8" y="1665.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">7%</text>
-<rect x="150.0" y="1675" width="523.3" height="16" fill="#2a78d6"><title>paper6 len 4-7 - 58.8% of matched bytes</title></rect>
-<text x="411.7" y="1687.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">59%</text>
-<rect x="673.3" y="1675" width="236.2" height="16" fill="#eb6834"><title>paper6 8-15 - 26.5% of matched bytes</title></rect>
-<text x="791.4" y="1687.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">27%</text>
-<rect x="909.5" y="1675" width="101.6" height="16" fill="#1baf7a"><title>paper6 16-63 - 11.4% of matched bytes</title></rect>
-<text x="960.3" y="1687.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">11%</text>
-<rect x="1011.1" y="1675" width="28.9" height="16" fill="#eda100"><title>paper6 64-257 - 3.2% of matched bytes</title></rect>
-<rect x="150.0" y="1697" width="76.9" height="16" fill="#2a78d6"><title>pic len 4-7 - 8.6% of matched bytes</title></rect>
-<text x="188.5" y="1709.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
-<rect x="226.9" y="1697" width="55.8" height="16" fill="#eb6834"><title>pic 8-15 - 6.3% of matched bytes</title></rect>
-<text x="254.8" y="1709.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">6%</text>
-<rect x="282.7" y="1697" width="211.6" height="16" fill="#1baf7a"><title>pic 16-63 - 23.8% of matched bytes</title></rect>
-<text x="388.5" y="1709.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
-<rect x="494.4" y="1697" width="367.6" height="16" fill="#eda100"><title>pic 64-257 - 41.3% of matched bytes</title></rect>
-<text x="678.1" y="1709.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">41%</text>
-<rect x="861.9" y="1697" width="178.1" height="16" fill="#e87ba4"><title>pic 258+ - 20.0% of matched bytes</title></rect>
-<text x="951.0" y="1709.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">20%</text>
-<rect x="150.0" y="1719" width="487.1" height="16" fill="#2a78d6"><title>progc len 4-7 - 54.7% of matched bytes</title></rect>
-<text x="393.6" y="1731.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">55%</text>
-<rect x="637.1" y="1719" width="236.8" height="16" fill="#eb6834"><title>progc 8-15 - 26.6% of matched bytes</title></rect>
-<text x="755.5" y="1731.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">27%</text>
-<rect x="873.9" y="1719" width="151.0" height="16" fill="#1baf7a"><title>progc 16-63 - 17.0% of matched bytes</title></rect>
-<text x="949.4" y="1731.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">17%</text>
-<rect x="1024.9" y="1719" width="15.1" height="16" fill="#eda100"><title>progc 64-257 - 1.7% of matched bytes</title></rect>
-<rect x="150.0" y="1741" width="348.8" height="16" fill="#2a78d6"><title>progl len 4-7 - 39.2% of matched bytes</title></rect>
-<text x="324.4" y="1753.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">39%</text>
-<rect x="498.8" y="1741" width="214.0" height="16" fill="#eb6834"><title>progl 8-15 - 24.0% of matched bytes</title></rect>
-<text x="605.7" y="1753.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
-<rect x="712.7" y="1741" width="208.5" height="16" fill="#1baf7a"><title>progl 16-63 - 23.4% of matched bytes</title></rect>
-<text x="817.0" y="1753.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">23%</text>
-<rect x="921.2" y="1741" width="75.7" height="16" fill="#eda100"><title>progl 64-257 - 8.5% of matched bytes</title></rect>
-<text x="959.1" y="1753.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
-<rect x="996.9" y="1741" width="43.1" height="16" fill="#e87ba4"><title>progl 258+ - 4.8% of matched bytes</title></rect>
-<text x="1018.5" y="1753.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
-<rect x="150.0" y="1763" width="308.0" height="16" fill="#2a78d6"><title>progp len 4-7 - 34.6% of matched bytes</title></rect>
-<text x="304.0" y="1775.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">35%</text>
-<rect x="458.0" y="1763" width="226.8" height="16" fill="#eb6834"><title>progp 8-15 - 25.5% of matched bytes</title></rect>
-<text x="571.4" y="1775.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">25%</text>
-<rect x="684.8" y="1763" width="166.0" height="16" fill="#1baf7a"><title>progp 16-63 - 18.7% of matched bytes</title></rect>
-<text x="767.8" y="1775.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">19%</text>
-<rect x="850.9" y="1763" width="107.9" height="16" fill="#eda100"><title>progp 64-257 - 12.1% of matched bytes</title></rect>
-<text x="904.8" y="1775.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">12%</text>
-<rect x="958.7" y="1763" width="81.3" height="16" fill="#e87ba4"><title>progp 258+ - 9.1% of matched bytes</title></rect>
-<text x="999.4" y="1775.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
-<rect x="150.0" y="1785" width="207.3" height="16" fill="#2a78d6"><title>trans len 4-7 - 23.3% of matched bytes</title></rect>
-<text x="253.7" y="1797.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">23%</text>
-<rect x="357.3" y="1785" width="182.5" height="16" fill="#eb6834"><title>trans 8-15 - 20.5% of matched bytes</title></rect>
-<text x="448.6" y="1797.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">21%</text>
-<rect x="539.9" y="1785" width="234.5" height="16" fill="#1baf7a"><title>trans 16-63 - 26.3% of matched bytes</title></rect>
-<text x="657.1" y="1797.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">26%</text>
-<rect x="774.4" y="1785" width="195.2" height="16" fill="#eda100"><title>trans 64-257 - 21.9% of matched bytes</title></rect>
-<text x="872.0" y="1797.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">22%</text>
-<rect x="969.6" y="1785" width="70.4" height="16" fill="#e87ba4"><title>trans 258+ - 7.9% of matched bytes</title></rect>
-<text x="1004.8" y="1797.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">8%</text>
-<text x="150.0" y="1824.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">file size, printable share, most common byte</text>
-<text x="142.0" y="1863.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">bib</text>
-<text x="142.0" y="1885.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">book1</text>
-<text x="142.0" y="1907.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">book2</text>
-<text x="142.0" y="1929.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">geo</text>
-<text x="142.0" y="1951.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">news</text>
-<text x="142.0" y="1973.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">obj1</text>
-<text x="142.0" y="1995.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">obj2</text>
-<text x="142.0" y="2017.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper1</text>
-<text x="142.0" y="2039.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper2</text>
-<text x="142.0" y="2061.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper3</text>
-<text x="142.0" y="2083.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper4</text>
-<text x="142.0" y="2105.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper5</text>
-<text x="142.0" y="2127.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper6</text>
-<text x="142.0" y="2149.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">pic</text>
-<text x="142.0" y="2171.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progc</text>
-<text x="142.0" y="2193.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progl</text>
-<text x="142.0" y="2215.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progp</text>
-<text x="142.0" y="2237.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">trans</text>
-<text x="420.0" y="1842.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">size</text>
-<text x="730.0" y="1842.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">printable</text>
-<text x="1040.0" y="1842.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">top byte</text>
-<rect x="150.0" y="1853" width="31.6" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1863.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">108K</text>
-<rect x="460.0" y="1853" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1863.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="1853" width="26.9" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1863.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">12.3%</text>
-<rect x="150.0" y="1875" width="218.0" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1885.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">750K</text>
-<rect x="460.0" y="1875" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1885.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="1875" width="35.6" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1885.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">16.3%</text>
-<rect x="150.0" y="1897" width="173.2" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1907.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">596K</text>
-<rect x="460.0" y="1897" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1907.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="1897" width="30.7" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1907.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">14.1%</text>
-<rect x="150.0" y="1919" width="29.0" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1929.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100K</text>
-<rect x="460.0" y="1919" width="73.6" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1929.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">34%</text>
-<rect x="770.0" y="1919" width="60.9" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1929.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">28.0%</text>
-<rect x="150.0" y="1941" width="106.9" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1951.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">368K</text>
-<rect x="460.0" y="1941" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1951.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="1941" width="31.4" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1951.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">14.4%</text>
-<rect x="150.0" y="1963" width="6.1" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1973.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">21K</text>
-<rect x="460.0" y="1963" width="67.5" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1973.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">31%</text>
-<rect x="770.0" y="1963" width="56.3" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1973.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">25.8%</text>
-<rect x="150.0" y="1985" width="70.0" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="1995.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">241K</text>
-<rect x="460.0" y="1985" width="95.7" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="1995.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">44%</text>
-<rect x="770.0" y="1985" width="31.4" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="1995.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">14.4%</text>
-<rect x="150.0" y="2007" width="15.1" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="2017.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">51K</text>
-<rect x="460.0" y="2007" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="2017.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="2007" width="29.9" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="2017.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">13.7%</text>
-<rect x="150.0" y="2029" width="23.3" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="2039.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">80K</text>
-<rect x="460.0" y="2029" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="2039.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="2029" width="32.1" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="2039.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">14.7%</text>
-<rect x="150.0" y="2051" width="13.2" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="2061.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">45K</text>
-<rect x="460.0" y="2051" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="2061.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="2051" width="28.8" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="2061.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">13.2%</text>
-<rect x="150.0" y="2073" width="3.8" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="2083.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">12K</text>
-<rect x="460.0" y="2073" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="2083.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="2073" width="32.1" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="2083.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">14.7%</text>
-<rect x="150.0" y="2095" width="3.4" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="2105.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">11K</text>
-<rect x="460.0" y="2095" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="2105.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="2095" width="34.1" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="2105.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">15.6%</text>
-<rect x="150.0" y="2117" width="10.8" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="2127.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">37K</text>
-<rect x="460.0" y="2117" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="2127.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="2117" width="32.7" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="2127.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">15.0%</text>
-<rect x="150.0" y="2139" width="145.5" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="2149.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">501K</text>
-<rect x="460.0" y="2139" width="3.8" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="2149.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">2%</text>
-<rect x="770.0" y="2139" width="189.9" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="2149.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">87.1%</text>
-<rect x="150.0" y="2161" width="11.2" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="2171.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">38K</text>
-<rect x="460.0" y="2161" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="2171.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="2161" width="38.1" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="2171.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">17.5%</text>
-<rect x="150.0" y="2183" width="20.3" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="2193.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">69K</text>
-<rect x="460.0" y="2183" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="2193.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="2183" width="37.2" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="2193.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">17.1%</text>
-<rect x="150.0" y="2205" width="14.0" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="2215.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">48K</text>
-<rect x="460.0" y="2205" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="2215.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="2205" width="50.7" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="2215.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">23.2%</text>
-<rect x="150.0" y="2227" width="26.6" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="2237.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">91K</text>
-<rect x="460.0" y="2227" width="198.3" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="2237.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">91%</text>
-<rect x="770.0" y="2227" width="23.0" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="2237.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">10.6%</text>
-<text x="16.0" y="2264.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">profile_corpus.py, entropy and deflate rates on whole files, parse statistics on sampled windows</text>
+<text x="150.0" y="990.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">greedy parse bytes by match distance</text>
+<text x="1040.0" y="990.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">4K-32K</text>
+<circle cx="1000.8" cy="986" r="4" fill="#eda100"/>
+<text x="986.8" y="990.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">257-4K</text>
+<circle cx="947.6" cy="986" r="4" fill="#1baf7a"/>
+<text x="933.6" y="990.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">17-256</text>
+<circle cx="894.4" cy="986" r="4" fill="#eb6834"/>
+<text x="880.4" y="990.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">dist 1-16</text>
+<circle cx="825.6" cy="986" r="4" fill="#2a78d6"/>
+<text x="811.6" y="990.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">literals</text>
+<circle cx="762.0" cy="986" r="4" fill="#7a7668"/>
+<text x="142.0" y="1015.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">bib</text>
+<text x="142.0" y="1037.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">book1</text>
+<text x="142.0" y="1059.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">book2</text>
+<text x="142.0" y="1081.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">geo</text>
+<text x="142.0" y="1103.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">news</text>
+<text x="142.0" y="1125.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">obj1</text>
+<text x="142.0" y="1147.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">obj2</text>
+<text x="142.0" y="1169.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper1</text>
+<text x="142.0" y="1191.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper2</text>
+<text x="142.0" y="1213.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper3</text>
+<text x="142.0" y="1235.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper4</text>
+<text x="142.0" y="1257.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper5</text>
+<text x="142.0" y="1279.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper6</text>
+<text x="142.0" y="1301.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">pic</text>
+<text x="142.0" y="1323.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progc</text>
+<text x="142.0" y="1345.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progl</text>
+<text x="142.0" y="1367.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progp</text>
+<text x="142.0" y="1389.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">trans</text>
+<rect x="150.0" y="1003" width="104.6" height="16" fill="#7a7668"><title>bib literals - 11.8%</title></rect>
+<text x="202.3" y="1015.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">12%</text>
+<rect x="254.6" y="1003" width="2.0" height="16" fill="#2a78d6"><title>bib dist 1-16 - 0.2%</title></rect>
+<rect x="256.6" y="1003" width="76.0" height="16" fill="#eb6834"><title>bib 17-256 - 8.5%</title></rect>
+<text x="294.6" y="1015.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
+<rect x="332.6" y="1003" width="265.9" height="16" fill="#1baf7a"><title>bib 257-4K - 29.9%</title></rect>
+<text x="465.5" y="1015.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">30%</text>
+<rect x="598.5" y="1003" width="441.5" height="16" fill="#eda100"><title>bib 4K-32K - 49.6%</title></rect>
+<text x="819.2" y="1015.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">50%</text>
+<rect x="150.0" y="1025" width="121.4" height="16" fill="#7a7668"><title>book1 literals - 13.6%</title></rect>
+<text x="210.7" y="1037.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">14%</text>
+<rect x="271.4" y="1025" width="2.2" height="16" fill="#2a78d6"><title>book1 dist 1-16 - 0.3%</title></rect>
+<rect x="273.7" y="1025" width="54.6" height="16" fill="#eb6834"><title>book1 17-256 - 6.1%</title></rect>
+<text x="301.0" y="1037.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">6%</text>
+<rect x="328.3" y="1025" width="271.9" height="16" fill="#1baf7a"><title>book1 257-4K - 30.6%</title></rect>
+<text x="464.2" y="1037.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">31%</text>
+<rect x="600.2" y="1025" width="439.8" height="16" fill="#eda100"><title>book1 4K-32K - 49.4%</title></rect>
+<text x="820.1" y="1037.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">49%</text>
+<rect x="150.0" y="1047" width="102.2" height="16" fill="#7a7668"><title>book2 literals - 11.5%</title></rect>
+<text x="201.1" y="1059.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">11%</text>
+<rect x="252.2" y="1047" width="7.0" height="16" fill="#2a78d6"><title>book2 dist 1-16 - 0.8%</title></rect>
+<rect x="259.2" y="1047" width="106.0" height="16" fill="#eb6834"><title>book2 17-256 - 11.9%</title></rect>
+<text x="312.2" y="1059.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">12%</text>
+<rect x="365.2" y="1047" width="302.5" height="16" fill="#1baf7a"><title>book2 257-4K - 34.0%</title></rect>
+<text x="516.5" y="1059.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">34%</text>
+<rect x="667.7" y="1047" width="372.3" height="16" fill="#eda100"><title>book2 4K-32K - 41.8%</title></rect>
+<text x="853.9" y="1059.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">42%</text>
+<rect x="150.0" y="1069" width="584.2" height="16" fill="#7a7668"><title>geo literals - 65.6%</title></rect>
+<text x="442.1" y="1081.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">66%</text>
+<rect x="734.2" y="1069" width="6.5" height="16" fill="#2a78d6"><title>geo dist 1-16 - 0.7%</title></rect>
+<rect x="740.7" y="1069" width="6.1" height="16" fill="#eb6834"><title>geo 17-256 - 0.7%</title></rect>
+<rect x="746.9" y="1069" width="44.4" height="16" fill="#1baf7a"><title>geo 257-4K - 5.0%</title></rect>
+<text x="769.1" y="1081.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
+<rect x="791.3" y="1069" width="248.7" height="16" fill="#eda100"><title>geo 4K-32K - 27.9%</title></rect>
+<text x="915.6" y="1081.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">28%</text>
+<rect x="150.0" y="1091" width="175.8" height="16" fill="#7a7668"><title>news literals - 19.7%</title></rect>
+<text x="237.9" y="1103.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">20%</text>
+<rect x="325.8" y="1091" width="18.4" height="16" fill="#2a78d6"><title>news dist 1-16 - 2.1%</title></rect>
+<rect x="344.2" y="1091" width="115.6" height="16" fill="#eb6834"><title>news 17-256 - 13.0%</title></rect>
+<text x="402.0" y="1103.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">13%</text>
+<rect x="459.8" y="1091" width="249.4" height="16" fill="#1baf7a"><title>news 257-4K - 28.0%</title></rect>
+<text x="584.5" y="1103.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">28%</text>
+<rect x="709.2" y="1091" width="330.8" height="16" fill="#eda100"><title>news 4K-32K - 37.2%</title></rect>
+<text x="874.6" y="1103.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">37%</text>
+<rect x="150.0" y="1113" width="357.5" height="16" fill="#7a7668"><title>obj1 literals - 40.2%</title></rect>
+<text x="328.8" y="1125.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">40%</text>
+<rect x="507.5" y="1113" width="125.2" height="16" fill="#2a78d6"><title>obj1 dist 1-16 - 14.1%</title></rect>
+<text x="570.2" y="1125.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">14%</text>
+<rect x="632.8" y="1113" width="212.4" height="16" fill="#eb6834"><title>obj1 17-256 - 23.9%</title></rect>
+<text x="739.0" y="1125.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
+<rect x="845.1" y="1113" width="161.0" height="16" fill="#1baf7a"><title>obj1 257-4K - 18.1%</title></rect>
+<text x="925.6" y="1125.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">18%</text>
+<rect x="1006.1" y="1113" width="33.9" height="16" fill="#eda100"><title>obj1 4K-32K - 3.8%</title></rect>
+<rect x="150.0" y="1135" width="155.5" height="16" fill="#7a7668"><title>obj2 literals - 17.5%</title></rect>
+<text x="227.8" y="1147.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">17%</text>
+<rect x="305.5" y="1135" width="18.6" height="16" fill="#2a78d6"><title>obj2 dist 1-16 - 2.1%</title></rect>
+<rect x="324.1" y="1135" width="233.7" height="16" fill="#eb6834"><title>obj2 17-256 - 26.3%</title></rect>
+<text x="440.9" y="1147.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">26%</text>
+<rect x="557.8" y="1135" width="315.2" height="16" fill="#1baf7a"><title>obj2 257-4K - 35.4%</title></rect>
+<text x="715.4" y="1147.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">35%</text>
+<rect x="873.0" y="1135" width="167.0" height="16" fill="#eda100"><title>obj2 4K-32K - 18.8%</title></rect>
+<text x="956.5" y="1147.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">19%</text>
+<rect x="150.0" y="1157" width="134.8" height="16" fill="#7a7668"><title>paper1 literals - 15.1%</title></rect>
+<text x="217.4" y="1169.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">15%</text>
+<rect x="284.8" y="1157" width="8.2" height="16" fill="#2a78d6"><title>paper1 dist 1-16 - 0.9%</title></rect>
+<rect x="293.0" y="1157" width="121.8" height="16" fill="#eb6834"><title>paper1 17-256 - 13.7%</title></rect>
+<text x="353.9" y="1169.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">14%</text>
+<rect x="414.8" y="1157" width="345.3" height="16" fill="#1baf7a"><title>paper1 257-4K - 38.8%</title></rect>
+<text x="587.5" y="1169.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">39%</text>
+<rect x="760.1" y="1157" width="279.9" height="16" fill="#eda100"><title>paper1 4K-32K - 31.4%</title></rect>
+<text x="900.1" y="1169.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">31%</text>
+<rect x="150.0" y="1179" width="71.6" height="16" fill="#7a7668"><title>paper2 literals - 8.0%</title></rect>
+<text x="185.8" y="1191.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">8%</text>
+<rect x="221.6" y="1179" width="3.3" height="16" fill="#2a78d6"><title>paper2 dist 1-16 - 0.4%</title></rect>
+<rect x="224.9" y="1179" width="91.3" height="16" fill="#eb6834"><title>paper2 17-256 - 10.3%</title></rect>
+<text x="270.5" y="1191.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">10%</text>
+<rect x="316.2" y="1179" width="301.4" height="16" fill="#1baf7a"><title>paper2 257-4K - 33.9%</title></rect>
+<text x="466.9" y="1191.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">34%</text>
+<rect x="617.6" y="1179" width="422.4" height="16" fill="#eda100"><title>paper2 4K-32K - 47.5%</title></rect>
+<text x="828.8" y="1191.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">47%</text>
+<rect x="150.0" y="1201" width="148.1" height="16" fill="#7a7668"><title>paper3 literals - 16.6%</title></rect>
+<text x="224.1" y="1213.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">17%</text>
+<rect x="298.1" y="1201" width="2.8" height="16" fill="#2a78d6"><title>paper3 dist 1-16 - 0.3%</title></rect>
+<rect x="301.0" y="1201" width="93.9" height="16" fill="#eb6834"><title>paper3 17-256 - 10.6%</title></rect>
+<text x="347.9" y="1213.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">11%</text>
+<rect x="394.9" y="1201" width="324.7" height="16" fill="#1baf7a"><title>paper3 257-4K - 36.5%</title></rect>
+<text x="557.3" y="1213.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">36%</text>
+<rect x="719.6" y="1201" width="320.4" height="16" fill="#eda100"><title>paper3 4K-32K - 36.0%</title></rect>
+<text x="879.8" y="1213.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">36%</text>
+<rect x="150.0" y="1223" width="237.5" height="16" fill="#7a7668"><title>paper4 literals - 26.7%</title></rect>
+<text x="268.8" y="1235.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">27%</text>
+<rect x="387.5" y="1223" width="4.0" height="16" fill="#2a78d6"><title>paper4 dist 1-16 - 0.4%</title></rect>
+<rect x="391.5" y="1223" width="146.5" height="16" fill="#eb6834"><title>paper4 17-256 - 16.5%</title></rect>
+<text x="464.7" y="1235.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">16%</text>
+<rect x="538.0" y="1223" width="390.2" height="16" fill="#1baf7a"><title>paper4 257-4K - 43.8%</title></rect>
+<text x="733.1" y="1235.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">44%</text>
+<rect x="928.2" y="1223" width="111.8" height="16" fill="#eda100"><title>paper4 4K-32K - 12.6%</title></rect>
+<text x="984.1" y="1235.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">13%</text>
+<rect x="150.0" y="1245" width="245.6" height="16" fill="#7a7668"><title>paper5 literals - 27.6%</title></rect>
+<text x="272.8" y="1257.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">28%</text>
+<rect x="395.6" y="1245" width="8.7" height="16" fill="#2a78d6"><title>paper5 dist 1-16 - 1.0%</title></rect>
+<rect x="404.3" y="1245" width="190.4" height="16" fill="#eb6834"><title>paper5 17-256 - 21.4%</title></rect>
+<text x="499.6" y="1257.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">21%</text>
+<rect x="594.8" y="1245" width="363.4" height="16" fill="#1baf7a"><title>paper5 257-4K - 40.8%</title></rect>
+<text x="776.5" y="1257.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">41%</text>
+<rect x="958.1" y="1245" width="81.9" height="16" fill="#eda100"><title>paper5 4K-32K - 9.2%</title></rect>
+<text x="999.1" y="1257.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
+<rect x="150.0" y="1267" width="146.0" height="16" fill="#7a7668"><title>paper6 literals - 16.4%</title></rect>
+<text x="223.0" y="1279.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">16%</text>
+<rect x="296.0" y="1267" width="12.7" height="16" fill="#2a78d6"><title>paper6 dist 1-16 - 1.4%</title></rect>
+<rect x="308.7" y="1267" width="153.4" height="16" fill="#eb6834"><title>paper6 17-256 - 17.2%</title></rect>
+<text x="385.4" y="1279.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">17%</text>
+<rect x="462.1" y="1267" width="327.5" height="16" fill="#1baf7a"><title>paper6 257-4K - 36.8%</title></rect>
+<text x="625.9" y="1279.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">37%</text>
+<rect x="789.6" y="1267" width="250.4" height="16" fill="#eda100"><title>paper6 4K-32K - 28.1%</title></rect>
+<text x="914.8" y="1279.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">28%</text>
+<rect x="150.0" y="1289" width="63.8" height="16" fill="#7a7668"><title>pic literals - 7.2%</title></rect>
+<text x="181.9" y="1301.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">7%</text>
+<rect x="213.8" y="1289" width="307.0" height="16" fill="#2a78d6"><title>pic dist 1-16 - 34.5%</title></rect>
+<text x="367.3" y="1301.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">34%</text>
+<rect x="520.8" y="1289" width="160.9" height="16" fill="#eb6834"><title>pic 17-256 - 18.1%</title></rect>
+<text x="601.2" y="1301.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">18%</text>
+<rect x="681.7" y="1289" width="277.7" height="16" fill="#1baf7a"><title>pic 257-4K - 31.2%</title></rect>
+<text x="820.5" y="1301.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">31%</text>
+<rect x="959.3" y="1289" width="80.7" height="16" fill="#eda100"><title>pic 4K-32K - 9.1%</title></rect>
+<text x="999.7" y="1301.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
+<rect x="150.0" y="1311" width="146.4" height="16" fill="#7a7668"><title>progc literals - 16.4%</title></rect>
+<text x="223.2" y="1323.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">16%</text>
+<rect x="296.4" y="1311" width="15.8" height="16" fill="#2a78d6"><title>progc dist 1-16 - 1.8%</title></rect>
+<rect x="312.1" y="1311" width="212.8" height="16" fill="#eb6834"><title>progc 17-256 - 23.9%</title></rect>
+<text x="418.5" y="1323.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
+<rect x="524.9" y="1311" width="307.6" height="16" fill="#1baf7a"><title>progc 257-4K - 34.6%</title></rect>
+<text x="678.7" y="1323.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">35%</text>
+<rect x="832.5" y="1311" width="207.5" height="16" fill="#eda100"><title>progc 4K-32K - 23.3%</title></rect>
+<text x="936.3" y="1323.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">23%</text>
+<rect x="150.0" y="1333" width="47.9" height="16" fill="#7a7668"><title>progl literals - 5.4%</title></rect>
+<text x="173.9" y="1345.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
+<rect x="197.9" y="1333" width="20.5" height="16" fill="#2a78d6"><title>progl dist 1-16 - 2.3%</title></rect>
+<rect x="218.4" y="1333" width="192.3" height="16" fill="#eb6834"><title>progl 17-256 - 21.6%</title></rect>
+<text x="314.6" y="1345.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">22%</text>
+<rect x="410.7" y="1333" width="404.0" height="16" fill="#1baf7a"><title>progl 257-4K - 45.4%</title></rect>
+<text x="612.7" y="1345.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">45%</text>
+<rect x="814.7" y="1333" width="225.3" height="16" fill="#eda100"><title>progl 4K-32K - 25.3%</title></rect>
+<text x="927.4" y="1345.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">25%</text>
+<rect x="150.0" y="1355" width="91.8" height="16" fill="#7a7668"><title>progp literals - 10.3%</title></rect>
+<text x="195.9" y="1367.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">10%</text>
+<rect x="241.8" y="1355" width="25.6" height="16" fill="#2a78d6"><title>progp dist 1-16 - 2.9%</title></rect>
+<rect x="267.4" y="1355" width="210.0" height="16" fill="#eb6834"><title>progp 17-256 - 23.6%</title></rect>
+<text x="372.4" y="1367.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
+<rect x="477.4" y="1355" width="396.3" height="16" fill="#1baf7a"><title>progp 257-4K - 44.5%</title></rect>
+<text x="675.6" y="1367.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">45%</text>
+<rect x="873.7" y="1355" width="166.3" height="16" fill="#eda100"><title>progp 4K-32K - 18.7%</title></rect>
+<text x="956.9" y="1367.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">19%</text>
+<rect x="150.0" y="1377" width="63.8" height="16" fill="#7a7668"><title>trans literals - 7.2%</title></rect>
+<text x="181.9" y="1389.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">7%</text>
+<rect x="213.8" y="1377" width="20.1" height="16" fill="#2a78d6"><title>trans dist 1-16 - 2.3%</title></rect>
+<rect x="233.9" y="1377" width="169.0" height="16" fill="#eb6834"><title>trans 17-256 - 19.0%</title></rect>
+<text x="318.4" y="1389.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">19%</text>
+<rect x="402.8" y="1377" width="291.0" height="16" fill="#1baf7a"><title>trans 257-4K - 32.7%</title></rect>
+<text x="548.4" y="1389.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">33%</text>
+<rect x="693.9" y="1377" width="346.1" height="16" fill="#eda100"><title>trans 4K-32K - 38.9%</title></rect>
+<text x="866.9" y="1389.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">39%</text>
+<text x="150.0" y="1416.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">matched bytes by match length</text>
+<text x="1040.0" y="1416.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">258+</text>
+<circle cx="1011.2" cy="1412" r="4" fill="#e87ba4"/>
+<text x="997.2" y="1416.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">64-257</text>
+<circle cx="958.0" cy="1412" r="4" fill="#eda100"/>
+<text x="944.0" y="1416.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">16-63</text>
+<circle cx="910.0" cy="1412" r="4" fill="#1baf7a"/>
+<text x="896.0" y="1416.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">8-15</text>
+<circle cx="867.2" cy="1412" r="4" fill="#eb6834"/>
+<text x="853.2" y="1416.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">len 4-7</text>
+<circle cx="808.8" cy="1412" r="4" fill="#2a78d6"/>
+<text x="142.0" y="1441.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">bib</text>
+<text x="142.0" y="1463.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">book1</text>
+<text x="142.0" y="1485.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">book2</text>
+<text x="142.0" y="1507.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">geo</text>
+<text x="142.0" y="1529.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">news</text>
+<text x="142.0" y="1551.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">obj1</text>
+<text x="142.0" y="1573.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">obj2</text>
+<text x="142.0" y="1595.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper1</text>
+<text x="142.0" y="1617.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper2</text>
+<text x="142.0" y="1639.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper3</text>
+<text x="142.0" y="1661.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper4</text>
+<text x="142.0" y="1683.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper5</text>
+<text x="142.0" y="1705.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper6</text>
+<text x="142.0" y="1727.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">pic</text>
+<text x="142.0" y="1749.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progc</text>
+<text x="142.0" y="1771.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progl</text>
+<text x="142.0" y="1793.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progp</text>
+<text x="142.0" y="1815.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">trans</text>
+<rect x="150.0" y="1429" width="456.6" height="16" fill="#2a78d6"><title>bib len 4-7 - 51.3% of matched bytes</title></rect>
+<text x="378.3" y="1441.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">51%</text>
+<rect x="606.6" y="1429" width="249.9" height="16" fill="#eb6834"><title>bib 8-15 - 28.1% of matched bytes</title></rect>
+<text x="731.6" y="1441.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">28%</text>
+<rect x="856.5" y="1429" width="166.3" height="16" fill="#1baf7a"><title>bib 16-63 - 18.7% of matched bytes</title></rect>
+<text x="939.7" y="1441.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">19%</text>
+<rect x="1022.8" y="1429" width="17.2" height="16" fill="#eda100"><title>bib 64-257 - 1.9% of matched bytes</title></rect>
+<rect x="150.0" y="1451" width="770.0" height="16" fill="#2a78d6"><title>book1 len 4-7 - 86.5% of matched bytes</title></rect>
+<text x="535.0" y="1463.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">87%</text>
+<rect x="920.0" y="1451" width="114.9" height="16" fill="#eb6834"><title>book1 8-15 - 12.9% of matched bytes</title></rect>
+<text x="977.4" y="1463.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">13%</text>
+<rect x="1034.8" y="1451" width="5.0" height="16" fill="#1baf7a"><title>book1 16-63 - 0.6% of matched bytes</title></rect>
+<rect x="1039.9" y="1451" width="0.8" height="16" fill="#eda100"><title>book1 64-257 - 0.0% of matched bytes</title></rect>
+<rect x="150.0" y="1473" width="574.6" height="16" fill="#2a78d6"><title>book2 len 4-7 - 64.6% of matched bytes</title></rect>
+<text x="437.3" y="1485.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">65%</text>
+<rect x="724.6" y="1473" width="239.7" height="16" fill="#eb6834"><title>book2 8-15 - 26.9% of matched bytes</title></rect>
+<text x="844.4" y="1485.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">27%</text>
+<rect x="964.2" y="1473" width="67.3" height="16" fill="#1baf7a"><title>book2 16-63 - 7.6% of matched bytes</title></rect>
+<text x="997.9" y="1485.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">8%</text>
+<rect x="1031.5" y="1473" width="8.5" height="16" fill="#eda100"><title>book2 64-257 - 1.0% of matched bytes</title></rect>
+<rect x="150.0" y="1495" width="794.2" height="16" fill="#2a78d6"><title>geo len 4-7 - 89.2% of matched bytes</title></rect>
+<text x="547.1" y="1507.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">89%</text>
+<rect x="944.2" y="1495" width="19.7" height="16" fill="#eb6834"><title>geo 8-15 - 2.2% of matched bytes</title></rect>
+<rect x="963.9" y="1495" width="76.1" height="16" fill="#1baf7a"><title>geo 16-63 - 8.5% of matched bytes</title></rect>
+<text x="1002.0" y="1507.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
+<rect x="150.0" y="1517" width="505.3" height="16" fill="#2a78d6"><title>news len 4-7 - 56.8% of matched bytes</title></rect>
+<text x="402.6" y="1529.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">57%</text>
+<rect x="655.3" y="1517" width="202.2" height="16" fill="#eb6834"><title>news 8-15 - 22.7% of matched bytes</title></rect>
+<text x="756.4" y="1529.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">23%</text>
+<rect x="857.5" y="1517" width="142.7" height="16" fill="#1baf7a"><title>news 16-63 - 16.0% of matched bytes</title></rect>
+<text x="928.8" y="1529.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">16%</text>
+<rect x="1000.1" y="1517" width="29.6" height="16" fill="#eda100"><title>news 64-257 - 3.3% of matched bytes</title></rect>
+<rect x="1029.7" y="1517" width="10.3" height="16" fill="#e87ba4"><title>news 258+ - 1.2% of matched bytes</title></rect>
+<rect x="150.0" y="1539" width="335.9" height="16" fill="#2a78d6"><title>obj1 len 4-7 - 37.7% of matched bytes</title></rect>
+<text x="317.9" y="1551.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">38%</text>
+<rect x="485.9" y="1539" width="167.6" height="16" fill="#eb6834"><title>obj1 8-15 - 18.8% of matched bytes</title></rect>
+<text x="569.7" y="1551.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">19%</text>
+<rect x="653.5" y="1539" width="177.9" height="16" fill="#1baf7a"><title>obj1 16-63 - 20.0% of matched bytes</title></rect>
+<text x="742.4" y="1551.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">20%</text>
+<rect x="831.4" y="1539" width="88.1" height="16" fill="#eda100"><title>obj1 64-257 - 9.9% of matched bytes</title></rect>
+<text x="875.4" y="1551.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">10%</text>
+<rect x="919.5" y="1539" width="120.5" height="16" fill="#e87ba4"><title>obj1 258+ - 13.5% of matched bytes</title></rect>
+<text x="979.7" y="1551.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">14%</text>
+<rect x="150.0" y="1561" width="360.6" height="16" fill="#2a78d6"><title>obj2 len 4-7 - 40.5% of matched bytes</title></rect>
+<text x="330.3" y="1573.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">41%</text>
+<rect x="510.6" y="1561" width="232.8" height="16" fill="#eb6834"><title>obj2 8-15 - 26.2% of matched bytes</title></rect>
+<text x="627.1" y="1573.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">26%</text>
+<rect x="743.5" y="1561" width="225.5" height="16" fill="#1baf7a"><title>obj2 16-63 - 25.3% of matched bytes</title></rect>
+<text x="856.2" y="1573.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">25%</text>
+<rect x="969.0" y="1561" width="59.3" height="16" fill="#eda100"><title>obj2 64-257 - 6.7% of matched bytes</title></rect>
+<text x="998.6" y="1573.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">7%</text>
+<rect x="1028.3" y="1561" width="11.7" height="16" fill="#e87ba4"><title>obj2 258+ - 1.3% of matched bytes</title></rect>
+<rect x="150.0" y="1583" width="544.6" height="16" fill="#2a78d6"><title>paper1 len 4-7 - 61.2% of matched bytes</title></rect>
+<text x="422.3" y="1595.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">61%</text>
+<rect x="694.6" y="1583" width="227.1" height="16" fill="#eb6834"><title>paper1 8-15 - 25.5% of matched bytes</title></rect>
+<text x="808.2" y="1595.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">26%</text>
+<rect x="921.7" y="1583" width="109.5" height="16" fill="#1baf7a"><title>paper1 16-63 - 12.3% of matched bytes</title></rect>
+<text x="976.4" y="1595.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">12%</text>
+<rect x="1031.2" y="1583" width="8.8" height="16" fill="#eda100"><title>paper1 64-257 - 1.0% of matched bytes</title></rect>
+<rect x="150.0" y="1605" width="631.5" height="16" fill="#2a78d6"><title>paper2 len 4-7 - 71.0% of matched bytes</title></rect>
+<text x="465.8" y="1617.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">71%</text>
+<rect x="781.5" y="1605" width="204.6" height="16" fill="#eb6834"><title>paper2 8-15 - 23.0% of matched bytes</title></rect>
+<text x="883.8" y="1617.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">23%</text>
+<rect x="986.1" y="1605" width="47.3" height="16" fill="#1baf7a"><title>paper2 16-63 - 5.3% of matched bytes</title></rect>
+<text x="1009.8" y="1617.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
+<rect x="1033.5" y="1605" width="6.5" height="16" fill="#eda100"><title>paper2 64-257 - 0.7% of matched bytes</title></rect>
+<rect x="150.0" y="1627" width="648.5" height="16" fill="#2a78d6"><title>paper3 len 4-7 - 72.9% of matched bytes</title></rect>
+<text x="474.3" y="1639.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">73%</text>
+<rect x="798.5" y="1627" width="209.6" height="16" fill="#eb6834"><title>paper3 8-15 - 23.6% of matched bytes</title></rect>
+<text x="903.3" y="1639.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
+<rect x="1008.2" y="1627" width="31.8" height="16" fill="#1baf7a"><title>paper3 16-63 - 3.6% of matched bytes</title></rect>
+<rect x="150.0" y="1649" width="607.2" height="16" fill="#2a78d6"><title>paper4 len 4-7 - 68.2% of matched bytes</title></rect>
+<text x="453.6" y="1661.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">68%</text>
+<rect x="757.2" y="1649" width="234.6" height="16" fill="#eb6834"><title>paper4 8-15 - 26.4% of matched bytes</title></rect>
+<text x="874.5" y="1661.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">26%</text>
+<rect x="991.8" y="1649" width="48.2" height="16" fill="#1baf7a"><title>paper4 16-63 - 5.4% of matched bytes</title></rect>
+<text x="1015.9" y="1661.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
+<rect x="150.0" y="1671" width="564.0" height="16" fill="#2a78d6"><title>paper5 len 4-7 - 63.4% of matched bytes</title></rect>
+<text x="432.0" y="1683.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">63%</text>
+<rect x="714.0" y="1671" width="259.5" height="16" fill="#eb6834"><title>paper5 8-15 - 29.2% of matched bytes</title></rect>
+<text x="843.8" y="1683.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">29%</text>
+<rect x="973.5" y="1671" width="66.5" height="16" fill="#1baf7a"><title>paper5 16-63 - 7.5% of matched bytes</title></rect>
+<text x="1006.8" y="1683.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">7%</text>
+<rect x="150.0" y="1693" width="523.3" height="16" fill="#2a78d6"><title>paper6 len 4-7 - 58.8% of matched bytes</title></rect>
+<text x="411.7" y="1705.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">59%</text>
+<rect x="673.3" y="1693" width="236.2" height="16" fill="#eb6834"><title>paper6 8-15 - 26.5% of matched bytes</title></rect>
+<text x="791.4" y="1705.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">27%</text>
+<rect x="909.5" y="1693" width="101.6" height="16" fill="#1baf7a"><title>paper6 16-63 - 11.4% of matched bytes</title></rect>
+<text x="960.3" y="1705.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">11%</text>
+<rect x="1011.1" y="1693" width="28.9" height="16" fill="#eda100"><title>paper6 64-257 - 3.2% of matched bytes</title></rect>
+<rect x="150.0" y="1715" width="76.9" height="16" fill="#2a78d6"><title>pic len 4-7 - 8.6% of matched bytes</title></rect>
+<text x="188.5" y="1727.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
+<rect x="226.9" y="1715" width="55.8" height="16" fill="#eb6834"><title>pic 8-15 - 6.3% of matched bytes</title></rect>
+<text x="254.8" y="1727.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">6%</text>
+<rect x="282.7" y="1715" width="211.6" height="16" fill="#1baf7a"><title>pic 16-63 - 23.8% of matched bytes</title></rect>
+<text x="388.5" y="1727.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
+<rect x="494.4" y="1715" width="367.6" height="16" fill="#eda100"><title>pic 64-257 - 41.3% of matched bytes</title></rect>
+<text x="678.1" y="1727.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">41%</text>
+<rect x="861.9" y="1715" width="178.1" height="16" fill="#e87ba4"><title>pic 258+ - 20.0% of matched bytes</title></rect>
+<text x="951.0" y="1727.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">20%</text>
+<rect x="150.0" y="1737" width="487.1" height="16" fill="#2a78d6"><title>progc len 4-7 - 54.7% of matched bytes</title></rect>
+<text x="393.6" y="1749.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">55%</text>
+<rect x="637.1" y="1737" width="236.8" height="16" fill="#eb6834"><title>progc 8-15 - 26.6% of matched bytes</title></rect>
+<text x="755.5" y="1749.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">27%</text>
+<rect x="873.9" y="1737" width="151.0" height="16" fill="#1baf7a"><title>progc 16-63 - 17.0% of matched bytes</title></rect>
+<text x="949.4" y="1749.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">17%</text>
+<rect x="1024.9" y="1737" width="15.1" height="16" fill="#eda100"><title>progc 64-257 - 1.7% of matched bytes</title></rect>
+<rect x="150.0" y="1759" width="348.8" height="16" fill="#2a78d6"><title>progl len 4-7 - 39.2% of matched bytes</title></rect>
+<text x="324.4" y="1771.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">39%</text>
+<rect x="498.8" y="1759" width="214.0" height="16" fill="#eb6834"><title>progl 8-15 - 24.0% of matched bytes</title></rect>
+<text x="605.7" y="1771.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
+<rect x="712.7" y="1759" width="208.5" height="16" fill="#1baf7a"><title>progl 16-63 - 23.4% of matched bytes</title></rect>
+<text x="817.0" y="1771.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">23%</text>
+<rect x="921.2" y="1759" width="75.7" height="16" fill="#eda100"><title>progl 64-257 - 8.5% of matched bytes</title></rect>
+<text x="959.1" y="1771.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
+<rect x="996.9" y="1759" width="43.1" height="16" fill="#e87ba4"><title>progl 258+ - 4.8% of matched bytes</title></rect>
+<text x="1018.5" y="1771.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">5%</text>
+<rect x="150.0" y="1781" width="308.0" height="16" fill="#2a78d6"><title>progp len 4-7 - 34.6% of matched bytes</title></rect>
+<text x="304.0" y="1793.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">35%</text>
+<rect x="458.0" y="1781" width="226.8" height="16" fill="#eb6834"><title>progp 8-15 - 25.5% of matched bytes</title></rect>
+<text x="571.4" y="1793.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">25%</text>
+<rect x="684.8" y="1781" width="166.0" height="16" fill="#1baf7a"><title>progp 16-63 - 18.7% of matched bytes</title></rect>
+<text x="767.8" y="1793.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">19%</text>
+<rect x="850.9" y="1781" width="107.9" height="16" fill="#eda100"><title>progp 64-257 - 12.1% of matched bytes</title></rect>
+<text x="904.8" y="1793.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">12%</text>
+<rect x="958.7" y="1781" width="81.3" height="16" fill="#e87ba4"><title>progp 258+ - 9.1% of matched bytes</title></rect>
+<text x="999.4" y="1793.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">9%</text>
+<rect x="150.0" y="1803" width="207.3" height="16" fill="#2a78d6"><title>trans len 4-7 - 23.3% of matched bytes</title></rect>
+<text x="253.7" y="1815.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">23%</text>
+<rect x="357.3" y="1803" width="182.5" height="16" fill="#eb6834"><title>trans 8-15 - 20.5% of matched bytes</title></rect>
+<text x="448.6" y="1815.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">21%</text>
+<rect x="539.9" y="1803" width="234.5" height="16" fill="#1baf7a"><title>trans 16-63 - 26.3% of matched bytes</title></rect>
+<text x="657.1" y="1815.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">26%</text>
+<rect x="774.4" y="1803" width="195.2" height="16" fill="#eda100"><title>trans 64-257 - 21.9% of matched bytes</title></rect>
+<text x="872.0" y="1815.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">22%</text>
+<rect x="969.6" y="1803" width="70.4" height="16" fill="#e87ba4"><title>trans 258+ - 7.9% of matched bytes</title></rect>
+<text x="1004.8" y="1815.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">8%</text>
+<text x="150.0" y="1842.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">file size, printable share, most common byte</text>
+<text x="142.0" y="1881.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">bib</text>
+<text x="142.0" y="1903.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">book1</text>
+<text x="142.0" y="1925.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">book2</text>
+<text x="142.0" y="1947.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">geo</text>
+<text x="142.0" y="1969.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">news</text>
+<text x="142.0" y="1991.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">obj1</text>
+<text x="142.0" y="2013.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">obj2</text>
+<text x="142.0" y="2035.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper1</text>
+<text x="142.0" y="2057.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper2</text>
+<text x="142.0" y="2079.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper3</text>
+<text x="142.0" y="2101.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper4</text>
+<text x="142.0" y="2123.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper5</text>
+<text x="142.0" y="2145.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">paper6</text>
+<text x="142.0" y="2167.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">pic</text>
+<text x="142.0" y="2189.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progc</text>
+<text x="142.0" y="2211.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progl</text>
+<text x="142.0" y="2233.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">progp</text>
+<text x="142.0" y="2255.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">trans</text>
+<text x="420.0" y="1860.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">size</text>
+<text x="730.0" y="1860.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">printable</text>
+<text x="1040.0" y="1860.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">top byte</text>
+<rect x="150.0" y="1871" width="31.6" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="1881.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">108K</text>
+<rect x="460.0" y="1871" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="1881.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="1871" width="26.9" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="1881.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">12.3%</text>
+<rect x="150.0" y="1893" width="218.0" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="1903.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">750K</text>
+<rect x="460.0" y="1893" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="1903.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="1893" width="35.6" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="1903.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">16.3%</text>
+<rect x="150.0" y="1915" width="173.2" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="1925.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">596K</text>
+<rect x="460.0" y="1915" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="1925.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="1915" width="30.7" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="1925.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">14.1%</text>
+<rect x="150.0" y="1937" width="29.0" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="1947.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100K</text>
+<rect x="460.0" y="1937" width="73.6" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="1947.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">34%</text>
+<rect x="770.0" y="1937" width="60.9" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="1947.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">28.0%</text>
+<rect x="150.0" y="1959" width="106.9" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="1969.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">368K</text>
+<rect x="460.0" y="1959" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="1969.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="1959" width="31.4" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="1969.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">14.4%</text>
+<rect x="150.0" y="1981" width="6.1" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="1991.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">21K</text>
+<rect x="460.0" y="1981" width="67.5" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="1991.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">31%</text>
+<rect x="770.0" y="1981" width="56.3" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="1991.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">25.8%</text>
+<rect x="150.0" y="2003" width="70.0" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="2013.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">241K</text>
+<rect x="460.0" y="2003" width="95.7" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="2013.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">44%</text>
+<rect x="770.0" y="2003" width="31.4" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="2013.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">14.4%</text>
+<rect x="150.0" y="2025" width="15.1" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="2035.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">51K</text>
+<rect x="460.0" y="2025" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="2035.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="2025" width="29.9" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="2035.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">13.7%</text>
+<rect x="150.0" y="2047" width="23.3" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="2057.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">80K</text>
+<rect x="460.0" y="2047" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="2057.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="2047" width="32.1" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="2057.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">14.7%</text>
+<rect x="150.0" y="2069" width="13.2" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="2079.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">45K</text>
+<rect x="460.0" y="2069" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="2079.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="2069" width="28.8" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="2079.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">13.2%</text>
+<rect x="150.0" y="2091" width="3.8" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="2101.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">12K</text>
+<rect x="460.0" y="2091" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="2101.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="2091" width="32.1" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="2101.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">14.7%</text>
+<rect x="150.0" y="2113" width="3.4" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="2123.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">11K</text>
+<rect x="460.0" y="2113" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="2123.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="2113" width="34.1" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="2123.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">15.6%</text>
+<rect x="150.0" y="2135" width="10.8" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="2145.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">37K</text>
+<rect x="460.0" y="2135" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="2145.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="2135" width="32.7" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="2145.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">15.0%</text>
+<rect x="150.0" y="2157" width="145.5" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="2167.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">501K</text>
+<rect x="460.0" y="2157" width="3.8" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="2167.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">2%</text>
+<rect x="770.0" y="2157" width="189.9" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="2167.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">87.1%</text>
+<rect x="150.0" y="2179" width="11.2" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="2189.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">38K</text>
+<rect x="460.0" y="2179" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="2189.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="2179" width="38.1" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="2189.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">17.5%</text>
+<rect x="150.0" y="2201" width="20.3" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="2211.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">69K</text>
+<rect x="460.0" y="2201" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="2211.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="2201" width="37.2" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="2211.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">17.1%</text>
+<rect x="150.0" y="2223" width="14.0" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="2233.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">48K</text>
+<rect x="460.0" y="2223" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="2233.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="2223" width="50.7" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="2233.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">23.2%</text>
+<rect x="150.0" y="2245" width="26.6" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="2255.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">91K</text>
+<rect x="460.0" y="2245" width="198.3" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="2255.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">91%</text>
+<rect x="770.0" y="2245" width="23.0" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="2255.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">10.6%</text>
+<text x="16.0" y="2282.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">profile_corpus.py, entropy and deflate rates on whole files, parse statistics on sampled windows</text>
 </svg>

@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="740" viewBox="0 0 1080 740" font-family="system-ui, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="758" viewBox="0 0 1080 758" font-family="system-ui, sans-serif">
 <style>@media (prefers-color-scheme: dark){[fill="#fcfcfb"]{fill:#201f1d}[stroke="#fcfcfb"]{stroke:#201f1d}[fill="#0b0b0b"]{fill:#e8e6e3}[stroke="#0b0b0b"]{stroke:#e8e6e3}[fill="#52514e"]{fill:#a8a49d}[stroke="#52514e"]{stroke:#a8a49d}[fill="#e7e6e2"]{fill:#343230}[stroke="#e7e6e2"]{stroke:#343230}[fill="#c98500"]{fill:#d69a2d}[stroke="#c98500"]{stroke:#d69a2d}[fill="#eb6834"]{fill:#dd5c26}[stroke="#eb6834"]{stroke:#dd5c26}[fill="#eda100"]{fill:#c08800}[stroke="#eda100"]{stroke:#c08800}[fill="#e87ba4"]{fill:#d1678f}[stroke="#e87ba4"]{stroke:#d1678f}[fill="#4a3aa7"]{fill:#7263cf}[stroke="#4a3aa7"]{stroke:#7263cf}[fill="#a6339a"]{fill:#c257b5}[stroke="#a6339a"]{stroke:#c257b5}[fill="#7a7668"]{fill:#948e82}[stroke="#7a7668"]{stroke:#948e82}}</style>
-<rect width="1080" height="740" fill="#fcfcfb"/>
+<rect width="1080" height="758" fill="#fcfcfb"/>
 <text x="16.0" y="28.0" font-size="15" fill="#0b0b0b" text-anchor="start" font-weight="bold">artificial corpus profile</text>
 <text x="16.0" y="46.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">4 files, 292K total, greedy 4-byte parse over sampled 32K-history windows</text>
 <text x="150.0" y="82.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">byte value distribution, log intensity</text>
@@ -61,86 +61,86 @@
 <circle cx="837.4" cy="309.0" r="4.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>random.txt deflate level 1 - 6.18 bits/byte</title></circle>
 <circle cx="824.0" cy="309.0" r="4.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>random.txt deflate level 6 - 6.06 bits/byte</title></circle>
 <g opacity="0.35"><line x1="270.0" y1="346.0" x2="176.0" y2="346.0" stroke="#52514e" stroke-width="2"/><polygon points="170.0,346.0 179.0,342.0 179.0,350.0" fill="#52514e"/><text x="220.0" y="339.0" font-size="11" fill="#52514e" text-anchor="middle" transform="rotate(360.0 220.0 346.0)">better</text></g>
-<text x="150.0" y="356.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">greedy parse bytes by match distance</text>
-<text x="1040.0" y="356.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">4K-32K</text>
-<circle cx="1000.8" cy="352" r="4" fill="#eda100"/>
-<text x="986.8" y="356.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">257-4K</text>
-<circle cx="947.6" cy="352" r="4" fill="#1baf7a"/>
-<text x="933.6" y="356.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">17-256</text>
-<circle cx="894.4" cy="352" r="4" fill="#eb6834"/>
-<text x="880.4" y="356.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">dist 1-16</text>
-<circle cx="825.6" cy="352" r="4" fill="#2a78d6"/>
-<text x="811.6" y="356.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">literals</text>
-<circle cx="762.0" cy="352" r="4" fill="#7a7668"/>
-<text x="142.0" y="381.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">a.txt</text>
-<text x="142.0" y="403.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">aaa.txt</text>
-<text x="142.0" y="425.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">alphabet.txt</text>
-<text x="142.0" y="447.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">random.txt</text>
-<rect x="150.0" y="391" width="890.0" height="16" fill="#2a78d6"><title>aaa.txt dist 1-16 - 100.0%</title></rect>
-<text x="595.0" y="403.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">100%</text>
-<rect x="150.0" y="413" width="0.8" height="16" fill="#7a7668"><title>alphabet.txt literals - 0.1%</title></rect>
-<rect x="150.6" y="413" width="216.9" height="16" fill="#eb6834"><title>alphabet.txt 17-256 - 24.4%</title></rect>
-<text x="259.0" y="425.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
-<rect x="367.5" y="413" width="672.5" height="16" fill="#eda100"><title>alphabet.txt 4K-32K - 75.6%</title></rect>
-<text x="703.7" y="425.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">76%</text>
-<rect x="150.0" y="435" width="883.7" height="16" fill="#7a7668"><title>random.txt literals - 99.3%</title></rect>
-<text x="591.8" y="447.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">99%</text>
-<rect x="1033.7" y="435" width="0.8" height="16" fill="#eb6834"><title>random.txt 17-256 - 0.0%</title></rect>
-<rect x="1033.7" y="435" width="1.0" height="16" fill="#1baf7a"><title>random.txt 257-4K - 0.1%</title></rect>
-<rect x="1034.7" y="435" width="5.3" height="16" fill="#eda100"><title>random.txt 4K-32K - 0.6%</title></rect>
-<text x="150.0" y="474.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">matched bytes by match length</text>
-<text x="1040.0" y="474.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">258+</text>
-<circle cx="1011.2" cy="470" r="4" fill="#e87ba4"/>
-<text x="997.2" y="474.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">64-257</text>
-<circle cx="958.0" cy="470" r="4" fill="#eda100"/>
-<text x="944.0" y="474.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">16-63</text>
-<circle cx="910.0" cy="470" r="4" fill="#1baf7a"/>
-<text x="896.0" y="474.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">8-15</text>
-<circle cx="867.2" cy="470" r="4" fill="#eb6834"/>
-<text x="853.2" y="474.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">len 4-7</text>
-<circle cx="808.8" cy="470" r="4" fill="#2a78d6"/>
-<text x="142.0" y="499.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">a.txt</text>
-<text x="142.0" y="521.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">aaa.txt</text>
-<text x="142.0" y="543.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">alphabet.txt</text>
-<text x="142.0" y="565.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">random.txt</text>
-<text x="150.0" y="499.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">no matches</text>
-<rect x="150.0" y="509" width="890.0" height="16" fill="#e87ba4"><title>aaa.txt 258+ - 100.0% of matched bytes</title></rect>
-<text x="595.0" y="521.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">100%</text>
-<rect x="150.0" y="531" width="890.0" height="16" fill="#e87ba4"><title>alphabet.txt 258+ - 100.0% of matched bytes</title></rect>
-<text x="595.0" y="543.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">100%</text>
-<rect x="150.0" y="553" width="890.0" height="16" fill="#2a78d6"><title>random.txt len 4-7 - 100.0% of matched bytes</title></rect>
-<text x="595.0" y="565.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">100%</text>
-<text x="150.0" y="592.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">file size, printable share, most common byte</text>
-<text x="142.0" y="631.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">a.txt</text>
-<text x="142.0" y="653.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">aaa.txt</text>
-<text x="142.0" y="675.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">alphabet.txt</text>
-<text x="142.0" y="697.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">random.txt</text>
-<text x="420.0" y="610.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">size</text>
-<text x="730.0" y="610.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">printable</text>
-<text x="1040.0" y="610.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">top byte</text>
-<rect x="150.0" y="621" width="1.0" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="631.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">1</text>
-<rect x="460.0" y="621" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="631.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="621" width="218.0" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="631.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100.0%</text>
-<rect x="150.0" y="643" width="218.0" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="653.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">97K</text>
-<rect x="460.0" y="643" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="653.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="643" width="218.0" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="653.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100.0%</text>
-<rect x="150.0" y="665" width="218.0" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="675.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">97K</text>
-<rect x="460.0" y="665" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="675.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="665" width="8.4" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="675.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">3.8%</text>
-<rect x="150.0" y="687" width="218.0" height="12" rx="3" fill="#2a78d6"/>
-<text x="420.0" y="697.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">97K</text>
-<rect x="460.0" y="687" width="218.0" height="12" rx="3" fill="#eb6834"/>
-<text x="730.0" y="697.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<rect x="770.0" y="687" width="3.6" height="12" rx="3" fill="#1baf7a"/>
-<text x="1040.0" y="697.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">1.7%</text>
-<text x="16.0" y="724.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">profile_corpus.py, entropy and deflate rates on whole files, parse statistics on sampled windows</text>
+<text x="150.0" y="374.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">greedy parse bytes by match distance</text>
+<text x="1040.0" y="374.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">4K-32K</text>
+<circle cx="1000.8" cy="370" r="4" fill="#eda100"/>
+<text x="986.8" y="374.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">257-4K</text>
+<circle cx="947.6" cy="370" r="4" fill="#1baf7a"/>
+<text x="933.6" y="374.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">17-256</text>
+<circle cx="894.4" cy="370" r="4" fill="#eb6834"/>
+<text x="880.4" y="374.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">dist 1-16</text>
+<circle cx="825.6" cy="370" r="4" fill="#2a78d6"/>
+<text x="811.6" y="374.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">literals</text>
+<circle cx="762.0" cy="370" r="4" fill="#7a7668"/>
+<text x="142.0" y="399.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">a.txt</text>
+<text x="142.0" y="421.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">aaa.txt</text>
+<text x="142.0" y="443.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">alphabet.txt</text>
+<text x="142.0" y="465.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">random.txt</text>
+<rect x="150.0" y="409" width="890.0" height="16" fill="#2a78d6"><title>aaa.txt dist 1-16 - 100.0%</title></rect>
+<text x="595.0" y="421.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">100%</text>
+<rect x="150.0" y="431" width="0.8" height="16" fill="#7a7668"><title>alphabet.txt literals - 0.1%</title></rect>
+<rect x="150.6" y="431" width="216.9" height="16" fill="#eb6834"><title>alphabet.txt 17-256 - 24.4%</title></rect>
+<text x="259.0" y="443.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">24%</text>
+<rect x="367.5" y="431" width="672.5" height="16" fill="#eda100"><title>alphabet.txt 4K-32K - 75.6%</title></rect>
+<text x="703.7" y="443.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">76%</text>
+<rect x="150.0" y="453" width="883.7" height="16" fill="#7a7668"><title>random.txt literals - 99.3%</title></rect>
+<text x="591.8" y="465.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">99%</text>
+<rect x="1033.7" y="453" width="0.8" height="16" fill="#eb6834"><title>random.txt 17-256 - 0.0%</title></rect>
+<rect x="1033.7" y="453" width="1.0" height="16" fill="#1baf7a"><title>random.txt 257-4K - 0.1%</title></rect>
+<rect x="1034.7" y="453" width="5.3" height="16" fill="#eda100"><title>random.txt 4K-32K - 0.6%</title></rect>
+<text x="150.0" y="492.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">matched bytes by match length</text>
+<text x="1040.0" y="492.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">258+</text>
+<circle cx="1011.2" cy="488" r="4" fill="#e87ba4"/>
+<text x="997.2" y="492.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">64-257</text>
+<circle cx="958.0" cy="488" r="4" fill="#eda100"/>
+<text x="944.0" y="492.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">16-63</text>
+<circle cx="910.0" cy="488" r="4" fill="#1baf7a"/>
+<text x="896.0" y="492.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">8-15</text>
+<circle cx="867.2" cy="488" r="4" fill="#eb6834"/>
+<text x="853.2" y="492.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">len 4-7</text>
+<circle cx="808.8" cy="488" r="4" fill="#2a78d6"/>
+<text x="142.0" y="517.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">a.txt</text>
+<text x="142.0" y="539.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">aaa.txt</text>
+<text x="142.0" y="561.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">alphabet.txt</text>
+<text x="142.0" y="583.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">random.txt</text>
+<text x="150.0" y="517.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">no matches</text>
+<rect x="150.0" y="527" width="890.0" height="16" fill="#e87ba4"><title>aaa.txt 258+ - 100.0% of matched bytes</title></rect>
+<text x="595.0" y="539.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">100%</text>
+<rect x="150.0" y="549" width="890.0" height="16" fill="#e87ba4"><title>alphabet.txt 258+ - 100.0% of matched bytes</title></rect>
+<text x="595.0" y="561.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">100%</text>
+<rect x="150.0" y="571" width="890.0" height="16" fill="#2a78d6"><title>random.txt len 4-7 - 100.0% of matched bytes</title></rect>
+<text x="595.0" y="583.0" font-size="9" fill="#fcfcfb" text-anchor="middle" font-weight="normal">100%</text>
+<text x="150.0" y="610.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">file size, printable share, most common byte</text>
+<text x="142.0" y="649.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">a.txt</text>
+<text x="142.0" y="671.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">aaa.txt</text>
+<text x="142.0" y="693.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">alphabet.txt</text>
+<text x="142.0" y="715.0" font-size="10" fill="#52514e" text-anchor="end" font-weight="normal">random.txt</text>
+<text x="420.0" y="628.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">size</text>
+<text x="730.0" y="628.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">printable</text>
+<text x="1040.0" y="628.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">top byte</text>
+<rect x="150.0" y="639" width="1.0" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="649.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">1</text>
+<rect x="460.0" y="639" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="649.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="639" width="218.0" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="649.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100.0%</text>
+<rect x="150.0" y="661" width="218.0" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="671.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">97K</text>
+<rect x="460.0" y="661" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="671.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="661" width="218.0" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="671.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100.0%</text>
+<rect x="150.0" y="683" width="218.0" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="693.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">97K</text>
+<rect x="460.0" y="683" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="693.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="683" width="8.4" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="693.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">3.8%</text>
+<rect x="150.0" y="705" width="218.0" height="12" rx="3" fill="#2a78d6"/>
+<text x="420.0" y="715.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">97K</text>
+<rect x="460.0" y="705" width="218.0" height="12" rx="3" fill="#eb6834"/>
+<text x="730.0" y="715.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
+<rect x="770.0" y="705" width="3.6" height="12" rx="3" fill="#1baf7a"/>
+<text x="1040.0" y="715.0" font-size="9" fill="#52514e" text-anchor="end" font-weight="normal">1.7%</text>
+<text x="16.0" y="742.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">profile_corpus.py, entropy and deflate rates on whole files, parse statistics on sampled windows</text>
 </svg>
