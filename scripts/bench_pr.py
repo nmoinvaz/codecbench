@@ -90,9 +90,10 @@ def main():
     ap = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("pr", type=int, help="zlib-ng/zlib-ng pull request number")
-    ap.add_argument("--filter",
-                    default=r"tars/[^/]+/level:[0-9]$|^codec_inflate/tars/[^/]+$",
-                    help="benchmark filter regex (default: tar levels plus inflate)")
+    ap.add_argument("--filter", default=None,
+                    help="benchmark filter regex (default: tar levels plus "
+                         "inflate, widened to the synthetic rows when "
+                         "--data-types is given)")
     ap.add_argument("--data-types", default=None,
                     help="synthetic data types to include (type,..|all)")
     ap.add_argument("--reps", type=int, default=3)
@@ -102,6 +103,11 @@ def main():
                     help="also render a comparison chart")
     ap.add_argument("--workdir", default=str(ROOT / ".pr-bench"))
     args = ap.parse_args()
+
+    if args.filter is None:
+        args.filter = r"tars/[^/]+/level:[0-9]$|^codec_inflate/tars/[^/]+$"
+        if args.data_types:
+            args.filter += r"|/data/"
 
     workdir = Path(args.workdir).resolve()
     workdir.mkdir(parents=True, exist_ok=True)
