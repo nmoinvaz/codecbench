@@ -968,7 +968,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                             f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
                             f'<title>{esc(tip)}</title></circle>')
         better_arrow(svg, 1038, ctop + 92, 1038, ctop + 30)
-        body_bottom = ctop + cfh + 56
+        body_bottom = ctop + cfh + 44
 
     # Match-distance facets, one benchmark per distance across the copy
     # dispatch arms, inflate beside deflate at the lazy level
@@ -1040,7 +1040,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                             f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
                             f'<title>{esc(tip)}</title></circle>')
         better_arrow(svg, 1038, dtop + 92, 1038, dtop + 30)
-        body_bottom = dtop + dfh + 56
+        body_bottom = dtop + dfh + 44
 
     # Per-file corpus inflate, each member of the tar on the x axis
     file_labels = sorted(set().union(*(set(p["inflate_files"]) for p in points)))
