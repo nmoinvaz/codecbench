@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="4006" viewBox="0 0 1080 4006" font-family="system-ui, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="4002" viewBox="0 0 1080 4002" font-family="system-ui, sans-serif">
 <style>@media (prefers-color-scheme: dark){[fill="#fcfcfb"]{fill:#201f1d}[stroke="#fcfcfb"]{stroke:#201f1d}[fill="#0b0b0b"]{fill:#e8e6e3}[stroke="#0b0b0b"]{stroke:#e8e6e3}[fill="#52514e"]{fill:#a8a49d}[stroke="#52514e"]{stroke:#a8a49d}[fill="#e7e6e2"]{fill:#343230}[stroke="#e7e6e2"]{stroke:#343230}[fill="#c98500"]{fill:#d69a2d}[stroke="#c98500"]{stroke:#d69a2d}[fill="#eb6834"]{fill:#dd5c26}[stroke="#eb6834"]{stroke:#dd5c26}[fill="#eda100"]{fill:#c08800}[stroke="#eda100"]{stroke:#c08800}[fill="#e87ba4"]{fill:#d1678f}[stroke="#e87ba4"]{stroke:#d1678f}[fill="#4a3aa7"]{fill:#7263cf}[stroke="#4a3aa7"]{stroke:#7263cf}[fill="#a6339a"]{fill:#c257b5}[stroke="#a6339a"]{stroke:#c257b5}[fill="#7a7668"]{fill:#948e82}[stroke="#7a7668"]{stroke:#948e82}}</style>
-<rect width="1080" height="4006" fill="#fcfcfb"/>
+<rect width="1080" height="4002" fill="#fcfcfb"/>
 <text x="16.0" y="28.0" font-size="15" fill="#0b0b0b" text-anchor="start" font-weight="bold">zlibng vs 8 other codecs</text>
 <text x="1064.0" y="52.0" font-size="12" fill="#0b0b0b" text-anchor="end" font-weight="normal">slz</text>
 <circle cx="1030.4" cy="48" r="5" fill="#a6339a"/>
@@ -2574,114 +2574,270 @@
 <circle cx="902.2" cy="3584.5" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:9 silesia/x-ray - 99.33% of madler_zlib</title></circle>
 <circle cx="980.8" cy="3573.6" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz deflate level:9 silesia/xml - 99.95% of madler_zlib</title></circle>
 <g opacity="0.35"><line x1="1038.0" y1="3506.0" x2="1038.0" y2="3562.0" stroke="#52514e" stroke-width="2"/><polygon points="1038.0,3568.0 1034.0,3559.0 1042.0,3559.0" fill="#52514e"/><text x="1038.0" y="3530.0" font-size="11" fill="#52514e" text-anchor="middle" transform="rotate(90.0 1038.0 3537.0)">better</text></g>
-<text x="78.0" y="3716.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">literal share of deflate symbols by level</text>
-<line x1="78.0" y1="3886.7" x2="1020.0" y2="3886.7" stroke="#e7e6e2" stroke-width="1"/>
-<text x="1016.0" y="3883.7" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">50%</text>
-<line x1="78.0" y1="3856.2" x2="1020.0" y2="3856.2" stroke="#e7e6e2" stroke-width="1"/>
-<text x="1016.0" y="3853.2" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">60%</text>
-<line x1="78.0" y1="3825.6" x2="1020.0" y2="3825.6" stroke="#e7e6e2" stroke-width="1"/>
-<text x="1016.0" y="3822.6" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">70%</text>
-<line x1="78.0" y1="3795.1" x2="1020.0" y2="3795.1" stroke="#e7e6e2" stroke-width="1"/>
-<text x="1016.0" y="3792.1" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">80%</text>
-<line x1="78.0" y1="3764.5" x2="1020.0" y2="3764.5" stroke="#e7e6e2" stroke-width="1"/>
-<text x="1016.0" y="3761.5" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">90%</text>
-<line x1="78.0" y1="3734.0" x2="1020.0" y2="3734.0" stroke="#e7e6e2" stroke-width="1"/>
-<text x="1016.0" y="3731.0" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">100%</text>
-<line x1="78.0" y1="3904.0" x2="1020.0" y2="3904.0" stroke="#52514e" stroke-width="1"/>
-<text x="78.0" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">0</text>
-<text x="156.5" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">1</text>
-<text x="235.0" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">2</text>
-<text x="313.5" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">3</text>
-<text x="392.0" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">4</text>
-<text x="470.5" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">5</text>
-<text x="549.0" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">6</text>
-<text x="627.5" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">7</text>
-<text x="706.0" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">8</text>
-<text x="784.5" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">9</text>
-<text x="863.0" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">10</text>
-<text x="941.5" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">11</text>
+<text x="78.0" y="3716.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">literal share of symbols</text>
+<line x1="78.0" y1="3878.3" x2="376.0" y2="3878.3" stroke="#e7e6e2" stroke-width="1"/>
+<text x="372.0" y="3875.3" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">50%</text>
+<line x1="78.0" y1="3846.9" x2="376.0" y2="3846.9" stroke="#e7e6e2" stroke-width="1"/>
+<text x="372.0" y="3843.9" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">55%</text>
+<line x1="78.0" y1="3815.6" x2="376.0" y2="3815.6" stroke="#e7e6e2" stroke-width="1"/>
+<text x="372.0" y="3812.6" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">60%</text>
+<line x1="78.0" y1="3784.2" x2="376.0" y2="3784.2" stroke="#e7e6e2" stroke-width="1"/>
+<text x="372.0" y="3781.2" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">65%</text>
+<line x1="78.0" y1="3752.9" x2="376.0" y2="3752.9" stroke="#e7e6e2" stroke-width="1"/>
+<text x="372.0" y="3749.9" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">70%</text>
+<line x1="78.0" y1="3904.0" x2="376.0" y2="3904.0" stroke="#52514e" stroke-width="1"/>
+<text x="105.1" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">2</text>
+<text x="159.3" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">4</text>
+<text x="213.5" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">6</text>
+<text x="267.6" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">8</text>
+<text x="321.8" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">10</text>
+<text x="376.0" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">12</text>
+<text x="227.0" y="3932.0" font-size="10" fill="#52514e" text-anchor="middle" font-weight="normal">level</text>
+<path d="M78.0,3767.8 L105.1,3776.5 L132.2,3779.9 L159.3,3773.2 L186.4,3763.6 L213.5,3762.7 L240.5,3746.4 L267.6,3745.4 L294.7,3837.0" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="78.0" cy="3767.8" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:1 - literal share of symbols 68%</title></circle>
+<circle cx="105.1" cy="3776.5" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:2 - literal share of symbols 66%</title></circle>
+<circle cx="132.2" cy="3779.9" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:3 - literal share of symbols 66%</title></circle>
+<circle cx="159.3" cy="3773.2" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:4 - literal share of symbols 67%</title></circle>
+<circle cx="186.4" cy="3763.6" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:5 - literal share of symbols 68%</title></circle>
+<circle cx="213.5" cy="3762.7" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 - literal share of symbols 68%</title></circle>
+<circle cx="240.5" cy="3746.4" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:7 - literal share of symbols 71%</title></circle>
+<circle cx="267.6" cy="3745.4" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:8 - literal share of symbols 71%</title></circle>
+<circle cx="294.7" cy="3837.0" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:9 - literal share of symbols 57%</title></circle>
+<path d="M78.0,3767.8 L105.1,3776.5 L132.2,3779.9 L159.3,3773.2 L186.4,3763.6 L213.5,3762.7 L240.5,3747.1 L267.6,3745.7 L294.7,3837.0" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="78.0" cy="3767.8" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:1 - literal share of symbols 68%</title></circle>
+<circle cx="105.1" cy="3776.5" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:2 - literal share of symbols 66%</title></circle>
+<circle cx="132.2" cy="3779.9" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:3 - literal share of symbols 66%</title></circle>
+<circle cx="159.3" cy="3773.2" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:4 - literal share of symbols 67%</title></circle>
+<circle cx="186.4" cy="3763.6" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:5 - literal share of symbols 68%</title></circle>
+<circle cx="213.5" cy="3762.7" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 - literal share of symbols 68%</title></circle>
+<circle cx="240.5" cy="3747.1" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:7 - literal share of symbols 71%</title></circle>
+<circle cx="267.6" cy="3745.7" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:8 - literal share of symbols 71%</title></circle>
+<circle cx="294.7" cy="3837.0" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:9 - literal share of symbols 57%</title></circle>
+<path d="M78.0,3894.9 L105.1,3894.2 L132.2,3891.8 L159.3,3837.6 L186.4,3813.3 L213.5,3809.5 L240.5,3807.4 L267.6,3805.0 L294.7,3804.7" fill="none" stroke="#1baf7a" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="78.0" cy="3894.9" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:1 - literal share of symbols 47%</title></circle>
+<circle cx="105.1" cy="3894.2" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:2 - literal share of symbols 47%</title></circle>
+<circle cx="132.2" cy="3891.8" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:3 - literal share of symbols 48%</title></circle>
+<circle cx="159.3" cy="3837.6" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:4 - literal share of symbols 56%</title></circle>
+<circle cx="186.4" cy="3813.3" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:5 - literal share of symbols 60%</title></circle>
+<circle cx="213.5" cy="3809.5" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:6 - literal share of symbols 61%</title></circle>
+<circle cx="240.5" cy="3807.4" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:7 - literal share of symbols 61%</title></circle>
+<circle cx="267.6" cy="3805.0" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:8 - literal share of symbols 62%</title></circle>
+<circle cx="294.7" cy="3804.7" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:9 - literal share of symbols 62%</title></circle>
+<path d="M78.0,3773.6 L105.1,3773.1 L132.2,3770.3 L159.3,3776.2 L186.4,3750.9 L213.5,3748.6 L240.5,3747.1 L267.6,3745.7 L294.7,3745.5" fill="none" stroke="#eda100" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="78.0" cy="3773.6" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:1 - literal share of symbols 67%</title></circle>
+<circle cx="105.1" cy="3773.1" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:2 - literal share of symbols 67%</title></circle>
+<circle cx="132.2" cy="3770.3" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:3 - literal share of symbols 67%</title></circle>
+<circle cx="159.3" cy="3776.2" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:4 - literal share of symbols 66%</title></circle>
+<circle cx="186.4" cy="3750.9" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:5 - literal share of symbols 70%</title></circle>
+<circle cx="213.5" cy="3748.6" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:6 - literal share of symbols 71%</title></circle>
+<circle cx="240.5" cy="3747.1" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:7 - literal share of symbols 71%</title></circle>
+<circle cx="267.6" cy="3745.7" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:8 - literal share of symbols 71%</title></circle>
+<circle cx="294.7" cy="3745.5" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:9 - literal share of symbols 71%</title></circle>
+<path d="M78.0,3785.2 L105.1,3833.9 L132.2,3830.0 L159.3,3827.6 L186.4,3807.3 L213.5,3804.1 L240.5,3802.3 L267.6,3785.4 L294.7,3784.9 L321.8,3820.4 L348.9,3818.7 L376.0,3817.6" fill="none" stroke="#e87ba4" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="78.0" cy="3785.2" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:1 - literal share of symbols 65%</title></circle>
+<circle cx="105.1" cy="3833.9" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:2 - literal share of symbols 57%</title></circle>
+<circle cx="132.2" cy="3830.0" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:3 - literal share of symbols 58%</title></circle>
+<circle cx="159.3" cy="3827.6" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:4 - literal share of symbols 58%</title></circle>
+<circle cx="186.4" cy="3807.3" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:5 - literal share of symbols 61%</title></circle>
+<circle cx="213.5" cy="3804.1" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:6 - literal share of symbols 62%</title></circle>
+<circle cx="240.5" cy="3802.3" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:7 - literal share of symbols 62%</title></circle>
+<circle cx="267.6" cy="3785.4" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:8 - literal share of symbols 65%</title></circle>
+<circle cx="294.7" cy="3784.9" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:9 - literal share of symbols 65%</title></circle>
+<circle cx="321.8" cy="3820.4" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:10 - literal share of symbols 59%</title></circle>
+<circle cx="348.9" cy="3818.7" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:11 - literal share of symbols 59%</title></circle>
+<circle cx="376.0" cy="3817.6" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:12 - literal share of symbols 60%</title></circle>
+<path d="M78.0,3755.2 L105.1,3778.1 L132.2,3781.6" fill="none" stroke="#008300" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="78.0" cy="3755.2" r="3" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal level:1 - literal share of symbols 70%</title></circle>
+<circle cx="105.1" cy="3778.1" r="3" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal level:2 - literal share of symbols 66%</title></circle>
+<circle cx="132.2" cy="3781.6" r="3" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal level:3 - literal share of symbols 65%</title></circle>
+<path d="M78.0,3885.1 L105.1,3874.5 L132.2,3864.2 L159.3,3822.2 L186.4,3821.3 L213.5,3818.7 L240.5,3817.8 L267.6,3817.3 L294.7,3817.2 L321.8,3816.9" fill="none" stroke="#4a3aa7" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="78.0" cy="3885.1" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:1 - literal share of symbols 49%</title></circle>
+<circle cx="105.1" cy="3874.5" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:2 - literal share of symbols 51%</title></circle>
+<circle cx="132.2" cy="3864.2" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:3 - literal share of symbols 52%</title></circle>
+<circle cx="159.3" cy="3822.2" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:4 - literal share of symbols 59%</title></circle>
+<circle cx="186.4" cy="3821.3" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:5 - literal share of symbols 59%</title></circle>
+<circle cx="213.5" cy="3818.7" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:6 - literal share of symbols 60%</title></circle>
+<circle cx="240.5" cy="3817.8" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:7 - literal share of symbols 60%</title></circle>
+<circle cx="267.6" cy="3817.3" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:8 - literal share of symbols 60%</title></circle>
+<circle cx="294.7" cy="3817.2" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:9 - literal share of symbols 60%</title></circle>
+<circle cx="321.8" cy="3816.9" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:10 - literal share of symbols 60%</title></circle>
+<circle cx="186.4" cy="3813.4" r="3" fill="#e34948" stroke="#fcfcfb" stroke-width="1.5"><title>libcompression level:5 - literal share of symbols 60%</title></circle>
+<circle cx="78.0" cy="3743.1" r="3" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz level:1 - literal share of symbols 72%</title></circle>
+<text x="400.0" y="3716.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">average match length</text>
+<line x1="400.0" y1="3853.2" x2="698.0" y2="3853.2" stroke="#e7e6e2" stroke-width="1"/>
+<text x="694.0" y="3850.2" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">8 B</text>
+<line x1="400.0" y1="3796.8" x2="698.0" y2="3796.8" stroke="#e7e6e2" stroke-width="1"/>
+<text x="694.0" y="3793.8" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">10 B</text>
+<line x1="400.0" y1="3740.4" x2="698.0" y2="3740.4" stroke="#e7e6e2" stroke-width="1"/>
+<text x="694.0" y="3737.4" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">12 B</text>
+<line x1="400.0" y1="3904.0" x2="698.0" y2="3904.0" stroke="#52514e" stroke-width="1"/>
+<text x="427.1" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">2</text>
+<text x="481.3" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">4</text>
+<text x="535.5" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">6</text>
+<text x="589.6" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">8</text>
+<text x="643.8" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">10</text>
+<text x="698.0" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">12</text>
+<text x="549.0" y="3932.0" font-size="10" fill="#52514e" text-anchor="middle" font-weight="normal">level</text>
+<path d="M400.0,3830.9 L427.1,3813.0 L454.2,3800.6 L481.3,3783.7 L508.4,3768.8 L535.5,3764.6 L562.5,3745.0 L589.6,3743.1 L616.7,3798.4" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="400.0" cy="3830.9" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:1 - average match length 9 B</title></circle>
+<circle cx="427.1" cy="3813.0" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:2 - average match length 9 B</title></circle>
+<circle cx="454.2" cy="3800.6" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:3 - average match length 10 B</title></circle>
+<circle cx="481.3" cy="3783.7" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:4 - average match length 10 B</title></circle>
+<circle cx="508.4" cy="3768.8" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:5 - average match length 11 B</title></circle>
+<circle cx="535.5" cy="3764.6" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 - average match length 11 B</title></circle>
+<circle cx="562.5" cy="3745.0" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:7 - average match length 12 B</title></circle>
+<circle cx="589.6" cy="3743.1" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:8 - average match length 12 B</title></circle>
+<circle cx="616.7" cy="3798.4" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:9 - average match length 10 B</title></circle>
+<path d="M400.0,3830.9 L427.1,3813.0 L454.2,3800.6 L481.3,3783.7 L508.4,3768.8 L535.5,3764.6 L562.5,3746.2 L589.6,3743.6 L616.7,3798.4" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="400.0" cy="3830.9" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:1 - average match length 9 B</title></circle>
+<circle cx="427.1" cy="3813.0" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:2 - average match length 9 B</title></circle>
+<circle cx="454.2" cy="3800.6" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:3 - average match length 10 B</title></circle>
+<circle cx="481.3" cy="3783.7" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:4 - average match length 10 B</title></circle>
+<circle cx="508.4" cy="3768.8" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:5 - average match length 11 B</title></circle>
+<circle cx="535.5" cy="3764.6" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 - average match length 11 B</title></circle>
+<circle cx="562.5" cy="3746.2" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:7 - average match length 12 B</title></circle>
+<circle cx="589.6" cy="3743.6" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:8 - average match length 12 B</title></circle>
+<circle cx="616.7" cy="3798.4" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:9 - average match length 10 B</title></circle>
+<path d="M400.0,3873.2 L427.1,3860.9 L454.2,3846.9 L481.3,3825.7 L508.4,3800.8 L535.5,3790.6 L562.5,3787.4 L589.6,3784.4 L616.7,3783.9" fill="none" stroke="#1baf7a" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="400.0" cy="3873.2" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:1 - average match length 7 B</title></circle>
+<circle cx="427.1" cy="3860.9" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:2 - average match length 8 B</title></circle>
+<circle cx="454.2" cy="3846.9" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:3 - average match length 8 B</title></circle>
+<circle cx="481.3" cy="3825.7" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:4 - average match length 9 B</title></circle>
+<circle cx="508.4" cy="3800.8" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:5 - average match length 10 B</title></circle>
+<circle cx="535.5" cy="3790.6" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:6 - average match length 10 B</title></circle>
+<circle cx="562.5" cy="3787.4" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:7 - average match length 10 B</title></circle>
+<circle cx="589.6" cy="3784.4" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:8 - average match length 10 B</title></circle>
+<circle cx="616.7" cy="3783.9" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:9 - average match length 10 B</title></circle>
+<path d="M400.0,3813.5 L427.1,3802.7 L454.2,3791.8 L481.3,3790.4 L508.4,3755.9 L535.5,3748.9 L562.5,3746.2 L589.6,3743.6 L616.7,3743.1" fill="none" stroke="#eda100" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="400.0" cy="3813.5" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:1 - average match length 9 B</title></circle>
+<circle cx="427.1" cy="3802.7" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:2 - average match length 10 B</title></circle>
+<circle cx="454.2" cy="3791.8" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:3 - average match length 10 B</title></circle>
+<circle cx="481.3" cy="3790.4" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:4 - average match length 10 B</title></circle>
+<circle cx="508.4" cy="3755.9" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:5 - average match length 11 B</title></circle>
+<circle cx="535.5" cy="3748.9" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:6 - average match length 12 B</title></circle>
+<circle cx="562.5" cy="3746.2" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:7 - average match length 12 B</title></circle>
+<circle cx="589.6" cy="3743.6" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:8 - average match length 12 B</title></circle>
+<circle cx="616.7" cy="3743.1" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:9 - average match length 12 B</title></circle>
+<path d="M400.0,3817.5 L427.1,3828.2 L454.2,3820.0 L481.3,3814.5 L508.4,3796.1 L535.5,3789.5 L562.5,3785.3 L589.6,3773.3 L616.7,3772.5 L643.8,3795.9 L670.9,3795.5 L698.0,3795.0" fill="none" stroke="#e87ba4" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="400.0" cy="3817.5" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:1 - average match length 9 B</title></circle>
+<circle cx="427.1" cy="3828.2" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:2 - average match length 9 B</title></circle>
+<circle cx="454.2" cy="3820.0" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:3 - average match length 9 B</title></circle>
+<circle cx="481.3" cy="3814.5" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:4 - average match length 9 B</title></circle>
+<circle cx="508.4" cy="3796.1" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:5 - average match length 10 B</title></circle>
+<circle cx="535.5" cy="3789.5" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:6 - average match length 10 B</title></circle>
+<circle cx="562.5" cy="3785.3" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:7 - average match length 10 B</title></circle>
+<circle cx="589.6" cy="3773.3" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:8 - average match length 11 B</title></circle>
+<circle cx="616.7" cy="3772.5" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:9 - average match length 11 B</title></circle>
+<circle cx="643.8" cy="3795.9" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:10 - average match length 10 B</title></circle>
+<circle cx="670.9" cy="3795.5" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:11 - average match length 10 B</title></circle>
+<circle cx="698.0" cy="3795.0" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:12 - average match length 10 B</title></circle>
+<path d="M400.0,3826.8 L427.1,3831.7 L454.2,3825.0" fill="none" stroke="#008300" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="400.0" cy="3826.8" r="3" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal level:1 - average match length 9 B</title></circle>
+<circle cx="427.1" cy="3831.7" r="3" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal level:2 - average match length 9 B</title></circle>
+<circle cx="454.2" cy="3825.0" r="3" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal level:3 - average match length 9 B</title></circle>
+<path d="M400.0,3894.9 L427.1,3863.8 L454.2,3830.9 L481.3,3808.8 L508.4,3802.1 L535.5,3793.6 L562.5,3791.7 L589.6,3790.7 L616.7,3790.4 L643.8,3790.1" fill="none" stroke="#4a3aa7" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="400.0" cy="3894.9" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:1 - average match length 7 B</title></circle>
+<circle cx="427.1" cy="3863.8" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:2 - average match length 8 B</title></circle>
+<circle cx="454.2" cy="3830.9" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:3 - average match length 9 B</title></circle>
+<circle cx="481.3" cy="3808.8" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:4 - average match length 10 B</title></circle>
+<circle cx="508.4" cy="3802.1" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:5 - average match length 10 B</title></circle>
+<circle cx="535.5" cy="3793.6" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:6 - average match length 10 B</title></circle>
+<circle cx="562.5" cy="3791.7" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:7 - average match length 10 B</title></circle>
+<circle cx="589.6" cy="3790.7" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:8 - average match length 10 B</title></circle>
+<circle cx="616.7" cy="3790.4" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:9 - average match length 10 B</title></circle>
+<circle cx="643.8" cy="3790.1" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:10 - average match length 10 B</title></circle>
+<circle cx="508.4" cy="3800.0" r="3" fill="#e34948" stroke="#fcfcfb" stroke-width="1.5"><title>libcompression level:5 - average match length 10 B</title></circle>
+<circle cx="400.0" cy="3825.2" r="3" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz level:1 - average match length 9 B</title></circle>
+<text x="722.0" y="3716.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">symbols per KiB of output</text>
+<line x1="722.0" y1="3894.5" x2="1020.0" y2="3894.5" stroke="#e7e6e2" stroke-width="1"/>
+<text x="1016.0" y="3891.5" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">210</text>
+<line x1="722.0" y1="3850.3" x2="1020.0" y2="3850.3" stroke="#e7e6e2" stroke-width="1"/>
+<text x="1016.0" y="3847.3" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">240</text>
+<line x1="722.0" y1="3806.1" x2="1020.0" y2="3806.1" stroke="#e7e6e2" stroke-width="1"/>
+<text x="1016.0" y="3803.1" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">270</text>
+<line x1="722.0" y1="3761.9" x2="1020.0" y2="3761.9" stroke="#e7e6e2" stroke-width="1"/>
+<text x="1016.0" y="3758.9" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">300</text>
+<line x1="722.0" y1="3904.0" x2="1020.0" y2="3904.0" stroke="#52514e" stroke-width="1"/>
+<text x="749.1" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">2</text>
+<text x="803.3" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">4</text>
+<text x="857.5" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">6</text>
+<text x="911.6" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">8</text>
+<text x="965.8" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">10</text>
 <text x="1020.0" y="3918.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">12</text>
-<text x="549.0" y="3934.0" font-size="11" fill="#52514e" text-anchor="middle" font-weight="normal">level</text>
-<path d="M78.0,3734.0 L156.5,3832.9 L235.0,3837.1 L313.5,3838.8 L392.0,3835.6 L470.5,3830.9 L549.0,3830.4 L627.5,3822.5 L706.0,3822.0 L784.5,3866.7" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="78.0" cy="3734.0" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:0 - 100.0% literal symbols</title></circle>
-<circle cx="156.5" cy="3832.9" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:1 - 67.6% literal symbols</title></circle>
-<circle cx="235.0" cy="3837.1" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:2 - 66.2% literal symbols</title></circle>
-<circle cx="313.5" cy="3838.8" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:3 - 65.7% literal symbols</title></circle>
-<circle cx="392.0" cy="3835.6" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:4 - 66.8% literal symbols</title></circle>
-<circle cx="470.5" cy="3830.9" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:5 - 68.3% literal symbols</title></circle>
-<circle cx="549.0" cy="3830.4" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 - 68.4% literal symbols</title></circle>
-<circle cx="627.5" cy="3822.5" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:7 - 71.0% literal symbols</title></circle>
-<circle cx="706.0" cy="3822.0" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:8 - 71.2% literal symbols</title></circle>
-<circle cx="784.5" cy="3866.7" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:9 - 56.6% literal symbols</title></circle>
-<path d="M78.0,3734.0 L156.5,3832.9 L235.0,3837.1 L313.5,3838.8 L392.0,3835.6 L470.5,3830.9 L549.0,3830.4 L627.5,3822.9 L706.0,3822.1 L784.5,3866.7" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="78.0" cy="3734.0" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:0 - 100.0% literal symbols</title></circle>
-<circle cx="156.5" cy="3832.9" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:1 - 67.6% literal symbols</title></circle>
-<circle cx="235.0" cy="3837.1" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:2 - 66.2% literal symbols</title></circle>
-<circle cx="313.5" cy="3838.8" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:3 - 65.7% literal symbols</title></circle>
-<circle cx="392.0" cy="3835.6" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:4 - 66.8% literal symbols</title></circle>
-<circle cx="470.5" cy="3830.9" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:5 - 68.3% literal symbols</title></circle>
-<circle cx="549.0" cy="3830.4" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 - 68.4% literal symbols</title></circle>
-<circle cx="627.5" cy="3822.9" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:7 - 70.9% literal symbols</title></circle>
-<circle cx="706.0" cy="3822.1" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:8 - 71.1% literal symbols</title></circle>
-<circle cx="784.5" cy="3866.7" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:9 - 56.6% literal symbols</title></circle>
-<path d="M78.0,3734.0 L156.5,3894.8 L235.0,3894.5 L313.5,3893.3 L392.0,3866.9 L470.5,3855.1 L549.0,3853.3 L627.5,3852.2 L706.0,3851.0 L784.5,3850.9" fill="none" stroke="#1baf7a" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="78.0" cy="3734.0" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:0 - 100.0% literal symbols</title></circle>
-<circle cx="156.5" cy="3894.8" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:1 - 47.4% literal symbols</title></circle>
-<circle cx="235.0" cy="3894.5" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:2 - 47.5% literal symbols</title></circle>
-<circle cx="313.5" cy="3893.3" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:3 - 47.8% literal symbols</title></circle>
-<circle cx="392.0" cy="3866.9" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:4 - 56.5% literal symbols</title></circle>
-<circle cx="470.5" cy="3855.1" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:5 - 60.4% literal symbols</title></circle>
-<circle cx="549.0" cy="3853.3" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:6 - 61.0% literal symbols</title></circle>
-<circle cx="627.5" cy="3852.2" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:7 - 61.3% literal symbols</title></circle>
-<circle cx="706.0" cy="3851.0" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:8 - 61.7% literal symbols</title></circle>
-<circle cx="784.5" cy="3850.9" r="3.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:9 - 61.7% literal symbols</title></circle>
-<path d="M78.0,3734.0 L156.5,3835.8 L235.0,3835.5 L313.5,3834.1 L392.0,3837.0 L470.5,3824.7 L549.0,3823.6 L627.5,3822.9 L706.0,3822.1 L784.5,3822.1" fill="none" stroke="#eda100" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="78.0" cy="3734.0" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:0 - 100.0% literal symbols</title></circle>
-<circle cx="156.5" cy="3835.8" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:1 - 66.7% literal symbols</title></circle>
-<circle cx="235.0" cy="3835.5" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:2 - 66.8% literal symbols</title></circle>
-<circle cx="313.5" cy="3834.1" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:3 - 67.2% literal symbols</title></circle>
-<circle cx="392.0" cy="3837.0" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:4 - 66.3% literal symbols</title></circle>
-<circle cx="470.5" cy="3824.7" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:5 - 70.3% literal symbols</title></circle>
-<circle cx="549.0" cy="3823.6" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:6 - 70.7% literal symbols</title></circle>
-<circle cx="627.5" cy="3822.9" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:7 - 70.9% literal symbols</title></circle>
-<circle cx="706.0" cy="3822.1" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:8 - 71.1% literal symbols</title></circle>
-<circle cx="784.5" cy="3822.1" r="3.5" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:9 - 71.2% literal symbols</title></circle>
-<path d="M78.0,3734.0 L156.5,3841.4 L235.0,3865.1 L313.5,3863.2 L392.0,3862.0 L470.5,3852.1 L549.0,3850.6 L627.5,3849.7 L706.0,3841.5 L784.5,3841.3 L863.0,3858.5 L941.5,3857.7 L1020.0,3857.2" fill="none" stroke="#e87ba4" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="78.0" cy="3734.0" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:0 - 100.0% literal symbols</title></circle>
-<circle cx="156.5" cy="3841.4" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:1 - 64.8% literal symbols</title></circle>
-<circle cx="235.0" cy="3865.1" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:2 - 57.1% literal symbols</title></circle>
-<circle cx="313.5" cy="3863.2" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:3 - 57.7% literal symbols</title></circle>
-<circle cx="392.0" cy="3862.0" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:4 - 58.1% literal symbols</title></circle>
-<circle cx="470.5" cy="3852.1" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:5 - 61.3% literal symbols</title></circle>
-<circle cx="549.0" cy="3850.6" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:6 - 61.8% literal symbols</title></circle>
-<circle cx="627.5" cy="3849.7" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:7 - 62.1% literal symbols</title></circle>
-<circle cx="706.0" cy="3841.5" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:8 - 64.8% literal symbols</title></circle>
-<circle cx="784.5" cy="3841.3" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:9 - 64.9% literal symbols</title></circle>
-<circle cx="863.0" cy="3858.5" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:10 - 59.2% literal symbols</title></circle>
-<circle cx="941.5" cy="3857.7" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:11 - 59.5% literal symbols</title></circle>
-<circle cx="1020.0" cy="3857.2" r="3.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:12 - 59.7% literal symbols</title></circle>
-<path d="M78.0,3826.8 L156.5,3826.8 L235.0,3838.0 L313.5,3839.6" fill="none" stroke="#008300" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="78.0" cy="3826.8" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal level:0 - 69.6% literal symbols</title></circle>
-<circle cx="156.5" cy="3826.8" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal level:1 - 69.6% literal symbols</title></circle>
-<circle cx="235.0" cy="3838.0" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal level:2 - 66.0% literal symbols</title></circle>
-<circle cx="313.5" cy="3839.6" r="3.5" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal level:3 - 65.4% literal symbols</title></circle>
-<path d="M78.0,3734.0 L156.5,3890.1 L235.0,3884.9 L313.5,3879.9 L392.0,3859.4 L470.5,3859.0 L549.0,3857.7 L627.5,3857.3 L706.0,3857.1 L784.5,3857.0 L863.0,3856.9" fill="none" stroke="#4a3aa7" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="78.0" cy="3734.0" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:0 - 100.0% literal symbols</title></circle>
-<circle cx="156.5" cy="3890.1" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:1 - 48.9% literal symbols</title></circle>
-<circle cx="235.0" cy="3884.9" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:2 - 50.6% literal symbols</title></circle>
-<circle cx="313.5" cy="3879.9" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:3 - 52.2% literal symbols</title></circle>
-<circle cx="392.0" cy="3859.4" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:4 - 58.9% literal symbols</title></circle>
-<circle cx="470.5" cy="3859.0" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:5 - 59.1% literal symbols</title></circle>
-<circle cx="549.0" cy="3857.7" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:6 - 59.5% literal symbols</title></circle>
-<circle cx="627.5" cy="3857.3" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:7 - 59.6% literal symbols</title></circle>
-<circle cx="706.0" cy="3857.1" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:8 - 59.7% literal symbols</title></circle>
-<circle cx="784.5" cy="3857.0" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:9 - 59.7% literal symbols</title></circle>
-<circle cx="863.0" cy="3856.9" r="3.5" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:10 - 59.8% literal symbols</title></circle>
-<circle cx="470.5" cy="3855.1" r="3.5" fill="#e34948" stroke="#fcfcfb" stroke-width="1.5"><title>libcompression level:5 - 60.3% literal symbols</title></circle>
-<circle cx="156.5" cy="3820.9" r="3.5" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz level:1 - 71.6% literal symbols</title></circle>
-<text x="16.0" y="3994.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">Apple M5, 32 GB, macOS 26.6.2, 10 cpus, Nathans-MacBook-Air-M5-2.local, 2026-09-05</text>
-<text x="16.0" y="3980.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">zlibng 2.3.1-567-ga77d0847  ·  zlib_rs v0.6.7  ·  madler_zlib v1.3.1  ·  chromium_zlib 285e94b8fa95  ·  libdeflate v1.26  ·  isal v2.32.1-26-gebcec1a  ·  miniz 3.0.2  ·  libcompression macOS 26.6.2  ·  slz v1.3.0-33-gf052863</text>
-<text x="16.0" y="3964.0" font-size="10" fill="#c98500" text-anchor="start" font-weight="normal">⚠</text>
-<text x="30.0" y="3964.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">benchmarks with cv above 3%: zlibng 17, zlib_rs 27, madler_zlib 25, chromium_zlib 20, libdeflate 16, isal 6, miniz 3, libcompression 5, slz 3</text>
-<a href="https://github.com/nmoinvaz/codecbench"><text x="1064" y="3994" font-size="10" fill="#52514e" text-anchor="end" text-decoration="underline">github.com/nmoinvaz/codecbench</text></a>
+<text x="871.0" y="3932.0" font-size="10" fill="#52514e" text-anchor="middle" font-weight="normal">level</text>
+<path d="M722.0,3775.7 L749.1,3811.5 L776.2,3830.6 L803.3,3840.0 L830.4,3842.0 L857.5,3844.8 L884.5,3839.5 L911.6,3839.6 L938.7,3894.9" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="722.0" cy="3775.7" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:1 - symbols per KiB of output 291</title></circle>
+<circle cx="749.1" cy="3811.5" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:2 - symbols per KiB of output 266</title></circle>
+<circle cx="776.2" cy="3830.6" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:3 - symbols per KiB of output 253</title></circle>
+<circle cx="803.3" cy="3840.0" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:4 - symbols per KiB of output 247</title></circle>
+<circle cx="830.4" cy="3842.0" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:5 - symbols per KiB of output 246</title></circle>
+<circle cx="857.5" cy="3844.8" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:6 - symbols per KiB of output 244</title></circle>
+<circle cx="884.5" cy="3839.5" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:7 - symbols per KiB of output 247</title></circle>
+<circle cx="911.6" cy="3839.6" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:8 - symbols per KiB of output 247</title></circle>
+<circle cx="938.7" cy="3894.9" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng level:9 - symbols per KiB of output 210</title></circle>
+<path d="M722.0,3775.7 L749.1,3811.5 L776.2,3830.6 L803.3,3840.0 L830.4,3842.0 L857.5,3844.8 L884.5,3839.5 L911.6,3839.6 L938.7,3894.9" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="722.0" cy="3775.7" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:1 - symbols per KiB of output 291</title></circle>
+<circle cx="749.1" cy="3811.5" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:2 - symbols per KiB of output 266</title></circle>
+<circle cx="776.2" cy="3830.6" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:3 - symbols per KiB of output 253</title></circle>
+<circle cx="803.3" cy="3840.0" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:4 - symbols per KiB of output 247</title></circle>
+<circle cx="830.4" cy="3842.0" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:5 - symbols per KiB of output 246</title></circle>
+<circle cx="857.5" cy="3844.8" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:6 - symbols per KiB of output 244</title></circle>
+<circle cx="884.5" cy="3839.5" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:7 - symbols per KiB of output 247</title></circle>
+<circle cx="911.6" cy="3839.6" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:8 - symbols per KiB of output 247</title></circle>
+<circle cx="938.7" cy="3894.9" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs level:9 - symbols per KiB of output 210</title></circle>
+<path d="M722.0,3854.1 L749.1,3871.2 L776.2,3887.4 L803.3,3866.4 L830.4,3869.5 L857.5,3875.9 L884.5,3876.7 L911.6,3877.0 L938.7,3877.2" fill="none" stroke="#1baf7a" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="722.0" cy="3854.1" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:1 - symbols per KiB of output 237</title></circle>
+<circle cx="749.1" cy="3871.2" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:2 - symbols per KiB of output 226</title></circle>
+<circle cx="776.2" cy="3887.4" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:3 - symbols per KiB of output 215</title></circle>
+<circle cx="803.3" cy="3866.4" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:4 - symbols per KiB of output 229</title></circle>
+<circle cx="830.4" cy="3869.5" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:5 - symbols per KiB of output 227</title></circle>
+<circle cx="857.5" cy="3875.9" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:6 - symbols per KiB of output 223</title></circle>
+<circle cx="884.5" cy="3876.7" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:7 - symbols per KiB of output 222</title></circle>
+<circle cx="911.6" cy="3877.0" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:8 - symbols per KiB of output 222</title></circle>
+<circle cx="938.7" cy="3877.2" r="3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"><title>madler_zlib level:9 - symbols per KiB of output 222</title></circle>
+<path d="M722.0,3806.9 L749.1,3819.1 L776.2,3827.4 L803.3,3837.0 L830.4,3836.1 L857.5,3839.2 L884.5,3839.5 L911.6,3839.6 L938.7,3839.7" fill="none" stroke="#eda100" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="722.0" cy="3806.9" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:1 - symbols per KiB of output 269</title></circle>
+<circle cx="749.1" cy="3819.1" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:2 - symbols per KiB of output 261</title></circle>
+<circle cx="776.2" cy="3827.4" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:3 - symbols per KiB of output 256</title></circle>
+<circle cx="803.3" cy="3837.0" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:4 - symbols per KiB of output 249</title></circle>
+<circle cx="830.4" cy="3836.1" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:5 - symbols per KiB of output 250</title></circle>
+<circle cx="857.5" cy="3839.2" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:6 - symbols per KiB of output 248</title></circle>
+<circle cx="884.5" cy="3839.5" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:7 - symbols per KiB of output 247</title></circle>
+<circle cx="911.6" cy="3839.6" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:8 - symbols per KiB of output 247</title></circle>
+<circle cx="938.7" cy="3839.7" r="3" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"><title>chromium_zlib level:9 - symbols per KiB of output 247</title></circle>
+<path d="M722.0,3817.7 L749.1,3859.9 L776.2,3865.6 L803.3,3869.3 L830.4,3867.9 L857.5,3871.1 L884.5,3873.2 L911.6,3865.7 L938.7,3865.8 L965.8,3881.6 L992.9,3880.4 L1020.0,3879.8" fill="none" stroke="#e87ba4" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="722.0" cy="3817.7" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:1 - symbols per KiB of output 262</title></circle>
+<circle cx="749.1" cy="3859.9" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:2 - symbols per KiB of output 233</title></circle>
+<circle cx="776.2" cy="3865.6" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:3 - symbols per KiB of output 230</title></circle>
+<circle cx="803.3" cy="3869.3" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:4 - symbols per KiB of output 227</title></circle>
+<circle cx="830.4" cy="3867.9" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:5 - symbols per KiB of output 228</title></circle>
+<circle cx="857.5" cy="3871.1" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:6 - symbols per KiB of output 226</title></circle>
+<circle cx="884.5" cy="3873.2" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:7 - symbols per KiB of output 224</title></circle>
+<circle cx="911.6" cy="3865.7" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:8 - symbols per KiB of output 230</title></circle>
+<circle cx="938.7" cy="3865.8" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:9 - symbols per KiB of output 229</title></circle>
+<circle cx="965.8" cy="3881.6" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:10 - symbols per KiB of output 219</title></circle>
+<circle cx="992.9" cy="3880.4" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:11 - symbols per KiB of output 220</title></circle>
+<circle cx="1020.0" cy="3879.8" r="3" fill="#e87ba4" stroke="#fcfcfb" stroke-width="1.5"><title>libdeflate level:12 - symbols per KiB of output 220</title></circle>
+<path d="M722.0,3761.6 L749.1,3789.6 L776.2,3803.4" fill="none" stroke="#008300" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="722.0" cy="3761.6" r="3" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal level:1 - symbols per KiB of output 300</title></circle>
+<circle cx="749.1" cy="3789.6" r="3" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal level:2 - symbols per KiB of output 281</title></circle>
+<circle cx="776.2" cy="3803.4" r="3" fill="#008300" stroke="#fcfcfb" stroke-width="1.5"><title>isal level:3 - symbols per KiB of output 272</title></circle>
+<path d="M722.0,3809.2 L749.1,3850.7 L776.2,3884.3 L803.3,3870.1 L830.4,3876.3 L857.5,3882.2 L884.5,3883.2 L911.6,3883.7 L938.7,3883.8 L965.8,3883.9" fill="none" stroke="#4a3aa7" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="722.0" cy="3809.2" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:1 - symbols per KiB of output 268</title></circle>
+<circle cx="749.1" cy="3850.7" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:2 - symbols per KiB of output 240</title></circle>
+<circle cx="776.2" cy="3884.3" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:3 - symbols per KiB of output 217</title></circle>
+<circle cx="803.3" cy="3870.1" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:4 - symbols per KiB of output 227</title></circle>
+<circle cx="830.4" cy="3876.3" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:5 - symbols per KiB of output 222</title></circle>
+<circle cx="857.5" cy="3882.2" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:6 - symbols per KiB of output 218</title></circle>
+<circle cx="884.5" cy="3883.2" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:7 - symbols per KiB of output 218</title></circle>
+<circle cx="911.6" cy="3883.7" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:8 - symbols per KiB of output 217</title></circle>
+<circle cx="938.7" cy="3883.8" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:9 - symbols per KiB of output 217</title></circle>
+<circle cx="965.8" cy="3883.9" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:10 - symbols per KiB of output 217</title></circle>
+<circle cx="830.4" cy="3870.3" r="3" fill="#e34948" stroke="#fcfcfb" stroke-width="1.5"><title>libcompression level:5 - symbols per KiB of output 226</title></circle>
+<circle cx="722.0" cy="3743.1" r="3" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz level:1 - symbols per KiB of output 313</title></circle>
+<text x="16.0" y="3990.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">Apple M5, 32 GB, macOS 26.6.2, 10 cpus, Nathans-MacBook-Air-M5-2.local, 2026-09-05</text>
+<text x="16.0" y="3976.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">zlibng 2.3.1-567-ga77d0847  ·  zlib_rs v0.6.7  ·  madler_zlib v1.3.1  ·  chromium_zlib 285e94b8fa95  ·  libdeflate v1.26  ·  isal v2.32.1-26-gebcec1a  ·  miniz 3.0.2  ·  libcompression macOS 26.6.2  ·  slz v1.3.0-33-gf052863</text>
+<text x="16.0" y="3960.0" font-size="10" fill="#c98500" text-anchor="start" font-weight="normal">⚠</text>
+<text x="30.0" y="3960.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">benchmarks with cv above 3%: zlibng 17, zlib_rs 27, madler_zlib 25, chromium_zlib 20, libdeflate 16, isal 6, miniz 3, libcompression 5, slz 3</text>
+<a href="https://github.com/nmoinvaz/codecbench"><text x="1064" y="3990" font-size="10" fill="#52514e" text-anchor="end" text-decoration="underline">github.com/nmoinvaz/codecbench</text></a>
 </svg>

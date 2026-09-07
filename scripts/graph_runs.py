@@ -178,8 +178,15 @@ def aggregate(runs, corpus_filter):
             if key[1] == "":
                 lit = sum(collected[i][0][key][l].get("lit_syms", 0.0) for l in labels)
                 mat = sum(collected[i][0][key][l].get("match_syms", 0.0) for l in labels)
+                mbytes = sum(collected[i][0][key][l].get("match_bytes", 0.0) for l in labels)
+                out_bytes = sum(collected[i][0][key][l].get("compressed", 0.0) *
+                                collected[i][0][key][l].get("ratio", 0.0) for l in labels)
                 if lit + mat > 0:
-                    points[i]["comp"][key[0]] = lit / (lit + mat) * 100.0
+                    points[i]["comp"][key[0]] = {
+                        "lit_share": lit / (lit + mat) * 100.0,
+                        "avg_len": mbytes / mat if mat else 0.0,
+                        "syms_per_kib": (lit + mat) / (out_bytes / 1024.0) if out_bytes else 0.0,
+                    }
             rows = [collected[i][0][key][l] for l in sorted(labels)]
             if not rows:
                 continue
@@ -1173,53 +1180,65 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
             better_arrow(svg, 1038, gtop + 30, 1038, gtop + 92)
             body_bottom = gtop + gph + 22
 
-    # Stream anatomy, the literal share of each level's symbol stream, one
-    # line per codec over the corpus aggregate
-    comp_levels = sorted(set().union(*(set(p["comp"]) for p in points)))
+    # Stream anatomy facets over the corpus aggregate, one line per codec:
+    # how often each level matches, how long the matches run, and how many
+    # symbols a decoder pays per KiB of output
+    # Level 0 is stored, its degenerate anatomy would squash every scale
+    comp_levels = sorted(lv for p in points for lv in p["comp"] if lv > 0)
+    comp_levels = sorted(set(comp_levels))
     if len(comp_levels) > 1:
         ptop = body_bottom + 56
-        ppw, pph = 942, 170
-        svg.text(78, ptop - 18, "literal share of deflate symbols by level",
-                 size=12, fill=INK)
+        pfw, pfh, pgapx = 298, 170, 24
+        facets = [("literal share of symbols", "lit_share", "%", "{:.0f}"),
+                  ("average match length", "avg_len", " B", "{:.0f}"),
+                  ("symbols per KiB of output", "syms_per_kib", "", "{:.0f}")]
         cl_min, cl_max = comp_levels[0], comp_levels[-1]
+        for j, (caption, key, unit, fmt) in enumerate(facets):
+            fx = 78 + j * (pfw + pgapx)
+            svg.text(fx, ptop - 18, caption, size=12, fill=INK)
 
-        def px(lv):
-            return 78 + (lv - cl_min) / (cl_max - cl_min) * ppw
+            def px(lv, left=fx):
+                return left + (lv - cl_min) / (cl_max - cl_min) * pfw
 
-        cvals = [v for p in points for v in p["comp"].values()]
-        plo, phi = max(0.0, min(cvals) - 3), min(100.0, max(cvals) + 3)
+            cvals = [v[key] for p in points for lv, v in p["comp"].items()
+                     if lv > 0 and v[key] > 0]
+            span = max(cvals) - min(cvals)
+            plo, phi = max(0.0, min(cvals) - span * 0.06), max(cvals) + span * 0.06
 
-        def pyv(v):
-            return ptop + pph - (v - plo) / (phi - plo) * pph
+            def pyv(v, l=plo, h=phi):
+                return ptop + pfh - (v - l) / (h - l) * pfh
 
-        tick = 10 if phi - plo > 30 else 5
-        v = math.ceil(plo / tick) * tick
-        while v <= phi:
-            yy = pyv(v)
-            svg.line(78, yy, 78 + ppw, yy, GRID)
-            svg.text(78 + ppw - 4, yy - 3, f"{v:.0f}%", size=8, anchor="end")
-            v += tick
-        svg.line(78, ptop + pph, 78 + ppw, ptop + pph, INK_SOFT)
-        for lv in comp_levels:
-            svg.text(px(lv), ptop + pph + 14, str(lv), size=9, anchor="middle")
-        svg.text(78 + ppw / 2, ptop + pph + 30, "level", size=11, anchor="middle")
+            raw = (phi - plo) / 4
+            tick = max(1, round(raw / 5) * 5) if raw > 3 else max(1, round(raw))
+            v = math.ceil(plo / tick) * tick
+            while v <= phi:
+                yy = pyv(v)
+                svg.line(fx, yy, fx + pfw, yy, GRID)
+                svg.text(fx + pfw - 4, yy - 3, fmt.format(v) + unit, size=8, anchor="end")
+                v += tick
+            svg.line(fx, ptop + pfh, fx + pfw, ptop + pfh, INK_SOFT)
+            for lv in comp_levels:
+                if lv % 2 == 0 or lv == comp_levels[-1]:
+                    svg.text(px(lv), ptop + pfh + 14, str(lv), size=9, anchor="middle")
+            svg.text(fx + pfw / 2, ptop + pfh + 28, "level", size=10, anchor="middle")
 
-        for i, p in enumerate(points):
-            pts = sorted(p["comp"].items())
-            if not pts:
-                continue
-            coords = [(px(lv), pyv(v)) for lv, v in pts]
-            if len(coords) > 1:
-                path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
-                                for q, (x, y) in enumerate(coords))
-                svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
-                        f'stroke-width="2" stroke-opacity="0.7"/>')
-            for (lv, v), (x, y) in zip(pts, coords):
-                tip = f"{names[i]} level:{lv} - {v:.1f}% literal symbols"
-                svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" '
-                        f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
-                        f'<title>{esc(tip)}</title></circle>')
-        body_bottom = ptop + pph + 44
+            for i, p in enumerate(points):
+                pts = sorted((lv, v[key]) for lv, v in p["comp"].items()
+                             if lv > 0 and v[key] > 0)
+                if not pts:
+                    continue
+                coords = [(px(lv), pyv(v)) for lv, v in pts]
+                if len(coords) > 1:
+                    path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
+                                    for q, (x, y) in enumerate(coords))
+                    svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
+                            f'stroke-width="2" stroke-opacity="0.7"/>')
+                for (lv, v), (x, y) in zip(pts, coords):
+                    tip = f"{names[i]} level:{lv} - {caption} {fmt.format(v)}{unit}"
+                    svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3" '
+                            f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
+                            f'<title>{esc(tip)}</title></circle>')
+        body_bottom = ptop + pfh + 40
 
     # Version and machine footnote, wrapped when the runs make it long
     note_parts = [f"{names[i]} {versions[i]}".strip() for i in range(len(names))]
