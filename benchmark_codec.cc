@@ -256,6 +256,18 @@ public:
 #ifdef CODEC_HAS_MEM
         state.counters["mem"] = benchmark::Counter(double(decomp.mem()));
 #endif
+
+        /* Copy-dispatch mix of the input stream, counted after timing */
+        struct deflate_stats ds;
+        if (deflate_stream_stats(compressed, compressed_size, &ds) == 0 && ds.match_bytes > 0) {
+            state.counters["cp_copy"] = benchmark::Counter(double(ds.cp_copy));
+            state.counters["cp_d1"] = benchmark::Counter(double(ds.cp_d1));
+            state.counters["cp_bcast"] = benchmark::Counter(double(ds.cp_bcast));
+            state.counters["cp_mag"] = benchmark::Counter(double(ds.cp_mag));
+            state.counters["cp_two"] = benchmark::Counter(double(ds.cp_two));
+            state.counters["cp_wide"] = benchmark::Counter(double(ds.cp_wide));
+            state.counters["cp_lit"] = benchmark::Counter(double(ds.lit_syms));
+        }
     }
 
     void TearDown(const benchmark::State &) override {

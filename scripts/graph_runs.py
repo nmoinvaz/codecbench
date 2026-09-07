@@ -164,7 +164,7 @@ def aggregate(runs, corpus_filter):
     collected = [collect(b, corpus_filter) for _, _, b, _ in runs]
     points = [{"deflate": {}, "inflate": None, "inflate_data": {}, "deflate_data": {},
                "wbits": {}, "checksum": {}, "dist": {}, "inflate_files": {},
-               "deflate_files": {}, "comp": {}, "chunked": {}} for _ in collected]
+               "deflate_files": {}, "comp": {}, "chunked": {}, "dispatch": {}} for _ in collected]
 
     for key in sorted(set().union(*(set(c[0]) for c in collected))):
         have = [i for i, c in enumerate(collected) if key in c[0]]
@@ -245,6 +245,11 @@ def aggregate(runs, corpus_filter):
                     "speed": inflate[l]["bytes_per_second"],
                     "cv": inflate[l].get("_cv", 0.0),
                 }
+        for l in common_inflate:
+            b = inflate.get(l)
+            if b and b.get("cp_copy") is not None:
+                points[i]["dispatch"][l] = {k: b.get(k, 0.0) for k in
+                    ("cp_copy", "cp_wide", "cp_two", "cp_mag", "cp_bcast", "cp_d1", "cp_lit")}
 
     with_types = [set(c[2]) for c in collected if c[2]]
     common_types = set.intersection(*with_types) if with_types else set()
@@ -1308,6 +1313,50 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                             f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
                             f'<title>{esc(tip)}</title></circle>')
         body_bottom = ptop + pfh + 40
+
+    # Copy-dispatch mix of the reference stream each inflate row decodes,
+    # from the first run's counters, output bytes by fast-loop arm
+    disp = next((p["dispatch"] for p in points if p["dispatch"]), None)
+    if disp and len(disp) > 1:
+        dtop2 = body_bottom + 56
+        classes = [("cp_lit", "literals", "#7a7668"),
+                   ("cp_copy", "copy dist>=len or >64", "#2a78d6"),
+                   ("cp_wide", "dist 33-64", "#4a3aa7"),
+                   ("cp_two", "dist 17-32", "#eb6834"),
+                   ("cp_bcast", "dist 2/4/8/16", "#eda100"),
+                   ("cp_mag", "other dist<16", "#e87ba4"),
+                   ("cp_d1", "dist 1", "#1baf7a")]
+        svg.text(78, dtop2 - 18, "inflate output bytes by copy dispatch arm, level 9 stream",
+                 size=12, fill=INK)
+        lx2 = 1020
+        for key, lbl, col in reversed(classes):
+            svg.text(lx2, dtop2 - 18, lbl, size=9, fill=INK, anchor="end")
+            lx2 -= 5.2 * len(lbl) + 10
+            svg.add(f'<circle cx="{lx2:.1f}" cy="{dtop2 - 22}" r="4" fill="{col}"/>')
+            lx2 -= 14
+        rows = sorted(disp)
+        row_h = 22
+        for r, l in enumerate(rows):
+            y = dtop2 + r * row_h
+            svg.text(78, y + 13, l.rpartition("/")[2], size=9, anchor="start")
+            vals = disp[l]
+            total = sum(vals.get(k, 0.0) for k, _, _ in classes)
+            if total <= 0:
+                continue
+            x = 168.0
+            for key, lbl, col in classes:
+                w = vals.get(key, 0.0) / total * 852
+                if w < 0.5:
+                    x += w
+                    continue
+                pct = vals.get(key, 0.0) / total * 100
+                tip = f"{l} - {lbl}: {pct:.1f}% of output bytes"
+                svg.add(f'<rect x="{x:.1f}" y="{y + 2}" width="{max(w - 1, 0.5):.1f}" height="{row_h - 6}" '
+                        f'rx="1.5" fill="{col}"><title>{esc(tip)}</title></rect>')
+                if w > 40:
+                    svg.text(x + w / 2, y + 13, f"{pct:.0f}%", size=8, anchor="middle", fill="#ffffff")
+                x += w
+        body_bottom = dtop2 + len(rows) * row_h + 20
 
     # Version and machine footnote, wrapped when the runs make it long
     note_parts = [f"{names[i]} {versions[i]}".strip() for i in range(len(names))]

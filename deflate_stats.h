@@ -18,6 +18,14 @@ struct deflate_stats {
     uint64_t match_syms;  /* length/distance pairs */
     uint64_t match_bytes; /* output bytes produced by matches */
     uint64_t blocks;
+    /* Match bytes classified by the copy-dispatch arm zlib-ng's wide
+       inflate fast loop would take, distances one chunk of 16 bytes */
+    uint64_t cp_copy;     /* dist >= len, plain chunk copy */
+    uint64_t cp_d1;       /* dist 1 broadcast */
+    uint64_t cp_bcast;    /* dist 2, 4, 8, 16 broadcast */
+    uint64_t cp_mag;      /* other dist < 16, permuted magazine */
+    uint64_t cp_two;      /* dist 17-32, two-chunk magazine */
+    uint64_t cp_wide;     /* dist 33-64, out-of-line wide magazine */
 };
 
 struct dstats_state {
@@ -94,6 +102,9 @@ static const uint16_t dstats_len_base[29] = {
 static const uint8_t dstats_len_extra[29] = {
     0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2,
     3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0};
+static const uint16_t dstats_dist_base[30] = {
+    1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193,
+    257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097, 6145, 8193, 12289, 16385, 24577};
 static const uint8_t dstats_dist_extra[30] = {
     0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6,
     7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13};
@@ -115,13 +126,30 @@ static int dstats_block(struct dstats_state *st, const struct dstats_huff *lit,
             int extra = dstats_bits(st, dstats_len_extra[sym]);
             if (extra < 0)
                 return -1;
+            uint64_t mlen = (uint64_t)dstats_len_base[sym] + (uint64_t)extra;
             out->match_syms++;
-            out->match_bytes += (uint64_t)dstats_len_base[sym] + (uint64_t)extra;
+            out->match_bytes += mlen;
             int dsym = dstats_decode(st, dist);
             if (dsym < 0 || dsym >= 30)
                 return -1;
-            if (dstats_bits(st, dstats_dist_extra[dsym]) < 0)
+            int dextra = dstats_bits(st, dstats_dist_extra[dsym]);
+            if (dextra < 0)
                 return -1;
+            uint64_t mdist = (uint64_t)dstats_dist_base[dsym] + (uint64_t)dextra;
+            if (mdist >= mlen)
+                out->cp_copy += mlen;
+            else if (mdist == 1)
+                out->cp_d1 += mlen;
+            else if (mdist == 2 || mdist == 4 || mdist == 8 || mdist == 16)
+                out->cp_bcast += mlen;
+            else if (mdist < 16)
+                out->cp_mag += mlen;
+            else if (mdist <= 32)
+                out->cp_two += mlen;
+            else if (mdist <= 64)
+                out->cp_wide += mlen;
+            else
+                out->cp_copy += mlen;
         }
     }
 }
