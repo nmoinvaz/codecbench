@@ -56,6 +56,17 @@
   benchmark invocations, it waits for an idle machine and automatically
   reruns rows whose real/cpu ratio or cv shows contamination.
 
+### Result Layout
+
+- Raw benchmark JSONs live under `results/raw/<segment>/<backend>.json`,
+  one segment per corpus directory plus `synthetic` for the data-type and
+  checksum rows, so any segment can be rerun without touching the others.
+- Combine segments for graphing with
+  `scripts/merge_runs.py results/raw/{tars,silesia,synthetic}/<backend>.json
+  -o <backend>.json`, later files win on duplicate run names.
+- The zlib-ng work-in-progress build's rows are stored as
+  `zlibng-prs.json`, the pinned develop build's as `zlibng-develop.json`.
+
 ### Comparing Results
 
 - Run with `--benchmark_out=<file>.json --benchmark_out_format=json` and
