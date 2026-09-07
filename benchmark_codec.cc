@@ -195,11 +195,17 @@ private:
     uint8_t *compressed;
     size_t compressed_size;
     uint8_t *outbuff;
-    codec_decompressor decomp;
     bool decomp_init;
 
 protected:
+    codec_decompressor decomp;
     corpus_file *cf;
+
+    /* One timed decompression, whole-buffer by default */
+    virtual size_t run_decompress(const uint8_t *in, size_t in_size, uint8_t *out,
+                                  size_t out_size) {
+        return decomp.decompress(in, in_size, out, out_size);
+    }
 
     /* Make cf->data available, or leave it NULL on failure */
     virtual void acquire_data() = 0;
@@ -229,7 +235,7 @@ public:
         }
 
         for (auto _ : state) {
-            size_t out_size = decomp.decompress(compressed, compressed_size, outbuff, cf->size);
+            size_t out_size = run_decompress(compressed, compressed_size, outbuff, cf->size);
             if (out_size != cf->size) {
                 state.SkipWithError("decompress failed");
                 break;
@@ -301,6 +307,32 @@ protected:
         synth.data = NULL;
     }
 };
+
+#ifdef CODEC_HAS_CHUNKED_INFLATE
+/* Corpus decompression through a bounded output window per inflate call,
+   the streaming-consumer shape that never enters the wide fast loop */
+class codec_inflate_chunked : public codec_inflate_base {
+private:
+    size_t chunk;
+    corpus_file *file;
+
+public:
+    codec_inflate_chunked(const std::string &name, corpus_file *file, size_t chunk)
+        : codec_inflate_base(name), chunk(chunk), file(file) {
+        cf = file;
+    }
+
+protected:
+    void acquire_data() override {
+        load_corpus_file(cf);
+    }
+
+    size_t run_decompress(const uint8_t *in, size_t in_size, uint8_t *out,
+                          size_t out_size) override {
+        return decomp.decompress_chunked(in, in_size, out, out_size, chunk);
+    }
+};
+#endif
 
 /* Fixed-period decompression, matches at exactly one distance */
 class codec_inflate_dist : public codec_inflate_base {
@@ -556,6 +588,16 @@ static int register_codec_benchmarks(void) {
         std::string name = "codec_inflate/" + label;
         benchmark::internal::RegisterBenchmarkInternal(
             ::benchmark::internal::make_unique<codec_inflate>(name, cf));
+#ifdef CODEC_HAS_CHUNKED_INFLATE
+        /* Streaming output windows from small to the whole buffer's order */
+        static const size_t codec_inflate_chunks[] = {4096, 16384, 65536};
+        for (size_t c = 0; c < sizeof(codec_inflate_chunks) / sizeof(codec_inflate_chunks[0]); c++) {
+            benchmark::internal::RegisterBenchmarkInternal(
+                ::benchmark::internal::make_unique<codec_inflate_chunked>(
+                    name + "/chunk:" + std::to_string(codec_inflate_chunks[c]), cf,
+                    codec_inflate_chunks[c]));
+        }
+#endif
 #endif
     }
 

@@ -38,12 +38,17 @@ uint32_t shim_zlib_adler32(uint32_t adler, const uint8_t *buf, size_t len);
 
 void *shim_zlib_inflate_new(void);
 size_t shim_zlib_inflate_mem(void *decomp);
+size_t shim_zlib_decompress_chunked(void *decomp, const uint8_t *in, size_t in_size,
+                                    uint8_t *out, size_t out_size, size_t chunk);
 size_t shim_zlib_decompress(void *decomp, const uint8_t *in, size_t in_size,
                             uint8_t *out, size_t out_size);
 void shim_zlib_inflate_free(void *decomp);
 
 #ifdef __cplusplus
 }
+
+/* All shim backends stream inflate through a bounded output window */
+#define CODEC_HAS_CHUNKED_INFLATE 1
 
 /* All shim backends expose the zlib checksum entry points */
 #define CODEC_HAS_CRC32 1
@@ -99,6 +104,11 @@ struct shim_codec_decompressor {
     /* Returns decompressed size, 0 on failure */
     size_t decompress(const uint8_t *in, size_t in_size, uint8_t *out, size_t out_size) {
         return shim_zlib_decompress(handle, in, in_size, out, out_size);
+    }
+
+    size_t decompress_chunked(const uint8_t *in, size_t in_size, uint8_t *out, size_t out_size,
+                              size_t chunk) {
+        return shim_zlib_decompress_chunked(handle, in, in_size, out, out_size, chunk);
     }
 
     void end() {

@@ -98,6 +98,29 @@ size_t shim_zlib_inflate_mem(void *decomp) {
     return ((shim_stream *)decomp)->mc.peak;
 }
 
+size_t shim_zlib_decompress_chunked(void *decomp, const uint8_t *in, size_t in_size,
+                                    uint8_t *out, size_t out_size, size_t chunk) {
+    shim_stream *ss = (shim_stream *)decomp;
+    z_stream *strm = &ss->strm;
+
+    if (inflateReset(strm) != Z_OK)
+        return 0;
+
+    strm->next_in = (Bytef *)in;
+    strm->avail_in = (uInt)in_size;
+    size_t done = 0;
+    for (;;) {
+        strm->next_out = out + done;
+        strm->avail_out = (uInt)(chunk < out_size - done ? chunk : out_size - done);
+        int ret = inflate(strm, Z_NO_FLUSH);
+        done = (size_t)strm->total_out;
+        if (ret == Z_STREAM_END)
+            return done;
+        if (ret != Z_OK || done >= out_size)
+            return 0;
+    }
+}
+
 size_t shim_zlib_decompress(void *decomp, const uint8_t *in, size_t in_size,
                             uint8_t *out, size_t out_size) {
     z_stream *strm = &((shim_stream *)decomp)->strm;

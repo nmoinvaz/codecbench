@@ -93,6 +93,28 @@ struct zng_codec_decompressor {
         return (size_t)strm.total_out;
     }
 
+    /* Streaming decompress with a bounded output window per inflate call.
+       Returns decompressed size, 0 on failure. */
+    size_t decompress_chunked(const uint8_t *in, size_t in_size, uint8_t *out, size_t out_size,
+                              size_t chunk) {
+        if (zng_inflateReset(&strm) != Z_OK)
+            return 0;
+
+        strm.next_in = (z_const uint8_t *)in;
+        strm.avail_in = (uint32_t)in_size;
+        size_t done = 0;
+        for (;;) {
+            strm.next_out = out + done;
+            strm.avail_out = (uint32_t)(chunk < out_size - done ? chunk : out_size - done);
+            int ret = zng_inflate(&strm, Z_NO_FLUSH);
+            done = (size_t)strm.total_out;
+            if (ret == Z_STREAM_END)
+                return done;
+            if (ret != Z_OK || done >= out_size)
+                return 0;
+        }
+    }
+
     void end() {
         zng_inflateEnd(&strm);
     }
