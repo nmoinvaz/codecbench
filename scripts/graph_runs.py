@@ -495,17 +495,17 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
 
     svg.text(16, 28, title, size=15, fill=INK, weight="bold")
 
-    # Legend, color carries the codec identity
+    # Legend on its own line, a long title never collides with it
     lx = width - 16
     for i in reversed(range(len(names))):
         label = names[i]
-        svg.text(lx, 28, label, size=12, fill=INK, anchor="end")
+        svg.text(lx, 52, label, size=12, fill=INK, anchor="end")
         lx -= 7.2 * len(label) + 12
-        svg.add(f'<circle cx="{lx:.1f}" cy="24" r="5" fill="{SERIES[i]}"/>')
+        svg.add(f'<circle cx="{lx:.1f}" cy="48" r="5" fill="{SERIES[i]}"/>')
         lx -= 20
 
     # Inflate panel, throughput bars
-    bx, by, bw = 800, 76, 240
+    bx, by, bw = 800, 100, 240
     svg.text(bx, by - 22, f"inflate, {corpus_desc}", size=12, fill=INK)
     bar_max = max((p["inflate"]["speed"] for p in points if p["inflate"]), default=0)
     row_h = 66 if len(points) <= 2 else 48
@@ -595,7 +595,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         right_bottom = arrow_y + 10
 
     # Deflate panel, speed versus ratio, stretched to the right column's height
-    px, py, pw = 78, 76, 682
+    px, py, pw = 78, 100, 682
     ph = max(320, right_bottom - py - 40)
     all_pts = [v for p in points for k, v in p["deflate"].items() if k != (0, "")]
     if not all_pts:
@@ -715,7 +715,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
     # Synthetic data-type line panels, inflate plus deflate at one level
     panels = []
 
-    data_top = max(488, py + ph + 76, right_bottom + 36)
+    data_top = max(512, py + ph + 76, right_bottom + 36)
     for pi, (caption, tipword, series, note) in enumerate(panels):
         types = order_types(set().union(*(set(s) for s in series)))
         dpx, dpy, dpw, dph = 78, data_top + pi * 234, 942, 180
@@ -1063,7 +1063,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
     file_labels = sorted(set().union(*(set(p["inflate_files"]) for p in points)))
     dl6_labels = sorted({k[1] for p in points for k in p["deflate_files"] if k[0] == 6})
     if len(file_labels) > 1 or len(dl6_labels) > 1:
-        ftop = body_bottom + 66
+        ftop = body_bottom + 56
         cfw, cfh, cgapx = 459, 180, 24
         facets = []
         if len(file_labels) > 1:
@@ -1114,13 +1114,13 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                             f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
                             f'<title>{esc(tipfn(names[i], labels[k], v))}</title></circle>')
         better_arrow(svg, 1038, ftop + 92, 1038, ftop + 30)
-        body_bottom = ftop + cfh + 44
+        body_bottom = ftop + cfh + 22
 
     # Compressed size at maximum compression relative to the reference run
     lvl = 9
     dl_labels = sorted({k[1] for p in points for k in p["deflate_files"] if k[0] == lvl})
     if len(dl_labels) > 1:
-        gtop = body_bottom + 66
+        gtop = body_bottom + 56
         gpw, gph = 942, 180
         ref_i = names.index("madler_zlib") if "madler_zlib" in names else 0
         svg.text(78, gtop - 18,
@@ -1171,13 +1171,13 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                             f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
                             f'<title>{esc(tip)}</title></circle>')
             better_arrow(svg, 1038, gtop + 30, 1038, gtop + 92)
-            body_bottom = gtop + gph + 44
+            body_bottom = gtop + gph + 22
 
     # Stream anatomy, the literal share of each level's symbol stream, one
     # line per codec over the corpus aggregate
     comp_levels = sorted(set().union(*(set(p["comp"]) for p in points)))
     if len(comp_levels) > 1:
-        ptop = body_bottom + 66
+        ptop = body_bottom + 56
         ppw, pph = 942, 170
         svg.text(78, ptop - 18, "literal share of deflate symbols by level",
                  size=12, fill=INK)
