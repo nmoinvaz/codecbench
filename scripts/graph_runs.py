@@ -1128,13 +1128,14 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                 svg.line(78, yy, 78 + gpw, yy, GRID)
                 svg.text(78 + gpw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
         else:
+            ref_i = names.index("madler_zlib") if "madler_zlib" in names else 0
             svg.text(78, gtop - 18,
-                     f"deflate level:{lvl} compressed size by corpus file, % of {names[0]}",
+                     f"deflate level:{lvl} compressed size by corpus file, % of {names[ref_i]}",
                      size=12, fill=INK)
             rel = {}
             for i, p in enumerate(points):
                 for l in dl_labels:
-                    ref = points[0]["deflate_files"].get((lvl, l), {}).get("size", 0)
+                    ref = points[ref_i]["deflate_files"].get((lvl, l), {}).get("size", 0)
                     v = p["deflate_files"].get((lvl, l), {}).get("size", 0)
                     if ref > 0 and v > 0:
                         rel[(i, l)] = v / ref * 100.0
@@ -1182,7 +1183,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                     tip = f"{names[i]} deflate level:{lvl} {l} - {fmt_speed(v)}"
                 else:
                     tip = (f"{names[i]} deflate level:{lvl} {l} - "
-                           f"{v:.2f}% of {names[0]}")
+                           f"{v:.2f}% of {names[ref_i]}")
                 svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" '
                         f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
                         f'<title>{esc(tip)}</title></circle>')
