@@ -1053,98 +1053,89 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         better_arrow(svg, 1038, dtop + 92, 1038, dtop + 30)
         body_bottom = dtop + dfh + 44
 
-    # Per-file corpus inflate, each member of the tar on the x axis
+    # Per-file corpus facets, inflate beside deflate at the default lazy
+    # level, and compressed size at maximum compression below them
     file_labels = sorted(set().union(*(set(p["inflate_files"]) for p in points)))
-    if len(file_labels) > 1:
+    dl6_labels = sorted({k[1] for p in points for k in p["deflate_files"] if k[0] == 6})
+    if len(file_labels) > 1 or len(dl6_labels) > 1:
         ftop = body_bottom + 66
-        fpw, fph = 942, 180
-        svg.text(78, ftop - 18, "inflate speed by corpus file", size=12, fill=INK)
+        cfw, cfh, cgapx = 459, 180, 24
+        facets = []
+        if len(file_labels) > 1:
+            facets.append(("inflate speed by corpus file",
+                           file_labels,
+                           lambda p, l: p["inflate_files"].get(l, {}).get("speed"),
+                           lambda nm, l, v: f"{nm} inflate {l} - {fmt_speed(v)}"))
+        if len(dl6_labels) > 1:
+            facets.append(("deflate level:6 speed by corpus file",
+                           dl6_labels,
+                           lambda p, l: p["deflate_files"].get((6, l), {}).get("speed"),
+                           lambda nm, l, v: f"{nm} deflate level:6 {l} - {fmt_speed(v)}"))
+        for j, (caption, labels, getter, tipfn) in enumerate(facets):
+            fx = 78 + j * (cfw + cgapx)
+            svg.text(fx, ftop - 18, caption, size=12, fill=INK)
 
-        def fxp(j):
-            return 78 + (j + 0.5) / len(file_labels) * fpw
+            def cxp(k, n=len(labels), left=fx):
+                return left + (k + 0.5) / n * cfw
 
-        fspeeds = [v["speed"] for p in points for v in p["inflate_files"].values()]
-        flo, fhi = min(fspeeds) / 1.3, max(fspeeds) * 1.3
+            vals = [getter(p, l) for p in points for l in labels if getter(p, l)]
+            vlo, vhi = min(vals) / 1.3, max(vals) * 1.3
 
-        def fyp(sv):
-            return ftop + fph - (math.log10(sv) - math.log10(flo)) / \
-                (math.log10(fhi) - math.log10(flo)) * fph
+            def cyp(sv, l=vlo, h=vhi):
+                return ftop + cfh - (math.log10(sv) - math.log10(l)) / \
+                    (math.log10(h) - math.log10(l)) * cfh
 
-        for v in nice_log_ticks(flo, fhi):
-            yy = fyp(v)
-            svg.line(78, yy, 78 + fpw, yy, GRID)
-            svg.text(78 + fpw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
-        svg.line(78, ftop + fph, 78 + fpw, ftop + fph, INK_SOFT)
-        for j, l in enumerate(file_labels):
-            svg.text(fxp(j), ftop + fph + 14, l.rpartition("/")[2], size=9,
-                     anchor="middle")
+            for v in nice_log_ticks(vlo, vhi):
+                yy = cyp(v)
+                svg.line(fx, yy, fx + cfw, yy, GRID)
+                svg.text(fx + cfw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
+            svg.line(fx, ftop + cfh, fx + cfw, ftop + cfh, INK_SOFT)
+            for k, l in enumerate(labels):
+                svg.text(cxp(k), ftop + cfh + 13, l.rpartition("/")[2], size=7,
+                         anchor="middle")
 
-        for i, p in enumerate(points):
-            pts = [(j, p["inflate_files"][l]) for j, l in enumerate(file_labels)
-                   if l in p["inflate_files"]]
-            if not pts:
-                continue
-            coords = [(fxp(j), fyp(v["speed"])) for j, v in pts]
-            if len(coords) > 1:
-                path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
-                                for q, (x, y) in enumerate(coords))
-                svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
-                        f'stroke-width="2" stroke-opacity="0.7"/>')
-            for (j, v), (x, y) in zip(pts, coords):
-                l = file_labels[j]
-                tip = (f"{names[i]} inflate {l} - {fmt_speed(v['speed'])}"
-                       + (f", {(v['speed'] / points[0]['inflate_files'][l]['speed'] - 1) * 100.0:+.1f}% "
-                          f"vs {names[0]}" if i > 0 and l in points[0]["inflate_files"] else "")
-                       + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
-                svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" '
-                        f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
-                        f'<title>{esc(tip)}</title></circle>')
+            for i, p in enumerate(points):
+                pts = [(k, getter(p, l)) for k, l in enumerate(labels) if getter(p, l)]
+                if not pts:
+                    continue
+                coords = [(cxp(k), cyp(v)) for k, v in pts]
+                if len(coords) > 1:
+                    path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
+                                    for q, (x, y) in enumerate(coords))
+                    svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
+                            f'stroke-width="2" stroke-opacity="0.7"/>')
+                for (k, v), (x, y) in zip(pts, coords):
+                    svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3" '
+                            f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
+                            f'<title>{esc(tipfn(names[i], labels[k], v))}</title></circle>')
         better_arrow(svg, 1038, ftop + 92, 1038, ftop + 30)
-        body_bottom = ftop + fph + 44
+        body_bottom = ftop + cfh + 44
 
-    # Per-file corpus deflate, speed at the default lazy level and compressed
-    # size at maximum compression relative to the reference run
-    for panel_kind in ("speed", "size"):
-        lvl = 6 if panel_kind == "speed" else 9
-        dl_labels = sorted({k[1] for p in points for k in p["deflate_files"]
-                            if k[0] == lvl})
-        if len(dl_labels) < 2:
-            continue
+    # Compressed size at maximum compression relative to the reference run
+    lvl = 9
+    dl_labels = sorted({k[1] for p in points for k in p["deflate_files"] if k[0] == lvl})
+    if len(dl_labels) > 1:
         gtop = body_bottom + 66
         gpw, gph = 942, 180
-        if panel_kind == "speed":
-            svg.text(78, gtop - 18, f"deflate level:{lvl} speed by corpus file",
-                     size=12, fill=INK)
-            gvals = [v["speed"] for p in points
-                     for k, v in p["deflate_files"].items() if k[0] == lvl]
-            glo, ghi = min(gvals) / 1.3, max(gvals) * 1.3
-
-            def gy(sv, l=glo, h=ghi, top=gtop):
-                return top + gph - (math.log10(sv) - math.log10(l)) / \
-                    (math.log10(h) - math.log10(l)) * gph
-
-            for v in nice_log_ticks(glo, ghi):
-                yy = gy(v)
-                svg.line(78, yy, 78 + gpw, yy, GRID)
-                svg.text(78 + gpw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
-        else:
-            ref_i = names.index("madler_zlib") if "madler_zlib" in names else 0
-            svg.text(78, gtop - 18,
-                     f"deflate level:{lvl} compressed size by corpus file, % of {names[ref_i]}",
-                     size=12, fill=INK)
-            rel = {}
-            for i, p in enumerate(points):
-                for l in dl_labels:
-                    ref = points[ref_i]["deflate_files"].get((lvl, l), {}).get("size", 0)
-                    v = p["deflate_files"].get((lvl, l), {}).get("size", 0)
-                    if ref > 0 and v > 0:
-                        rel[(i, l)] = v / ref * 100.0
-            if not rel:
-                continue
+        ref_i = names.index("madler_zlib") if "madler_zlib" in names else 0
+        svg.text(78, gtop - 18,
+                 f"deflate level:{lvl} compressed size by corpus file, % of {names[ref_i]}",
+                 size=12, fill=INK)
+        rel = {}
+        for i, p in enumerate(points):
+            for l in dl_labels:
+                ref = points[ref_i]["deflate_files"].get((lvl, l), {}).get("size", 0)
+                v = p["deflate_files"].get((lvl, l), {}).get("size", 0)
+                if ref > 0 and v > 0:
+                    rel[(i, l)] = v / ref * 100.0
+        if rel:
             glo, ghi = min(rel.values()) - 2, max(rel.values()) + 2
 
             def gy(sv, l=glo, h=ghi, top=gtop):
                 return top + gph - (sv - l) / (h - l) * gph
+
+            def gxp(j, n=len(dl_labels)):
+                return 78 + (j + 0.5) / n * gpw
 
             tick = 5 if ghi - glo > 20 else 2
             v = math.ceil(glo / tick) * tick
@@ -1153,43 +1144,29 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                 svg.line(78, yy, 78 + gpw, yy, GRID)
                 svg.text(78 + gpw - 4, yy - 3, f"{v:.0f}%", size=8, anchor="end")
                 v += tick
+            svg.line(78, gtop + gph, 78 + gpw, gtop + gph, INK_SOFT)
+            for j, l in enumerate(dl_labels):
+                svg.text(gxp(j), gtop + gph + 14, l.rpartition("/")[2], size=9,
+                         anchor="middle")
 
-        def gxp(j, n=len(dl_labels)):
-            return 78 + (j + 0.5) / n * gpw
-
-        svg.line(78, gtop + gph, 78 + gpw, gtop + gph, INK_SOFT)
-        for j, l in enumerate(dl_labels):
-            svg.text(gxp(j), gtop + gph + 14, l.rpartition("/")[2], size=9,
-                     anchor="middle")
-
-        for i, p in enumerate(points):
-            if panel_kind == "speed":
-                pts = [(j, p["deflate_files"][(lvl, l)]["speed"])
-                       for j, l in enumerate(dl_labels) if (lvl, l) in p["deflate_files"]]
-            else:
-                pts = [(j, rel[(i, l)]) for j, l in enumerate(dl_labels)
-                       if (i, l) in rel]
-            if not pts:
-                continue
-            coords = [(gxp(j), gy(v)) for j, v in pts]
-            if len(coords) > 1:
-                path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
-                                for q, (x, y) in enumerate(coords))
-                svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
-                        f'stroke-width="2" stroke-opacity="0.7"/>')
-            for (j, v), (x, y) in zip(pts, coords):
-                l = dl_labels[j]
-                if panel_kind == "speed":
-                    tip = f"{names[i]} deflate level:{lvl} {l} - {fmt_speed(v)}"
-                else:
-                    tip = (f"{names[i]} deflate level:{lvl} {l} - "
+            for i, p in enumerate(points):
+                pts = [(j, rel[(i, l)]) for j, l in enumerate(dl_labels) if (i, l) in rel]
+                if not pts:
+                    continue
+                coords = [(gxp(j), gy(v)) for j, v in pts]
+                if len(coords) > 1:
+                    path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
+                                    for q, (x, y) in enumerate(coords))
+                    svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
+                            f'stroke-width="2" stroke-opacity="0.7"/>')
+                for (j, v), (x, y) in zip(pts, coords):
+                    tip = (f"{names[i]} deflate level:{lvl} {dl_labels[j]} - "
                            f"{v:.2f}% of {names[ref_i]}")
-                svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" '
-                        f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
-                        f'<title>{esc(tip)}</title></circle>')
-        arrow_dir = (gtop + 92, gtop + 30) if panel_kind == "speed" else (gtop + 30, gtop + 92)
-        better_arrow(svg, 1038, arrow_dir[0], 1038, arrow_dir[1])
-        body_bottom = gtop + gph + 44
+                    svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" '
+                            f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
+                            f'<title>{esc(tip)}</title></circle>')
+            better_arrow(svg, 1038, gtop + 30, 1038, gtop + 92)
+            body_bottom = gtop + gph + 44
 
     # Version and machine footnote, wrapped when the runs make it long
     note_parts = [f"{names[i]} {versions[i]}".strip() for i in range(len(names))]
