@@ -170,9 +170,11 @@ def aggregate(runs, corpus_filter):
         have = [i for i, c in enumerate(collected) if key in c[0]]
         labels = set.intersection(*(set(collected[i][0][key]) for i in have))
         tar_only = {l for l in labels if l.startswith("tars/")}
-        file_only = sorted(labels - tar_only) if tar_only else []
         if tar_only:
+            file_only = sorted(labels - tar_only)
             labels = tar_only
+        else:
+            file_only = sorted(labels) if len(labels) > 1 else []
         for i in have:
             for l in file_only:
                 points[i]["deflate_files"][(key[0], l)] = {
@@ -227,7 +229,10 @@ def aggregate(runs, corpus_filter):
     # tar aggregates when any run has them, so per-file rows don't reweight it.
     tar_labels = [l for l in common_inflate if l.startswith("tars/")]
     bar_labels = tar_labels if tar_labels else common_inflate
-    file_labels = [l for l in common_inflate if not l.startswith("tars/")] if tar_labels else []
+    if tar_labels:
+        file_labels = [l for l in common_inflate if not l.startswith("tars/")]
+    else:
+        file_labels = common_inflate if len(common_inflate) > 1 else []
     for i, (_, inflate, _, _, _, _, _, _) in enumerate(collected):
         labels = bar_labels if bar_labels else sorted(inflate)
         rows = [inflate[l] for l in labels if l in inflate]
@@ -288,14 +293,20 @@ def aggregate(runs, corpus_filter):
                 "cv": distp[k].get("_cv", 0.0),
             }
 
-    # Streaming output windows on the tar
+    # Streaming output windows, pinned to the tar aggregates when any run has
+    # them, otherwise the geomean of the corpus labels present
     for i, c in enumerate(collected):
+        ck_tars = {k for k in c[7] if k[0].startswith("tars/")}
+        by_size = {}
         for k, b in c[7].items():
-            if k[0].startswith("tars/"):
-                points[i]["chunked"][k[1]] = {
-                    "speed": b["bytes_per_second"],
-                    "cv": b.get("_cv", 0.0),
-                }
+            if ck_tars and k not in ck_tars:
+                continue
+            by_size.setdefault(k[1], []).append(b)
+        for sz, rows in by_size.items():
+            points[i]["chunked"][sz] = {
+                "speed": geomean([r["bytes_per_second"] for r in rows]),
+                "cv": max(r.get("_cv", 0.0) for r in rows),
+            }
 
     label_sets = [set().union(*(set(v) for v in c[0].values())) for c in collected if c[0]]
     corpus = sorted(set.intersection(*label_sets)) if label_sets else []
@@ -1483,7 +1494,16 @@ def main():
     title = args.title or " vs ".join(names)
     if not args.title and len(title) > 48:
         title = f"{names[0]} vs {len(names) - 1} other codecs"
-    out = args.output or "_vs_".join(names).replace("/", "_") + ".svg"
+    # Name the default output after the corpus so charts from different
+    # corpora don't overwrite each other
+    if len(corpus) == 1:
+        corpus_slug = corpus[0].rsplit("/", 1)[-1]
+    elif corpus and len({l.split("/", 1)[0] for l in corpus}) == 1:
+        corpus_slug = corpus[0].split("/", 1)[0]
+    else:
+        corpus_slug = "corpus"
+    out = args.output or \
+        "_vs_".join(names).replace("/", "_") + f"_{corpus_slug}.svg"
 
     for i in range(len(runs)):
         if versions[i]:
