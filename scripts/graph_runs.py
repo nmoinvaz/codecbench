@@ -158,7 +158,7 @@ def aggregate(runs, corpus_filter):
     """
     collected = [collect(b, corpus_filter) for _, _, b, _ in runs]
     points = [{"deflate": {}, "inflate": None, "inflate_data": {}, "deflate_data": {},
-               "wbits": {}, "checksum": {}, "dist": {}} for _ in collected]
+               "wbits": {}, "checksum": {}, "dist": {}, "inflate_files": {}} for _ in collected]
 
     for key in sorted(set().union(*(set(c[0]) for c in collected))):
         have = [i for i, c in enumerate(collected) if key in c[0]]
@@ -195,8 +195,13 @@ def aggregate(runs, corpus_filter):
 
     with_inflate = [set(c[1]) for c in collected if c[1]]
     common_inflate = sorted(set.intersection(*with_inflate)) if with_inflate else []
+    # Individual corpus files feed their own panel; the headline bar keeps the
+    # tar aggregates when any run has them, so per-file rows don't reweight it.
+    tar_labels = [l for l in common_inflate if l.startswith("tars/")]
+    bar_labels = tar_labels if tar_labels else common_inflate
+    file_labels = [l for l in common_inflate if not l.startswith("tars/")] if tar_labels else []
     for i, (_, inflate, _, _, _, _, _) in enumerate(collected):
-        labels = common_inflate if common_inflate else sorted(inflate)
+        labels = bar_labels if bar_labels else sorted(inflate)
         rows = [inflate[l] for l in labels if l in inflate]
         if rows:
             speeds = [r["bytes_per_second"] for r in rows]
@@ -206,6 +211,12 @@ def aggregate(runs, corpus_filter):
                 "cv": max(r.get("_cv", 0.0) for r in rows),
                 "mem": max(r.get("mem", 0.0) for r in rows),
             }
+        for l in file_labels:
+            if l in inflate:
+                points[i]["inflate_files"][l] = {
+                    "speed": inflate[l]["bytes_per_second"],
+                    "cv": inflate[l].get("_cv", 0.0),
+                }
 
     with_types = [set(c[2]) for c in collected if c[2]]
     common_types = set.intersection(*with_types) if with_types else set()
@@ -1030,6 +1041,55 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                             f'<title>{esc(tip)}</title></circle>')
         better_arrow(svg, 1038, dtop + 92, 1038, dtop + 30)
         body_bottom = dtop + dfh + 56
+
+    # Per-file corpus inflate, each member of the tar on the x axis
+    file_labels = sorted(set().union(*(set(p["inflate_files"]) for p in points)))
+    if len(file_labels) > 1:
+        ftop = body_bottom + 66
+        fpw, fph = 942, 180
+        svg.text(78, ftop - 18, "inflate speed by corpus file", size=12, fill=INK)
+
+        def fxp(j):
+            return 78 + (j + 0.5) / len(file_labels) * fpw
+
+        fspeeds = [v["speed"] for p in points for v in p["inflate_files"].values()]
+        flo, fhi = min(fspeeds) / 1.3, max(fspeeds) * 1.3
+
+        def fyp(sv):
+            return ftop + fph - (math.log10(sv) - math.log10(flo)) / \
+                (math.log10(fhi) - math.log10(flo)) * fph
+
+        for v in nice_log_ticks(flo, fhi):
+            yy = fyp(v)
+            svg.line(78, yy, 78 + fpw, yy, GRID)
+            svg.text(78 + fpw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
+        svg.line(78, ftop + fph, 78 + fpw, ftop + fph, INK_SOFT)
+        for j, l in enumerate(file_labels):
+            svg.text(fxp(j), ftop + fph + 14, l.rpartition("/")[2], size=9,
+                     anchor="middle")
+
+        for i, p in enumerate(points):
+            pts = [(j, p["inflate_files"][l]) for j, l in enumerate(file_labels)
+                   if l in p["inflate_files"]]
+            if not pts:
+                continue
+            coords = [(fxp(j), fyp(v["speed"])) for j, v in pts]
+            if len(coords) > 1:
+                path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
+                                for q, (x, y) in enumerate(coords))
+                svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
+                        f'stroke-width="2" stroke-opacity="0.7"/>')
+            for (j, v), (x, y) in zip(pts, coords):
+                l = file_labels[j]
+                tip = (f"{names[i]} inflate {l} - {fmt_speed(v['speed'])}"
+                       + (f", {(v['speed'] / points[0]['inflate_files'][l]['speed'] - 1) * 100.0:+.1f}% "
+                          f"vs {names[0]}" if i > 0 and l in points[0]["inflate_files"] else "")
+                       + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
+                svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" '
+                        f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
+                        f'<title>{esc(tip)}</title></circle>')
+        better_arrow(svg, 1038, ftop + 92, 1038, ftop + 30)
+        body_bottom = ftop + fph + 44
 
     # Version and machine footnote, wrapped when the runs make it long
     note_parts = [f"{names[i]} {versions[i]}".strip() for i in range(len(names))]
