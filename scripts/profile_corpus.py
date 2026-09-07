@@ -71,6 +71,10 @@ def greedy_parse(data, start, end):
         key = bytes(data[pos:pos + MIN_MATCH])
         cand = table.get(key)
         table[key] = pos
+        # A greedy parse skips table inserts inside matches, so runs would
+        # otherwise attribute to the last parse position instead of dist 1.
+        if pos > start and key == bytes(data[pos - 1:pos - 1 + MIN_MATCH]):
+            cand = pos - 1
         if cand is not None and pos - cand <= WINDOW:
             dist = pos - cand
             length = MIN_MATCH
