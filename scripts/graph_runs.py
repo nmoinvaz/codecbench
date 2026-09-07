@@ -556,15 +556,12 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         speed = v["speed"]
         w = max(bw * speed / bar_max, 8)
         tip = (f"{names[i]} inflate - {fmt_speed(speed)}, {v['n']} files"
+               + (f", {fmt_speed(v['smin'])} to {fmt_speed(v['smax'])}" if v["n"] > 1 else "")
                + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else "")
                + (f", mem {fmt_mem(v['mem'])}" if v["mem"] > 0 else ""))
         svg.add(f'<path d="M{bx} {y + 8} h{w - 4:.1f} a4 4 0 0 1 4 4 v8 '
                 f'a4 4 0 0 1 -4 4 h{-(w - 4):.1f} z" fill="{SERIES[i]}">'
                 f'<title>{esc(tip)}</title></path>')
-        if v["n"] > 1 and v["smax"] > v["smin"]:
-            svg.add(f'<line x1="{bx + bw * v["smin"] / bar_max:.1f}" y1="{y + 16}" '
-                    f'x2="{bx + min(bw * v["smax"] / bar_max, bw):.1f}" y2="{y + 16}" '
-                    f'stroke="{INK_SOFT}" stroke-width="1.5" stroke-opacity="0.4"/>')
         value = fmt_speed(speed)
         if i > 0 and points[0]["inflate"]:
             base = points[0]["inflate"]["speed"]
@@ -653,7 +650,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
     for v in nice_log_ticks(smin, smax):
         y = sy(v)
         svg.line(px, y, px + pw, y, GRID)
-        svg.text(px - 8, y + 4, fmt_speed(v), size=11, anchor="end")
+        svg.text(px + pw - 6, y - 4, fmt_speed(v), size=10, anchor="end")
     rstep = max(round((rmax - rmin) / 6, 1), 0.1)
     r = math.ceil(rmin / rstep) * rstep
     while r <= rmax:
@@ -720,8 +717,10 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                     continue
                 x = sx(ratio)
                 if v["n"] > 1 and v["smax"] > v["smin"]:
-                    svg.add(f'<line x1="{x:.1f}" y1="{sy(v["smin"]):.1f}" x2="{x:.1f}" '
-                            f'y2="{sy(v["smax"]):.1f}" stroke="{SERIES[i]}" '
+                    ys1 = min(max(sy(v["smax"]), py), py + ph)
+                    ys2 = min(max(sy(v["smin"]), py), py + ph)
+                    svg.add(f'<line x1="{x:.1f}" y1="{ys1:.1f}" x2="{x:.1f}" '
+                            f'y2="{ys2:.1f}" stroke="{SERIES[i]}" '
                             f'stroke-width="3" stroke-opacity="0.18"/>')
                 if v["cv"] > 0:
                     y1, y2 = sy(speed * (1 - v["cv"])), sy(speed * (1 + v["cv"]))
