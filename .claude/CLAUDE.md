@@ -52,6 +52,9 @@
   `jq -s '.[0] * {benchmarks: (map(.benchmarks) | add)}' part*.json`.
 - Look for other benchmark processes running on the machine to avoid
   contamination and wait until they are done.
+- Prefer `scripts/run_clean.py <binary> --filter <re> --out <file>` over raw
+  benchmark invocations, it waits for an idle machine and automatically
+  reruns rows whose real/cpu ratio or cv shows contamination.
 
 ### Comparing Results
 
