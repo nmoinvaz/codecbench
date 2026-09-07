@@ -886,7 +886,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
     wb_keys = sorted(set().union(*(set(p["wbits"]) for p in points)))
     if wb_keys:
         wtop = body_bottom + 66
-        wpx, wpw, wph = 78, 942, 170
+        wpx, wpw, wph = 78, 459, 170
         levels = sorted({k[0] for k in wb_keys})
         caption = "deflate speed by windowBits"
         if len(levels) == 1:
@@ -942,6 +942,58 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                          size=9, anchor="end")
         better_arrow(svg, wpx + wpw + 18, wtop + 92, wpx + wpw + 18, wtop + 30)
         body_bottom = wtop + wph + 44
+
+    # Streaming inflate, output window from small buffers to the whole stream
+    ck_sizes = sorted(set().union(*(set(p["chunked"]) for p in points)))
+    if ck_sizes:
+        ktop = wtop
+        kfw, kfh = 459, 170
+        svg.text(561, ktop - 18, "inflate speed by output window", size=12, fill=INK)
+        kx_slots = [float(v) for v in ck_sizes] + [0.0]  # 0 = whole buffer
+
+        def kx(j, n=len(kx_slots)):
+            return 561 + (j + 0.5) / n * kfw
+
+        kvals = [v["speed"] for p in points for v in p["chunked"].values()]
+        kvals += [p["inflate"]["speed"] for p in points if p["inflate"]]
+        klo, khi = min(kvals) / 1.3, max(kvals) * 1.3
+
+        def ky(sv):
+            return ktop + kfh - (math.log10(sv) - math.log10(klo)) / \
+                (math.log10(khi) - math.log10(klo)) * kfh
+
+        for v in nice_log_ticks(klo, khi):
+            yy = ky(v)
+            svg.line(561, yy, 561 + kfw, yy, GRID)
+            svg.text(561 + kfw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
+        svg.line(561, ktop + kfh, 561 + kfw, ktop + kfh, INK_SOFT)
+        for j, sz in enumerate(ck_sizes):
+            svg.text(kx(j), ktop + kfh + 14, fmt_bytes(int(sz)), size=9, anchor="middle")
+        svg.text(kx(len(ck_sizes)), ktop + kfh + 14, "whole", size=9, anchor="middle")
+        svg.text(561 + kfw / 2, ktop + kfh + 28, "output window", size=10, anchor="middle")
+
+        for i, p in enumerate(points):
+            pts = [(j, p["chunked"][sz]["speed"], p["chunked"][sz]["cv"])
+                   for j, sz in enumerate(ck_sizes) if sz in p["chunked"]]
+            if p["inflate"] and pts:
+                pts.append((len(ck_sizes), p["inflate"]["speed"], p["inflate"]["cv"]))
+            if not pts:
+                continue
+            coords = [(kx(j), ky(v)) for j, v, _ in pts]
+            if len(coords) > 1:
+                path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
+                                for q, (x, y) in enumerate(coords))
+                svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
+                        f'stroke-width="2" stroke-opacity="0.7"/>')
+            for (j, v, cv), (x, y) in zip(pts, coords):
+                lbl = fmt_bytes(int(ck_sizes[j])) if j < len(ck_sizes) else "whole buffer"
+                tip = (f"{names[i]} inflate window {lbl} - {fmt_speed(v)}"
+                       + (f", cv {cv * 100:.1f}%" if cv > 0 else ""))
+                svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" '
+                        f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
+                        f'<title>{esc(tip)}</title></circle>')
+        better_arrow(svg, 561 + kfw + 18, ktop + 92, 561 + kfw + 18, ktop + 30)
+
 
     # Checksum facets, throughput across input sizes, crc32 beside adler32
     ck_kinds = [k for k in CHECKSUM_ORDER
@@ -1078,58 +1130,6 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                             f'<title>{esc(tip)}</title></circle>')
         better_arrow(svg, 1038, dtop + 92, 1038, dtop + 30)
         body_bottom = dtop + dfh + 44
-
-    # Streaming inflate, output window from small buffers to the whole stream
-    ck_sizes = sorted(set().union(*(set(p["chunked"]) for p in points)))
-    if ck_sizes:
-        ktop = body_bottom + 56
-        kfw, kfh = 459, 170
-        svg.text(78, ktop - 18, "inflate speed by output window", size=12, fill=INK)
-        kx_slots = [float(v) for v in ck_sizes] + [0.0]  # 0 = whole buffer
-
-        def kx(j, n=len(kx_slots)):
-            return 78 + (j + 0.5) / n * kfw
-
-        kvals = [v["speed"] for p in points for v in p["chunked"].values()]
-        kvals += [p["inflate"]["speed"] for p in points if p["inflate"]]
-        klo, khi = min(kvals) / 1.3, max(kvals) * 1.3
-
-        def ky(sv):
-            return ktop + kfh - (math.log10(sv) - math.log10(klo)) / \
-                (math.log10(khi) - math.log10(klo)) * kfh
-
-        for v in nice_log_ticks(klo, khi):
-            yy = ky(v)
-            svg.line(78, yy, 78 + kfw, yy, GRID)
-            svg.text(78 + kfw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
-        svg.line(78, ktop + kfh, 78 + kfw, ktop + kfh, INK_SOFT)
-        for j, sz in enumerate(ck_sizes):
-            svg.text(kx(j), ktop + kfh + 14, fmt_bytes(int(sz)), size=9, anchor="middle")
-        svg.text(kx(len(ck_sizes)), ktop + kfh + 14, "whole", size=9, anchor="middle")
-        svg.text(78 + kfw / 2, ktop + kfh + 28, "output window", size=10, anchor="middle")
-
-        for i, p in enumerate(points):
-            pts = [(j, p["chunked"][sz]["speed"], p["chunked"][sz]["cv"])
-                   for j, sz in enumerate(ck_sizes) if sz in p["chunked"]]
-            if p["inflate"] and pts:
-                pts.append((len(ck_sizes), p["inflate"]["speed"], p["inflate"]["cv"]))
-            if not pts:
-                continue
-            coords = [(kx(j), ky(v)) for j, v, _ in pts]
-            if len(coords) > 1:
-                path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
-                                for q, (x, y) in enumerate(coords))
-                svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
-                        f'stroke-width="2" stroke-opacity="0.7"/>')
-            for (j, v, cv), (x, y) in zip(pts, coords):
-                lbl = fmt_bytes(int(ck_sizes[j])) if j < len(ck_sizes) else "whole buffer"
-                tip = (f"{names[i]} inflate window {lbl} - {fmt_speed(v)}"
-                       + (f", cv {cv * 100:.1f}%" if cv > 0 else ""))
-                svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" '
-                        f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
-                        f'<title>{esc(tip)}</title></circle>')
-        better_arrow(svg, 78 + kfw + 18, ktop + 92, 78 + kfw + 18, ktop + 30)
-        body_bottom = ktop + kfh + 44
 
     # Per-file corpus facets, inflate beside deflate at the default lazy
     # level, and compressed size at maximum compression below them
