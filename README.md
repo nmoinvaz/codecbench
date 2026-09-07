@@ -98,7 +98,7 @@ scripts/graph_runs.py zlibng.json libdeflate.json -o zlibng_vs_libdeflate.svg
 
 All nine backends on silesia.tar:
 
-![All codecs, deflate speed versus ratio on silesia.tar](results/all-codecs.svg)
+![All codecs on silesia.tar](results/all-codecs.svg)
 
 ## Similar benchmarks
 
