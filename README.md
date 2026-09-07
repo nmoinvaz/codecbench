@@ -84,6 +84,15 @@ cmake -B build -D ZLIBNG_SOURCE_DIR=~/Source/zlib-ng
 cmake --build build -j
 ```
 
+`scripts/bench_pr.py <pr>` benchmarks an upstream zlib-ng pull request
+against its merge-base with develop. It fetches both revisions, builds a
+zlib-ng-only codecbench for each under `.pr-bench/`, runs them
+sequentially, and prints the comparison:
+
+```sh
+scripts/bench_pr.py 2437 --graph pr2437.svg
+```
+
 ## Graphing
 
 `scripts/graph_runs.py` turns two or more runs into a multi-panel speed versus
