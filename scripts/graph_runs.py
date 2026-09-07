@@ -791,11 +791,75 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
     else:
         body_bottom = max(456, right_bottom)
 
+    # Checksum facets, throughput across input sizes, crc32 beside adler32
+    ck_kinds = [k for k in CHECKSUM_ORDER
+                if any(key[0] == k for p in points for key in p["checksum"])]
+    if ck_kinds:
+        ctop = data_top + len(panels) * 234
+        cfw, cfh, cgapx = 459, 170, 24
+        for j, kind in enumerate(ck_kinds):
+            fx = 78 + j * (cfw + cgapx)
+            svg.text(fx, ctop - 18, f"{kind} speed by input size", size=12, fill=INK)
+
+            sizes = sorted({key[1] for p in points
+                            for key in p["checksum"] if key[0] == kind})
+            czmin, czmax = math.log2(sizes[0]), math.log2(sizes[-1])
+
+            def cx(size, left=fx):
+                if czmax <= czmin:
+                    return left + cfw / 2
+                return left + (math.log2(size) - czmin) / (czmax - czmin) * cfw
+
+            cspeeds = [v["speed"] for p in points
+                       for key, v in p["checksum"].items() if key[0] == kind]
+            clo, chi = min(cspeeds) / 1.3, max(cspeeds) * 1.3
+
+            def cy(s, l=clo, h=chi):
+                return ctop + cfh - (math.log10(s) - math.log10(l)) / \
+                    (math.log10(h) - math.log10(l)) * cfh
+
+            for v in nice_log_ticks(clo, chi):
+                yy = cy(v)
+                svg.line(fx, yy, fx + cfw, yy, GRID)
+                svg.text(fx + cfw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
+            svg.line(fx, ctop + cfh, fx + cfw, ctop + cfh, INK_SOFT)
+            for size in sizes:
+                svg.text(cx(size), ctop + cfh + 14, fmt_bytes(size),
+                         size=9, anchor="middle")
+            svg.text(fx + cfw / 2, ctop + cfh + 30, "input size", size=11,
+                     anchor="middle")
+
+            for i, p in enumerate(points):
+                pts = sorted((key[1], v) for key, v in p["checksum"].items()
+                             if key[0] == kind)
+                if not pts:
+                    continue
+                coords = [(cx(size), cy(v["speed"])) for size, v in pts]
+                if len(coords) > 1:
+                    path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
+                                    for q, (x, y) in enumerate(coords))
+                    svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
+                            f'stroke-width="2" stroke-opacity="0.7"/>')
+                for (size, v), (x, y) in zip(pts, coords):
+                    if v["cv"] > 0:
+                        y1, y2 = cy(v["speed"] * (1 - v["cv"])), cy(v["speed"] * (1 + v["cv"]))
+                        svg.add(f'<line x1="{x:.1f}" y1="{y1:.1f}" x2="{x:.1f}" y2="{y2:.1f}" '
+                                f'stroke="{SERIES[i]}" stroke-opacity="0.7" stroke-width="1.5"/>')
+                    tip = (f"{names[i]} {kind} size:{size} - {fmt_speed(v['speed'])}"
+                           + (f", {(v['speed'] / points[0]['checksum'][(kind, size)]['speed'] - 1) * 100.0:+.1f}% "
+                              f"vs {names[0]}" if i > 0 and (kind, size) in points[0]["checksum"] else "")
+                           + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
+                    svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" '
+                            f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
+                            f'<title>{esc(tip)}</title></circle>')
+        better_arrow(svg, 1038, ctop + 92, 1038, ctop + 30)
+        body_bottom = ctop + cfh + 44
+
     # Synthetic data types faceted per type, the deflate level ladder on the
     # x axis with one line per codec, and inflate dot columns at the right,
     # whole-buffer at 128 KiB and DRAM-resident at 8 MiB
     if dd_types and any(k[1] > 0 for p in points for k in p["deflate_data"]):
-        gtop = data_top + len(panels) * 234
+        gtop = (body_bottom + 66) if ck_kinds else (data_top + len(panels) * 234)
         svg.text(78, gtop - 18, "synthetic data types, deflate by level plus inflate",
                  size=12, fill=INK)
         svg.text(1020, gtop - 18, "deflate level:0 in the panel above", size=10, anchor="end")
@@ -995,73 +1059,11 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         better_arrow(svg, 561 + kfw + 18, ktop + 92, 561 + kfw + 18, ktop + 30)
 
 
-    # Checksum facets, throughput across input sizes, crc32 beside adler32
-    ck_kinds = [k for k in CHECKSUM_ORDER
-                if any(key[0] == k for p in points for key in p["checksum"])]
-    if ck_kinds:
-        ctop = body_bottom + 66
-        cfw, cfh, cgapx = 459, 170, 24
-        for j, kind in enumerate(ck_kinds):
-            fx = 78 + j * (cfw + cgapx)
-            svg.text(fx, ctop - 18, f"{kind} speed by input size", size=12, fill=INK)
 
-            sizes = sorted({key[1] for p in points
-                            for key in p["checksum"] if key[0] == kind})
-            czmin, czmax = math.log2(sizes[0]), math.log2(sizes[-1])
-
-            def cx(size, left=fx):
-                if czmax <= czmin:
-                    return left + cfw / 2
-                return left + (math.log2(size) - czmin) / (czmax - czmin) * cfw
-
-            cspeeds = [v["speed"] for p in points
-                       for key, v in p["checksum"].items() if key[0] == kind]
-            clo, chi = min(cspeeds) / 1.3, max(cspeeds) * 1.3
-
-            def cy(s, l=clo, h=chi):
-                return ctop + cfh - (math.log10(s) - math.log10(l)) / \
-                    (math.log10(h) - math.log10(l)) * cfh
-
-            for v in nice_log_ticks(clo, chi):
-                yy = cy(v)
-                svg.line(fx, yy, fx + cfw, yy, GRID)
-                svg.text(fx + cfw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
-            svg.line(fx, ctop + cfh, fx + cfw, ctop + cfh, INK_SOFT)
-            for size in sizes:
-                svg.text(cx(size), ctop + cfh + 14, fmt_bytes(size),
-                         size=9, anchor="middle")
-            svg.text(fx + cfw / 2, ctop + cfh + 30, "input size", size=11,
-                     anchor="middle")
-
-            for i, p in enumerate(points):
-                pts = sorted((key[1], v) for key, v in p["checksum"].items()
-                             if key[0] == kind)
-                if not pts:
-                    continue
-                coords = [(cx(size), cy(v["speed"])) for size, v in pts]
-                if len(coords) > 1:
-                    path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
-                                    for q, (x, y) in enumerate(coords))
-                    svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
-                            f'stroke-width="2" stroke-opacity="0.7"/>')
-                for (size, v), (x, y) in zip(pts, coords):
-                    if v["cv"] > 0:
-                        y1, y2 = cy(v["speed"] * (1 - v["cv"])), cy(v["speed"] * (1 + v["cv"]))
-                        svg.add(f'<line x1="{x:.1f}" y1="{y1:.1f}" x2="{x:.1f}" y2="{y2:.1f}" '
-                                f'stroke="{SERIES[i]}" stroke-opacity="0.7" stroke-width="1.5"/>')
-                    tip = (f"{names[i]} {kind} size:{size} - {fmt_speed(v['speed'])}"
-                           + (f", {(v['speed'] / points[0]['checksum'][(kind, size)]['speed'] - 1) * 100.0:+.1f}% "
-                              f"vs {names[0]}" if i > 0 and (kind, size) in points[0]["checksum"] else "")
-                           + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
-                    svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" '
-                            f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
-                            f'<title>{esc(tip)}</title></circle>')
-        better_arrow(svg, 1038, ctop + 92, 1038, ctop + 30)
-        body_bottom = ctop + cfh + 44
 
     # Match-distance facets, one benchmark per distance across the copy
     # dispatch arms, inflate beside deflate at the lazy level
-    dist_kinds = [k for k in ("inflate", "deflate")
+    dist_kinds = [k for k in ("deflate", "inflate")
                   if any(key[0] == k for p in points for key in p["dist"])]
     if dist_kinds:
         dtop = body_bottom + 66
@@ -1139,16 +1141,16 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         ftop = body_bottom + 56
         cfw, cfh, cgapx = 459, 180, 24
         facets = []
-        if len(file_labels) > 1:
-            facets.append(("inflate speed by corpus file",
-                           file_labels,
-                           lambda p, l: p["inflate_files"].get(l, {}).get("speed"),
-                           lambda nm, l, v: f"{nm} inflate {l} - {fmt_speed(v)}"))
         if len(dl6_labels) > 1:
             facets.append(("deflate level:6 speed by corpus file",
                            dl6_labels,
                            lambda p, l: p["deflate_files"].get((6, l), {}).get("speed"),
                            lambda nm, l, v: f"{nm} deflate level:6 {l} - {fmt_speed(v)}"))
+        if len(file_labels) > 1:
+            facets.append(("inflate speed by corpus file",
+                           file_labels,
+                           lambda p, l: p["inflate_files"].get(l, {}).get("speed"),
+                           lambda nm, l, v: f"{nm} inflate {l} - {fmt_speed(v)}"))
         for j, (caption, labels, getter, tipfn) in enumerate(facets):
             fx = 78 + j * (cfw + cgapx)
             svg.text(fx, ftop - 18, caption, size=12, fill=INK)
