@@ -972,7 +972,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         for v in nice_log_ticks(wlo, whi):
             yy = wy(v)
             svg.line(wpx, yy, wpx + wpw, yy, GRID)
-            svg.text(wpx - 8, yy + 4, fmt_speed(v), size=11, anchor="end")
+            svg.text(wpx + wpw - 4, yy - 3, fmt_speed(v), size=8, anchor="end")
         svg.line(wpx, wtop + wph, wpx + wpw, wtop + wph, INK_SOFT)
         for w in wvals:
             svg.text(wx(w), wtop + wph + 16, str(w), size=11, anchor="middle")

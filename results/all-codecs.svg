@@ -1702,9 +1702,9 @@
 <g opacity="0.35"><line x1="1038.0" y1="1414.0" x2="1038.0" y2="1358.0" stroke="#52514e" stroke-width="2"/><polygon points="1038.0,1352.0 1042.0,1361.0 1034.0,1361.0" fill="#52514e"/><text x="1038.0" y="1376.0" font-size="11" fill="#52514e" text-anchor="middle" transform="rotate(-90.0 1038.0 1383.0)">better</text></g>
 <text x="78.0" y="2650.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">deflate speed by windowBits, level:6</text>
 <line x1="78.0" y1="2764.7" x2="537.0" y2="2764.7" stroke="#e7e6e2" stroke-width="1"/>
-<text x="70.0" y="2768.7" font-size="11" fill="#52514e" text-anchor="end" font-weight="normal">50 MB/s</text>
+<text x="533.0" y="2761.7" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">50 MB/s</text>
 <line x1="78.0" y1="2704.1" x2="537.0" y2="2704.1" stroke="#e7e6e2" stroke-width="1"/>
-<text x="70.0" y="2708.1" font-size="11" fill="#52514e" text-anchor="end" font-weight="normal">100 MB/s</text>
+<text x="533.0" y="2701.1" font-size="8" fill="#52514e" text-anchor="end" font-weight="normal">100 MB/s</text>
 <line x1="78.0" y1="2838.0" x2="537.0" y2="2838.0" stroke="#52514e" stroke-width="1"/>
 <text x="78.0" y="2854.0" font-size="11" fill="#52514e" text-anchor="middle" font-weight="normal">9</text>
 <text x="154.5" y="2854.0" font-size="11" fill="#52514e" text-anchor="middle" font-weight="normal">10</text>
