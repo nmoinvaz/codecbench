@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="4002" viewBox="0 0 1080 4002" font-family="system-ui, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="4364" viewBox="0 0 1080 4364" font-family="system-ui, sans-serif">
 <style>@media (prefers-color-scheme: dark){[fill="#fcfcfb"]{fill:#201f1d}[stroke="#fcfcfb"]{stroke:#201f1d}[fill="#0b0b0b"]{fill:#e8e6e3}[stroke="#0b0b0b"]{stroke:#e8e6e3}[fill="#52514e"]{fill:#a8a49d}[stroke="#52514e"]{stroke:#a8a49d}[fill="#e7e6e2"]{fill:#343230}[stroke="#e7e6e2"]{stroke:#343230}[fill="#c98500"]{fill:#d69a2d}[stroke="#c98500"]{stroke:#d69a2d}[fill="#eb6834"]{fill:#dd5c26}[stroke="#eb6834"]{stroke:#dd5c26}[fill="#eda100"]{fill:#c08800}[stroke="#eda100"]{stroke:#c08800}[fill="#e87ba4"]{fill:#d1678f}[stroke="#e87ba4"]{stroke:#d1678f}[fill="#4a3aa7"]{fill:#7263cf}[stroke="#4a3aa7"]{stroke:#7263cf}[fill="#a6339a"]{fill:#c257b5}[stroke="#a6339a"]{stroke:#c257b5}[fill="#7a7668"]{fill:#948e82}[stroke="#7a7668"]{stroke:#948e82}}</style>
-<rect width="1080" height="4002" fill="#fcfcfb"/>
+<rect width="1080" height="4364" fill="#fcfcfb"/>
 <text x="16.0" y="28.0" font-size="15" fill="#0b0b0b" text-anchor="start" font-weight="bold">zlibng vs 8 other codecs</text>
 <text x="1064.0" y="52.0" font-size="12" fill="#0b0b0b" text-anchor="end" font-weight="normal">slz</text>
 <circle cx="1030.4" cy="48" r="5" fill="#a6339a"/>
@@ -22,29 +22,29 @@
 <circle cx="270.4" cy="48" r="5" fill="#2a78d6"/>
 <text x="800.0" y="78.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">inflate, tars/silesia.tar</text>
 <text x="800.0" y="120.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">zlibng</text>
-<path d="M800 128 h222.4 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-222.4 z" fill="#2a78d6"><title>zlibng inflate - 758 MB/s, 1 files, cv 1.1%, mem 41.1 KiB</title></path>
-<text x="1040.0" y="120.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">758 MB/s</text>
+<path d="M800 128 h220.7 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-220.7 z" fill="#2a78d6"><title>zlibng inflate - 753 MB/s, 1 files, cv 0.9%, mem 41.1 KiB</title></path>
+<text x="1040.0" y="120.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">753 MB/s</text>
 <text x="800.0" y="168.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">zlib_rs</text>
 <path d="M800 176 h164.4 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-164.4 z" fill="#eb6834"><title>zlib_rs inflate - 564 MB/s, 1 files, cv 16.6%, mem 46.4 KiB</title></path>
-<text x="1040.0" y="168.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">564 MB/s (-25.6%)</text>
+<text x="1040.0" y="168.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">564 MB/s (-25.1%)</text>
 <text x="800.0" y="216.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">madler_zlib</text>
 <path d="M800 224 h90.7 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-90.7 z" fill="#1baf7a"><title>madler_zlib inflate - 317 MB/s, 1 files, cv 3.9%, mem 7.0 KiB</title></path>
-<text x="1040.0" y="216.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">317 MB/s (-58.2%)</text>
+<text x="1040.0" y="216.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">317 MB/s (-57.9%)</text>
 <text x="800.0" y="264.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">chromium_zlib</text>
 <path d="M800 272 h152.6 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-152.6 z" fill="#eda100"><title>chromium_zlib inflate - 525 MB/s, 1 files, cv 0.2%, mem 8.9 KiB</title></path>
-<text x="1040.0" y="264.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">525 MB/s (-30.8%)</text>
+<text x="1040.0" y="264.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">525 MB/s (-30.3%)</text>
 <text x="800.0" y="312.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">libdeflate</text>
 <path d="M800 320 h236.0 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-236.0 z" fill="#e87ba4"><title>libdeflate inflate - 804 MB/s, 1 files, cv 0.2%</title></path>
-<text x="1040.0" y="312.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">804 MB/s (+6.0%)</text>
+<text x="1040.0" y="312.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">804 MB/s (+6.8%)</text>
 <text x="800.0" y="360.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">isal</text>
 <path d="M800 368 h105.4 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-105.4 z" fill="#008300"><title>isal inflate - 366 MB/s, 1 files, cv 0.1%</title></path>
-<text x="1040.0" y="360.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">366 MB/s (-51.7%)</text>
+<text x="1040.0" y="360.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">366 MB/s (-51.3%)</text>
 <text x="800.0" y="408.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">miniz</text>
 <path d="M800 416 h95.0 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-95.0 z" fill="#4a3aa7"><title>miniz inflate - 332 MB/s, 1 files, cv 3.9%, mem 40.2 KiB</title></path>
-<text x="1040.0" y="408.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">332 MB/s (-56.3%)</text>
+<text x="1040.0" y="408.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">332 MB/s (-55.9%)</text>
 <text x="800.0" y="456.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">libcompression</text>
 <path d="M800 464 h126.8 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-126.8 z" fill="#e34948"><title>libcompression inflate - 438 MB/s, 1 files, cv 0.1%, mem 128.1 KiB</title></path>
-<text x="1040.0" y="456.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">438 MB/s (-42.2%)</text>
+<text x="1040.0" y="456.0" font-size="11" fill="#0b0b0b" text-anchor="end" font-weight="normal">438 MB/s (-41.8%)</text>
 <text x="800.0" y="504.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">slz</text>
 <text x="800.0" y="526.0" font-size="11" fill="#52514e" text-anchor="start" font-weight="normal">no inflate benchmarks</text>
 <g opacity="0.35"><line x1="800.0" y1="554.0" x2="858.0" y2="554.0" stroke="#52514e" stroke-width="2"/><polygon points="864.0,554.0 855.0,558.0 855.0,550.0" fill="#52514e"/><text x="832.0" y="547.0" font-size="11" fill="#52514e" text-anchor="middle" transform="rotate(0.0 832.0 554.0)">better</text></g>
@@ -1786,11 +1786,11 @@
 <text x="847.9" y="2852.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">64K</text>
 <text x="962.6" y="2852.0" font-size="9" fill="#52514e" text-anchor="middle" font-weight="normal">whole</text>
 <text x="790.5" y="2866.0" font-size="10" fill="#52514e" text-anchor="middle" font-weight="normal">output window</text>
-<path d="M618.4,2743.8 L733.1,2737.1 L847.9,2714.3 L962.6,2702.0" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<path d="M618.4,2743.8 L733.1,2737.1 L847.9,2714.3 L962.6,2702.7" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
 <circle cx="618.4" cy="2743.8" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate window 4K - 511 MB/s, cv 0.7%</title></circle>
 <circle cx="733.1" cy="2737.1" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate window 16K - 544 MB/s, cv 0.4%</title></circle>
 <circle cx="847.9" cy="2714.3" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate window 64K - 675 MB/s, cv 0.0%</title></circle>
-<circle cx="962.6" cy="2702.0" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate window whole buffer - 758 MB/s, cv 1.1%</title></circle>
+<circle cx="962.6" cy="2702.7" r="3.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate window whole buffer - 753 MB/s, cv 0.9%</title></circle>
 <path d="M618.4,2768.7 L733.1,2759.9 L847.9,2740.8 L962.6,2733.3" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
 <circle cx="618.4" cy="2768.7" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs inflate window 4K - 404 MB/s, cv 3.0%</title></circle>
 <circle cx="733.1" cy="2759.9" r="3.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs inflate window 16K - 439 MB/s, cv 0.5%</title></circle>
@@ -2394,19 +2394,19 @@
 <text x="924.4" y="3411.0" font-size="7" fill="#52514e" text-anchor="middle" font-weight="normal">webster</text>
 <text x="962.6" y="3411.0" font-size="7" fill="#52514e" text-anchor="middle" font-weight="normal">x-ray</text>
 <text x="1000.9" y="3411.0" font-size="7" fill="#52514e" text-anchor="middle" font-weight="normal">xml</text>
-<path d="M580.1,3303.6 L618.4,3314.2 L656.6,3302.7 L694.9,3240.8 L733.1,3335.1 L771.4,3304.4 L809.6,3289.1 L847.9,3287.1 L886.1,3340.3 L924.4,3297.2 L962.6,3335.0 L1000.9,3252.6" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
-<circle cx="580.1" cy="3303.6" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/dickens - 721 MB/s</title></circle>
-<circle cx="618.4" cy="3314.2" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/mozilla - 600 MB/s</title></circle>
-<circle cx="656.6" cy="3302.7" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/mr - 732 MB/s</title></circle>
-<circle cx="694.9" cy="3240.8" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/nci - 2.12 GB/s</title></circle>
-<circle cx="733.1" cy="3335.1" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/ooffice - 420 MB/s</title></circle>
-<circle cx="771.4" cy="3304.4" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/osdb - 711 MB/s</title></circle>
-<circle cx="809.6" cy="3289.1" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/reymont - 925 MB/s</title></circle>
-<circle cx="847.9" cy="3287.1" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/samba - 956 MB/s</title></circle>
-<circle cx="886.1" cy="3340.3" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/sao - 384 MB/s</title></circle>
-<circle cx="924.4" cy="3297.2" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/webster - 805 MB/s</title></circle>
-<circle cx="962.6" cy="3335.0" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/x-ray - 421 MB/s</title></circle>
-<circle cx="1000.9" cy="3252.6" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/xml - 1.73 GB/s</title></circle>
+<path d="M580.1,3303.4 L618.4,3314.3 L656.6,3302.6 L694.9,3242.7 L733.1,3335.1 L771.4,3304.6 L809.6,3289.0 L847.9,3287.1 L886.1,3340.5 L924.4,3296.8 L962.6,3334.4 L1000.9,3251.8" fill="none" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="580.1" cy="3303.4" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/dickens - 723 MB/s</title></circle>
+<circle cx="618.4" cy="3314.3" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/mozilla - 600 MB/s</title></circle>
+<circle cx="656.6" cy="3302.6" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/mr - 733 MB/s</title></circle>
+<circle cx="694.9" cy="3242.7" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/nci - 2.05 GB/s</title></circle>
+<circle cx="733.1" cy="3335.1" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/ooffice - 419 MB/s</title></circle>
+<circle cx="771.4" cy="3304.6" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/osdb - 708 MB/s</title></circle>
+<circle cx="809.6" cy="3289.0" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/reymont - 927 MB/s</title></circle>
+<circle cx="847.9" cy="3287.1" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/samba - 957 MB/s</title></circle>
+<circle cx="886.1" cy="3340.5" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/sao - 383 MB/s</title></circle>
+<circle cx="924.4" cy="3296.8" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/webster - 810 MB/s</title></circle>
+<circle cx="962.6" cy="3334.4" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/x-ray - 425 MB/s</title></circle>
+<circle cx="1000.9" cy="3251.8" r="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"><title>zlibng inflate silesia/xml - 1.75 GB/s</title></circle>
 <path d="M580.1,3324.7 L618.4,3328.6 L656.6,3321.5 L694.9,3256.8 L733.1,3349.8 L771.4,3320.3 L809.6,3308.5 L847.9,3303.3 L886.1,3357.1 L924.4,3315.0 L962.6,3355.6 L1000.9,3270.0" fill="none" stroke="#eb6834" stroke-width="2" stroke-opacity="0.7"/>
 <circle cx="580.1" cy="3324.7" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs inflate silesia/dickens - 502 MB/s</title></circle>
 <circle cx="618.4" cy="3328.6" r="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"><title>zlib_rs inflate silesia/mozilla - 469 MB/s</title></circle>
@@ -2863,9 +2863,101 @@
 <circle cx="965.8" cy="3883.9" r="3" fill="#4a3aa7" stroke="#fcfcfb" stroke-width="1.5"><title>miniz level:10 - symbols per KiB of output 217</title></circle>
 <circle cx="830.4" cy="3870.3" r="3" fill="#e34948" stroke="#fcfcfb" stroke-width="1.5"><title>libcompression level:5 - symbols per KiB of output 226</title></circle>
 <circle cx="722.0" cy="3743.1" r="3" fill="#a6339a" stroke="#fcfcfb" stroke-width="1.5"><title>slz level:1 - symbols per KiB of output 313</title></circle>
-<text x="16.0" y="3990.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">Apple M5, 32 GB, macOS 26.6.2, 10 cpus, Nathans-MacBook-Air-M5-2.local, 2026-09-05</text>
-<text x="16.0" y="3976.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">zlibng 2.3.1-567-ga77d0847  ·  zlib_rs v0.6.7  ·  madler_zlib v1.3.1  ·  chromium_zlib 285e94b8fa95  ·  libdeflate v1.26  ·  isal v2.32.1-26-gebcec1a  ·  miniz 3.0.2  ·  libcompression macOS 26.6.2  ·  slz v1.3.0-33-gf052863</text>
-<text x="16.0" y="3960.0" font-size="10" fill="#c98500" text-anchor="start" font-weight="normal">⚠</text>
-<text x="30.0" y="3960.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">benchmarks with cv above 3%: zlibng 17, zlib_rs 28, madler_zlib 25, chromium_zlib 21, libdeflate 16, isal 6, miniz 3, libcompression 5, slz 3</text>
-<a href="https://github.com/nmoinvaz/codecbench"><text x="1064" y="3990" font-size="10" fill="#52514e" text-anchor="end" text-decoration="underline">github.com/nmoinvaz/codecbench</text></a>
+<text x="78.0" y="3982.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="normal">inflate output bytes by copy dispatch arm, level 9 stream</text>
+<text x="1020.0" y="3982.0" font-size="9" fill="#0b0b0b" text-anchor="end" font-weight="normal">dist 1</text>
+<circle cx="978.8" cy="3978" r="4" fill="#1baf7a"/>
+<text x="964.8" y="3982.0" font-size="9" fill="#0b0b0b" text-anchor="end" font-weight="normal">other dist&lt;16</text>
+<circle cx="887.2" cy="3978" r="4" fill="#e87ba4"/>
+<text x="873.2" y="3982.0" font-size="9" fill="#0b0b0b" text-anchor="end" font-weight="normal">dist 2/4/8/16</text>
+<circle cx="795.6" cy="3978" r="4" fill="#eda100"/>
+<text x="781.6" y="3982.0" font-size="9" fill="#0b0b0b" text-anchor="end" font-weight="normal">dist 17-32</text>
+<circle cx="719.6" cy="3978" r="4" fill="#eb6834"/>
+<text x="705.6" y="3982.0" font-size="9" fill="#0b0b0b" text-anchor="end" font-weight="normal">dist 33-64</text>
+<circle cx="643.6" cy="3978" r="4" fill="#4a3aa7"/>
+<text x="629.6" y="3982.0" font-size="9" fill="#0b0b0b" text-anchor="end" font-weight="normal">copy dist&gt;=len or &gt;64</text>
+<circle cx="510.4" cy="3978" r="4" fill="#2a78d6"/>
+<text x="496.4" y="3982.0" font-size="9" fill="#0b0b0b" text-anchor="end" font-weight="normal">literals</text>
+<circle cx="444.8" cy="3978" r="4" fill="#7a7668"/>
+<text x="78.0" y="4013.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">dickens</text>
+<rect x="168.0" y="4002" width="43.4" height="16" rx="1.5" fill="#7a7668"><title>silesia/dickens - literals: 5.2% of output bytes</title></rect>
+<text x="190.2" y="4013.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">5%</text>
+<rect x="212.4" y="4002" width="806.3" height="16" rx="1.5" fill="#2a78d6"><title>silesia/dickens - copy dist&gt;=len or &gt;64: 94.8% of output bytes</title></rect>
+<text x="616.1" y="4013.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">95%</text>
+<text x="78.0" y="4035.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">mozilla</text>
+<rect x="168.0" y="4024" width="154.2" height="16" rx="1.5" fill="#7a7668"><title>silesia/mozilla - literals: 18.2% of output bytes</title></rect>
+<text x="245.6" y="4035.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">18%</text>
+<rect x="323.2" y="4024" width="669.8" height="16" rx="1.5" fill="#2a78d6"><title>silesia/mozilla - copy dist&gt;=len or &gt;64: 78.7% of output bytes</title></rect>
+<text x="658.6" y="4035.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">79%</text>
+<rect x="994.2" y="4024" width="0.5" height="16" rx="1.5" fill="#eb6834"><title>silesia/mozilla - dist 17-32: 0.1% of output bytes</title></rect>
+<rect x="994.8" y="4024" width="1.3" height="16" rx="1.5" fill="#eda100"><title>silesia/mozilla - dist 2/4/8/16: 0.3% of output bytes</title></rect>
+<rect x="997.4" y="4024" width="21.6" height="16" rx="1.5" fill="#1baf7a"><title>silesia/mozilla - dist 1: 2.7% of output bytes</title></rect>
+<text x="78.0" y="4057.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">mr</text>
+<rect x="168.0" y="4046" width="83.3" height="16" rx="1.5" fill="#7a7668"><title>silesia/mr - literals: 9.9% of output bytes</title></rect>
+<text x="210.1" y="4057.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">10%</text>
+<rect x="252.3" y="4046" width="660.5" height="16" rx="1.5" fill="#2a78d6"><title>silesia/mr - copy dist&gt;=len or &gt;64: 77.6% of output bytes</title></rect>
+<text x="583.0" y="4057.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">78%</text>
+<rect x="913.8" y="4046" width="1.2" height="16" rx="1.5" fill="#eda100"><title>silesia/mr - dist 2/4/8/16: 0.3% of output bytes</title></rect>
+<rect x="916.2" y="4046" width="102.8" height="16" rx="1.5" fill="#1baf7a"><title>silesia/mr - dist 1: 12.2% of output bytes</title></rect>
+<text x="968.1" y="4057.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">12%</text>
+<text x="78.0" y="4079.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">nci</text>
+<rect x="168.0" y="4068" width="17.4" height="16" rx="1.5" fill="#7a7668"><title>silesia/nci - literals: 2.2% of output bytes</title></rect>
+<rect x="186.4" y="4068" width="832.2" height="16" rx="1.5" fill="#2a78d6"><title>silesia/nci - copy dist&gt;=len or &gt;64: 97.8% of output bytes</title></rect>
+<text x="603.0" y="4079.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">98%</text>
+<text x="78.0" y="4101.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">ooffice</text>
+<rect x="168.0" y="4090" width="171.9" height="16" rx="1.5" fill="#7a7668"><title>silesia/ooffice - literals: 20.3% of output bytes</title></rect>
+<text x="254.5" y="4101.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">20%</text>
+<rect x="340.9" y="4090" width="667.1" height="16" rx="1.5" fill="#2a78d6"><title>silesia/ooffice - copy dist&gt;=len or &gt;64: 78.4% of output bytes</title></rect>
+<text x="675.0" y="4101.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">78%</text>
+<rect x="1009.7" y="4090" width="2.1" height="16" rx="1.5" fill="#eda100"><title>silesia/ooffice - dist 2/4/8/16: 0.4% of output bytes</title></rect>
+<rect x="1013.2" y="4090" width="5.8" height="16" rx="1.5" fill="#1baf7a"><title>silesia/ooffice - dist 1: 0.8% of output bytes</title></rect>
+<text x="78.0" y="4123.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">osdb</text>
+<rect x="168.0" y="4112" width="154.8" height="16" rx="1.5" fill="#7a7668"><title>silesia/osdb - literals: 18.3% of output bytes</title></rect>
+<text x="245.9" y="4123.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">18%</text>
+<rect x="323.8" y="4112" width="695.1" height="16" rx="1.5" fill="#2a78d6"><title>silesia/osdb - copy dist&gt;=len or &gt;64: 81.7% of output bytes</title></rect>
+<text x="671.9" y="4123.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">82%</text>
+<text x="78.0" y="4145.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">reymont</text>
+<rect x="168.0" y="4134" width="43.7" height="16" rx="1.5" fill="#7a7668"><title>silesia/reymont - literals: 5.2% of output bytes</title></rect>
+<text x="190.4" y="4145.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">5%</text>
+<rect x="212.7" y="4134" width="806.1" height="16" rx="1.5" fill="#2a78d6"><title>silesia/reymont - copy dist&gt;=len or &gt;64: 94.7% of output bytes</title></rect>
+<text x="616.2" y="4145.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">95%</text>
+<text x="78.0" y="4167.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">samba</text>
+<rect x="168.0" y="4156" width="83.7" height="16" rx="1.5" fill="#7a7668"><title>silesia/samba - literals: 9.9% of output bytes</title></rect>
+<text x="210.4" y="4167.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">10%</text>
+<rect x="252.7" y="4156" width="759.3" height="16" rx="1.5" fill="#2a78d6"><title>silesia/samba - copy dist&gt;=len or &gt;64: 89.2% of output bytes</title></rect>
+<text x="632.8" y="4167.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">89%</text>
+<rect x="1013.5" y="4156" width="5.5" height="16" rx="1.5" fill="#1baf7a"><title>silesia/samba - dist 1: 0.8% of output bytes</title></rect>
+<text x="78.0" y="4189.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">sao</text>
+<rect x="168.0" y="4178" width="399.5" height="16" rx="1.5" fill="#7a7668"><title>silesia/sao - literals: 47.0% of output bytes</title></rect>
+<text x="368.2" y="4189.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">47%</text>
+<rect x="568.5" y="4178" width="450.5" height="16" rx="1.5" fill="#2a78d6"><title>silesia/sao - copy dist&gt;=len or &gt;64: 53.0% of output bytes</title></rect>
+<text x="794.2" y="4189.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">53%</text>
+<text x="78.0" y="4211.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">webster</text>
+<rect x="168.0" y="4200" width="41.2" height="16" rx="1.5" fill="#7a7668"><title>silesia/webster - literals: 5.0% of output bytes</title></rect>
+<text x="189.1" y="4211.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">5%</text>
+<rect x="210.2" y="4200" width="808.7" height="16" rx="1.5" fill="#2a78d6"><title>silesia/webster - copy dist&gt;=len or &gt;64: 95.0% of output bytes</title></rect>
+<text x="615.0" y="4211.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">95%</text>
+<text x="78.0" y="4233.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">x-ray</text>
+<rect x="168.0" y="4222" width="193.4" height="16" rx="1.5" fill="#7a7668"><title>silesia/x-ray - literals: 22.8% of output bytes</title></rect>
+<text x="265.2" y="4233.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">23%</text>
+<rect x="362.4" y="4222" width="651.2" height="16" rx="1.5" fill="#2a78d6"><title>silesia/x-ray - copy dist&gt;=len or &gt;64: 76.5% of output bytes</title></rect>
+<text x="688.5" y="4233.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">77%</text>
+<rect x="1014.6" y="4222" width="4.3" height="16" rx="1.5" fill="#eda100"><title>silesia/x-ray - dist 2/4/8/16: 0.6% of output bytes</title></rect>
+<text x="78.0" y="4255.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">xml</text>
+<rect x="168.0" y="4244" width="22.2" height="16" rx="1.5" fill="#7a7668"><title>silesia/xml - literals: 2.7% of output bytes</title></rect>
+<rect x="191.2" y="4244" width="824.4" height="16" rx="1.5" fill="#2a78d6"><title>silesia/xml - copy dist&gt;=len or &gt;64: 96.9% of output bytes</title></rect>
+<text x="603.9" y="4255.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">97%</text>
+<rect x="1017.0" y="4244" width="0.5" height="16" rx="1.5" fill="#e87ba4"><title>silesia/xml - other dist&lt;16: 0.1% of output bytes</title></rect>
+<rect x="1017.5" y="4244" width="1.5" height="16" rx="1.5" fill="#1baf7a"><title>silesia/xml - dist 1: 0.3% of output bytes</title></rect>
+<text x="78.0" y="4277.0" font-size="9" fill="#52514e" text-anchor="start" font-weight="normal">silesia.tar</text>
+<rect x="168.0" y="4266" width="97.7" height="16" rx="1.5" fill="#7a7668"><title>tars/silesia.tar - literals: 11.6% of output bytes</title></rect>
+<text x="217.4" y="4277.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">12%</text>
+<rect x="266.7" y="4266" width="739.5" height="16" rx="1.5" fill="#2a78d6"><title>tars/silesia.tar - copy dist&gt;=len or &gt;64: 86.9% of output bytes</title></rect>
+<text x="637.0" y="4277.0" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="normal">87%</text>
+<rect x="1007.5" y="4266" width="0.5" height="16" rx="1.5" fill="#eda100"><title>tars/silesia.tar - dist 2/4/8/16: 0.1% of output bytes</title></rect>
+<rect x="1008.7" y="4266" width="10.3" height="16" rx="1.5" fill="#1baf7a"><title>tars/silesia.tar - dist 1: 1.3% of output bytes</title></rect>
+<text x="16.0" y="4352.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">Apple M5, 32 GB, macOS 26.6.2, 10 cpus, Nathans-MacBook-Air-M5-2.local, 2026-09-05</text>
+<text x="16.0" y="4338.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">zlibng 2.3.1-567-ga77d0847  ·  zlib_rs v0.6.7  ·  madler_zlib v1.3.1  ·  chromium_zlib 285e94b8fa95  ·  libdeflate v1.26  ·  isal v2.32.1-26-gebcec1a  ·  miniz 3.0.2  ·  libcompression macOS 26.6.2  ·  slz v1.3.0-33-gf052863</text>
+<text x="16.0" y="4322.0" font-size="10" fill="#c98500" text-anchor="start" font-weight="normal">⚠</text>
+<text x="30.0" y="4322.0" font-size="10" fill="#52514e" text-anchor="start" font-weight="normal">benchmarks with cv above 3%: zlibng 17, zlib_rs 28, madler_zlib 25, chromium_zlib 21, libdeflate 16, isal 6, miniz 3, libcompression 5, slz 3</text>
+<a href="https://github.com/nmoinvaz/codecbench"><text x="1064" y="4352" font-size="10" fill="#52514e" text-anchor="end" text-decoration="underline">github.com/nmoinvaz/codecbench</text></a>
 </svg>
