@@ -1411,7 +1411,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
             f'text-decoration="underline">{esc(REPO_URL.removeprefix("https://"))}'
             f'</text></a>')
 
-    with open(out_path, "w") as f:
+    with open(out_path, "w", encoding="utf-8") as f:
         f.write(svg.finish(height))
 
 
@@ -1487,6 +1487,9 @@ def main():
     ap.add_argument("--names", default=None, help="comma-separated legend names")
     ap.add_argument("--title", default=None, help="chart title")
     args = ap.parse_args()
+    # The table uses arrows and deltas, Windows consoles default to cp1252
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
 
     if len(args.jsons) < 2:
         ap.error("need at least two runs to compare")
