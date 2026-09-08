@@ -373,6 +373,36 @@ class Svg:
         return "\n".join(header + self.parts + ["</svg>"]) + "\n"
 
 
+def dodge_markers(series_pts, step=5.0, tol=3.0):
+    """Spread markers that would sit on top of each other.
+
+    series_pts maps a series index to {slot: (x, y)}. Series within tol
+    pixels of the same y at a slot are moved step pixels apart, the lower
+    series index to the left, so codecs sharing an implementation and
+    therefore a value all stay visible. The lines keep the true x.
+    """
+    out = {i: dict(pts) for i, pts in series_pts.items()}
+    slots = set().union(*(set(pts) for pts in series_pts.values())) if series_pts else set()
+    for slot in slots:
+        stacked = sorted((pts[slot][1], i) for i, pts in series_pts.items() if slot in pts)
+        cluster = []
+        for y, i in stacked:
+            if cluster and y - cluster[-1][0] > tol:
+                spread_cluster(out, slot, [c for _, c in cluster], step)
+                cluster = []
+            cluster.append((y, i))
+        if cluster:
+            spread_cluster(out, slot, [c for _, c in cluster], step)
+    return out
+
+
+def spread_cluster(out, slot, members, step):
+    members = sorted(members)
+    for q, i in enumerate(members):
+        x, y = out[i][slot]
+        out[i][slot] = (x + (q - (len(members) - 1) / 2) * step, y)
+
+
 def marker(svg, shape, x, y, color, title):
     """11px marker with a 2px surface ring; shape encodes the strategy."""
     r = 5.5
@@ -1264,17 +1294,24 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                 svg.text(gxp(j), gtop + gph + 14, l.rpartition("/")[2], size=9,
                          anchor="middle")
 
-            for i, p in enumerate(points):
+            # Codecs sharing a deflate implementation produce identical
+            # sizes, dodge their markers and keep the reference on top
+            series_pts = {i: {j: (gxp(j), gy(rel[(i, l)]))
+                              for j, l in enumerate(dl_labels) if (i, l) in rel}
+                          for i in range(len(points))}
+            dodged = dodge_markers(series_pts)
+            for i in reversed(range(len(points))):
                 pts = [(j, rel[(i, l)]) for j, l in enumerate(dl_labels) if (i, l) in rel]
                 if not pts:
                     continue
-                coords = [(gxp(j), gy(v)) for j, v in pts]
+                coords = [series_pts[i][j] for j, _ in pts]
                 if len(coords) > 1:
                     path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
                                     for q, (x, y) in enumerate(coords))
                     svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
                             f'stroke-width="2" stroke-opacity="0.7"/>')
-                for (j, v), (x, y) in zip(pts, coords):
+                for j, v in pts:
+                    x, y = dodged[i][j]
                     tip = (f"{names[i]} deflate level:{lvl} {dl_labels[j]} - "
                            f"{v:.2f}% of {names[ref_i]}")
                     svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" '
@@ -1325,18 +1362,25 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                     svg.text(px(lv), ptop + pfh + 14, str(lv), size=9, anchor="middle")
             svg.text(fx + pfw / 2, ptop + pfh + 28, "level", size=10, anchor="middle")
 
-            for i, p in enumerate(points):
-                pts = sorted((lv, v[key]) for lv, v in p["comp"].items()
+            # Shared implementations trace the same anatomy, dodge the
+            # markers and keep the reference on top
+            series_pts = {i: {lv: (px(lv), pyv(v[key])) for lv, v in p["comp"].items()
+                              if lv > 0 and v[key] > 0}
+                          for i, p in enumerate(points)}
+            dodged = dodge_markers(series_pts)
+            for i in reversed(range(len(points))):
+                pts = sorted((lv, v[key]) for lv, v in points[i]["comp"].items()
                              if lv > 0 and v[key] > 0)
                 if not pts:
                     continue
-                coords = [(px(lv), pyv(v)) for lv, v in pts]
+                coords = [series_pts[i][lv] for lv, _ in pts]
                 if len(coords) > 1:
                     path = " ".join(f"{'M' if q == 0 else 'L'}{x:.1f},{y:.1f}"
                                     for q, (x, y) in enumerate(coords))
                     svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" '
                             f'stroke-width="2" stroke-opacity="0.7"/>')
-                for (lv, v), (x, y) in zip(pts, coords):
+                for lv, v in pts:
+                    x, y = dodged[i][lv]
                     tip = f"{names[i]} level:{lv} - {caption} {fmt.format(v)}{unit}"
                     svg.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3" '
                             f'fill="{SERIES[i]}" stroke="{SURFACE}" stroke-width="1.5">'
