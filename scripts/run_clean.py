@@ -58,8 +58,11 @@ def run(binary, flt, out_path, args):
     if args.data_types:
         cmd.append(f"--benchmark_data_types={args.data_types}")
     subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
-    with open(out_path) as f:
-        return json.load(f)
+    try:
+        with open(out_path) as f:
+            return json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return None
 
 
 def dirty_rows(doc, rc_limit, cv_limit):
@@ -98,6 +101,9 @@ def main():
         print("machine still busy, not running", file=sys.stderr)
         return 3
     doc = run(binary, args.filter, args.out, args)
+    if doc is None:
+        print(f"{args.out}: benchmark produced no output", file=sys.stderr)
+        return 1
     for attempt in range(args.max_retries):
         bad = dirty_rows(doc, args.rc_limit, args.cv_limit)
         if not bad:
@@ -110,6 +116,9 @@ def main():
             break
         flt = "^(" + "|".join(re.escape(n) for n in bad) + ")$"
         redo = run(binary, flt, args.out + ".retry", args)
+        if redo is None:
+            print("retry produced no output, keeping original rows", file=sys.stderr)
+            break
         redone = {b["run_name"] for b in redo["benchmarks"]}
         doc["benchmarks"] = [b for b in doc["benchmarks"]
                              if b["run_name"] not in redone] + redo["benchmarks"]
