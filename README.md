@@ -112,7 +112,7 @@ All nine arm64 backends on silesia.tar, macOS on an Apple M5:
 All eight x86_64 backends on silesia.tar, Windows 11 on an Intel Core
 i7-1185G7, clang 22:
 
-![All codecs on silesia.tar, x86_64](results/all-codecs-x86_64.svg)
+![All codecs on silesia.tar, x86_64](results/all-codecs-silesia-x86_64.svg)
 
 ## Similar benchmarks
 
