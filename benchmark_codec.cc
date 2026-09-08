@@ -392,6 +392,9 @@ public:
 
     void SetUp(const benchmark::State &) override {
         data = gen_test_data(TEST_DATA_RANDOM, size);
+#ifdef CODEC_HAS_CHECKSUM_INIT
+        codec_checksum_init();
+#endif
     }
 
     void BenchmarkCase(benchmark::State &state) override {

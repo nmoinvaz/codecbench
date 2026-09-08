@@ -60,6 +60,15 @@ static inline uint32_t codec_adler32(uint32_t adler, const uint8_t *buf, size_t 
     return shim_zlib_adler32(adler, buf, len);
 }
 
+/* The zlib idiom of calling crc32(0, NULL, 0) before real work is where
+   Chromium zlib runs its cpu feature detection, without it the checksums
+   stay on the portable path */
+#define CODEC_HAS_CHECKSUM_INIT 1
+static inline void codec_checksum_init(void) {
+    shim_zlib_crc32(0, NULL, 0);
+    shim_zlib_adler32(1, NULL, 0);
+}
+
 struct shim_codec_compressor {
     void *handle;
 
