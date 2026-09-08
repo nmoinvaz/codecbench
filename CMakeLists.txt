@@ -18,6 +18,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include(FeatureSummary)
 include(FetchContent)
 
+# Every fetched backend links statically into its benchmark executable. Set
+# before the first fetch, a dependency's option() would otherwise seed the
+# cache and flip Google Benchmark to a DLL on the next configure. CMP0077
+# keeps option() calls in older dependencies (ISA-L) from overriding it.
+set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
+set(BUILD_SHARED_LIBS OFF)
+set(BUILD_TESTING OFF)
+
 # Resolve a backend's version string, git describe of its checkout when
 # available, the pinned tag otherwise. Baked into each benchmark binary and
 # reported in its JSON context as codec_version.
@@ -72,8 +80,6 @@ if(NOT DEFINED ZLIBNG_TAG)
 endif()
 set(ZLIBNG_SOURCE_DIR "" CACHE PATH "Local zlib-ng source directory overriding the fetched release")
 
-set(BUILD_SHARED_LIBS OFF)
-set(BUILD_TESTING OFF)
 set(ZLIB_COMPAT OFF)
 set(ZLIB_ALIASES OFF)
 
@@ -148,8 +154,10 @@ if(WITH_ISAL)
             EXCLUDE_FROM_ALL)
         FetchContent_MakeAvailable(isal)
 
+        # C sources only, nasm reads a bare -w as a warning option that
+        # swallows the dependency file arguments
         if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang|LCC")
-            target_compile_options(isal PRIVATE -w)
+            target_compile_options(isal PRIVATE $<$<COMPILE_LANGUAGE:C>:-w>)
         endif()
     endif()
     codec_git_version("${isal_SOURCE_DIR}" "${ISAL_TAG}" ISAL_VERSION)
@@ -236,6 +244,17 @@ if(WITH_CHROMIUM_ZLIB)
     set(CHROMIUM_ZLIB_LIB_NAME
         ${CMAKE_STATIC_LIBRARY_PREFIX}${CHROMIUM_ZLIB_NAME}${CMAKE_STATIC_LIBRARY_SUFFIX})
 
+    # Chromium's CMake keys its x86-64 SIMD defines on the processor name
+    # x86_64 while Windows reports AMD64, so on Windows the defines Chrome
+    # ships with are passed directly, with the Windows cpu feature detection
+    set(CHROMIUM_ZLIB_C_FLAGS "")
+    if(WIN32 AND CMAKE_SYSTEM_PROCESSOR MATCHES "AMD64|x86_64")
+        string(JOIN " " CHROMIUM_ZLIB_C_FLAGS
+            -DDEFLATE_COMPARE256_64LE -DDEFLATE_CHUNK_WRITE_64LE -DDEFLATE_SLIDE_HASH_SSE2
+            -DINFLATE_CHUNK_SIMD_SSE2 -DINFLATE_CHUNK_READ_64LE
+            -DADLER32_SIMD_SSSE3 -DCRC32_SIMD_SSE42_PCLMUL -DX86_WINDOWS)
+    endif()
+
     # ENABLE_SIMD_OPTIMIZATIONS selects the configuration Chrome ships, not
     # the plain C fallback
     ExternalProject_Add(chromium_zlib
@@ -243,6 +262,7 @@ if(WITH_CHROMIUM_ZLIB)
         GIT_TAG ${CHROMIUM_ZLIB_TAG}
         CMAKE_ARGS
             -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
+            -DCMAKE_C_FLAGS=${CHROMIUM_ZLIB_C_FLAGS}
             -DCMAKE_BUILD_TYPE=Release
             -DCMAKE_OSX_ARCHITECTURES=${CMAKE_OSX_ARCHITECTURES}
             -DZLIB_BUILD_TESTING=OFF
@@ -343,8 +363,9 @@ if(WITH_ZLIB_RS)
 
     ExternalProject_Get_Property(zlib_rs SOURCE_DIR BINARY_DIR)
     set(ZLIB_RS_LIB ${BINARY_DIR}/release/${ZLIB_RS_LIB_NAME})
-    # The cdylib crate ships its own zlib.h and zconf.h
-    set(ZLIB_RS_INCLUDE_DIRS ${SOURCE_DIR}/libz-rs-sys-cdylib/include)
+    # The cdylib crate's include directory is a symlink to the sys crate's,
+    # which a Windows checkout turns into a plain file, so the target is used
+    set(ZLIB_RS_INCLUDE_DIRS ${SOURCE_DIR}/libz-rs-sys/include)
 endif()
 
 #============================================================================
@@ -384,6 +405,13 @@ if(WITH_SLZ)
     target_include_directories(codecbench_slz PRIVATE ${slz_SOURCE_DIR}/src)
     if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang|LCC")
         set_source_files_properties(${slz_SOURCE_DIR}/src/slz.c ${slz_SOURCE_DIR}/src/slz_common.c PROPERTIES COMPILE_OPTIONS "-w;-std=gnu11")
+    endif()
+    if(WIN32 AND CMAKE_C_COMPILER_ID MATCHES "Clang")
+        # __builtin_cpu_supports lives in compiler-rt, which the MSVC ABI
+        # link line assembles without
+        execute_process(COMMAND ${CMAKE_C_COMPILER} --rtlib=compiler-rt -print-libgcc-file-name
+            OUTPUT_VARIABLE CLANG_RT_BUILTINS OUTPUT_STRIP_TRAILING_WHITESPACE)
+        target_link_libraries(codecbench_slz "${CLANG_RT_BUILTINS}")
     endif()
     list(APPEND BENCH_CODEC_TARGETS codecbench_slz)
 endif()
@@ -448,6 +476,9 @@ if(WITH_ZLIB_RS)
     if(UNIX AND NOT APPLE)
         # The Rust standard library staticlib needs these on Linux
         target_link_libraries(codecbench_zlib_rs pthread dl m)
+    elseif(WIN32)
+        # rustc --print native-static-libs for x86_64-pc-windows-msvc
+        target_link_libraries(codecbench_zlib_rs kernel32 ntdll userenv ws2_32 dbghelp)
     endif()
     list(APPEND BENCH_CODEC_TARGETS codecbench_zlib_rs)
 endif()
