@@ -95,6 +95,8 @@ def load(path):
     name = os.path.basename(executable)
     if name.startswith("codecbench_"):
         name = name[len("codecbench_"):]
+    if name.endswith(".exe"):
+        name = name[:-len(".exe")]
     version = context.get("codec_version", "")
     return name, version, out, context
 
@@ -446,6 +448,21 @@ def machine_line(contexts):
                             parts.append(line.split(":", 1)[1].strip())
                             break
             except OSError:
+                pass
+        elif sys.platform == "win32":
+            try:
+                import ctypes
+                import winreg
+                key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
+                                     r"HARDWARE\DESCRIPTION\System\CentralProcessor\0")
+                brand = " ".join(winreg.QueryValueEx(key, "ProcessorNameString")[0].split())
+                mem_kb = ctypes.c_ulonglong()
+                ctypes.windll.kernel32.GetPhysicallyInstalledSystemMemory(ctypes.byref(mem_kb))
+                mem = int(mem_kb.value) // (1024 ** 2)
+                build = sys.getwindowsversion().build
+                release = "11" if build >= 22000 else platform.win32_ver()[0]
+                parts.append(f"{brand}, {mem} GB, Windows {release} {platform.win32_ver()[1]}")
+            except (OSError, ValueError, AttributeError):
                 pass
     ncpus = contexts[0].get("num_cpus")
     if ncpus:

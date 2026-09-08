@@ -12,6 +12,7 @@ Usage:
 """
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
@@ -19,6 +20,15 @@ import time
 
 
 def busy_procs():
+    if sys.platform == "win32":
+        # ps under msys sees only msys processes, ask the perf counters
+        query = ("Get-CimInstance Win32_PerfFormattedData_PerfProc_Process | "
+                 "Where-Object { $_.PercentProcessorTime -gt 50 -and "
+                 "$_.Name -notin @('_Total', 'Idle', 'powershell') } | "
+                 "ForEach-Object { $_.Name }")
+        out = subprocess.run(["powershell", "-NoProfile", "-Command", query],
+                             capture_output=True, text=True).stdout
+        return [line.strip() for line in out.splitlines() if line.strip()]
     out = subprocess.run(["ps", "aux"], capture_output=True, text=True).stdout
     procs = []
     for line in out.splitlines()[1:]:
@@ -81,9 +91,13 @@ def main():
     ap.add_argument("--rc-limit", type=float, default=1.03)
     ap.add_argument("--cv-limit", type=float, default=0.06)
     args = ap.parse_args()
+    # CreateProcess rejects relative paths with forward slashes
+    binary = os.path.abspath(args.binary)
 
-    wait_idle()
-    doc = run(args.binary, args.filter, args.out, args)
+    if not wait_idle():
+        print("machine still busy, not running", file=sys.stderr)
+        return 3
+    doc = run(binary, args.filter, args.out, args)
     for attempt in range(args.max_retries):
         bad = dirty_rows(doc, args.rc_limit, args.cv_limit)
         if not bad:
@@ -91,9 +105,11 @@ def main():
         print(f"retry {attempt + 1}: {len(bad)} contaminated rows", file=sys.stderr)
         for name in bad:
             print(f"  {name}", file=sys.stderr)
-        wait_idle()
+        if not wait_idle():
+            print("machine still busy, keeping the contaminated rows", file=sys.stderr)
+            break
         flt = "^(" + "|".join(re.escape(n) for n in bad) + ")$"
-        redo = run(args.binary, flt, args.out + ".retry", args)
+        redo = run(binary, flt, args.out + ".retry", args)
         redone = {b["run_name"] for b in redo["benchmarks"]}
         doc["benchmarks"] = [b for b in doc["benchmarks"]
                              if b["run_name"] not in redone] + redo["benchmarks"]
