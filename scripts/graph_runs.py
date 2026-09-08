@@ -176,7 +176,9 @@ def aggregate(runs, corpus_filter):
         else:
             file_only = sorted(labels) if len(labels) > 1 else []
         for i in have:
-            for l in file_only:
+            # Per-file panels show the plain levels, a strategy variant of the
+            # same level must not overwrite them
+            for l in (file_only if key[1] == "" else []):
                 points[i]["deflate_files"][(key[0], l)] = {
                     "speed": collected[i][0][key][l]["bytes_per_second"],
                     "size": collected[i][0][key][l].get("compressed", 0.0),
