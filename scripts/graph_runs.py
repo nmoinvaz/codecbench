@@ -1040,6 +1040,8 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
         svg.line(wpx, wtop + wph, wpx + wpw, wtop + wph, INK_SOFT)
         for w in wvals:
             svg.text(wx(w), wtop + wph + 16, str(w), size=11, anchor="middle")
+            # window size the bits buy, along the top axis
+            svg.text(wx(w), wtop - 6, fmt_bytes(1 << w), size=8, anchor="middle")
         svg.text(wpx + wpw / 2, wtop + wph + 34, "windowBits", size=12, anchor="middle")
 
         for lv in levels:
