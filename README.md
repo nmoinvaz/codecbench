@@ -107,7 +107,7 @@ scripts/graph_runs.py zlibng.json libdeflate.json -o zlibng_vs_libdeflate.svg
 
 ## Results
 
-All nine arm64 backends on silesia.tar, macOS on an Apple M5:
+All arm64 backends on silesia.tar, with zstd as format context, macOS on an Apple M5:
 
 ![All codecs on silesia.tar, arm64](results/all-codecs-silesia-arm64.svg)
 
