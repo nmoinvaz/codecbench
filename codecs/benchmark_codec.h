@@ -40,9 +40,12 @@ typedef zng_codec_decompressor codec_decompressor;
    backends. libdeflate, isal, and slz have no equivalent. */
 #  define CODEC_STRATEGIES { {"filtered", Z_FILTERED}, {"huffman", Z_HUFFMAN_ONLY}, \
                              {"rle", Z_RLE}, {"fixed", Z_FIXED} }
-/* Standard deflate windowBits range. miniz rejects anything but 15,
-   libdeflate, igzip, slz, and libcompression have no window parameter. */
-#  define CODEC_WBITS { 9, 10, 11, 12, 13, 14, 15 }
+/* Standard deflate windowBits range plus the 256 byte window zlib-ng
+   supports through its distance cap. miniz rejects anything but 15,
+   libdeflate, igzip, slz, and libcompression have no window parameter,
+   and the stock zlib backends silently substitute a 512 byte window
+   for windowBits 8, so only zlib-ng registers it. */
+#  define CODEC_WBITS { 8, 9, 10, 11, 12, 13, 14, 15 }
 #  define CODEC_HAS_MEM 1
 
 #  define CODEC_HAS_CRC32 1
