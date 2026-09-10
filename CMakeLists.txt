@@ -167,6 +167,27 @@ endif()
 # libslz (Willy Tarreau), compress-only. Ships no CMake, so its sources are
 # compiled into the codec executable directly.
 #============================================================================
+option(WITH_ZSTD "Add zstd codec benchmarks for format context" ON)
+if(WITH_ZSTD)
+    if(NOT DEFINED ZSTD_REPOSITORY)
+        set(ZSTD_REPOSITORY https://github.com/facebook/zstd.git)
+    endif()
+    if(NOT DEFINED ZSTD_TAG)
+        set(ZSTD_TAG v1.5.7)
+    endif()
+    set(ZSTD_BUILD_PROGRAMS OFF CACHE BOOL "" FORCE)
+    set(ZSTD_BUILD_SHARED OFF CACHE BOOL "" FORCE)
+    set(ZSTD_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+    set(ZSTD_LEGACY_SUPPORT OFF CACHE BOOL "" FORCE)
+    FetchContent_Declare(zstd
+        GIT_REPOSITORY ${ZSTD_REPOSITORY}
+        GIT_TAG ${ZSTD_TAG}
+        SOURCE_SUBDIR build/cmake
+        EXCLUDE_FROM_ALL)
+    FetchContent_MakeAvailable(zstd)
+    codec_git_version("${zstd_SOURCE_DIR}" "${ZSTD_TAG}" ZSTD_VERSION)
+endif()
+
 option(WITH_SLZ "Add libslz codec benchmarks" ON)
 if(WITH_SLZ)
     if(NOT DEFINED SLZ_REPOSITORY)
@@ -396,6 +417,15 @@ if(WITH_ISAL)
         CODEC_VERSION="${ISAL_VERSION}")
     target_link_libraries(codecbench_isal isal)
     list(APPEND BENCH_CODEC_TARGETS codecbench_isal)
+endif()
+
+if(WITH_ZSTD)
+    add_executable(codecbench_zstd ${BENCH_CODEC_SRCS})
+    target_compile_definitions(codecbench_zstd PRIVATE BENCH_ZSTD=1
+        CODEC_VERSION="${ZSTD_VERSION}")
+    target_include_directories(codecbench_zstd PRIVATE ${zstd_SOURCE_DIR}/lib)
+    target_link_libraries(codecbench_zstd libzstd_static)
+    list(APPEND BENCH_CODEC_TARGETS codecbench_zstd)
 endif()
 
 if(WITH_SLZ)

@@ -21,6 +21,8 @@
 - Decompression input is always produced by zlib-ng at level 9 and all output
   is verified against the original data, a failed roundtrip shows up as a
   benchmark error.
+- The zstd backend is format context, not a deflate implementation: compress
+  only, a thinned level 1-19 ladder, streams verified through zstd itself.
 
 ## Test Data
 

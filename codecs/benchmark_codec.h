@@ -28,6 +28,8 @@
 #  include "zlib_rs.h"
 #elif defined(BENCH_MINIZ)
 #  include "miniz_codec.h"
+#elif defined(BENCH_ZSTD)
+#  include "zstd_codec.h"
 #elif defined(BENCH_LIBCOMPRESSION)
 #  include "libcompression.h"
 #else

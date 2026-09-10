@@ -20,6 +20,7 @@ streams, and all output is verified against the original data.
 | `codecbench_zlib_rs`       | [zlib-rs]                   | `WITH_ZLIB_RS`      | cargo           |
 | `codecbench_miniz`         | [miniz]                     | `WITH_MINIZ`        |                 |
 | `codecbench_libcompression`| [libcompression]            | `WITH_LIBCOMPRESSION`| macOS          |
+| `codecbench_zstd`          | [zstd] (format context)     | `WITH_ZSTD`         |                 |
 
 [zlib-ng]: https://github.com/zlib-ng/zlib-ng
 [libdeflate]: https://github.com/ebiggers/libdeflate
@@ -30,6 +31,7 @@ streams, and all output is verified against the original data.
 [zlib-rs]: https://github.com/trifectatechfoundation/zlib-rs
 [miniz]: https://github.com/richgel999/miniz
 [libcompression]: https://developer.apple.com/documentation/compression
+[zstd]: https://github.com/facebook/zstd
 
 ## Building
 
