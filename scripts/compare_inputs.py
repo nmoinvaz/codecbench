@@ -36,7 +36,7 @@ MEASURES = [("compressed size", "size"), ("cpu time", "time")]
 
 def input_rows(benchmarks):
     """{input: {level: size, time, cv, raw}} over the plain levels of one run."""
-    deflate, _, _, deflate_data, *_ = collect(benchmarks, None)
+    deflate, _, _, deflate_data, _, _, distp, _ = collect(benchmarks, None)
     found = {}
     for (level, strategy), files in deflate.items():
         if not strategy:
@@ -44,6 +44,9 @@ def input_rows(benchmarks):
                 found.setdefault(label, {})[level] = b
     for (data_type, level), b in deflate_data.items():
         found.setdefault(f"data/{data_type}", {})[level] = b
+    for (kind, dist, level), b in distp.items():
+        if kind == "deflate":
+            found.setdefault(f"data/dist:{dist}", {})[level] = b
     rows = {}
     for label, ladder in found.items():
         for level, b in ladder.items():
@@ -56,11 +59,13 @@ def input_rows(benchmarks):
 
 
 def order_inputs(labels):
-    """Corpus files by name, then the data types in their registration order."""
+    """Corpus files by name, the data types in registration order, then the periods."""
     def key(label):
         if not label.startswith("data/"):
             return (0, 0, label)
         name = label[len("data/"):]
+        if name.startswith("dist:"):
+            return (2, int(name[len("dist:"):]), name)
         return (1, DATA_TYPE_ORDER.index(name) if name in DATA_TYPE_ORDER else len(DATA_TYPE_ORDER),
                 name)
     return sorted(labels, key=key)

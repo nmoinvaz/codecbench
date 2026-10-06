@@ -136,7 +136,8 @@ def collect(benchmarks, corpus_filter):
             chunked[(base, int(csz))] = b
             continue
         if label.startswith("data/dist:"):
-            distp[(m.group("kind"), int(label[len("data/dist:"):]))] = b
+            distp[(m.group("kind"), int(label[len("data/dist:"):]),
+                   int(m.group("level") or 0))] = b
             continue
         if label.startswith("data/"):
             if m.group("kind") == "inflate":
@@ -289,12 +290,15 @@ def aggregate(runs, corpus_filter):
                 "cv": checksum[k].get("_cv", 0.0),
             }
 
-    # Periodic dist inputs are pinned generators, identical across runs
+    # Periodic dist inputs are pinned generators, identical across runs. The
+    # facet shows deflate at level 6, the other levels serve compare_inputs.
     for i, (_, _, _, _, _, _, distp, _) in enumerate(collected):
-        for k in distp:
-            points[i]["dist"][k] = {
-                "speed": distp[k]["bytes_per_second"],
-                "cv": distp[k].get("_cv", 0.0),
+        for (kind, dist, level), b in distp.items():
+            if kind == "deflate" and level != 6:
+                continue
+            points[i]["dist"][(kind, dist)] = {
+                "speed": b["bytes_per_second"],
+                "cv": b.get("_cv", 0.0),
             }
 
     # Streaming output windows, pinned to the tar aggregates when any run has
