@@ -572,6 +572,34 @@ def nice_log_ticks(lo, hi):
     return ticks
 
 
+def footnote(svg, names, versions, machine, warnings, body_bottom):
+    """Version, machine, warning, and repository lines below the body, returns the height."""
+    # Version and machine footnote, wrapped when the runs make it long
+    note_parts = [f"{names[i]} {versions[i]}".strip() for i in range(len(names))]
+    note = "  \u00b7  ".join(note_parts + ([machine] if machine else []))
+    two_lines = machine and len(note) > 155
+    height = body_bottom + 28 + (14 if two_lines else 0) + (16 if warnings else 0)
+    y = height - 12
+    if two_lines:
+        svg.text(16, y, machine, size=10)
+        y -= 14
+        svg.text(16, y, "  \u00b7  ".join(note_parts), size=10)
+    else:
+        svg.text(16, y, note, size=10)
+
+    # Warning badge above the footnote, never color alone
+    if warnings:
+        svg.text(16, y - 16, "\u26a0", size=10, fill=WARN)
+        svg.text(30, y - 16, " \u00b7 ".join(warnings), size=10)
+
+    # Repository link on the bottom line
+    svg.add(f'<a href="{REPO_URL}"><text x="{svg.w - 16}" y="{height - 12}" '
+            f'font-size="10" fill="{INK_SOFT}" text-anchor="end" '
+            f'text-decoration="underline">{esc(REPO_URL.removeprefix("https://"))}'
+            f'</text></a>')
+    return height
+
+
 def render(names, versions, machine, corpus_desc, warnings, points, title, out_path):
     data_types = ordered_types(points)
     dd_types = order_types({k[0] for p in points for k in p["deflate_data"]})
@@ -1433,30 +1461,7 @@ def render(names, versions, machine, corpus_desc, warnings, points, title, out_p
                 x += w
         body_bottom = dtop2 + len(rows) * row_h + 20
 
-    # Version and machine footnote, wrapped when the runs make it long
-    note_parts = [f"{names[i]} {versions[i]}".strip() for i in range(len(names))]
-    note = "  \u00b7  ".join(note_parts + ([machine] if machine else []))
-    two_lines = machine and len(note) > 155
-    height = body_bottom + 28 + (14 if two_lines else 0) + (16 if warnings else 0)
-    y = height - 12
-    if two_lines:
-        svg.text(16, y, machine, size=10)
-        y -= 14
-        svg.text(16, y, "  \u00b7  ".join(note_parts), size=10)
-    else:
-        svg.text(16, y, note, size=10)
-
-    # Warning badge above the footnote, never color alone
-    if warnings:
-        svg.text(16, y - 16, "\u26a0", size=10, fill=WARN)
-        svg.text(30, y - 16, " \u00b7 ".join(warnings), size=10)
-
-    # Repository link on the bottom line
-    svg.add(f'<a href="{REPO_URL}"><text x="{width - 16}" y="{height - 12}" '
-            f'font-size="10" fill="{INK_SOFT}" text-anchor="end" '
-            f'text-decoration="underline">{esc(REPO_URL.removeprefix("https://"))}'
-            f'</text></a>')
-
+    height = footnote(svg, names, versions, machine, warnings, body_bottom)
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(svg.finish(height))
 

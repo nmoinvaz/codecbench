@@ -105,6 +105,16 @@ library.
 scripts/graph_runs.py zlibng.json libdeflate.json -o zlibng_vs_libdeflate.svg
 ```
 
+`scripts/compare_levels.py` charts the level ladder of an A/B pair, such as
+the base and head JSONs `bench_pr.py` leaves under `.pr-bench/`, above a table
+of the compressed size and cpu time at every level. Strategy variants found in
+the runs get their own lines and table.
+
+```sh
+scripts/compare_levels.py .pr-bench/pr2437-base.json .pr-bench/pr2437-head.json \
+    --names "PR base,PR head" -o pr2437-levels.svg
+```
+
 ## Results
 
 All arm64 backends on silesia.tar, with zstd as format context, macOS on an Apple M5:

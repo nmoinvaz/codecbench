@@ -74,6 +74,10 @@
 - Run with `--benchmark_out=<file>.json --benchmark_out_format=json` and
   compare with `scripts/compare_runs.py base.json contender.json`. It reports
   time, compression ratio, and byte deltas.
+- For a per-level A/B of one codec, `scripts/compare_levels.py base.json
+  head.json -o <file>.svg` charts the level ladder above a table of compressed
+  size and cpu time per level. Strategy rows in the JSONs become their own
+  lines and table.
 
 ### Presenting Results
 
