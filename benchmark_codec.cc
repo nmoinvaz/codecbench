@@ -566,8 +566,11 @@ static int register_codec_benchmarks(void) {
 
 #ifdef CODEC_STRATEGIES
         for (size_t s = 0; s < sizeof(codec_strategies) / sizeof(codec_strategies[0]); s++) {
-            for (size_t l = 0; l < sizeof(codec_strategy_levels) / sizeof(codec_strategy_levels[0]); l++) {
-                int level = codec_strategy_levels[l];
+            /* Fixed trees change the block coding at every level, so that variant walks levels 1-9 */
+            bool full = codec_strategies[s].strategy == Z_FIXED;
+            size_t count = full ? 9 : sizeof(codec_strategy_levels) / sizeof(codec_strategy_levels[0]);
+            for (size_t l = 0; l < count; l++) {
+                int level = full ? (int)l + 1 : codec_strategy_levels[l];
                 /* Filtered only changes match selection in the deflate_slow
                    levels, so it skips level 1 and swaps level 6 for the first
                    slow level. zlib-ng runs deflate_medium through level 6 and

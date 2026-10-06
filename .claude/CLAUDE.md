@@ -13,6 +13,8 @@
   libcompression's single fixed quality registers as `level:5`.
 - Deflate strategy variants (`/strategy:<name>`) register for zlib-ng, the
   stock zlib API backends (chromium_zlib, madler_zlib, zlib_rs), and miniz.
+  They cover levels 1, 6 and 9 (7 and 9 for `filtered`), except `fixed`,
+  which covers levels 1-9.
 - windowBits variants (`/level:6/wbits:<9-15>`) register for zlib-ng and the
   stock zlib API backends only.
 - Checksum benchmarks (`codec_crc32/size:<n>`, `codec_adler32/size:<n>`)
