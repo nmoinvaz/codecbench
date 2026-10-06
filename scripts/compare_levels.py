@@ -80,10 +80,11 @@ def change(new, old):
     return (new - old) / old * 100.0
 
 
-def table_blocks(levels, rows):
+def table_blocks(names, levels, rows):
     """Size and time column blocks, a column per run plus a change column per later run.
 
-    Takes the rows of one strategy, every column carries one (text, emphasized) cell per level.
+    Takes the rows of one strategy and leaves out the runs that have none. Every column carries
+    one (text, emphasized) cell per level.
     """
     measures = [("compressed size, bytes", "size", "{:,.0f}", 1.0, 124),
                 ("cpu time, ms", "time", "{:,.1f}", 1e3, 104)]
@@ -91,10 +92,13 @@ def table_blocks(levels, rows):
     for caption, key, fmt, scale, width in measures:
         cols = []
         for i, row in enumerate(rows):
-            cols.append({"run": i, "width": width,
+            if not row:
+                continue
+            # The header needs room for the run's name and swatch
+            cols.append({"run": i, "width": max(width, text_width(names[i]) + 36),
                          "cells": [(fmt.format(row[l][key] * scale) if l in row else "-", False)
                                    for l in levels]})
-            if i == 0:
+            if i == 0 or not rows[0]:
                 continue
             cells = []
             for l in levels:
@@ -129,6 +133,12 @@ def print_table(names, levels, blocks):
     print("-" * (5 + sum(widths)))
     for r, level in enumerate(levels):
         print(f"{level:<5}" + "".join(f"{c['cells'][r][0]:>{w}}" for c, w in zip(cols, widths)))
+
+
+def text_width(s, size=12):
+    """Rough rendered width of a system-ui string, enough to seat a swatch or dodge a label."""
+    return sum(3.6 if c in "iljtfrI .,:;'!|" else 9.6 if c in "mwMW" else 6.9
+               for c in s) * size / 12
 
 
 def swatch(svg, i, x, y):
@@ -181,8 +191,9 @@ def draw_chart(svg, names, strategies, rows, corpus_desc, px, py, pw, ph):
     better_arrow(svg, px + pw - 128, py + 82, px + pw - 40, py + 24)
 
     # The reference is a wide soft band, a later run tracing it reads as a line inside.
-    # Strategy variants dash that line.
-    for (i, s), ladder in ladders.items():
+    # Strategy variants dash that line. Later runs stack with the first of them on top.
+    for i, s in [(i, s) for i in [0, *range(len(rows) - 1, 0, -1)] for s in strategies]:
+        ladder = ladders[(i, s)]
         if len(ladder) < 2:
             continue
         path = " ".join(f"{'M' if j == 0 else 'L'}{sx(v['ratio']):.1f},{sy(v['speed']):.1f}"
@@ -195,14 +206,19 @@ def draw_chart(svg, names, strategies, rows, corpus_desc, px, py, pw, ph):
         svg.add(f'<path d="{path}" fill="none" stroke="{SERIES[i]}" {stroke} '
                 f'stroke-linejoin="round"/>')
 
-    # A level that moved gets a dashed arrow from its reference point
+    # A level that moved gets a dashed arrow from its reference point. A run with most of
+    # its levels elsewhere is a different curve, arrows would only clutter it.
     for (i, s), ladder in ladders.items():
+        moves = []
         for level, v in ladder:
             ref = rows[0].get(s, {}).get(level)
-            if i == 0 or not ref:
-                continue
-            x1, y1 = sx(ref["ratio"]), sy(ref["speed"])
-            x2, y2 = sx(v["ratio"]), sy(v["speed"])
+            if i and ref:
+                moves.append((sx(ref["ratio"]), sy(ref["speed"]),
+                              sx(v["ratio"]), sy(v["speed"])))
+        apart = [m for m in moves if math.hypot(m[2] - m[0], m[3] - m[1]) > 12]
+        if len(apart) * 2 >= len(moves):
+            continue
+        for x1, y1, x2, y2 in apart:
             ln = math.hypot(x2 - x1, y2 - y1)
             if ln < 30:
                 continue
@@ -216,8 +232,9 @@ def draw_chart(svg, names, strategies, rows, corpus_desc, px, py, pw, ph):
                     f'stroke-width="1.2" stroke-dasharray="3 3"/>'
                     f'<polygon points="{head}" fill="{INK_SOFT}"/></g>')
 
-    # Rings first so a coincident later run sits inside its reference
-    labeled = []
+    # Rings first so a coincident later run sits inside its reference. A later run landing
+    # on another later run shrinks to a core, so every run at a shared point stays visible.
+    points, marks, dots = [], [], []
     for (i, s), ladder in ladders.items():
         for level, v in ladder:
             x, y = sx(v["ratio"]), sy(v["speed"])
@@ -225,15 +242,32 @@ def draw_chart(svg, names, strategies, rows, corpus_desc, px, py, pw, ph):
                    + f" - {fmt_speed(v['speed'])}, ratio {v['ratio']:.3f}, "
                    f"{v['size']:,.0f} bytes, {v['time'] * 1e3:,.1f} ms"
                    + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
+            points.append((i, level, x, y))
             if i == 0:
                 svg.add(f'<g><circle cx="{x:.1f}" cy="{y:.1f}" r="9" fill="{SURFACE}" '
                         f'stroke="{SERIES[0]}" stroke-width="2"/><title>{esc(tip)}</title></g>')
-            else:
-                marker(svg, STRATEGY_SHAPES.get(s, "circle"), x, y, SERIES[i], tip)
-            # Coincident points share one label
-            if not any(abs(x - ox) < 24 and abs(y - oy) < 14 for ox, oy in labeled):
-                labeled.append((x, y))
-                svg.text(x + 11, y - 11, f"L{level}", size=10)
+                marks.append((x, y, 10))
+                continue
+            stacked = sum(1 for ox, oy in dots if math.hypot(x - ox, y - oy) < 4)
+            dots.append((x, y))
+            marks.append((x, y, 7))
+            if stacked:
+                svg.add(f'<g transform="translate({x:.1f} {y:.1f}) '
+                        f'scale({max(0.58 - 0.14 * stacked, 0.25):.2f}) '
+                        f'translate({-x:.1f} {-y:.1f})">')
+            marker(svg, STRATEGY_SHAPES.get(s, "circle"), x, y, SERIES[i], tip)
+            if stacked:
+                svg.add("</g>")
+
+    boxes = []
+
+    def free(box):
+        """True when a label box clears the placed labels and every marker."""
+        x0, y0, x1, y1 = box
+        if any(x0 < bx1 and bx0 < x1 and y0 < by1 and by0 < y1 for bx0, by0, bx1, by1 in boxes):
+            return False
+        return all(math.hypot(mx - min(max(mx, x0), x1), my - min(max(my, y0), y1)) > mr
+                   for mx, my, mr in marks)
 
     # Each ladder is named under its last level once strategies share the chart
     for s in strategies if len(strategies) > 1 else []:
@@ -242,9 +276,31 @@ def draw_chart(svg, names, strategies, rows, corpus_desc, px, py, pw, ph):
         if not ladder:
             continue
         name, v = strategy_name(s), ladder[-1][1]
-        half = 3.0 * len(name)
-        x = min(max(sx(v["ratio"]), px + half), px + pw - half)
-        svg.text(x, sy(v["speed"]) + 26, name, size=10, anchor="middle")
+        half = text_width(name, 10) / 2
+        x, y = min(max(sx(v["ratio"]), px + half), px + pw - half), sy(v["speed"]) + 26
+        boxes.append((x - half - 2, y - 9, x + half + 2, y + 2))
+        svg.text(x, y, name, size=10, anchor="middle")
+
+    # Level labels step around the markers and each other. Coincident points share a label,
+    # unless their levels differ, then the later run's label carries its name.
+    slots = [(11, -11, "start"), (11, 19, "start"), (-11, 19, "end"), (-11, -11, "end")]
+    spots = []
+    for i, level, x, y in points:
+        text = f"L{level}"
+        if any(t == text and abs(x - ox) < 24 and abs(y - oy) < 14 for ox, oy, t in spots):
+            continue
+        shared = any(math.hypot(x - ox, y - oy) < 4 for ox, oy, _ in spots)
+        spots.append((x, y, text))
+        label = f"{text} {names[i]}" if shared else text
+        w = text_width(label, 10)
+
+        def box_at(dx, dy, anchor):
+            x0 = x + dx if anchor == "start" else x + dx - w
+            return (x0 - 2, y + dy - 9, x0 + w + 2, y + dy + 2)
+
+        dx, dy, anchor = next((slot for slot in slots if free(box_at(*slot))), slots[0])
+        boxes.append(box_at(dx, dy, anchor))
+        svg.text(x + dx, y + dy, label, size=10, anchor=anchor)
 
 
 def draw_table(svg, names, caption, levels, blocks, x, top, span):
@@ -271,7 +327,7 @@ def draw_table(svg, names, caption, levels, blocks, x, top, span):
             else:
                 name = names[c["run"]]
                 svg.text(cx - 8, head_y, name, size=12, fill=INK, anchor="end")
-                swatch(svg, c["run"], cx - 8 - 6.8 * len(name) - 10, head_y - 4)
+                swatch(svg, c["run"], cx - 8 - text_width(name) - 10, head_y - 4)
         svg.text((left + cx) / 2, top + 12, measure, size=12, fill=INK, anchor="middle")
         svg.line(left + 12, top + 19, cx, top + 19, GRID)
         cx += BLOCK_GAP
@@ -286,8 +342,8 @@ def draw_table(svg, names, caption, levels, blocks, x, top, span):
         svg.text(x, y, str(level), size=12, fill=INK)
         for c, cell_x in zip(cols, rights):
             text, real = c["cells"][r]
-            # Values in primary ink, changes recede unless they are real
-            if c["run"] is not None or real:
+            # Values in primary ink, gaps and changes recede unless a change is real
+            if (c["run"] is not None or real) and text != "-":
                 svg.text(cell_x, y, text, size=12, fill=INK, anchor="end",
                          weight="bold" if real else "normal")
             else:
@@ -299,10 +355,11 @@ def draw_table(svg, names, caption, levels, blocks, x, top, span):
 def render(names, versions, machine, corpus_desc, warnings, rows, tables, title, out_path):
     px, py, ph = 78, 100, 340
     strategies = list(tables)
-    blocks = tables[strategies[0]][1]
-    natural = sum(c["width"] for _, block in blocks for c in block)
+    needed = max(LEVEL_W + BLOCK_GAP * (len(blocks) - 1)
+                 + sum(c["width"] for _, block in blocks for c in block)
+                 for _, blocks in tables.values())
     # A third run and beyond widen the chart to fit their table columns
-    width = max(1080, px + LEVEL_W + BLOCK_GAP * (len(blocks) - 1) + natural + 40)
+    width = max(1080, math.ceil(px + needed + 40))
     pw = width - px - 40
     svg = Svg(width)
 
@@ -315,7 +372,7 @@ def render(names, versions, machine, corpus_desc, warnings, rows, tables, title,
     lx = width - 16
     for i in reversed(range(len(names))):
         svg.text(lx, 52, names[i], size=12, fill=INK, anchor="end")
-        lx -= 7.2 * len(names[i]) + 12
+        lx -= text_width(names[i]) + 12
         swatch(svg, i, lx, 48)
         lx -= 20
 
@@ -375,7 +432,7 @@ def main():
     for s in strategies:
         ladder = [row.get(s, {}) for row in rows]
         levels = sorted(set().union(*(set(r) for r in ladder)))
-        tables[s] = (levels, table_blocks(levels, ladder))
+        tables[s] = (levels, table_blocks(names, levels, ladder))
     corpus_desc = labels[0] if len(labels) == 1 else f"{len(labels)} corpus files"
     warnings = run_warnings(names, runs)
     title = args.title or " vs ".join(names) + ", deflate levels"
