@@ -90,6 +90,15 @@ def change(new, old):
     return (new - old) / old * 100.0
 
 
+def judge(key, ref, v):
+    """Percent change of a measure against the reference, and whether the change is real."""
+    d = change(v[key], ref[key])
+    # Output bytes are deterministic, timings need to clear the noise
+    if key == "size":
+        return d, v[key] != ref[key]
+    return d, abs(d) > max(NOISE_FLOOR, NOISE_CVS * 100.0 * max(ref["cv"], v["cv"]))
+
+
 def table_blocks(names, levels, rows):
     """Size and time column blocks, a column per run plus a change column per later run.
 
@@ -116,12 +125,7 @@ def table_blocks(names, levels, rows):
                 if not ref or not v:
                     cells.append(("-", False))
                     continue
-                d = change(v[key], ref[key])
-                # Output bytes are deterministic, timings need to clear the noise
-                if key == "size":
-                    real = v[key] != ref[key]
-                else:
-                    real = abs(d) > max(NOISE_FLOOR, NOISE_CVS * 100.0 * max(ref["cv"], v["cv"]))
+                d, real = judge(key, ref, v)
                 # Only a size that really differs keeps the sign on a rounded zero
                 signed = abs(d) >= 0.05 or (key == "size" and real)
                 cells.append((f"{d:+.1f}%" if signed else "0.0%", real))

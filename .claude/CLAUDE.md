@@ -80,6 +80,9 @@
   head.json -o <file>.svg` charts the level ladder above a table of compressed
   size and cpu time per level. Strategy rows in the JSONs become their own
   lines and table.
+- For where an A/B result depends on the data, `scripts/compare_inputs.py
+  base.json head.json -o <file>.svg` grids the size and cpu time change per
+  input and level, over corpus files and synthetic data types alike.
 
 ### Presenting Results
 

@@ -116,6 +116,15 @@ scripts/compare_levels.py .pr-bench/pr2437-base.json .pr-bench/pr2437-head.json 
     --names "PR base,PR head" -o pr2437-levels.svg
 ```
 
+`scripts/compare_inputs.py` breaks the same A/B pair down input by input, a
+grid of the size and cpu time change per level for every corpus file and
+synthetic data type the runs share, tinted by direction. It shows where a
+result depends on the data.
+
+```sh
+scripts/compare_inputs.py base.json head.json --levels 2-6 -o inputs.svg
+```
+
 ## Results
 
 All arm64 backends on silesia.tar, with zstd as format context, macOS on an Apple M5:
