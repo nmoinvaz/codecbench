@@ -190,6 +190,15 @@ def draw_chart(svg, names, strategies, rows, corpus_desc, px, py, pw, ph):
     # Direction-of-better hint, up and right is faster and smaller output
     better_arrow(svg, px + pw - 128, py + 82, px + pw - 40, py + 24)
 
+    # A strategy that ignores the level lands all of its levels on one point, drawn once
+    flat = {}
+    for key, ladder in ladders.items():
+        xs = [sx(v["ratio"]) for _, v in ladder]
+        ys = [sy(v["speed"]) for _, v in ladder]
+        if len(ladder) > 1 and max(xs) - min(xs) < 6 and max(ys) - min(ys) < 6:
+            flat[key] = ", ".join(str(level) for level, _ in ladder)
+            ladders[key] = [ladder[len(ladder) // 2]]
+
     # The reference is a wide soft band, a later run tracing it reads as a line inside.
     # Strategy variants dash that line. Later runs stack with the first of them on top.
     for i, s in [(i, s) for i in [0, *range(len(rows) - 1, 0, -1)] for s in strategies]:
@@ -216,7 +225,7 @@ def draw_chart(svg, names, strategies, rows, corpus_desc, px, py, pw, ph):
                 moves.append((sx(ref["ratio"]), sy(ref["speed"]),
                               sx(v["ratio"]), sy(v["speed"])))
         apart = [m for m in moves if math.hypot(m[2] - m[0], m[3] - m[1]) > 12]
-        if len(apart) * 2 >= len(moves):
+        if len(moves) > 1 and len(apart) * 2 >= len(moves):
             continue
         for x1, y1, x2, y2 in apart:
             ln = math.hypot(x2 - x1, y2 - y1)
@@ -238,11 +247,15 @@ def draw_chart(svg, names, strategies, rows, corpus_desc, px, py, pw, ph):
     for (i, s), ladder in ladders.items():
         for level, v in ladder:
             x, y = sx(v["ratio"]), sy(v["speed"])
-            tip = (f"{names[i]} level:{level}" + (f" strategy:{s}" if s else "")
+            levels = flat.get((i, s))
+            tip = (f"{names[i]} " + (f"levels {levels}" if levels else f"level:{level}")
+                   + (f" strategy:{s}" if s else "")
                    + f" - {fmt_speed(v['speed'])}, ratio {v['ratio']:.3f}, "
                    f"{v['size']:,.0f} bytes, {v['time'] * 1e3:,.1f} ms"
                    + (f", cv {v['cv'] * 100:.1f}%" if v["cv"] > 0 else ""))
-            points.append((i, level, x, y))
+            # A collapsed ladder carries no level label, its strategy name is enough
+            if not levels:
+                points.append((i, level, x, y))
             if i == 0:
                 svg.add(f'<g><circle cx="{x:.1f}" cy="{y:.1f}" r="9" fill="{SURFACE}" '
                         f'stroke="{SERIES[0]}" stroke-width="2"/><title>{esc(tip)}</title></g>')
@@ -262,28 +275,40 @@ def draw_chart(svg, names, strategies, rows, corpus_desc, px, py, pw, ph):
     boxes = []
 
     def free(box):
-        """True when a label box clears the placed labels and every marker."""
+        """True when a label box sits inside the plot, clear of placed labels and markers."""
         x0, y0, x1, y1 = box
+        if y0 < py - 6 or y1 > py + ph - 2:
+            return False
         if any(x0 < bx1 and bx0 < x1 and y0 < by1 and by0 < y1 for bx0, by0, bx1, by1 in boxes):
             return False
         return all(math.hypot(mx - min(max(mx, x0), x1), my - min(max(my, y0), y1)) > mr
                    for mx, my, mr in marks)
 
-    # Each ladder is named under its last level once strategies share the chart
+    def place(x, y, label, slots):
+        """Draw a label in the first slot around its point that is free, the first otherwise."""
+        w = text_width(label, 10)
+
+        def box_at(dx, dy, anchor):
+            # Slide a label that would leave the plot sideways back inside it
+            x0 = x + dx - {"start": 0, "middle": w / 2, "end": w}[anchor]
+            x0 = min(max(x0, px + 2), px + pw - w - 2)
+            return (x0 - 2, y + dy - 9, x0 + w + 2, y + dy + 2)
+
+        box = next((b for b in (box_at(*slot) for slot in slots) if free(b)), box_at(*slots[0]))
+        boxes.append(box)
+        svg.text(box[0] + 2, box[3] - 2, label, size=10)
+
+    # Each ladder is named beside its last level once strategies share the chart
     for s in strategies if len(strategies) > 1 else []:
         ladder = next((ladders[(i, s)] for i in reversed(range(len(rows))) if ladders[(i, s)]),
                       None)
-        if not ladder:
-            continue
-        name, v = strategy_name(s), ladder[-1][1]
-        half = text_width(name, 10) / 2
-        x, y = min(max(sx(v["ratio"]), px + half), px + pw - half), sy(v["speed"]) + 26
-        boxes.append((x - half - 2, y - 9, x + half + 2, y + 2))
-        svg.text(x, y, name, size=10, anchor="middle")
+        if ladder:
+            v = ladder[-1][1]
+            place(sx(v["ratio"]), sy(v["speed"]), strategy_name(s),
+                  [(0, 26, "middle"), (14, 4, "start"), (-14, 4, "end"), (0, -17, "middle")])
 
     # Level labels step around the markers and each other. Coincident points share a label,
     # unless their levels differ, then the later run's label carries its name.
-    slots = [(11, -11, "start"), (11, 19, "start"), (-11, 19, "end"), (-11, -11, "end")]
     spots = []
     for i, level, x, y in points:
         text = f"L{level}"
@@ -291,16 +316,8 @@ def draw_chart(svg, names, strategies, rows, corpus_desc, px, py, pw, ph):
             continue
         shared = any(math.hypot(x - ox, y - oy) < 4 for ox, oy, _ in spots)
         spots.append((x, y, text))
-        label = f"{text} {names[i]}" if shared else text
-        w = text_width(label, 10)
-
-        def box_at(dx, dy, anchor):
-            x0 = x + dx if anchor == "start" else x + dx - w
-            return (x0 - 2, y + dy - 9, x0 + w + 2, y + dy + 2)
-
-        dx, dy, anchor = next((slot for slot in slots if free(box_at(*slot))), slots[0])
-        boxes.append(box_at(dx, dy, anchor))
-        svg.text(x + dx, y + dy, label, size=10, anchor=anchor)
+        place(x, y, f"{text} {names[i]}" if shared else text,
+              [(11, -11, "start"), (11, 19, "start"), (-11, 19, "end"), (-11, -11, "end")])
 
 
 def draw_table(svg, names, caption, levels, blocks, x, top, span):
