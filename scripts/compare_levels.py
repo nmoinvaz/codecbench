@@ -171,7 +171,9 @@ def draw_chart(svg, names, strategies, rows, corpus_desc, px, py, pw, ph):
         print("No levels above 0 to chart.", file=sys.stderr)
         sys.exit(1)
     smin, smax = min(speeds) / 1.4, max(speeds) * 1.25
-    rmin, rmax = min(ratios) * 0.96, max(ratios) * 1.04
+    # Padding follows the data range, so a narrow selection of levels still fills the plot
+    rpad = max((max(ratios) - min(ratios)) * 0.08, max(ratios) * 0.01)
+    rmin, rmax = min(ratios) - rpad, max(ratios) + rpad
 
     def sx(ratio):
         return px + (ratio - rmin) / (rmax - rmin) * pw
@@ -180,11 +182,17 @@ def draw_chart(svg, names, strategies, rows, corpus_desc, px, py, pw, ph):
         return py + ph - (math.log10(speed) - math.log10(smin)) / \
             (math.log10(smax) - math.log10(smin)) * ph
 
-    for v in nice_log_ticks(smin, smax):
+    ticks = nice_log_ticks(smin, smax)
+    if len(ticks) < 3:
+        # A narrow speed range gets intermediate steps between the 1-2-5 ticks
+        decades = range(math.floor(math.log10(smin)), math.ceil(math.log10(smax)) + 1)
+        ticks = [m * 10 ** e for e in decades
+                 for m in (1, 1.5, 2, 3, 4, 5, 6, 8) if smin <= m * 10 ** e <= smax]
+    for v in ticks:
         y = sy(v)
         svg.line(px, y, px + pw, y, GRID)
         svg.text(px + pw - 6, y - 4, fmt_speed(v), size=10, anchor="end")
-    rstep = max(round((rmax - rmin) / 6, 1), 0.1)
+    rstep = 0.05 if rmax - rmin < 0.45 else max(round((rmax - rmin) / 6, 1), 0.1)
     r = math.ceil(rmin / rstep) * rstep
     while r <= rmax:
         x = sx(r)
