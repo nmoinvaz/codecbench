@@ -108,7 +108,8 @@ scripts/graph_runs.py zlibng.json libdeflate.json -o zlibng_vs_libdeflate.svg
 `scripts/compare_levels.py` charts the level ladder of an A/B pair, such as
 the base and head JSONs `bench_pr.py` leaves under `.pr-bench/`, above a table
 of the compressed size and cpu time at every level. Strategy variants found in
-the runs get their own lines and table.
+the runs get their own lines and table, `--strategies` and `--levels` narrow
+the chart to some of them.
 
 ```sh
 scripts/compare_levels.py .pr-bench/pr2437-base.json .pr-bench/pr2437-head.json \

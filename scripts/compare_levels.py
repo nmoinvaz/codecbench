@@ -13,6 +13,7 @@ tar aggregates alone when any are present.
 Usage:
     python3 scripts/compare_levels.py base.json head.json [more.json ...]
         [-o out.svg] [--filter regex] [--names a,b,...] [--title text]
+        [--strategies name,...] [--levels 2-9]
 
 Works with both single-iteration and aggregated (--benchmark_repetitions)
 JSON outputs; for aggregated runs the median row is used for each benchmark.
@@ -49,6 +50,15 @@ def commit(version):
     """Abbreviated commit of a git describe version, the version itself otherwise."""
     m = re.search(r"-g([0-9a-f]{7,40})$", version)
     return m.group(1) if m else version
+
+
+def parse_levels(spec):
+    """Levels named by a spec of numbers and ranges, such as 2-9 or 1,6,9."""
+    levels = set()
+    for part in spec.split(","):
+        lo, _, hi = part.partition("-")
+        levels.update(range(int(lo), int(hi or lo) + 1))
+    return levels
 
 
 def level_rows(runs, corpus_filter):
@@ -417,6 +427,11 @@ def main():
     ap.add_argument("--filter", default=None, help="regex applied to corpus labels")
     ap.add_argument("--names", default=None, help="comma-separated legend names")
     ap.add_argument("--title", default=None, help="chart title")
+    ap.add_argument("--strategies", default=None,
+                    help="comma-separated strategy variants to keep, all found by default, "
+                         "the plain ladder alone with just \"default\"")
+    ap.add_argument("--levels", default=None,
+                    help="levels to keep, such as 2-9 or 1,6,9, all found by default")
     args = ap.parse_args()
     # The table uses deltas, Windows consoles default to cp1252
     if hasattr(sys.stdout, "reconfigure"):
@@ -438,6 +453,21 @@ def main():
     corpus_filter = re.compile(args.filter) if args.filter else None
 
     rows, labels = level_rows(runs, corpus_filter)
+    if args.strategies is not None:
+        keep = set(filter(None, args.strategies.split(","))) - {"default"}
+        found = set().union(*(set(row) for row in rows)) - {""}
+        if keep - found:
+            ap.error(f"no {', '.join(sorted(keep - found))} strategy rows, "
+                     f"found {', '.join(sorted(found)) or 'none'}")
+        rows = [{s: ladder for s, ladder in row.items() if not s or s in keep} for row in rows]
+    if args.levels is not None:
+        try:
+            keep = parse_levels(args.levels)
+        except ValueError:
+            ap.error(f"cannot read levels from {args.levels!r}, expected a form like 2-9 or 1,6,9")
+        rows = [{s: {l: v for l, v in ladder.items() if l in keep} for s, ladder in row.items()}
+                for row in rows]
+        rows = [{s: ladder for s, ladder in row.items() if ladder} for row in rows]
     # The default ladder first, then the strategy variants in their usual order
     strategies = sorted(set().union(*(set(row) for row in rows)),
                         key=lambda s: (s != "", STRATEGY_ORDER.index(s)
