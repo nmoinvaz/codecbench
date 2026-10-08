@@ -126,6 +126,11 @@ positions two zlib-ng revisions insert into the hash table, as a raster of base,
 head and the difference with tar members marked. It builds traced copies of both
 revisions under `.pr-bench`, so it needs the toolchain the benchmarks need.
 
+`scripts/frontier.py base.json head.json -o out.svg` draws one speed against
+size panel per input with both runs' level ladders, and rings any point the
+other run beats on both axes at some level, the trade a user of the level knob
+would take instead.
+
 ```sh
 scripts/compare_inputs.py base.json head.json --levels 2-6 -o inputs.svg
 ```

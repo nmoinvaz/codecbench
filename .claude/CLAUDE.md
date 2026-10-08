@@ -88,6 +88,9 @@
 - For where a hashing change spends its inserts, `scripts/insert_map.py <input>
   --pr <n> --level <l> -o <file>.svg` traces every hash-table store in a base and
   head build and rasters the inserted share per 2 KiB, tar members marked.
+- For whether a change beats the base's own level ladder, `scripts/frontier.py
+  base.json head.json -o <file>.svg` draws speed against size per input and rings
+  points the other run beats on both axes.
 
 ### Presenting Results
 
