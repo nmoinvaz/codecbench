@@ -346,7 +346,7 @@ def triplet(base, head):
 
 def render(args, input_path, level, labels, revs, bits_paths, n, totals, members):
     cols, scale, gap = args.cols, args.scale, 28
-    left, top = 150, 118
+    left, top = 150, 152
     panel_w = cols * scale
     width = left + 3 * panel_w + 2 * gap + 24
     bits = [Path(p).read_bytes() for p in bits_paths]
@@ -358,6 +358,7 @@ def render(args, input_path, level, labels, revs, bits_paths, n, totals, members
     what = f"zlib-ng PR #{args.pr}" if args.pr else "zlib-ng"
     title = args.title or f"{what} hash inserts over {Path(input_path).name}, level {level}"
     svg.text(24, 36, title, 20, INK, weight="bold")
+    legends(svg, left, left + 2 * (panel_w + gap), 76, labels)
     heads = [labels[0], labels[1], f"{labels[1]} minus {labels[0]}"]
     subs = [f"{share_b:.1f}% of positions inserted", f"{share_h:.1f}% of positions inserted",
             f"{share_h - share_b:+.1f} points overall, ramp saturates at ±{DIFF_SPAN * 100:.0f}"]
@@ -387,7 +388,7 @@ def render(args, input_path, level, labels, revs, bits_paths, n, totals, members
                      INK_SOFT, anchor="end")
             table.append((name, size, share(base), share(head)))
             y += rows * scale + 18
-        ly = y + 12
+        bottom = y - 18
     else:
         pixel = args.pixel or pixel_for(n, cols, 400)
         base = densities(bits[0], 0, n, pixel)
@@ -413,11 +414,10 @@ def render(args, input_path, level, labels, revs, bits_paths, n, totals, members
             mid = top + ((start + size / 2) / pixel / cols) * scale
             svg.text(left - 10, mid + 4, f"{name}  {sb:.0f}% → {sh:.0f}%", 11, INK, anchor="end")
             table.append((name, size, sb, sh))
-        ly = top + panel_h + 26
+        bottom = top + panel_h
         print(f"{Path(input_path).name}, level {level}, {fmt_bytes(pixel)} per pixel")
 
-    legends(svg, left, left + 2 * (panel_w + gap), ly, labels)
-    height = ly + 48
+    height = bottom + 40
     svg.text(24, height - 12, "raw deflate, memLevel 9, one-shot, traced builds reproduce the "
              "untraced output · github.com/nmoinvaz/codecbench", 10.5, INK_SOFT)
     Path(args.output).write_text(svg.finish(height))
