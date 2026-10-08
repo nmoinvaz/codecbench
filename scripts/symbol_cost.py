@@ -25,13 +25,13 @@ import sys
 
 from compare_inputs import display, order_inputs
 from compare_levels import commit, text_width
-from graph_runs import GRID, INK, INK_SOFT, SERIES, Svg, footnote, load, machine_line
+from graph_runs import GRID, INK, INK_SOFT, Svg, footnote, load, machine_line
 from stream_anatomy import stream_rows
 
-# Green for a price that fell and magenta for one that rose, a pair no chart
-# uses for the runs themselves, so a reader coming from the frontier panels or
-# the grids does not read a run into the direction.
-LESS, MORE = SERIES[2], SERIES[8]
+# Green for a price that fell and red for one that rose, neither names a run in
+# the other charts, in plain shades that read on both surfaces. The side of the
+# zero line carries the sign as well, so the hue is never the only cue.
+LESS, MORE = "#2e9e4f", "#d64545"
 COLUMNS = [("bits per literal", "literal"), ("bits per length code", "length"),
            ("bits per distance code", "distance"), ("bits per match byte", "match_byte")]
 LABEL_W, CELL_W, GAP = 150, 196, 22
