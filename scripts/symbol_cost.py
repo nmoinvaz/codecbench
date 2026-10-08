@@ -4,7 +4,7 @@
 One row per input the runs share at one level, four columns: bits per
 literal, bits per match length code, bits per match distance code and
 bits per byte a match produces. Each cell is a bar of the change from the
-reference run, cheaper in one hue and dearer in the other, on one
+reference run, costing less in one hue and more in the other, on one
 symmetric scale per column, with the two absolute prices written beside
 it. Paired bars of the prices themselves differ by a few percent at most
 and show nothing, the change is what a matcher tuning moves. Needs the
@@ -104,8 +104,8 @@ def main():
              f"is the change in {names[1]} from {names[0]}, the figures beside it are the two prices",
              12, INK_SOFT)
     kx = 16 + LABEL_W
-    for hue, meaning in ((BETTER, f"cheaper in {names[1]}"), (WORSE, f"dearer in {names[1]}")):
-        svg.add(f'<rect x="{kx}" y="62" width="22" height="12" rx="3" fill="{hue}" fill-opacity="0.6"/>')
+    for hue, meaning in ((BETTER, f"costs less in {names[1]}"), (WORSE, f"costs more in {names[1]}")):
+        svg.add(f'<rect x="{kx}" y="62" width="22" height="12" rx="3" fill="{hue}"/>')
         svg.text(kx + 28, 72, meaning, 11, INK)
         kx += 28 + text_width(meaning, 11) + 22
     cx = [16 + LABEL_W + k * (CELL_W + GAP) for k in range(len(COLUMNS))]
@@ -133,7 +133,7 @@ def main():
             if w > 0.5:
                 bx = mid - w if d < 0 else mid
                 svg.add(f'<rect x="{bx:.1f}" y="{y + 4}" width="{w:.1f}" height="{BAR_H}" rx="2" '
-                        f'fill="{BETTER if d < 0 else WORSE}" fill-opacity="0.75"/>')
+                        f'fill="{BETTER if d < 0 else WORSE}"/>')
             svg.text(mid, y + 26, f"{c0[key]:.2f} → {c1[key]:.2f}", 9.5, INK_SOFT, anchor="middle")
 
         def f(v, digits=2):
