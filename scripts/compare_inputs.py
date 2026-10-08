@@ -150,6 +150,13 @@ def render(names, versions, machine, warnings, labels, levels, grids, caption, t
     built = [f"{names[i]} {commit(v)}" for i, v in enumerate(versions) if v]
     svg.text(16, 48, "  ·  ".join(built), size=12)
     svg.text(x0, 84, caption, size=12, fill=INK)
+    # Key, the direction each hue stands for, beside the caption
+    kx = x0 + text_width(caption, 12) + 36
+    for hue, meaning in ((BETTER, "smaller or faster"), (WORSE, "larger or slower")):
+        svg.add(f'<rect x="{kx}" y="74" width="22" height="12" rx="3" fill="{hue}" '
+                f'fill-opacity="0.6"/>')
+        svg.text(kx + 28, 84, meaning, size=11, fill=INK)
+        kx += 28 + text_width(meaning, 11) + 22
 
     top = 132
     svg.add('<g style="font-variant-numeric: tabular-nums">')
@@ -190,19 +197,12 @@ def render(names, versions, machine, warnings, labels, levels, grids, caption, t
                          weight="bold" if real else "normal")
     svg.add("</g>")
 
-    # Key, the direction each hue stands for
     ky = typical_y + (row_h if has_typical else 0) + 22
-    kx = x0
-    for hue, meaning in ((BETTER, "smaller or faster"), (WORSE, "larger or slower")):
-        svg.add(f'<rect x="{kx}" y="{ky - 10}" width="22" height="12" rx="3" fill="{hue}" '
-                f'fill-opacity="0.6"/>')
-        svg.text(kx + 28, ky, meaning, size=11, fill=INK)
-        kx += 28 + text_width(meaning, 11) + 22
-    svg.text(x0, ky + 22, f"The tint is full at {CAPS['size']:g}% for size and "
+    svg.text(x0, ky, f"The tint is full at {CAPS['size']:g}% for size and "
              f"{CAPS['time']:g}% for time. A time change stays plain unless it moves by more "
              f"than {NOISE_FLOOR:g}% and {NOISE_CVS} times the repetition cv.", size=10)
 
-    height = footnote(svg, names, versions, machine, warnings, ky + 32)
+    height = footnote(svg, names, versions, machine, warnings, ky + 10)
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(svg.finish(height))
 
