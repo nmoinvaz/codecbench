@@ -23,11 +23,15 @@ import os
 import re
 import sys
 
-from compare_inputs import BETTER, WORSE, display, order_inputs
+from compare_inputs import display, order_inputs
 from compare_levels import commit, text_width
-from graph_runs import GRID, INK, INK_SOFT, Svg, footnote, load, machine_line
+from graph_runs import GRID, INK, INK_SOFT, SERIES, Svg, footnote, load, machine_line
 from stream_anatomy import stream_rows
 
+# Green for a price that fell and magenta for one that rose, a pair no chart
+# uses for the runs themselves, so a reader coming from the frontier panels or
+# the grids does not read a run into the direction.
+LESS, MORE = SERIES[2], SERIES[8]
 COLUMNS = [("bits per literal", "literal"), ("bits per length code", "length"),
            ("bits per distance code", "distance"), ("bits per match byte", "match_byte")]
 LABEL_W, CELL_W, GAP = 150, 196, 22
@@ -104,7 +108,7 @@ def main():
              f"is the change in {names[1]} from {names[0]}, the figures beside it are the two prices",
              12, INK_SOFT)
     kx = 16 + LABEL_W
-    for hue, meaning in ((BETTER, f"costs less in {names[1]}"), (WORSE, f"costs more in {names[1]}")):
+    for hue, meaning in ((LESS, f"costs less in {names[1]}"), (MORE, f"costs more in {names[1]}")):
         svg.add(f'<rect x="{kx}" y="62" width="22" height="12" rx="3" fill="{hue}"/>')
         svg.text(kx + 28, 72, meaning, 11, INK)
         kx += 28 + text_width(meaning, 11) + 22
@@ -133,7 +137,7 @@ def main():
             if w > 0.5:
                 bx = mid - w if d < 0 else mid
                 svg.add(f'<rect x="{bx:.1f}" y="{y + 4}" width="{w:.1f}" height="{BAR_H}" rx="2" '
-                        f'fill="{BETTER if d < 0 else WORSE}"/>')
+                        f'fill="{LESS if d < 0 else MORE}"/>')
             svg.text(mid, y + 26, f"{c0[key]:.2f} → {c1[key]:.2f}", 9.5, INK_SOFT, anchor="middle")
 
         def f(v, digits=2):
