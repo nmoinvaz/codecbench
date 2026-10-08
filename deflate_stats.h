@@ -26,6 +26,17 @@ struct deflate_stats {
     uint64_t cp_mag;      /* other dist < 16, permuted magazine */
     uint64_t cp_two;      /* dist 17-32, two-chunk magazine */
     uint64_t cp_wide;     /* dist 33-64, out-of-line wide magazine */
+    /* Bits spent per symbol class, Huffman code plus extra bits. Headers
+       cover block headers, tree descriptions and end-of-block codes. */
+    uint64_t bits_lit;
+    uint64_t bits_len;
+    uint64_t bits_dist;
+    uint64_t bits_hdr;
+    uint64_t bits_stored;
+    /* Matches by distance, up to 4, 32, 256, 4096 and beyond */
+    uint64_t dist_hist[5];
+    /* Matches by length, up to 4, 8, 16, 64 and beyond */
+    uint64_t len_hist[5];
 };
 
 struct dstats_state {
@@ -34,6 +45,18 @@ struct dstats_state {
     uint32_t bitbuf;
     int bitcnt;
 };
+
+/* Bits consumed so far */
+static uint64_t dstats_pos(const struct dstats_state *st) {
+    return (uint64_t)st->in_pos * 8 - (uint64_t)st->bitcnt;
+}
+
+static int dstats_bucket(uint64_t v, const uint16_t *edges) {
+    int b = 0;
+    while (b < 4 && v > edges[b])
+        b++;
+    return b;
+}
 
 static int dstats_bits(struct dstats_state *st, int need) {
     while (st->bitcnt < need) {
@@ -111,13 +134,18 @@ static const uint8_t dstats_dist_extra[30] = {
 
 static int dstats_block(struct dstats_state *st, const struct dstats_huff *lit,
                         const struct dstats_huff *dist, struct deflate_stats *out) {
+    static const uint16_t dist_edges[4] = {4, 32, 256, 4096};
+    static const uint16_t len_edges[4] = {4, 8, 16, 64};
     for (;;) {
+        uint64_t p0 = dstats_pos(st);
         int sym = dstats_decode(st, lit);
         if (sym < 0)
             return -1;
         if (sym < 256) {
             out->lit_syms++;
+            out->bits_lit += dstats_pos(st) - p0;
         } else if (sym == 256) {
+            out->bits_hdr += dstats_pos(st) - p0;
             return 0;
         } else {
             sym -= 257;
@@ -129,6 +157,9 @@ static int dstats_block(struct dstats_state *st, const struct dstats_huff *lit,
             uint64_t mlen = (uint64_t)dstats_len_base[sym] + (uint64_t)extra;
             out->match_syms++;
             out->match_bytes += mlen;
+            out->bits_len += dstats_pos(st) - p0;
+            out->len_hist[dstats_bucket(mlen, len_edges)]++;
+            uint64_t p1 = dstats_pos(st);
             int dsym = dstats_decode(st, dist);
             if (dsym < 0 || dsym >= 30)
                 return -1;
@@ -136,6 +167,8 @@ static int dstats_block(struct dstats_state *st, const struct dstats_huff *lit,
             if (dextra < 0)
                 return -1;
             uint64_t mdist = (uint64_t)dstats_dist_base[dsym] + (uint64_t)dextra;
+            out->bits_dist += dstats_pos(st) - p1;
+            out->dist_hist[dstats_bucket(mdist, dist_edges)]++;
             if (mdist >= mlen)
                 out->cp_copy += mlen;
             else if (mdist == 1)
@@ -162,6 +195,7 @@ static int deflate_stream_stats(const uint8_t *in, size_t in_len, struct deflate
 
     memset(out, 0, sizeof(*out));
     do {
+        uint64_t h0 = dstats_pos(&st);
         last = dstats_bits(&st, 1);
         int type = dstats_bits(&st, 2);
         if (last < 0 || type < 0 || type == 3)
@@ -177,8 +211,10 @@ static int deflate_stream_stats(const uint8_t *in, size_t in_len, struct deflate
             st.in_pos += 4;
             if (st.in_pos + len > st.in_len)
                 return -1;
+            out->bits_hdr += dstats_pos(&st) - h0;
             st.in_pos += len;
             out->lit_syms += len;
+            out->bits_stored += (uint64_t)len * 8;
             continue;
         }
         struct dstats_huff lit, dist;
@@ -250,6 +286,7 @@ static int deflate_stream_stats(const uint8_t *in, size_t in_len, struct deflate
             if (dstats_build(&dist, lengths + nlit, ndist) < 0)
                 return -1;
         }
+        out->bits_hdr += dstats_pos(&st) - h0;
         if (dstats_block(&st, &lit, &dist, out) < 0)
             return -1;
     } while (!last);

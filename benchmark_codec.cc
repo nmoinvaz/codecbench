@@ -128,6 +128,17 @@ public:
             state.counters["lit_syms"] = benchmark::Counter(double(ds.lit_syms));
             state.counters["match_syms"] = benchmark::Counter(double(ds.match_syms));
             state.counters["match_bytes"] = benchmark::Counter(double(ds.match_bytes));
+            state.counters["bits_lit"] = benchmark::Counter(double(ds.bits_lit));
+            state.counters["bits_len"] = benchmark::Counter(double(ds.bits_len));
+            state.counters["bits_dist"] = benchmark::Counter(double(ds.bits_dist));
+            state.counters["bits_hdr"] = benchmark::Counter(double(ds.bits_hdr));
+            state.counters["bits_stored"] = benchmark::Counter(double(ds.bits_stored));
+            static const char *dist_names[5] = {"dist_le4", "dist_le32", "dist_le256", "dist_le4k", "dist_gt4k"};
+            static const char *len_names[5] = {"len_le4", "len_le8", "len_le16", "len_le64", "len_gt64"};
+            for (int b = 0; b < 5; b++) {
+                state.counters[dist_names[b]] = benchmark::Counter(double(ds.dist_hist[b]));
+                state.counters[len_names[b]] = benchmark::Counter(double(ds.len_hist[b]));
+            }
         }
     }
 
