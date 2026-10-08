@@ -85,6 +85,9 @@
 - For where an A/B result depends on the data, `scripts/compare_inputs.py
   base.json head.json -o <file>.svg` grids the size and cpu time change per
   input and level, over corpus files and synthetic data types alike.
+- For where a hashing change spends its inserts, `scripts/insert_map.py <input>
+  --pr <n> --level <l> -o <file>.svg` traces every hash-table store in a base and
+  head build and rasters the inserted share per 2 KiB, tar members marked.
 
 ### Presenting Results
 

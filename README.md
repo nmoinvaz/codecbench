@@ -121,6 +121,11 @@ grid of the size and cpu time change per level for every corpus file and
 synthetic data type the runs share, tinted by direction. It shows where a
 result depends on the data.
 
+`scripts/insert_map.py <input> --pr <n> --level 6 -o out.svg` maps which input
+positions two zlib-ng revisions insert into the hash table, as a raster of base,
+head and the difference with tar members marked. It builds traced copies of both
+revisions under `.pr-bench`, so it needs the toolchain the benchmarks need.
+
 ```sh
 scripts/compare_inputs.py base.json head.json --levels 2-6 -o inputs.svg
 ```
