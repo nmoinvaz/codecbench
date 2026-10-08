@@ -91,6 +91,14 @@
 - For whether a change beats the base's own level ladder, `scripts/frontier.py
   base.json head.json -o <file>.svg` draws speed against size per input and rings
   points the other run beats on both axes.
+- For what the bits were spent on, `scripts/stream_anatomy.py base.json head.json
+  --level <l> -o <file>.svg` stacks bits by literals, lengths, distances, stored and
+  overhead per input with the match distance and length mix, from the `bits_*`,
+  `dist_*` and `len_*` counters every deflate row carries. Sizes are deterministic,
+  so a `--benchmark_min_time=0.05s` run is enough for it.
+- For what each symbol costs, `scripts/symbol_cost.py base.json head.json --level <l>
+  -o <file>.svg` charts bits per literal, bits per match as length plus distance, and
+  bits per match byte across the inputs, from the same counters.
 
 ### Presenting Results
 

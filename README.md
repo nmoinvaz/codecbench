@@ -131,6 +131,17 @@ size panel per input with both runs' level ladders, and rings any point the
 other run beats on both axes at some level, the trade a user of the level knob
 would take instead.
 
+`scripts/stream_anatomy.py base.json head.json --level 2 -o out.svg` breaks the
+compressed streams down by what the bits were spent on, literals, lengths,
+distances, stored bytes and overhead, with the match mix by distance and by
+length beside them. It reads the `bits_*`, `dist_*` and `len_*` counters the
+deflate benchmarks emit from their stream walker, so a size-only run is enough.
+
+`scripts/symbol_cost.py base.json head.json --level 2 -o out.svg` charts the price
+of each symbol instead, bits per literal, bits per match split into length and
+distance, and bits per byte a match produces, one scale per panel across the
+inputs, from the same counters.
+
 ```sh
 scripts/compare_inputs.py base.json head.json --levels 2-6 -o inputs.svg
 ```
